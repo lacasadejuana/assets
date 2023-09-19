@@ -988,7 +988,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -1803,18 +1803,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.0.0, semver@npm:^7.3.7":
-  version: 7.4.0
-  resolution: "semver@npm:7.4.0"
-  dependencies:
-    lru-cache: ^6.0.0
-  bin:
-    semver: bin/semver.js
-  checksum: debf7f4d6fa36fdc5ef82bd7fc3603b6412165c8a3963a30be0c45a587be1a49e7681e80aa109da1875765741af24edc6e021cee1ba16ae96f649d06c5df296d
-  languageName: node
-  linkType: hard
-
-"semver@npm:^7.3.5":
+"semver@npm:^7.0.0, semver@npm:^7.3.5, semver@npm:^7.3.7":
   version: 7.5.4
   resolution: "semver@npm:7.5.4"
   dependencies:
