@@ -1,0 +1,9 @@
+.local_history
+.bash_project
+
+*.code-workspace
+
+
+node_modules
+*.log
+
