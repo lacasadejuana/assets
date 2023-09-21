@@ -7,7 +7,7 @@
    width="192"
    height="192"
    viewBox="0 0 192 192"
-   sodipodi:docname="excel_icon_filled_square.svg"
+   sodipodi:docname="excel_icon_square.svg"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -75,7 +75,7 @@
        x2="327.2995"
        y2="270.79248"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.58995286,0,0,0.54309582,-1.3628378,-51.390086)" />
+       gradientTransform="matrix(0.54312035,0,0,0.54312035,-1.2724064,-51.396729)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient17526"
@@ -130,14 +130,14 @@
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="fondo"
-     style="display:inline">
+     style="display:none">
     <rect
-       style="display:inline;fill:url(#linearGradient17593);fill-opacity:1;stroke:#000000;stroke-width:0.213936;stroke-linejoin:round;stroke-opacity:1"
+       style="display:inline;fill:url(#linearGradient17593);fill-opacity:1;stroke:#000000;stroke-width:0.205274;stroke-linejoin:round;stroke-opacity:1"
        id="rect5758"
-       width="191.78606"
-       height="191.78606"
-       x="-0.16910543"
-       y="-0.21686377" />
+       width="176.56142"
+       height="191.79472"
+       x="-0.17343664"
+       y="-0.22119498" />
   </g>
   <g
      inkscape:groupmode="layer"
