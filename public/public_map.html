@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="csrf" content="" />
+
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Negocios: Maps negocioslocal</title>
+    <script>
+        if (!console.timerInfo) {
+    Object.defineProperty(console, 'timerInfo', {
+        get: function () {
+            return Function.prototype.bind.call(
+                console.debug,
+                console,
+                '%c' +
+                Number(performance.now() / 1000).toFixed(2) +
+                ' Timer:',
+                'color:#03C;font-weight:bold;'
+            );
+        },
+    });
+}
+if (!console.marquee) {
+
+Object.defineProperty(console, 'marquee', {
+  get: function () {
+    return (obj, ...args) => {
+      let colors = Object.values(obj),
+        payload = [''].concat(Object.keys(obj));
+      console.log(payload.join('%c '), ...colors, ...args);
+    };
+  },
+});
+}
+    </script>
+    <script src="https://negocioslocal.juana.house/js/components/init_public_map.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/logo/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/logo/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/logo/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/logo/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/logo/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/logo/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/logo/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/logo/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/logo/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/logo/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/logo/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+                    <!-- ========== All CSS files linkup ========= -->
+    <link href="https://negocioslocal.juana.house/css/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link href="https://negocioslocal.juana.house/css/fontawesome/css/all.min.css" rel="stylesheet">
+
+    <link href="/css/app.css?id=d1a10f3ff7dd6988fc5002be1f0ed834" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/css/fullcalendar.css" />
+
+    <link href="https://negocioslocal.juana.house/css/fontello/fontello.css" rel="stylesheet">
+    <link href="https://negocioslocal.juana.house/css/fontello/animation.css" rel="stylesheet">
+
+
+    
+</head>
+
+
+<body>
+    <div x-data="globalThis.noticesHandler" aria-live="assertive" style="z-index: 100 !important;"
+class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-10">
+<style>
+  .transform_x_12 {
+    transform:translate(130%,0);
+  }
+  </style>
+
+  <div class="flex w-full flex-col items-center space-y-4 sm:items-end" id="noticesdiv"  @notice.window="add($event.detail)"
+  style="z-index: 15000;pointer-events:none;">
+    <template x-for="notice of notices" :key="notice.id">
+        <template x-teleport="#noticesdiv">
+          <div x-show="visible.includes(notice)" @click="remove(notice.id)" :id="'notice_'+notice.id"
+          x-transition:enter="transition-transform   duration-100"
+          x-transition:enter-start="transform transform_x_12" x-transition:enter-end="transform translate-x-0"
+          x-transition:leave="transition-transform ease-in duration-100"
+          x-transition:leave-start="transform translate-x-0" x-transition:leave-end="transform transform_x_12"
+          class="transform_x_12 pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+          x-init="setTimeout(()=>$el.classList.remove('transform_x_12'),200)"
+          style="transition: transform 500ms ease-in-out;            ">
+          <div class="p-4"  >
+            <div class="flex items-start">
+              <div class="flex-shrink-0 align-items-center" :class="{
+            'text-green-600': notice.type === 'success',
+                'text-blue-600': notice.type === 'primary',
+                'text-orange': notice.type === 'warning',
+                'text-red-800': notice.type === 'error',
+                'text-gray-400 ': notice.type === 'info',
+            
+                'show': visible.includes(notice)
+            }">
+                <i class="fa px-0 h-flat w-8" style="font-size:1.2em" :class="{
+                  'fa-check-circle': notice.type === 'success',
+                      'fa-info-circle': notice.type === 'primary',
+                      'fa-exclamantion-circle': notice.type === 'warning',
+                      'fa-exclamation-triangle': notice.type === 'error',
+                      'fa-info-circle ': notice.type === 'info',
+                  
+                      'show': visible.includes(notice)
+                  }"></i>
+              </div>
+              <div class="ml-1 w-0 flex-1 pt-0.5">
+                <p class="text-sm font-medium text-gray-900" x-text="notice.title||notice.text"></p>
+                <p class="mt-1 text-sm text-gray-500" x-text="notice.description||notice.content"></p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        </template>
+    </template>
+</div> 
+</div>
+<script>
+    function noticesHandler() {
+        globalThis.noticesHandler = {
+            notices: [],
+            visible: [],
+            add(notice) {
+                notice.id = Date.now()
+                notice.container = notice.container || '#noticesdiv'
+                this.notices.push(notice)
+                this.fire(notice.id)
+            },
+            fire(id) {
+                notice = this.notices.find(notice => notice && notice.id ==
+                    id);
+                if (notice.text === 'success') {
+                    console.trace(notice)
+                }
+               
+                this.visible.push(notice)
+                const timeShown = Math.max(2000,(notice.delay || 2000)) * this
+                    .visible
+                    .length
+                setTimeout(() => {
+                  let noticeElement=this.$el.querySelector('#notice_'+id);
+                  if(noticeElement)noticeElement.classList.add('transform_x_12')
+                  setTimeout(()=>       {
+                    if(noticeElement)noticeElement.classList.add('hidden')
+                             this.remove(notice.id)
+                             },750);
+                }, timeShown)
+            },
+            remove(id) {
+                const notice = this.visible.find(notice => notice.id == id)
+                const index = this.visible.indexOf(notice)
+                this.visible.splice(index, 1)
+            },
+        }
+        return globalThis.noticesHandler
+    }
+ 
+</script>
+
+    <!-- ======== sidebar-nav start =========== -->
+
+    <!-- ======== sidebar-nav end =========== -->
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper ml-0 collapsed no_transitions public-mapindex">
+        <div class="hidden">
+            <!-- ========== header start ========== -->
+            <header class="header h-flat" id="header">
+                <div class="container-fluid px-0 md:px-2">
+                    <div class="flex flex-nowrap  justify-content-between align-items-baseline header_row">
+                        <div class="col-2 col-sm-2 -ml-4 col-md-1 flex-shrink-1">
+                            <div class="header-left d-flex align-items-center">
+                                <div class="menu-toggle-btn ">
+                                    <button id="menu-toggle" onclick="(e)=>toggleSidebar(e)"
+                                        class="main-btn primary-btn btn-hover ">
+
+                                        <span class="hidden md:inline-block">Menu</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="  -ml-4 w-[60%] max-w-[55vw]   md:max-w-[500px] md:w-[45%]   pl-0"
+                            id="search_contextual">
+                        </div>
+                        <div class="col-2 col-sm-3 col-lg-4 profile_column z-40">
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        </div>
+
+        <!-- ========== section start ========== -->
+        <section class="section max-w-136rem mx-auto" id="outer_section">
+            <div class="container-fluid pl-2 px-0" x-data='{}'>
+
+
+
+
+                <article class="outer_container" id="barebone_container">
+                    <div class="w-full" x-data="{
+        init(){
+             this.importComponent(); 
+            let qs = new URL(location.href)
+            if (qs.searchParams.get('extent')) {
+               // this.full_map=false;
+            }
+            this.$store.public_maps.fetchPublicaciones()
+        },
+        full_map:true,
+        componentsReady: false, 
+        importComponent() {
+           
+            return import('/js/components/public_map.js') .then((module)=> {
+                console.log('PublicMapMoldules', module);
+                //Alpine.store('public_maps',()=>new module.createPublicMapStore())
+                //this.$store.public_maps.$store.negocios=this.$store.negocios;
+                //this.$store.public_maps.updateProperties([]).refreshSavedMaps();
+                //globalThis.$store.public_maps=this.$store.public_maps
+
+                Alpine.data('PublicLayerDeals', module.PublicLayerDeals);
+                Alpine.data('PublicLayerGeoJson',module.PublicLayerGeoJson);
+                Alpine.data('PublicMapFrameData',module.PublicMapFrameData);
+
+                this.PublicLayerDeals = module.PublicLayerDeals;
+                this.PublicLayerGeoJson=module.PublicLayerGeoJson
+                this.PublicMapFrameData=module.PublicMapFrameData
+                this.componentsReady=true;
+                
+            });
+        },
+    }">
+
+    <template x-if="componentsReady">
+        <div class="map_outer_container" style="text-align: center" x-data="PublicMapFrameData">
+            <template x-teleport="#search_contextual">
+                <div class="flex-nowrap input-group justify-content-end w-full" id="searchCampo"
+    x-init="setTimeout(() => document.querySelector('#search_contextual').append(document.querySelector('#searchCampo')), 1000)">
+    <span class="input-group-text h-24-em"><i class="fa fa-search"></i></span>
+    <input type="text" x-model="$store.negocios.searchValue" x-ref="searchInput"
+        @input.debounce="()=>{
+        const term=String(searchValue).normalize('NFD').replace(/\p{Diacritic}/gu,'').trim()
+        search(term)
+    }"
+        class="border border-color-gray border-opacity-10 flex-fill focus:tw-outline-none px-2 py-1 rounded w-auto"
+        placeholder="Buscar negocio">
+
+</div>
+            </template>
+            <div class="w-full flex flex-col items-center justify-center border gmap   " :class="{
+                       'controls_closed': !mapDialogOpen,
+                   }" x-ref="map_container" id="map_container">
+            </div>
+
+
+            <div id="map_controls" style="transition: left 0.4s ease; " x-show="full_map" x-data="{
+
+                
+                init() {
+                   
+                    globalThis.mapControls = this;
+            
+                }
+            
+            }" :class="{
+                'pl-[15px]': mapDialogOpen && googleReady,
+                'pr-[5px]': mapDialogOpen && googleReady,
+                '-left-[230px]': !mapDialogOpen,
+                '-left-[260px]': !googleReady,
+                'left-0': mapDialogOpen && googleReady,
+            }"
+                class="bg-white max-w-[400px] min-w-[260px] shadow-lg border min-h-[400px] pl-4 pt-2                absolute">
+                <style>
+                    .icon_preview_container {
+                        border: 1px solid #ccc;
+                        border-left-color: white;
+                        left: 250px;
+                        transform: translate(4px, -5px);
+                        background: white;
+                        max-height: 90px;
+                        border-top-right-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                        align-items: center;
+                    }
+
+                    .icon_preview_container img {
+                        transform: scale(0.9);
+                    }
+                </style>
+
+                <select id="maptype_selector"
+                    class="font-normal radius-1 text-left ml-2 mb-2 fs-1rem cursor-pointer maptype_selector"
+                    x-ref="maptype_selector" x-model="mapTypeId"></select>
+
+                <template
+                    x-for="({checked, slug_name,url, name, path, layer_options, criteria,type },index) in $store.public_maps.layer_array"
+                    :key="slug_name">
+                    <span class="flex flex-col map_collapsible">
+                        <template x-if="type==='deals'">
+                            <div x-id="['map-layer']"
+                                x-data="PublicLayerDeals({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
+                                class="border accordion flex flex-col ">
+
+                                <div class="accordion-header  bg-gray-50 flex py-1 form-select"
+                                    x-init="slug_name = slug_name"
+                                    :style="'color:' + (length ? layer_options.strokeColor : '#aaa')" x-on:click="()=>{
+                                                        filters_open=!filters_open
+                                                    }">
+                                    <input :name="$id('map-layer')" type="checkbox" class="form-check-input  mr-2"
+                                        x-on:click.stop="layer_options.checked=!layer_options.checked"
+                                        x-model="layer_options.checked" :checked="layer_options.checked" />
+
+                                    <i class="mr-2 collapsible_tooltip fontello" :class="{
+                                        [layer_options.className]:true
+                                    }" x-tooltip.theme.light="length+' registros'"></i><label
+                                        style="transform: translate(0,1px)" :for="$id('map-layer')" x-text="name"
+                                        class=""></label>
+                                </div>
+
+                            </div>
+
+
+                        </template>
+
+                        <template x-if="type==='geojson'">
+                            <div x-id="['map-layer']"
+                                x-data="PublicLayerGeoJson({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
+                                class="border accordion flex flex-col ">
+
+                                <div class="accordion-header  bg-gray-50 flex py-1 form-select"
+                                    x-init="slug_name = slug_name"
+                                    :style="'color:' + (length ? layer_options.strokeColor : '#aaa')" x-on:click="()=>{
+                                                        filters_open=!filters_open
+                                                    }">
+                                    <input :name="$id('map-layer')" type="checkbox" class="form-check-input  mr-2"
+                                        x-on:click.stop="layer_options.checked=!layer_options.checked"
+                                        x-model="layer_options.checked" :checked="layer_options.checked" />
+
+                                    <i class="mr-2 collapsible_tooltip fontello" :class="{
+                                        [layer_options.className]:true
+                                    }" x-tooltip.theme.light="length+' registros'"></i><label
+                                        style="transform: translate(0,1px)" :for="$id('map-layer')" x-text="name"
+                                        class=""></label>
+                                </div>
+
+                            </div>
+
+
+                        </template>
+
+                    </span>
+                </template>
+                <div class="absolute h-full w-[30px] bg-gray-200 top-0 hover:bg-gray-300 z-10 " :class="{
+                        'w-[30px]': !mapDialogOpen,
+                        'w-[20px]': mapDialogOpen,
+                        'right-0': !mapDialogOpen,
+                        'left-0': mapDialogOpen
+                    }" style="    border: 1px solid #aaa;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.9em;" x-on:click="()=>{
+                    $el.parentElement.classList.toggle('-left-[220px]')
+                    console.log({mapDialogOpen})
+                    mapDialogOpen = !mapDialogOpen
+                }">
+                    <i class="fas " :class="{
+                            'fa-chevron-right': !mapDialogOpen,
+                            'fa-chevron-left': mapDialogOpen,
+                        }"></i>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </template>
+</div>                </article>
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- ========== section end ========== -->
+        
+        <!-- ========== footer start =========== -->
+
+        <!-- ========== footer end =========== -->
+
+
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+
+
+
+    <!-- ======== after_footer start =========== -->
+    
+    <!-- ======== after_footer end =========== -->
+
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?v=beta&key=AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8&language=es&region=CL&callback=maploaded">
+    </script>
+    <!-- ========= All Javascript files linkup ======== -->
+            
+
+    <script>
+    console.timerInfo('start: negocio common footer')
+
+
+globalThis.googleMapsOptions = {"apiKey":"AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8","version":"beta","region":"CL","language":"es","mapId":"8f541b0e0f5f6c31","libraries":["places","localContext"]};
+const {
+    campos_busqueda = [],
+        default_columns = []} = globalThis;
+
+const contactosArray = "";
+globalThis.backendPaginator = {"has_take":true,"count":129,"next_page_url":null,"first_page_url":"https:\/\/negocioslocal.juana.house\/api\/maps\/publicaciones?page=1","last_page_url":"https:\/\/negocioslocal.juana.house\/api\/maps\/publicaciones?page=1","current_page":1,"from":1695497027,"cursor":1695497027,"last_page":1,"max_id":null,"min_id":null,"path":"https:\/\/negocioslocal.juana.house\/api\/maps\/publicaciones?","per_page":350,"prev_page_url":null,"query":{"limit":350,"take":1,"api_base_path":"\/api\/maps\/publicaciones","total":129},"request_id":"da7ad647-a4af-42f6-9c2d-8ee52d6b2b8e","current_filter_id":null,"to":130,"total":129,"links":[{"url":null,"label":"&laquo; Anterior","active":false},{"url":null,"label":"&laquo; Siguiente","active":false}],"data":[{"id":210464,"codigo_interno":210464,"nombre":"CASA JOS\u00c9 DE MORALEDA","link":"https:\/\/lacasadejuana.cl\/?p=96898","id_propiedad":151,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-04-05","precio_publicacion":15950,"precio_uf":15.95,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Los Descubridores","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/04\/Jose-de-Moraleda-1.jpg","lat":-33.42547,"lng":-70.57489},{"id":210277,"codigo_interno":210277,"nombre":"PISO BUSTAMANTE II","link":"https:\/\/lacasadejuana.cl\/?p=78751","id_propiedad":157,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-10-12","precio_publicacion":5350,"precio_uf":6.3,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Parque del Deporte","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/06\/04-1.jpg","lat":-33.46549,"lng":-70.6113},{"id":210281,"codigo_interno":210281,"nombre":"PISO MIGUEL CLARO IV","link":"https:\/\/lacasadejuana.cl\/?p=78671","id_propiedad":164,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-06-14","precio_publicacion":4200,"precio_uf":4.2,"status":"sold","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"Providencia","barrio":"Italia","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/06\/Miguel-Claro-0-01.jpg","lat":-33.44825,"lng":-70.61965},{"id":210329,"codigo_interno":210329,"nombre":null,"link":null,"id_propiedad":188,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2022-07-14","precio_publicacion":3429,"precio_uf":null,"status":null,"place":null,"comuna":"Las Condes","comuna_barrio":"PENALOLEN","barrio":null,"dormitorios":8,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":12,"thumbnail":null,"lat":-33.47533,"lng":-70.54854},{"id":210294,"codigo_interno":210294,"nombre":"PISO LO BELTR\u00c1N","link":"https:\/\/lacasadejuana.cl\/?p=81095","id_propiedad":189,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-07-25","precio_publicacion":7800,"precio_uf":8,"status":"unavailable","place":"Vitacura","comuna":"Vitacura","comuna_barrio":"Vitacura","barrio":"Lo Gallo","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/07\/Lo-Beltran-01.jpg","lat":-33.38262,"lng":-70.55902},{"id":210459,"codigo_interno":210459,"nombre":"PISO LOS ESPA\u00d1OLES","link":"https:\/\/lacasadejuana.cl\/?p=95958","id_propiedad":190,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-03-24","precio_publicacion":255000000,"precio_uf":7.447,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Pedro de Valdivia Norte","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/05-4.jpg","lat":-33.41757,"lng":-70.61179},{"id":210397,"codigo_interno":210397,"nombre":"CASA CHESTERTON","link":"https:\/\/lacasadejuana.cl\/?p=90114","id_propiedad":341,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-12-05","precio_publicacion":15850,"precio_uf":15.85,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Montegrande","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/010-3.jpg","lat":-33.40312,"lng":-70.54827},{"id":210405,"codigo_interno":210405,"nombre":"CASA ALMIRANTE BYRD","link":"https:\/\/lacasadejuana.cl\/?p=90657","id_propiedad":364,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-12-20","precio_publicacion":15400,"precio_uf":15.4,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Plaza Pedro de Valdivia","dormitorios":4,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/04\/Almirante-Byrd-41.jpg","lat":-33.44074,"lng":-70.60565},{"id":210390,"codigo_interno":210390,"nombre":"CASA CAMPOAMOR","link":"https:\/\/lacasadejuana.cl\/?p=89465","id_propiedad":400,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-11-28","precio_publicacion":12400,"precio_uf":12.4,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Plaza \u00d1u\u00f1oa","dormitorios":5,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Campoamor-2.jpg","lat":-33.45113,"lng":-70.59651},{"id":210364,"codigo_interno":210364,"nombre":"PISO RAM\u00d3N CARNICER","link":"https:\/\/lacasadejuana.cl\/?p=88087","id_propiedad":413,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-11-08","precio_publicacion":6850,"precio_uf":6.85,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Parque Bustamante","dormitorios":2,"dormitorios_servicio":0,"banos_servicio":1,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/11\/Ramon-Carnicer-8.jpg","lat":-33.44103,"lng":-70.63262},{"id":210367,"codigo_interno":210367,"nombre":"PISO FRANCISCO NOGUERA","link":"https:\/\/lacasadejuana.cl\/?p=87762","id_propiedad":420,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-11-03","precio_publicacion":8790,"precio_uf":8.79,"status":"unavailable","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Divina Providencia","dormitorios":3,"dormitorios_servicio":1,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/BYN-Francisco-de-Noguera-1.jpg","lat":-33.42375,"lng":-70.61331},{"id":210413,"codigo_interno":210413,"nombre":"CASA FERNANDO DE ARAG\u00d3N","link":"https:\/\/lacasadejuana.cl\/?p=91857","id_propiedad":434,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-01-13","precio_publicacion":42,"precio_uf":44,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Vaticano","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Fernando-de-Aragon-8.jpg","lat":-33.42715,"lng":-70.58183},{"id":210373,"codigo_interno":210373,"nombre":"PISO PONTEVEDRA","link":"https:\/\/lacasadejuana.cl\/?p=87541","id_propiedad":438,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-10-28","precio_publicacion":8500,"precio_uf":8.5,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Los Descubridores","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/10\/Pontevedra-12-1.jpg","lat":-33.41864,"lng":-70.55815},{"id":210375,"codigo_interno":210375,"nombre":"PISO HERIBERTO COVARRUBIAS","link":"https:\/\/lacasadejuana.cl\/?p=88424","id_propiedad":444,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-11-10","precio_publicacion":8350,"precio_uf":8.35,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Pucar\u00e1","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/portal-inmobiliario-novacion-02.jpg","lat":-33.44734,"lng":-70.5739},{"id":210376,"codigo_interno":210376,"nombre":"TOWNHOUSE CARDENAL NEWMAN","link":"https:\/\/lacasadejuana.cl\/?p=87707","id_propiedad":449,"tipo_propiedad":"Townhouse","tipo_negocio":"Venta","fecha_publicacion":"2022-11-02","precio_publicacion":16500,"precio_uf":15.75,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Gran Breta\u00f1a","dormitorios":2,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/12\/16.01.2023-Cardenal-Newman-486-38.jpg","lat":-33.39638,"lng":-70.54098},{"id":210378,"codigo_interno":210378,"nombre":"CASA GENERAL GOROSTIAGA II","link":"https:\/\/lacasadejuana.cl\/?p=88680","id_propiedad":453,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-11-15","precio_publicacion":11900,"precio_uf":11.9,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Pucar\u00e1","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/12\/General-Gorostiaga-973-2.jpg","lat":-33.44586,"lng":-70.58161},{"id":210404,"codigo_interno":210404,"nombre":"CASA DOCTOR ALFREDO ALMEYDA","link":"https:\/\/lacasadejuana.cl\/?p=90544","id_propiedad":494,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-12-16","precio_publicacion":21980,"precio_uf":21.98,"status":"available","place":"Vitacura","comuna":"Vitacura","comuna_barrio":"Vitacura","barrio":"Sector Borde R\u00edo","dormitorios":3,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/12\/2022.12.14-Dr.-Alfredo-Almeyda-6672-15-1.jpg","lat":-33.38045,"lng":-70.57233},{"id":210389,"codigo_interno":210389,"nombre":"CASA ESCRITOR MANUEL ROJAS","link":"https:\/\/lacasadejuana.cl\/?p=88976","id_propiedad":498,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-11-21","precio_publicacion":12950,"precio_uf":12.95,"status":"available","place":"La Reina","comuna":"La Reina","comuna_barrio":"La Reina","barrio":"La Reina Alta","dormitorios":3,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/04\/Escritor-Manuel-Rojas-1.jpg","lat":-33.44109,"lng":-70.52697},{"id":210391,"codigo_interno":210391,"nombre":"CASA PASAJE LA CASTELLANA","link":"https:\/\/lacasadejuana.cl\/?p=89576","id_propiedad":508,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-11-29","precio_publicacion":14600,"precio_uf":14.6,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"San Pascual","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/015-2.jpg","lat":-33.41259,"lng":-70.57616},{"id":210392,"codigo_interno":210392,"nombre":"PISO SUECIA I","link":"https:\/\/lacasadejuana.cl\/?p=89835","id_propiedad":510,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-12-01","precio_publicacion":6650,"precio_uf":6.65,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Plaza Pedro de Valdivia","dormitorios":1,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/12\/Suecia-9.jpg","lat":-33.4384,"lng":-70.60279},{"id":210393,"codigo_interno":210393,"nombre":"PISO AUSTRIA V","link":"https:\/\/lacasadejuana.cl\/?p=88928","id_propiedad":512,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-11-18","precio_publicacion":10800,"precio_uf":11.1,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Los Estanques","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/11\/Austria-6-2.jpg","lat":-33.43556,"lng":-70.60804},{"id":210411,"codigo_interno":210411,"nombre":"PISO BURGOS III","link":"https:\/\/lacasadejuana.cl\/?p=91047","id_propiedad":579,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-12-27","precio_publicacion":10600,"precio_uf":10.6,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"El Golf","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/05-2.jpg","lat":-33.41582,"lng":-70.58844},{"id":210442,"codigo_interno":210442,"nombre":"CASA SIM\u00d3N BOL\u00cdVAR V","link":"https:\/\/lacasadejuana.cl\/?p=95611","id_propiedad":594,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-03-20","precio_publicacion":12000,"precio_uf":12,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Pucar\u00e1","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Simon-Bolivar-15.jpg","lat":-33.44771,"lng":-70.57477},{"id":210421,"codigo_interno":210421,"nombre":"CASA LO MATTA","link":"https:\/\/lacasadejuana.cl\/?p=92083","id_propiedad":600,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-01-17","precio_publicacion":18950,"precio_uf":18.95,"status":"available","place":"Vitacura","comuna":"Vitacura","comuna_barrio":"Vitacura","barrio":"Lo Matta","dormitorios":4,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/17.01.2023-Lo-Matta-1136-7-1.jpg","lat":-33.38618,"lng":-70.54522},{"id":210417,"codigo_interno":210417,"nombre":null,"link":null,"id_propiedad":608,"tipo_propiedad":"Townhouse","tipo_negocio":"Venta","fecha_publicacion":"2023-01-24","precio_publicacion":11800,"precio_uf":null,"status":null,"place":null,"comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Regina Pacis","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":null,"lat":-33.44111,"lng":-70.59286},{"id":210418,"codigo_interno":210418,"nombre":"TOWNHOUSE PEDRO NAVIA III","link":"https:\/\/lacasadejuana.cl\/?p=92587","id_propiedad":609,"tipo_propiedad":"Townhouse","tipo_negocio":"Venta","fecha_publicacion":"2023-01-24","precio_publicacion":11540,"precio_uf":11.54,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Regina Pacis","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/01\/Pedro-Navia-5.jpg","lat":-33.44111,"lng":-70.59286},{"id":210419,"codigo_interno":210419,"nombre":"PISO PEDRO NAVIA","link":"https:\/\/lacasadejuana.cl\/?p=92444","id_propiedad":610,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-01-23","precio_publicacion":7700,"precio_uf":7.7,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Regina Pacis","dormitorios":2,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/01\/2023.01.23-Pedro-Navia-3702-1.jpg","lat":-33.44111,"lng":-70.59286},{"id":210420,"codigo_interno":210420,"nombre":"PISO PEDRO NAVIA II","link":"https:\/\/lacasadejuana.cl\/?p=92463","id_propiedad":611,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-01-25","precio_publicacion":8670,"precio_uf":8.67,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Regina Pacis","dormitorios":2,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/01\/01-6.jpg","lat":-33.44111,"lng":-70.59286},{"id":210426,"codigo_interno":210426,"nombre":"LOFT JOS\u00c9 MANUEL COUSI\u00d1O III","link":"https:\/\/lacasadejuana.cl\/?p=93102","id_propiedad":644,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-02-06","precio_publicacion":6200,"precio_uf":6.2,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Las Flores","dormitorios":1,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/02\/01.jpg","lat":-33.43286,"lng":-70.59154},{"id":210429,"codigo_interno":210429,"nombre":null,"link":null,"id_propiedad":648,"tipo_propiedad":"Townhouse","tipo_negocio":"Venta","fecha_publicacion":"2023-01-30","precio_publicacion":16500,"precio_uf":null,"status":null,"place":null,"comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Gran Breta\u00f1a","dormitorios":2,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":null,"lat":-33.39638,"lng":-70.54098},{"id":210466,"codigo_interno":210466,"nombre":"PISO PEDRO DE VALDIVIA V","link":"https:\/\/lacasadejuana.cl\/?p=96566","id_propiedad":650,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-04-03","precio_publicacion":5700,"precio_uf":5.7,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"Providencia","barrio":"Villaseca","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/Pedro-de-Valdivia-25.jpg","lat":-33.44649,"lng":-70.60615},{"id":210430,"codigo_interno":210430,"nombre":"LOFT IN\u00c9S DE SUAREZ II","link":"https:\/\/lacasadejuana.cl\/?p=93187","id_propiedad":651,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-02-07","precio_publicacion":4950,"precio_uf":4.95,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Manuel Montt","dormitorios":1,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/014-2.jpg","lat":-33.44033,"lng":-70.61381},{"id":210433,"codigo_interno":210433,"nombre":"CASA PADRE ERR\u00c1ZURIZ II","link":"https:\/\/lacasadejuana.cl\/?p=93560","id_propiedad":659,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-02-10","precio_publicacion":58,"precio_uf":58,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Renacimiento Italiano","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/02\/5.jpg","lat":-33.40272,"lng":-70.55231},{"id":210451,"codigo_interno":210451,"nombre":"CASA MIGUEL CLARO","link":"https:\/\/lacasadejuana.cl\/?p=94587","id_propiedad":685,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-03","precio_publicacion":36.5,"precio_uf":"36,5","status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Infante","dormitorios":5,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/2023.03.02-Miguel-Claro-1691-5-1.jpg","lat":-33.4444,"lng":-70.61762},{"id":210448,"codigo_interno":210448,"nombre":"PISO AMAPOLAS V","link":"https:\/\/lacasadejuana.cl\/?p=94983","id_propiedad":709,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-03-07","precio_publicacion":8950,"precio_uf":8.95,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Las Lilas","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Amapolas-10.jpg","lat":-33.42908,"lng":-70.59136},{"id":210438,"codigo_interno":210438,"nombre":"CASA ISABEL LA CAT\u00d3LICA III","link":"https:\/\/lacasadejuana.cl\/?p=93584","id_propiedad":729,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-02-21","precio_publicacion":17400,"precio_uf":17.4,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Latad\u00eda","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/2023.02.21-Isabel-La-Catolica-4677-4.jpg","lat":-33.42653,"lng":-70.57346},{"id":210460,"codigo_interno":210460,"nombre":"PISO C\u00c9SAR CASCABEL","link":"https:\/\/lacasadejuana.cl\/?p=95639","id_propiedad":754,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-03-20","precio_publicacion":11700,"precio_uf":11.9,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Vaticano","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/2023.03.20-Cesar-Cascabel-4369-23-2.jpg","lat":-33.42319,"lng":-70.58134},{"id":210462,"codigo_interno":210462,"nombre":"TOWNHOUSE JULIO ZEGERS","link":"https:\/\/lacasadejuana.cl\/?p=96289","id_propiedad":767,"tipo_propiedad":"Townhouse","tipo_negocio":"Venta","fecha_publicacion":"2023-03-28","precio_publicacion":10400,"precio_uf":10.4,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Montenegro","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/portadas-web-novacion-04.jpg","lat":-33.45118,"lng":-70.5881},{"id":210475,"codigo_interno":210475,"nombre":null,"link":null,"id_propiedad":776,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-04-12","precio_publicacion":8100,"precio_uf":null,"status":null,"place":null,"comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Divina Providencia","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":-33.43178,"lng":-70.61487},{"id":210476,"codigo_interno":210476,"nombre":"PISO VATICANO","link":"https:\/\/lacasadejuana.cl\/?p=96185","id_propiedad":778,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-04-06","precio_publicacion":30,"precio_uf":34,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Vaticano","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/04\/2023.04.05-Vaticano-4350-1.jpg","lat":-33.42529,"lng":-70.57893},{"id":210455,"codigo_interno":210455,"nombre":"PISO PEDRO DE VALDIVIA II","link":"https:\/\/lacasadejuana.cl\/?p=94701","id_propiedad":786,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-06","precio_publicacion":21,"precio_uf":21,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Villaseca","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Piso-Pedro-de-Valdivia-7.jpg","lat":-33.44526,"lng":-70.60637},{"id":210450,"codigo_interno":210450,"nombre":"CASA HERNANDO DE MAGALLANES","link":"https:\/\/lacasadejuana.cl\/?p=94689","id_propiedad":794,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-03-06","precio_publicacion":11600,"precio_uf":11.9,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"El Pill\u00e1n","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/06.jpg","lat":-33.42781,"lng":-70.56253},{"id":210452,"codigo_interno":210452,"nombre":"CASA ESPOZ","link":"https:\/\/lacasadejuana.cl\/?p=95218","id_propiedad":795,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-09","precio_publicacion":62,"precio_uf":50,"status":"available","place":"Vitacura","comuna":"Vitacura","comuna_barrio":"Vitacura","barrio":"Lo Castillo","dormitorios":4,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/2023.03.09-Espoz-4171-6.jpg","lat":-33.39781,"lng":-70.59121},{"id":210474,"codigo_interno":210474,"nombre":"PISO GUILLERMO TELL","link":"https:\/\/lacasadejuana.cl\/?p=96745","id_propiedad":803,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-04-05","precio_publicacion":8450,"precio_uf":8.45,"status":"available","place":"La Reina","comuna":"La Reina","comuna_barrio":"La Reina","barrio":"Lynch","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/010.jpg","lat":-33.44606,"lng":-70.57018},{"id":210478,"codigo_interno":210478,"nombre":"PISO EL BOSQUE I","link":"https:\/\/lacasadejuana.cl\/?p=97071","id_propiedad":811,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-04-10","precio_publicacion":8800,"precio_uf":8.8,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Las Lilas","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/04\/El-Bosque-19.jpg","lat":-33.42237,"lng":-70.59856},{"id":210465,"codigo_interno":210465,"nombre":"PISO ERNESTO MUZARD","link":"https:\/\/lacasadejuana.cl\/?p=96378","id_propiedad":814,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-29","precio_publicacion":22,"precio_uf":22,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Plaza Pedro de Valdivia","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Ernesto-Muzard-22-1.jpg","lat":-33.44149,"lng":-70.60609},{"id":210468,"codigo_interno":210468,"nombre":"PATIO HOLANDA","link":"https:\/\/lacasadejuana.cl\/?p=97183","id_propiedad":830,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-04-11","precio_publicacion":6970,"precio_uf":6.97,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"PROVIDENCIA","barrio":"Plaza \u00d1u\u00f1oa","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/04\/Holanda-1.jpg","lat":-33.44116,"lng":-70.59806},{"id":210456,"codigo_interno":210456,"nombre":"CASA ECHE\u00d1IQUE II","link":"https:\/\/lacasadejuana.cl\/?p=95485","id_propiedad":838,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-03-17","precio_publicacion":14250,"precio_uf":14.55,"status":"available","place":"La Reina","comuna":"La Reina","comuna_barrio":"La Reina","barrio":"Ossandon","dormitorios":4,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/05\/07-4.jpg","lat":-33.44285,"lng":-70.53613},{"id":210458,"codigo_interno":210458,"nombre":"PISO MART\u00cdN ALONSO PINZ\u00d3N III","link":"https:\/\/lacasadejuana.cl\/?p=96104","id_propiedad":848,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-03-27","precio_publicacion":6100,"precio_uf":6.1,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Los Descubridores","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/2023.03.27-Martin-Alonso-Pinzon-4750-1.jpg","lat":-33.42098,"lng":-70.5751},{"id":210461,"codigo_interno":210461,"nombre":"PISO EL BOSQUE VIII","link":"https:\/\/lacasadejuana.cl\/?p=95312","id_propiedad":850,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-13","precio_publicacion":38,"precio_uf":38,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Las Lilas","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/03-2.jpg","lat":-33.42871,"lng":-70.59606},{"id":210487,"codigo_interno":210487,"nombre":null,"link":null,"id_propiedad":851,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-04-26","precio_publicacion":3500,"precio_uf":null,"status":null,"place":null,"comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Plaza \u00d1u\u00f1oa","dormitorios":1,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":null,"lat":-33.45308,"lng":-70.59395},{"id":210463,"codigo_interno":210463,"nombre":"PISO HERNANDO DE AGUIRRE I","link":"https:\/\/lacasadejuana.cl\/?p=96664","id_propiedad":868,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-04-04","precio_publicacion":9500,"precio_uf":9.5,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Los Leones","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":1,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/05\/2023.04.03-Hernando-de-Aguirre-329-7.jpg","lat":-33.42125,"lng":-70.60097},{"id":210467,"codigo_interno":210467,"nombre":"PISO LOS TALAVERAS II","link":"https:\/\/lacasadejuana.cl\/?p=96056","id_propiedad":872,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-27","precio_publicacion":21,"precio_uf":22,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Parque Juan XXIII","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/2023.03.23-Los-Talaveras-370-27.jpg","lat":-33.45903,"lng":-70.59091},{"id":210471,"codigo_interno":210471,"nombre":"ESTUDIO EL REMANSO","link":"https:\/\/lacasadejuana.cl\/?p=95833","id_propiedad":879,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-22","precio_publicacion":28,"precio_uf":28,"status":"available","place":"Lo Barnechea","comuna":"Lo Barnechea","comuna_barrio":"LO BARNECHEA","barrio":"El Array\u00e1n","dormitorios":1,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/El-Remanso-16140-34.jpg","lat":-33.36059,"lng":-70.4828},{"id":210480,"codigo_interno":210480,"nombre":null,"link":null,"id_propiedad":883,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-04-17","precio_publicacion":19.6,"precio_uf":null,"status":null,"place":null,"comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Italia","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":-33.44119,"lng":-70.62704},{"id":210470,"codigo_interno":210470,"nombre":"CASA ISABEL RIQUELME","link":"https:\/\/lacasadejuana.cl\/?p=96493","id_propiedad":890,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-04-03","precio_publicacion":10800,"precio_uf":10.8,"status":"available","place":"Santiago","comuna":"Santiago","comuna_barrio":"Providencia","barrio":"Bellavista","dormitorios":4,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/04\/2023.03.31-Isabel-Riquelme-57-1.jpg","lat":-33.43259,"lng":-70.63139},{"id":210472,"codigo_interno":210472,"nombre":"CASA SIM\u00d3N BOL\u00cdVAR VI","link":"https:\/\/lacasadejuana.cl\/?p=95808","id_propiedad":904,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-21","precio_publicacion":33.7,"precio_uf":"33,7","status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Pucar\u00e1","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Simon-Bolivar-5-1.jpg","lat":-33.44771,"lng":-70.57477},{"id":210473,"codigo_interno":210473,"nombre":"CASA LOS ESPA\u00d1OLES V","link":"https:\/\/lacasadejuana.cl\/?p=95907","id_propiedad":906,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-24","precio_publicacion":45,"precio_uf":45,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Pedro de Valdivia Norte","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/2021.10.22-Los-Espanoles-2713-15-1.jpg","lat":-33.41464,"lng":-70.60914},{"id":210488,"codigo_interno":210488,"nombre":"CASA VALENZUELA PUELMA III","link":"https:\/\/lacasadejuana.cl\/?p=98647","id_propiedad":937,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-04-28","precio_publicacion":14900,"precio_uf":14.9,"status":"available","place":"La Reina","comuna":"La Reina","comuna_barrio":"La Reina","barrio":"La Reina Alta","dormitorios":4,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/04\/Valenzuela-Puelma-21-1.jpg","lat":-33.4336,"lng":-70.52822},{"id":210531,"codigo_interno":210531,"nombre":"PISO RAM\u00d3N SOTOMAYOR","link":"https:\/\/lacasadejuana.cl\/?p=103628","id_propiedad":1009,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-07-03","precio_publicacion":8300,"precio_uf":8.3,"status":"available","place":"Providencia","comuna":"Santiago","comuna_barrio":"Santiago","barrio":"San Borja","dormitorios":1,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/08-3.jpg","lat":-33.44196,"lng":-70.64261},{"id":210526,"codigo_interno":210526,"nombre":"CASA QUIL\u00cdN","link":"https:\/\/lacasadejuana.cl\/?p=103025","id_propiedad":1086,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-06-28","precio_publicacion":16900,"precio_uf":17.2,"status":"available","place":"Pe\u00f1alol\u00e9n","comuna":"Santiago","comuna_barrio":"Providencia","barrio":"Dinamarca","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/Quilin-Sur-14.jpg","lat":-33.43986,"lng":-70.59206},{"id":210537,"codigo_interno":210537,"nombre":"PISO BREMEN","link":"https:\/\/lacasadejuana.cl\/?p=104215","id_propiedad":1164,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-07-11","precio_publicacion":7300,"precio_uf":7.3,"status":"available","place":"\u00d1u\u00f1oa","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"El Golf","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/Bremen-04.jpg","lat":-33.41489,"lng":-70.5989},{"id":210542,"codigo_interno":210542,"nombre":"CASA LA CA\u00d1ADA","link":"https:\/\/lacasadejuana.cl\/?p=104766","id_propiedad":1199,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-07-19","precio_publicacion":8900,"precio_uf":8.9,"status":"available","place":"La Reina","comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Los Adoquines","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/La-Canada-11.jpg","lat":-33.43946,"lng":-70.57914},{"id":210556,"codigo_interno":210556,"nombre":"PISO MART\u00cdN ALONSO PINZ\u00d3N IV","link":"https:\/\/lacasadejuana.cl\/?p=105790","id_propiedad":1209,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-07-26","precio_publicacion":9500,"precio_uf":9.75,"status":"available","place":"Las Condes","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Villaseca","dormitorios":2,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/base-portadas-web-novacion-01.jpg","lat":-33.44531,"lng":-70.60728},{"id":210559,"codigo_interno":210559,"nombre":null,"link":null,"id_propiedad":1223,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-08-08","precio_publicacion":11000,"precio_uf":null,"status":null,"place":null,"comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Renacimiento Italiano","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":null,"lat":-33.40283,"lng":-70.55498},{"id":210550,"codigo_interno":210550,"nombre":"PISO JORGE MATTE IV","link":"https:\/\/lacasadejuana.cl\/?p=105898","id_propiedad":1230,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-07-27","precio_publicacion":9100,"precio_uf":9.1,"status":"available","place":"Providencia","comuna":"Colina","comuna_barrio":"COLINA","barrio":"Las Lilas","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/01-7.jpg","lat":-33.25977,"lng":-70.66322},{"id":210551,"codigo_interno":210551,"nombre":"CASA JUAN MOYA MORALES","link":"https:\/\/lacasadejuana.cl\/?p=105275","id_propiedad":1237,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-07-21","precio_publicacion":49.8,"precio_uf":"49,8","status":"available","place":"\u00d1u\u00f1oa","comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Las Lilas","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/Juan-Moya-Morales-1.jpg","lat":-33.43038,"lng":-70.5956},{"id":210555,"codigo_interno":210555,"nombre":null,"link":null,"id_propiedad":1256,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-08-03","precio_publicacion":17900,"precio_uf":null,"status":null,"place":null,"comuna":"Santiago","comuna_barrio":"Providencia","barrio":"Lyon","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":null,"lat":-33.43093,"lng":-70.60787},{"id":210558,"codigo_interno":210558,"nombre":"CASA HERNANDO DE AGUIRRE VI","link":"https:\/\/lacasadejuana.cl\/?p=106225","id_propiedad":1259,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-07-31","precio_publicacion":13900,"precio_uf":13.9,"status":"available","place":"Providencia","comuna":"Santiago","comuna_barrio":"Providencia","barrio":"Italia","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/2023.07.31-Hernando-de-Aguirre-3570-2-2-1.jpg","lat":-33.45096,"lng":-70.62579},{"id":210557,"codigo_interno":210557,"nombre":null,"link":null,"id_propiedad":1270,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-08-03","precio_publicacion":9100,"precio_uf":null,"status":null,"place":null,"comuna":"Santiago","comuna_barrio":"Las Condes","barrio":"Sector Hermanos Cabot","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":null,"lat":-33.39291,"lng":-70.55496},{"id":210554,"codigo_interno":210554,"nombre":"PISO F\u00c9LIX CABRERA V","link":"https:\/\/lacasadejuana.cl\/?p=104748","id_propiedad":1294,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-07-17","precio_publicacion":19.5,"precio_uf":"19,5","status":"available","place":"Providencia","comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Los Dominicos Antiguo","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/Piso-Felix-Cabrera-15.jpg","lat":-33.40346,"lng":-70.5313},{"id":210568,"codigo_interno":210568,"nombre":null,"link":null,"id_propiedad":1335,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-08-14","precio_publicacion":7700,"precio_uf":null,"status":null,"place":null,"comuna":"Las Condes","comuna_barrio":"Las Condes","barrio":"Latad\u00eda","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":-33.42642,"lng":-70.57093},{"id":210567,"codigo_interno":210567,"nombre":null,"link":null,"id_propiedad":1358,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-08-04","precio_publicacion":34,"precio_uf":null,"status":null,"place":null,"comuna":"La Reina","comuna_barrio":"La Reina","barrio":"Ossandon","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":-33.44883,"lng":-70.55005},{"id":210566,"codigo_interno":210566,"nombre":null,"link":null,"id_propiedad":1361,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-08-07","precio_publicacion":38.8,"precio_uf":null,"status":null,"place":null,"comuna":"Providencia","comuna_barrio":"Providencia","barrio":"Lyon","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":-33.42877,"lng":-70.60568},{"id":210576,"codigo_interno":210576,"nombre":null,"link":null,"id_propiedad":1737,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-09-01","precio_publicacion":18,"precio_uf":null,"status":null,"place":null,"comuna":"\u00d1u\u00f1oa","comuna_barrio":"\u00d1u\u00f1oa","barrio":"Plaza \u00d1u\u00f1oa","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":-33.45496,"lng":-70.59005},{"id":210189,"codigo_interno":210189,"nombre":"TRIPLEX PLAZA LAS LILAS II","link":"https:\/\/lacasadejuana.cl\/?p=67426","id_propiedad":12,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-02-10","precio_publicacion":28700,"precio_uf":"35,44","status":"unavailable","place":"Providencia","comuna":"Las Condes","comuna_barrio":null,"barrio":"","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/01\/02-2-1.jpg","lat":null,"lng":null},{"id":210189,"codigo_interno":210189,"nombre":"CASA EVARISTO LILLO","link":"https:\/\/lacasadejuana.cl\/?p=70281","id_propiedad":12,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-02-10","precio_publicacion":28700,"precio_uf":28.7,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":null,"barrio":"San Pascual","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/02\/Evaristo-Lillo-15-1.jpg","lat":null,"lng":null},{"id":210127,"codigo_interno":210127,"nombre":"CASA ROBERTO DEL R\u00cdO","link":"https:\/\/lacasadejuana.cl\/?p=61009","id_propiedad":22,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2021-09-27","precio_publicacion":20800,"precio_uf":25,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Plaza de la Alcaldesa","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2021\/09\/017-4.jpg","lat":null,"lng":null},{"id":210122,"codigo_interno":210122,"nombre":"CASA \u00c1LVARO CASANOVA II","link":"https:\/\/lacasadejuana.cl\/?p=61321","id_propiedad":30,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2021-09-30","precio_publicacion":26800,"precio_uf":26.8,"status":"available","place":"La Reina","comuna":"La Reina","comuna_barrio":null,"barrio":"La Reina Alta","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2021\/09\/Alvaro-Casanova-538-40-1.jpg","lat":null,"lng":null},{"id":210157,"codigo_interno":210157,"nombre":"ESTUDIO GUTIERREZ IRRIBARREN - CASA TRES CUMBRES II","link":"https:\/\/lacasadejuana.cl\/?p=64085","id_propiedad":36,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-01-01","precio_publicacion":12500,"precio_uf":11.9,"status":"available","place":"Villarica","comuna":"Los Lagos","comuna_barrio":null,"barrio":"","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2021\/11\/0-CVR-4211-16112021-2.jpg","lat":null,"lng":null},{"id":210157,"codigo_interno":210157,"nombre":"CASA TRES CUMBRES II","link":"https:\/\/lacasadejuana.cl\/?p=67018","id_propiedad":36,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-01-01","precio_publicacion":12500,"precio_uf":12.5,"status":"available","place":"Villarica","comuna":"Los Lagos","comuna_barrio":null,"barrio":"","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/01\/0-CVR-4211-16112021-2.jpg","lat":null,"lng":null},{"id":210233,"codigo_interno":210233,"nombre":"PISO GENERAL JOS\u00c9 ARTIGAS","link":"https:\/\/lacasadejuana.cl\/?p=73353","id_propiedad":52,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-03-25","precio_publicacion":4200,"precio_uf":4.2,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":null,"barrio":"El Aguilucho","dormitorios":1,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/03\/gral-jose-artiga-01.jpg","lat":null,"lng":null},{"id":210240,"codigo_interno":210240,"nombre":"PISO LOS CAPITANES","link":"https:\/\/lacasadejuana.cl\/?p=74146","id_propiedad":77,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-04-06","precio_publicacion":7550,"precio_uf":7.7,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Dalmacia","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/04\/Los-capitanes-04.jpg","lat":null,"lng":null},{"id":null,"codigo_interno":null,"nombre":null,"link":null,"id_propiedad":100,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-01-25","precio_publicacion":null,"precio_uf":null,"status":null,"place":null,"comuna":"Providencia","comuna_barrio":null,"barrio":null,"dormitorios":2,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":1,"thumbnail":null,"lat":null,"lng":null},{"id":210271,"codigo_interno":210271,"nombre":"PISO JORGE MATTE II","link":"https:\/\/lacasadejuana.cl\/?p=77864","id_propiedad":133,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-06-02","precio_publicacion":13500,"precio_uf":13.9,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Las Lilas","dormitorios":4,"dormitorios_servicio":0,"banos_servicio":1,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/06\/Jorge-Matte-1-4.jpg","lat":null,"lng":null},{"id":210272,"codigo_interno":210272,"nombre":"CASA MARDO\u00d1AL","link":"https:\/\/lacasadejuana.cl\/?p=77758","id_propiedad":135,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-06-01","precio_publicacion":13400,"precio_uf":13.7,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":null,"barrio":"Mardo\u00f1al","dormitorios":4,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/06\/Las-Vizcachas-8743-30.F-1.jpg","lat":null,"lng":null},{"id":210282,"codigo_interno":210282,"nombre":"CASA INTEGRA","link":"https:\/\/lacasadejuana.cl\/?p=79682","id_propiedad":170,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-06-29","precio_publicacion":14300,"precio_uf":14.3,"status":"available","place":"Linares","comuna":"Alhu\u00e9","comuna_barrio":null,"barrio":"El Olivar","dormitorios":4,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/06\/Linares-Casa-2-21-2.jpg","lat":null,"lng":null},{"id":210283,"codigo_interno":210283,"nombre":"CASA LODGE","link":"https:\/\/lacasadejuana.cl\/?p=79579","id_propiedad":171,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-06-29","precio_publicacion":16400,"precio_uf":16.4,"status":"available","place":"Linares","comuna":"Alhu\u00e9","comuna_barrio":null,"barrio":"El Olivar","dormitorios":4,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/06\/Linares-Casa-1-16-1.jpg","lat":null,"lng":null},{"id":210320,"codigo_interno":210320,"nombre":"PISO LAS HORTENSIAS IV","link":"https:\/\/lacasadejuana.cl\/?p=83445","id_propiedad":240,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2022-08-22","precio_publicacion":33,"precio_uf":33,"status":"rented","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Las Lilas","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/07\/6-1.jpg","lat":null,"lng":null},{"id":210331,"codigo_interno":210331,"nombre":"CASA OXFORD II","link":"https:\/\/lacasadejuana.cl\/?p=84780","id_propiedad":275,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-09-09","precio_publicacion":19950,"precio_uf":19.95,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":null,"barrio":"Gran Breta\u00f1a","dormitorios":4,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/Oxford-1.jpg","lat":null,"lng":null},{"id":210341,"codigo_interno":210341,"nombre":"D\u00daPLEX EL BERGANT\u00cdN","link":"https:\/\/lacasadejuana.cl\/?p=85204","id_propiedad":307,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-09-22","precio_publicacion":15000,"precio_uf":15,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":null,"barrio":"Roncesvalles","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/12\/novacion-bergantin.jpg","lat":null,"lng":null},{"id":210352,"codigo_interno":210352,"nombre":"CASA G\u00c9NOVA","link":"https:\/\/lacasadejuana.cl\/?p=86227","id_propiedad":335,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-10-12","precio_publicacion":14300,"precio_uf":14.3,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Lyon","dormitorios":4,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/04\/012-1.jpg","lat":null,"lng":null},{"id":210343,"codigo_interno":210343,"nombre":"CASA ELIECER PARADA III","link":"https:\/\/lacasadejuana.cl\/?p=85597","id_propiedad":350,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-09-29","precio_publicacion":16600,"precio_uf":16.6,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Dinamarca","dormitorios":5,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/09\/010-4.jpg","lat":null,"lng":null},{"id":210349,"codigo_interno":210349,"nombre":"CASA GUILLERMO ACU\u00d1A","link":"https:\/\/lacasadejuana.cl\/?p=85841","id_propiedad":375,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-10-04","precio_publicacion":18500,"precio_uf":18.5,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Diego de Almagro","dormitorios":6,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/10\/Guillermo-Acuna-2.jpg","lat":null,"lng":null},{"id":210353,"codigo_interno":210353,"nombre":"CASA \u00c1LVARO CASANOVA III","link":"https:\/\/lacasadejuana.cl\/?p=86741","id_propiedad":396,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-10-18","precio_publicacion":20800,"precio_uf":20.8,"status":"available","place":"La Reina","comuna":"La Reina","comuna_barrio":null,"barrio":"La Reina Alta","dormitorios":4,"dormitorios_servicio":0,"banos_servicio":1,"banos_completos":4,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/12\/Alvaro-Casanova-novacion.jpg","lat":null,"lng":null},{"id":210354,"codigo_interno":210354,"nombre":"CASA LORELEY","link":"https:\/\/lacasadejuana.cl\/?p=85813","id_propiedad":397,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-10-03","precio_publicacion":11000,"precio_uf":11,"status":"available","place":"La Reina","comuna":"La Reina","comuna_barrio":null,"barrio":"Pr\u00edncipe de Gales","dormitorios":2,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/10\/Loreley-9.jpg","lat":null,"lng":null},{"id":210355,"codigo_interno":210355,"nombre":"CASA SIM\u00d3N GONZ\u00c1LEZ II","link":"https:\/\/lacasadejuana.cl\/?p=86931","id_propiedad":398,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-10-20","precio_publicacion":13950,"precio_uf":13.95,"status":"available","place":"La Reina","comuna":"La Reina","comuna_barrio":null,"barrio":"Ossandon","dormitorios":4,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/02\/Simon-Gonzalez-1.jpg","lat":null,"lng":null},{"id":210356,"codigo_interno":210356,"nombre":"PISO MART\u00cdN DE ZAMORA V","link":"https:\/\/lacasadejuana.cl\/?p=86855","id_propiedad":399,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-10-19","precio_publicacion":9000,"precio_uf":9,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":null,"barrio":"San Pascual","dormitorios":2,"dormitorios_servicio":1,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/10\/Martin-de-Zamora-5031-dp-909-2.jpg","lat":null,"lng":null},{"id":210380,"codigo_interno":210380,"nombre":"CASA PASCUAL BABURIZZA","link":"https:\/\/lacasadejuana.cl\/?p=89194","id_propiedad":457,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2022-11-23","precio_publicacion":17800,"precio_uf":18.5,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":null,"barrio":"Los Guindos","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/05\/Pascual-Baburizza-63.jpg","lat":null,"lng":null},{"id":210401,"codigo_interno":210401,"nombre":"PISO BIARRITZ II","link":"https:\/\/lacasadejuana.cl\/?p=90443","id_propiedad":551,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-12-14","precio_publicacion":10900,"precio_uf":10.9,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Los Estanques","dormitorios":3,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":1,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/06.2.jpg","lat":null,"lng":null},{"id":210406,"codigo_interno":210406,"nombre":"PISO MIGUEL CLARO V","link":"https:\/\/lacasadejuana.cl\/?p=91207","id_propiedad":560,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2022-12-28","precio_publicacion":8700,"precio_uf":8.7,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Manuel Montt","dormitorios":3,"dormitorios_servicio":0,"banos_servicio":0,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/02\/portada-web-novacion-06.jpg","lat":null,"lng":null},{"id":210446,"codigo_interno":210446,"nombre":"PISO MART\u00cdN DE ZAMORA VI","link":"https:\/\/lacasadejuana.cl\/?p=94597","id_propiedad":655,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-02","precio_publicacion":23.4,"precio_uf":"23,4","status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":null,"barrio":"San Pascual","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/1.jpg","lat":null,"lng":null},{"id":210436,"codigo_interno":210436,"nombre":"PISO MANQUEHUE NORTE II","link":"https:\/\/lacasadejuana.cl\/?p=93935","id_propiedad":663,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-02-21","precio_publicacion":32,"precio_uf":32,"status":"unavailable","place":"Vitacura","comuna":"Vitacura","comuna_barrio":null,"barrio":"","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":1,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2022\/08\/Foto-10-02.jpg","lat":null,"lng":null},{"id":210447,"codigo_interno":210447,"nombre":"CASA PRESIDENTE OVALLE II","link":"https:\/\/lacasadejuana.cl\/?p=94432","id_propiedad":688,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-02-28","precio_publicacion":56,"precio_uf":56,"status":"available","place":"La Reina","comuna":"La Reina","comuna_barrio":null,"barrio":"Palmas de Mallorca","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":4,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/01-2.jpg","lat":null,"lng":null},{"id":210445,"codigo_interno":210445,"nombre":"PISO EVARISTO LILLO","link":"https:\/\/lacasadejuana.cl\/?p=94053","id_propiedad":699,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-02-24","precio_publicacion":37,"precio_uf":40,"status":"available","place":"Las Condes","comuna":"Las Condes","comuna_barrio":null,"barrio":"San Pascual","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/02\/01-7.jpg","lat":null,"lng":null},{"id":210440,"codigo_interno":210440,"nombre":"CASA APOLO III","link":"https:\/\/lacasadejuana.cl\/?p=94224","id_propiedad":714,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-02-24","precio_publicacion":9300,"precio_uf":8.9,"status":"available","place":"Vitacura","comuna":"Vitacura","comuna_barrio":null,"barrio":"La Llaver\u00eda","dormitorios":4,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Apolo-3-12.jpg","lat":null,"lng":null},{"id":210444,"codigo_interno":210444,"nombre":"CASA PARQUE BOT\u00c1NICO","link":"https:\/\/lacasadejuana.cl\/?p=93973","id_propiedad":745,"tipo_propiedad":"Casa","tipo_negocio":"Arriendo","fecha_publicacion":"2023-02-25","precio_publicacion":78,"precio_uf":78,"status":"available","place":"\u00d1u\u00f1oa","comuna":"\u00d1u\u00f1oa","comuna_barrio":null,"barrio":"Parque Bot\u00e1nico","dormitorios":5,"dormitorios_servicio":1,"banos_servicio":1,"banos_completos":4,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Echenique-21.jpg","lat":null,"lng":null},{"id":210457,"codigo_interno":210457,"nombre":"PISO ALCALDE ALMANZOR URETA II","link":"https:\/\/lacasadejuana.cl\/?p=95175","id_propiedad":815,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-03-08","precio_publicacion":21,"precio_uf":21,"status":"available","place":"Providencia","comuna":"Santiago","comuna_barrio":null,"barrio":"Manuel Montt","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/03\/Alcalde-Almanzor-Ureta-2.jpg","lat":null,"lng":null},{"id":210482,"codigo_interno":210482,"nombre":null,"link":null,"id_propiedad":874,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-04-18","precio_publicacion":8800,"precio_uf":null,"status":null,"place":null,"comuna":"La Reina","comuna_barrio":null,"barrio":null,"dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":null,"lng":null},{"id":210484,"codigo_interno":210484,"nombre":"PATIO POCURO","link":"https:\/\/lacasadejuana.cl\/?p=97548","id_propiedad":916,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-04-14","precio_publicacion":10300,"precio_uf":10.3,"status":"available","place":"Providencia","comuna":"Providencia","comuna_barrio":null,"barrio":"Lyon","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/01-4.jpg","lat":null,"lng":null},{"id":210491,"codigo_interno":210491,"nombre":null,"link":null,"id_propiedad":940,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-04-21","precio_publicacion":20,"precio_uf":null,"status":null,"place":null,"comuna":"Santiago","comuna_barrio":null,"barrio":null,"dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":null,"lng":null},{"id":null,"codigo_interno":null,"nombre":null,"link":null,"id_propiedad":998,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":null,"precio_publicacion":null,"precio_uf":null,"status":null,"place":null,"comuna":"Santiago","comuna_barrio":null,"barrio":null,"dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":null,"lat":null,"lng":null},{"id":null,"codigo_interno":null,"nombre":null,"link":null,"id_propiedad":1001,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-05-08","precio_publicacion":70,"precio_uf":null,"status":null,"place":null,"comuna":"Santiago","comuna_barrio":null,"barrio":null,"dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":null,"lat":null,"lng":null},{"id":null,"codigo_interno":null,"nombre":null,"link":null,"id_propiedad":1005,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":null,"precio_publicacion":null,"precio_uf":null,"status":null,"place":null,"comuna":"Santiago","comuna_barrio":null,"barrio":null,"dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":null,"lat":null,"lng":null},{"id":null,"codigo_interno":null,"nombre":null,"link":null,"id_propiedad":1006,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":null,"precio_publicacion":null,"precio_uf":null,"status":null,"place":null,"comuna":"Santiago","comuna_barrio":null,"barrio":null,"dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":null,"lat":null,"lng":null},{"id":210516,"codigo_interno":210516,"nombre":"CASA LUIS PEREIRA II","link":"https:\/\/lacasadejuana.cl\/?p=101425","id_propiedad":1045,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-06-09","precio_publicacion":17600,"precio_uf":17.6,"status":"available","place":"\u00d1u\u00f1oa","comuna":"Vitacura","comuna_barrio":null,"barrio":"Parque Bot\u00e1nico","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/Luis-Pereira-3.jpg","lat":null,"lng":null},{"id":210511,"codigo_interno":210511,"nombre":"CASA BENJAM\u00cdN SUBERCASEUX III","link":"https:\/\/lacasadejuana.cl\/?p=101249","id_propiedad":1075,"tipo_propiedad":"Departamento","tipo_negocio":"Venta","fecha_publicacion":"2023-06-06","precio_publicacion":14300,"precio_uf":14.3,"status":"available","place":"La Reina","comuna":"Providencia","comuna_barrio":null,"barrio":"La Reina Alta","dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/Benjamin-Subercaseux-10.jpg","lat":null,"lng":null},{"id":210504,"codigo_interno":210504,"nombre":null,"link":null,"id_propiedad":1085,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-06-28","precio_publicacion":42,"precio_uf":null,"status":null,"place":null,"comuna":"Santiago","comuna_barrio":null,"barrio":null,"dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":null,"lat":null,"lng":null},{"id":210509,"codigo_interno":210509,"nombre":"CASA CARLOS VAZ FERREIRA","link":"https:\/\/lacasadejuana.cl\/?p=100972","id_propiedad":1107,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-06-05","precio_publicacion":20100,"precio_uf":20.1,"status":"available","place":"Vitacura","comuna":"La Reina","comuna_barrio":null,"barrio":"Sector Borde R\u00edo","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/Carlos-Vaz-Ferreira-1.jpg","lat":null,"lng":null},{"id":210521,"codigo_interno":210521,"nombre":"CASA EL AROMO III","link":"https:\/\/lacasadejuana.cl\/?p=102922","id_propiedad":1119,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-06-27","precio_publicacion":24000,"precio_uf":24,"status":"available","place":"Vitacura","comuna":"Santiago","comuna_barrio":null,"barrio":"Lo Beltr\u00e1n","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/2023.06.26-El-Aromo-7368-1.jpg","lat":null,"lng":null},{"id":210520,"codigo_interno":210520,"nombre":"PISO PRESIDENTE ERR\u00c1ZURIZ III","link":"https:\/\/lacasadejuana.cl\/?p=101825","id_propiedad":1124,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-06-14","precio_publicacion":6300,"precio_uf":6.3,"status":"available","place":"Las Condes","comuna":"El Quisco","comuna_barrio":null,"barrio":"Presidente Errazuriz","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/000-1-1.jpg","lat":null,"lng":null},{"id":210522,"codigo_interno":210522,"nombre":"CASA LOS ALMENDROS","link":"https:\/\/lacasadejuana.cl\/?p=102141","id_propiedad":1136,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-06-16","precio_publicacion":13800,"precio_uf":13.8,"status":"available","place":"\u00d1u\u00f1oa","comuna":"Las Condes","comuna_barrio":null,"barrio":"Parque Juan XXIII","dormitorios":4,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/2023.06.16-Los-Almendros-4090-2.jpg","lat":null,"lng":null},{"id":210536,"codigo_interno":210536,"nombre":"PISO PEDRO TORRES II","link":"https:\/\/lacasadejuana.cl\/?p=103824","id_propiedad":1137,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-07-05","precio_publicacion":4950,"precio_uf":4.95,"status":"available","place":"\u00d1u\u00f1oa","comuna":"Vitacura","comuna_barrio":null,"barrio":"Plaza \u00d1u\u00f1oa","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/Pedro-Torres-5.jpg","lat":null,"lng":null},{"id":210561,"codigo_interno":210561,"nombre":null,"link":null,"id_propiedad":1171,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-08-08","precio_publicacion":7900,"precio_uf":null,"status":null,"place":null,"comuna":"Pirque","comuna_barrio":null,"barrio":null,"dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":null,"lng":null},{"id":210528,"codigo_interno":210528,"nombre":"PISO LUIS MONTANER II","link":"https:\/\/lacasadejuana.cl\/?p=102047","id_propiedad":1176,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-06-16","precio_publicacion":7950,"precio_uf":7.95,"status":"available","place":"Providencia","comuna":"Vitacura","comuna_barrio":null,"barrio":"Italia","dormitorios":5,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":4,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/04-3.jpg","lat":null,"lng":null},{"id":210548,"codigo_interno":210548,"nombre":"CASA ROBERTO GUZM\u00c1N","link":"https:\/\/lacasadejuana.cl\/?p=105568","id_propiedad":1178,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-07-25","precio_publicacion":13500,"precio_uf":13.5,"status":"available","place":"Las Condes","comuna":"Providencia","comuna_barrio":null,"barrio":"Fuenteovejuna","dormitorios":3,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":3,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/07\/Roberto-Guzman-1-1.jpg","lat":null,"lng":null},{"id":210535,"codigo_interno":210535,"nombre":"CASA LA PUNTILLA II","link":"https:\/\/lacasadejuana.cl\/?p=103184","id_propiedad":1185,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-06-29","precio_publicacion":20000,"precio_uf":21,"status":"available","place":"Lo Barnechea","comuna":"Santiago","comuna_barrio":null,"barrio":"El Array\u00e1n","dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":"https:\/\/img.lacasadejuana.cl\/images\/w480\/2023\/06\/05-1.jpg","lat":null,"lng":null},{"id":210563,"codigo_interno":210563,"nombre":null,"link":null,"id_propiedad":1288,"tipo_propiedad":"Casa","tipo_negocio":"Venta","fecha_publicacion":"2023-08-09","precio_publicacion":7300,"precio_uf":null,"status":null,"place":null,"comuna":"Navidad","comuna_barrio":null,"barrio":null,"dormitorios":null,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":null,"thumbnail":null,"lat":null,"lng":null},{"id":210584,"codigo_interno":210584,"nombre":null,"link":null,"id_propiedad":1751,"tipo_propiedad":"Departamento","tipo_negocio":"Arriendo","fecha_publicacion":"2023-08-25","precio_publicacion":33.3,"precio_uf":null,"status":null,"place":null,"comuna":"Providencia","comuna_barrio":null,"barrio":null,"dormitorios":2,"dormitorios_servicio":null,"banos_servicio":null,"banos_completos":2,"thumbnail":null,"lat":null,"lng":null}]};
+
+
+ 
+let {
+    data,
+    ...options
+} = globalThis.backendPaginator;
+console.log({
+    options,
+    initialDataLength: (data || []).length
+})
+const {
+    per_page,
+    last_page,
+    total,
+    request_id,
+    next_page_url
+} = backendPaginator
+
+ 
+/*Alpine.store('negocios').reload(Object.values(backendPaginator.data)).then(()=>{
+        Alpine.store('negocios').fetchAll();
+})*/
+console.info(performance.now(), 'COMPUTED NEGOCIOS STORE');
+</script>
+
+    <script>
+        function maploaded(){
+            console.timerInfo('maploaded');
+        }
+        Alpine.start()
+    </script>
+
+
+
+    
+    
+        <span id="store" class="hidden invisible" x-data="{
+    init() {
+
+
+
+        let keys = JSON.parse(JSON.stringify([...Object.keys($store)]))
+        const globalStore = {};
+        for (let key of Object.values(keys)) {
+
+            Object.defineProperty(globalStore, key, {
+                enumerable: true,
+                __proto__: null,
+                get() {
+                    return Alpine.store(key)
+                }
+            })
+        }
+        globalThis.$store = globalStore;
+        Object.defineProperty(globalThis, '$store', {
+            __proto__: null,
+            enumerable: true,
+            get() {
+                return globalStore;
+            }
+        })
+
+
+    }
+}">
+</span>
+</body>
+
+</html>

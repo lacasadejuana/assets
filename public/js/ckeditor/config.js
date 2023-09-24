@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2023, CKSource Holding sp. z o.o. All rights reserved.
+ * @license Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -35,4 +35,20 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+    config.extraPlugins = 'mentions';
+    config.extraPlugins = 'autocomplete';
+    config.extraPlugins = 'textmatch';
+    config.extraPlugins = 'textwatcher';
+
+    // allow all tags
+    config.allowedContent = true;
+
+    // allow all styles
+    config.extraAllowedContent = '*{*}';
+    // allow all attributes
+    config.extraAllowedContent = '*[*]';
+
+
+
 };

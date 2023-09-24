@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
 /*
-Copyright (c) 2003-2023, CKSource Holding sp. z o.o. All rights reserved.
-CKEditor 4 LTS ("Long Term Support") is available under the terms of the Extended Support Model.
+Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
 ?>
 <html lang="en">
@@ -26,24 +26,24 @@ CKEditor 4 LTS ("Long Term Support") is available under the terms of the Extende
 		</thead>
 <?php
 
-if (!empty($_POST))
-{
-	foreach ( $_POST as $key => $value )
-	{
-		if ( ( !is_string($value) && !is_numeric($value) ) || !is_string($key) )
-			continue;
+if (! empty($_POST)) {
+    foreach ($_POST as $key => $value) {
+        if ((! is_string($value) && ! is_numeric($value)) || ! is_string($key)) {
+            continue;
+        }
 
-		if ( get_magic_quotes_gpc() )
-			$value = htmlspecialchars( stripslashes((string)$value) );
-		else
-			$value = htmlspecialchars( (string)$value );
-?>
+        if (get_magic_quotes_gpc()) {
+            $value = htmlspecialchars(stripslashes((string) $value));
+        } else {
+            $value = htmlspecialchars((string) $value);
+        }
+        ?>
 		<tr>
-			<th style="vertical-align: top"><?php echo htmlspecialchars( (string)$key ); ?></th>
+			<th style="vertical-align: top"><?php echo htmlspecialchars((string) $key); ?></th>
 			<td><pre class="samples"><?php echo $value; ?></pre></td>
 		</tr>
 	<?php
-	}
+    }
 }
 ?>
 	</table>
@@ -53,7 +53,7 @@ if (!empty($_POST))
 			CKEditor - The text editor for the Internet - <a class="samples" href="https://ckeditor.com/">https://ckeditor.com</a>
 		</p>
 		<p id="copy">
-			Copyright &copy; 2003-2023, <a class="samples" href="https://cksource.com/">CKSource</a> Holding sp. z o.o. All rights reserved.
+			Copyright &copy; 2003-2022, <a class="samples" href="https://cksource.com/">CKSource</a> Holding sp. z o.o. All rights reserved.
 		</p>
 	</div>
 </body>
