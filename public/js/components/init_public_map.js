@@ -43,9 +43,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// ../../node_modules/lodash/lodash.js
+// node_modules/lodash/lodash.js
 var require_lodash = __commonJS({
-  "../../node_modules/lodash/lodash.js"(exports, module2) {
+  "node_modules/lodash/lodash.js"(exports, module2) {
     "use strict";
     (function() {
       var undefined2;
