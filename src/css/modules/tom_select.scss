@@ -1,0 +1,207 @@
+@use 'tom-select/dist/css/tom-select.bootstrap5.css';
+
+#filtros-group-2 {
+	& > div.form-group,
+	& > div.condition_section {
+		&.col-3.col_campo_busqueda.pl-0 {
+			.contacts {
+				&.ts-wrapper .ts-control > div .email {
+					opacity: 0.7;
+				}
+
+				&.ts-wrapper .ts-control > div .name + .email {
+					margin-left: 5px;
+				}
+
+				&.ts-wrapper .ts-control > div .email:before {
+					content: '<';
+				}
+
+				&.ts-wrapper .ts-control > div .email:after {
+					content: '>';
+				}
+
+				&.ts-wrapper .ts-control {
+					max-height: 2rem;
+					font-size: 0.9em;
+				}
+
+				&.ts-wrapper .ts-control.input {
+					font-size: 0.9rem;
+				}
+
+				&.ts-wrapper .ts-dropdown .caption {
+					font-size: 12px;
+					display: block;
+					color: #a0a0a0;
+				}
+			}
+		}
+	}
+}
+.ts-wrapper.multi .ts-control > div.active {
+	background: #0d6efd;
+	color: #fff;
+	border: 0px solid rgba(0, 0, 0, 0);
+}
+.ts-wrapper {
+	&.flex-nowrap {
+		flex-wrap: nowrap;
+	}
+	&.select-none {
+		input {
+			display: none !important;
+		}
+	}
+}
+.inline_select_form {
+	.ts-wrapper {
+		&:not(.form-control):not(.form-select):not(.contacts).single .ts-control {
+			background-position: right 0.3rem center;
+			background-size: 10px 10px;
+			padding-right: 1rem;
+		}
+		&.campo_fecha,
+		&.campo_busqueda {
+			.ts-control {
+				max-height: 1.85rem;
+				font-size: 0.9rem;
+				.clear-button {
+					font-size: 1rem;
+				}
+				& > .item {
+					text-align: center;
+					font-size: 0.9em;
+
+					& + input[type='select-one'] {
+						display: none !important;
+					}
+				}
+			}
+		}
+		&.single {
+			.ts-control {
+				font-size: 0.95rem;
+				.clear-button {
+					font-size: 1.1rem;
+				}
+			}
+		}
+		&.multi {
+			.ts-control {
+				font-size: 0.85rem;
+				& > .item {
+					text-align: center;
+					font-size: 0.85em;
+				}
+			}
+		}
+		.ts-dropdown-content {
+			text-align: left;
+			font-size: 0.8rem;
+		}
+	}
+}
+
+.ts-dropdown.plugin-optgroup_columns {
+	.ts-dropdown {
+		font-size: 0.83rem;
+	}
+}
+
+.ts-wrapper {
+	&.select_estado_visita {
+		.ts-control {
+			max-height: 1.85rem;
+			font-size: 0.9rem;
+			.clear-button {
+				font-size: 1rem;
+			}
+			& > .item {
+				text-align: center;
+				font-size: 0.9em;
+
+				& + input[type='select-one'] {
+					display: none !important;
+				}
+			}
+		}
+	}
+	&.contacts.single {
+		.ts-control {
+			background-image: none !important;
+		}
+	}
+
+	.ts-dropdown {
+		&.multi {
+			.optgroup {
+				.option {
+					font-size: 0.85rem;
+				}
+			}
+		}
+	}
+
+	&:not(.form-control):not(.form-select):not(.contacts).single .ts-control {
+		background-position: right 0.3rem center;
+		background-size: 10px 10px;
+		padding-right: 1rem;
+	}
+	&.campo_busqueda {
+		.ts-control {
+			max-height: 2rem;
+			font-size: 0.85em;
+
+			& > .item {
+				text-align: center;
+				font-size: 0.75rem;
+
+				& + input[type='select-one'] {
+					display: none !important;
+				}
+			}
+		}
+	}
+
+	&.multi {
+		.ts-dropdown-content {
+			overflow-x: hidden;
+			max-height: 300px;
+		}
+		.ts-control {
+			max-height: unset;
+
+			&.ui-sortable {
+				.item {
+					font-size: 0.8rem !important;
+					margin: 2px 3px;
+					border: 1px solid #aaa !important;
+					border-radius: 2px !important;
+				}
+
+				.ui-sortable-helper {
+					background-color: #cfc;
+				}
+			}
+		}
+		.plugin-drag_drop {
+			&.ts-dropdown {
+				box-shadow: 2px 8px 7px 6px rgb(0 0 0 / 28%);
+				&.plugin-optgroup_columns {
+					.option {
+						font-size: 0.82rem;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+	}
+}
+
+.change_default_filter {
+	.ts-dropdown-content {
+		max-height: 300px;
+	}
+}

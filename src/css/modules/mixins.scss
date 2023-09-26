@@ -1,0 +1,662 @@
+@mixin estado_button {
+	border-color: silver;
+	border-radius: 3px;
+	border-width: 1px;
+	white-space: nowrap;
+
+	text-overflow: ellipsis;
+	overflow-x: clip;
+	padding: 0.2rem;
+	height: 1.6rem !important;
+
+	min-width: 12rem;
+	width: 12rem;
+	font-size: 0.8rem;
+	background: white;
+}
+@mixin sticky_left {
+	position: sticky;
+	left: 0;
+	//border-right: 2px solid #ccc !important;
+	background: white;
+	background: linear-gradient(90deg, white 99.5%, #eee 100%);
+	z-index: 100;
+
+	.th-inner {
+		width: calc(100% - 5.5em);
+		display: inline-flex !important;
+	}
+}
+
+@mixin estado_button {
+	border-color: silver;
+	border-radius: 3px;
+	border-width: 1px;
+	white-space: nowrap;
+
+	text-overflow: ellipsis;
+	overflow-x: clip;
+	padding: 0.2rem;
+	height: 1.6rem !important;
+
+	min-width: 10rem;
+	width: 10rem;
+	font-size: 0.8rem;
+	background: white;
+}
+@mixin direccion_y_nombre {
+	height: 2.8em;
+	min-width: 250px;
+	max-width: 250px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+
+	@media screen {
+		span.print_only {
+			display: none;
+		}
+	}
+	&.sticky {
+		position: sticky;
+		left: 0;
+		z-index: 2;
+		z-index: 100;
+	}
+	.inner_container {
+		flex-direction: column;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-width: 200px;
+		& > div.direccion {
+			width: 100%;
+			display: block;
+		}
+		& > div.propietario {
+			font-size: 0.95em;
+			width: 100%;
+			display: block;
+		}
+	}
+	&.with_actions {
+		max-width: 280px;
+		min-width: 280px;
+	}
+}
+@mixin colvis {
+	font-family: "Font Awesome 5 Free";
+
+	margin-left: 5px;
+	margin-right: 5px;
+	vertical-align: middle;
+	float: right;
+	font-size: 16px;
+	color: #999;
+}
+@mixin text_line_clamp {
+	text-align: justify;
+	/* max-height: 55px; */
+	/* overflow: hidden; */
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+@mixin card_view($first_row_height: 4rem, $card_view_title_width: 110px) {
+	border-top: 2px solid #999;
+	padding-top: 0.75rem;
+	margin-bottom: 1rem;
+	background: white;
+	display: flex;
+	flex-direction: column;
+
+	& > .card-view {
+		align-items: center !important;
+		display: flex;
+		flex-direction: row;
+		border: 1px solid #ccc;
+		background: #efefef;
+		.card-view-title {
+			border: 0 none;
+			height: auto;
+			min-height: 3.5em;
+			vertical-align: center;
+			padding: 0.4em;
+			align-items: center !important;
+			min-width: 30%;
+			display: flex;
+
+			@media (max-width: 768px) {
+				min-width: $card_view_title_width !important;
+				height: 100%;
+				font-size: 0.95em;
+				white-space: pre-wrap;
+			}
+		}
+		.card-view-value {
+			@media (max-width: 768px) {
+				max-width: calc(100vw - 115px);
+			}
+			background: transparent;
+			border: 0 none;
+			background: #fcfcfc;
+			height: auto;
+			min-height: 3.5em;
+			padding: 0.4em;
+			flex-direction: row;
+			align-items: center !important;
+			display: flex;
+			.clock_icon {
+				cursor: help;
+				transform: translate(1em, 0) scale(1.5);
+			}
+			button.estado_button {
+			}
+			.motivo {
+				white-space: pre-wrap;
+			}
+			.actions_inner {
+				padding-top: 0;
+				padding-bottom: 0;
+				background: transparent !important;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				button {
+					max-height: 2.5em;
+					height: 1.7em;
+					padding-top: 0.35rem !important;
+					padding-bottom: 0.25rem !important;
+				}
+
+				.inner_container {
+					padding-top: 0.6em;
+
+					.print_only {
+						display: inline-block;
+						padding-left: 0.25rem;
+						padding-right: 0.25rem;
+					}
+
+					@media (max-width: 768px) {
+						flex-direction: column;
+						padding-top: 0;
+						.print_only {
+							display: none;
+						}
+					}
+				}
+
+				.action {
+					margin-left: 0.5em;
+					&.btn {
+						padding: 0.2em 0.5em;
+						font-size: 0.8em;
+					}
+				}
+			}
+			fieldset {
+				flex-direction: column;
+				button {
+					margin: 0 5px !important;
+				}
+				button.estado_button + button.estado_button {
+					margin: 5px 5px 0 5px !important;
+				}
+			}
+		}
+		&:nth-child(1) {
+			height: $first_row_height;
+			.card-view-title {
+				height: 100%;
+			}
+			.card-view-value {
+				height: unset;
+				max-width: calc(100vw - 115px);
+				@media (max-width: 768px) {
+					justify-content: space-between;
+					.clock_icon {
+						transform: translate(-0.5em, 0) scale(1.5);
+					}
+				}
+				.actions_inner {
+					top: 0;
+					@media (max-width: 768px) {
+						left: -3.7em;
+						button {
+							margin-right: 0.5em !important;
+						}
+					}
+
+					.inner_container {
+						flex-direction: column;
+						padding-top: 0.1em;
+						.print_only {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@mixin dropdown_toggle_columnas {
+	min-width: 55rem;
+	max-width: 55rem;
+	box-shadow: 0 1rem 0.7em 1px rgb(0 0 0 / 38%) !important ;
+	&.show {
+		display: flex;
+		flex-wrap: wrap;
+		font-size: 0.9em;
+		max-height: 500px;
+		label.dropdown-item {
+			font-size: 1em;
+			display: flex;
+			align-self: center;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important		;
+			flex-basis: 244px;
+			height: 44px;
+			font-weight: 500;
+			align-items: center;
+			align-items: stretch;
+			border: 2px solid #e0e0e0;
+			[name="columnsSearch"] {
+				width: 480px;
+				@media (min-width: 1200px) {
+					max-width: 52rem;
+					min-width: 52rem;
+				}
+			}
+			& > span {
+				display: flex;
+
+				width: 100%;
+
+				font-size: 13px;
+				align-items: center;
+				justify-content: flex-start;
+				align-self: stretch;
+				align-content: center;
+				padding: 5px 10px 7px 15px;
+				white-space: break-spaces;
+				line-height: 16px;
+				align-items: center;
+			}
+			input[type="checkbox"] {
+				display: none;
+			}
+
+			input[type="checkbox"]:not(:checked) + span {
+				color: #333;
+				background-color: white;
+
+				&:before {
+					content: "\f070";
+					@include colvis;
+					display: inline-block;
+					width: 1em;
+					height: 1em;
+					margin-right: 0.5em;
+					margin-left: 0 !important;
+					color: #333;
+				}
+				&:hover {
+					background-color: #eee;
+				}
+			}
+
+			input[type="checkbox"]:checked + span {
+				color: #fff;
+				background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+				&:before {
+					content: "\f06e";
+					@include colvis;
+					display: inline-block;
+					display: inline-block;
+					width: 1em;
+					height: 1em;
+					margin-right: 0.5em;
+					color: white;
+					margin-left: 0 !important;
+				}
+				&:hover {
+					background-color: #0b64f4;
+				}
+			}
+		}
+		@media (max-width: 768px) {
+			max-width: 500px;
+			min-width: 500px;
+		}
+		@media (min-width: 1200px) {
+			max-width: 55rem;
+			min-width: 55rem;
+		}
+	}
+}
+@mixin bootstrap-table-tbody {
+	tr {
+		&:nth-child(even) {
+			.card-views {
+				background: #fff;
+				background-color: #fff;
+			}
+			//background-color: hsla(134, 10%, 100%, 0.9) !important;
+			& > td.direccion_y_nombre,
+			& > td.nombre_text {
+				text-align: left !important;
+				background: linear-gradient(90deg, #fff 99.5%, #ccc 100%);
+			}
+		}
+		&:nth-child(odd) {
+			.card-views {
+				background: #f7f7f7;
+				background-color: #f7f7f7;
+			}
+			background: #fafafa;
+			//background-color: hsla(34, 10%, 90%, 0.9) !important;
+			& > td.direccion_y_nombre,
+			& > td.nombre_text {
+				text-align: left !important;
+				background: linear-gradient(90deg, #fafafa 99.5%, #ccc 100%);
+			}
+		}
+		& > td {
+			&.multi {
+				max-width: 200;
+			}
+			&.f_creacion {
+				width: 150px;
+				white-space: nowrap;
+				span {
+					white-space: nowrap;
+				}
+			}
+			&.transform-scale-2 {
+				&:before {
+					transform: scale(1.8);
+					left: 10px;
+				}
+			}
+			padding-left: 0.5em !important;
+			padding-right: 0.5em !important;
+			&.subestado {
+				button.estado_button {
+					@include estado_button;
+				}
+			}
+			&.estado {
+				fieldset {
+					flex-direction: column;
+				}
+				button.estado_button {
+					@include estado_button;
+				}
+				select {
+					max-width: 200px;
+					margin: 0 auto;
+					font-size: 12px;
+					&.subestado {
+						margin-top: 2px !important;
+					}
+				}
+				button + select {
+					margin-bottom: 2px !important;
+				}
+				select + select {
+					margin-top: 2px !important;
+				}
+			}
+			button.estado_button {
+				@include estado_button;
+			}
+			button.estado_button + button.estado_button {
+				margin-top: 2px;
+			}
+			&.direccion_y_nombre {
+				@include direccion_y_nombre;
+				min-width: 250px;
+				a {
+					width: 100%;
+					display: block;
+				}
+			}
+			.actions_inner {
+				.direccion_y_nombre {
+					@include direccion_y_nombre;
+					min-width: 200px;
+					a {
+						text-align: left;
+					}
+				}
+			}
+			&.nombre {
+				text-align: left;
+				@include sticky_left;
+			}
+			&.n_orden {
+				font-size: 1.1em;
+				font-family: system-ui;
+				text-indent: 0.75em;
+			}
+		}
+		td {
+			padding-top: 5px;
+			padding-bottom: 5px;
+			//text-align: center;
+			font-size: 12px;
+			height: 45px !important;
+
+			& > .card-views {
+				@include card_view;
+			}
+			.agendar_input {
+				width: 130px;
+				font-size: 0.8rem;
+				margin-right: -1.9em;
+				display: inline;
+				transform: translate(0, 2px);
+				padding-left: 0.5em;
+				border-radius: 3px;
+				background-color: #f5f5f5;
+
+				&.bg-white {
+					pointer-events: none;
+				}
+			}
+
+			.fs-085rem {
+				margin-right: 0.7rem;
+				.agendar_input {
+					font-size: 0.85rem !important;
+					padding-top: 0.3rem !important;
+					padding-bottom: 0.3rem !important;
+					padding-left: 0.5rem !important;
+					width: 142px !important;
+					margin-right: -1.6rem !important;
+					border: 1px solid #eee;
+				}
+			}
+			.habilitar_edicion_de_fecha_programada {
+				color: #aaa;
+				//padding: 5px;
+				cursor: unset;
+			}
+
+			.agendar_input + .habilitar_edicion_de_fecha_programada {
+				//color: white;
+
+				color: rgb(20, 140, 60);
+				cursor: pointer;
+			}
+
+			.agendar_input:hover + .habilitar_edicion_de_fecha_programada {
+				color: cyan;
+			}
+
+			.agendar_input + .fecha_pasada_no_editable {
+				cursor: not-allowed;
+			}
+
+			&.f_agendada:hover {
+				.habilitar_edicion_de_fecha_programada {
+					background-color: green;
+				}
+			}
+
+			.fecha_pasada_no_editable,
+			.habilitar_edicion_de_fecha_programada {
+				transform: translate(-5px, 0);
+			}
+			&.motivo {
+				max-width: 170px;
+				.text_overflow {
+					max-width: 150px;
+				}
+			}
+
+			.numeric_contenteditable {
+				padding: 0.5rem 1rem;
+				min-width: 90%;
+				height: 2em;
+				line-height: 1rem;
+				border: 1px solid #eee;
+				&.cell_editing {
+					border: 1px solid #bbb;
+				}
+			}
+			.direccion_y_nombre {
+				@include direccion_y_nombre;
+			}
+			&.direccion_y_nombre {
+				@include sticky_left;
+				@include direccion_y_nombre;
+				a {
+					width: 100%;
+					display: block;
+				}
+
+				.clock_icon {
+					position: relative;
+					right: -2em;
+					transform: translate(-1.6rem, -1em) scale(1.3);
+					float: right;
+					margin-top: -2em;
+
+					float: right;
+					padding: 3px;
+					cursor: help;
+				}
+			}
+			& > .text_overflow {
+				overflow: hidden;
+				text-overflow: ellipsis;
+
+				font-size: 0.95em;
+				display: -webkit-box;
+				max-width: 200px;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			&.sticky {
+				position: sticky;
+				left: 0;
+
+				z-index: 100;
+			}
+		}
+	}
+}
+@mixin bootstrap-table-thead {
+	tr {
+		td.direccion_y_nombre {
+			position: sticky;
+			left: 0;
+			top: 0;
+			z-index: 100;
+			border-right: 2px solid #ccc !important;
+		}
+
+		th {
+			&.multiple {
+				max-width: 250px;
+			}
+			&.direccion_y_nombre {
+				border-right: 2px solid #ccc !important;
+			}
+			&.f_creacion {
+				min-width: 120px;
+				width: 150px;
+			}
+			&.f_agendada,
+			&.f_realizacion {
+				min-width: 160px;
+			}
+			&.estado {
+				min-width: 12rem;
+			}
+			&.motivo {
+				max-width: 170px;
+				.text_overflow {
+					max-width: 155px;
+				}
+			}
+			&.nombre_text {
+				@include sticky_left;
+				text-align: left !important;
+				.th-inner {
+					width: calc(100% - 0.5em);
+					display: inline-flex !important;
+				}
+			}
+		}
+	}
+}
+
+@mixin bs_table_direccion_y_nombre {
+	height: 2.8em;
+	min-width: 250px;
+	max-width: 250px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+
+	@media screen {
+		span.print_only {
+			display: none;
+		}
+	}
+	&.sticky {
+		position: sticky;
+		left: 0;
+		z-index: 2;
+		z-index: 100;
+	}
+	.inner_container {
+		flex-direction: column;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-width: 200px;
+		& > div.direccion {
+			width: 100%;
+			display: block;
+		}
+		& > div.propietario {
+			font-size: 0.95em;
+			width: 100%;
+			display: block;
+		}
+	}
+	&.with_actions {
+		max-width: 280px;
+		min-width: 280px;
+	}
+}

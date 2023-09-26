@@ -1,0 +1,1960 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "EPSG:4326"
+        }
+    },
+    "layer_options": {
+        "strokeColor": "#009999",
+        "scale": 0.5,
+        "clickable": true,
+        "fillOpacity": 0.85,
+        "url": "/json/capa_colegios.geojson",
+        "className": "icon-graduation-cap",
+        "labelProperty": "Nombre",
+        "infoWindow": true,
+        "text": "f19d",
+        "checked": false,
+        "fontFamily": "fontello",
+        "mouseover":false,
+        "labelVisibility":{
+            
+            "highlighted": false,
+            "always":false
+        },
+        "icon": {
+            "url":"data:image/png;base64,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"
+          
+        },
+        "campos": {
+            "Nombre": "Nombre",
+            "Dirección_": "Dirección",
+            "Comuna": "Comuna",
+            "Formación": "Formación",
+            "Género": "Género",
+            "Bilingüe": "Bilingüe",
+            "Playgroup": "Playgroup",
+            "Cursos_por_nivel": "Cursos por nivel",
+            "Alumnos_por_nivel": "Alumnos por nivel",
+            "Superficie_terreno": "Superficieterreno"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "id": 1,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5890999878236,
+                    -33.4553200022222
+                ]
+            },
+            "properties": {
+                "Nombre": "Akros",
+                "Dirección_": "Av. Irarrázaval 3850",
+                "Comuna": "Ñuñoa",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "665.3",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "N/D",
+                "Alumnos___sala": "N/D",
+                "Arancel_pre_kinder_a_7_": "280000",
+                "Arancel_8__a_IV__medio": "280000",
+                "Superficie_terreno": "4870",
+                "Sitio_web": "http://www.colegioakros.cl/",
+                "FID": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 2,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5680400370163,
+                    -33.3980299871889
+                ]
+            },
+            "properties": {
+                "Nombre": "Alemán",
+                "Dirección_": "Nuestra Señora del Rosario 850",
+                "Comuna": "Las Condes",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "653",
+                "Cursos_por_nivel": "7",
+                "Alumnos_por_nivel": "161",
+                "Alumnos___sala": "23",
+                "Arancel_pre_kinder_a_7_": "500000",
+                "Arancel_8__a_IV__medio": "473000",
+                "Superficie_terreno": "41000",
+                "Sitio_web": "https://www.dsstgo.cl/index.php",
+                "FID": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 3,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5823900227072,
+                    -33.3948099953908
+                ]
+            },
+            "properties": {
+                "Nombre": "Alianza Francesa",
+                "Dirección_": "Luis Pasteur 5418",
+                "Comuna": "Vitacura",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "644.4",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "103",
+                "Alumnos___sala": "26",
+                "Arancel_pre_kinder_a_7_": "523000",
+                "Arancel_8__a_IV__medio": "523000",
+                "Superficie_terreno": "42300",
+                "Sitio_web": "https://lafase.cl/",
+                "FID": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 4,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5515600415822,
+                    -33.4396400176642
+                ]
+            },
+            "properties": {
+                "Nombre": "Andreé School",
+                "Dirección_": "Av. Príncipe de Gales 7605",
+                "Comuna": "La Reina",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "674.4",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "130",
+                "Alumnos___sala": "33",
+                "Arancel_pre_kinder_a_7_": "520000",
+                "Arancel_8__a_IV__medio": "520000",
+                "Superficie_terreno": "29500",
+                "Sitio_web": "http://www.andree.cl/home3/",
+                "FID": 4
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 5,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5948499737016,
+                    -33.4476700068283
+                ]
+            },
+            "properties": {
+                "Nombre": "Angels",
+                "Dirección_": "Regina Pacis 781",
+                "Comuna": "Ñuñoa",
+                "Formación": "N/D",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "565.8",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "48",
+                "Alumnos___sala": "24",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "N/D ",
+                "Sitio_web": "http://www.theangels.cl/web28032020/",
+                "FID": 5
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 6,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5733099910542,
+                    -33.3840500203068
+                ]
+            },
+            "properties": {
+                "Nombre": "Bradford Shool",
+                "Dirección_": "Luis Pasteur 6335",
+                "Comuna": "Vitacura",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "624.2",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "75",
+                "Alumnos___sala": "25",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "10500",
+                "Sitio_web": "https://www.bradfordschool.cl/en/",
+                "FID": 6
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 7,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5847399732696,
+                    -33.4494999856763
+                ]
+            },
+            "properties": {
+                "Nombre": "Calasanz",
+                "Dirección_": "Montenegro 661",
+                "Comuna": "Ñuñoa",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "632.5",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "113",
+                "Alumnos___sala": "38",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "24620",
+                "Sitio_web": "https://calasanz.cl/wpnew/",
+                "FID": 7
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 8,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.617029997904,
+                    -33.4297300096079
+                ]
+            },
+            "properties": {
+                "Nombre": "Cambridge College",
+                "Dirección_": "Antonio Varas 233",
+                "Comuna": "Providencia",
+                "Formación": "Laico",
+                "Género": "N/D ",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "671.6",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "20",
+                "Alumnos___sala": "20",
+                "Arancel_pre_kinder_a_7_": "315000",
+                "Arancel_8__a_IV__medio": "315000",
+                "Superficie_terreno": "2500",
+                "Sitio_web": "https://cambridgecollege.cl/",
+                "FID": 8
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 9,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5480999925175,
+                    -33.4388799886493
+                ]
+            },
+            "properties": {
+                "Nombre": "Carmen Teresiano",
+                "Dirección_": "Príncipe de Gales 8050 ",
+                "Comuna": "La Reina",
+                "Formación": "Religioso",
+                "Género": "N/D ",
+                "Bilingüe": "no",
+                "Playgroup": "N/D ",
+                "PSU": "541.5",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "27",
+                "Alumnos___sala": "27",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "8200",
+                "Sitio_web": "http://www.carmenteresiano-lareina.cl/",
+                "FID": 9
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 10,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5663800006769,
+                    -33.4097799904814
+                ]
+            },
+            "properties": {
+                "Alumnos___sala": "25",
+                "Arancel_pre_kinder_a_7_": "388000",
+                "Arancel_8__a_IV__medio": "388000",
+                "Nombre": "Compañía Maria ",
+                "Dirección_": "Manquehue Sur 116",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "628.8",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "101",
+                "Superficie_terreno": "18800",
+                "Sitio_web": "https://ciademaria.cl/",
+                "FID": 10
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 11,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5057595509074,
+                    -33.395855820281
+                ]
+            },
+            "properties": {
+                "Nombre": "Cumbres",
+                "Dirección_": "Av. La Plaza 1150",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "N/D ",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "658.8",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "140",
+                "Alumnos___sala": "35",
+                "Arancel_pre_kinder_a_7_": "490000",
+                "Arancel_8__a_IV__medio": "510000",
+                "Superficie_terreno": "57000",
+                "Sitio_web": "http://www.colegiocumbres.cl/",
+                "FID": 11
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 12,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5724899890999,
+                    -33.4411899992836
+                ]
+            },
+            "properties": {
+                "Nombre": "De La Salle",
+                "Dirección_": "Av. Ossa 1349",
+                "Comuna": "La Reina",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "653.3",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "68",
+                "Alumnos___sala": "34",
+                "Arancel_pre_kinder_a_7_": "300000",
+                "Arancel_8__a_IV__medio": "300000",
+                "Superficie_terreno": "64000",
+                "Sitio_web": "http://www.lasalle-lareina.cl/",
+                "FID": 12
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 13,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5213199787144,
+                    -33.374489999201
+                ]
+            },
+            "properties": {
+                "Nombre": "Dunalastair",
+                "Dirección_": "Av. Las Condes 11931",
+                "Comuna": "Las Condes",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "635.4",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "89",
+                "Alumnos___sala": "30",
+                "Arancel_pre_kinder_a_7_": "475000",
+                "Arancel_8__a_IV__medio": "475000",
+                "Superficie_terreno": "9400",
+                "Sitio_web": "https://www.dunalastair.cl/",
+                "FID": 13
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 14,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5234300395701,
+                    -33.4395399800799
+                ]
+            },
+            "properties": {
+                "Nombre": "El Madrigal",
+                "Dirección_": "María Monvel 1793",
+                "Comuna": "La Reina",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "N/D",
+                "Cursos_por_nivel": "N/D ",
+                "Alumnos_por_nivel": "N/D ",
+                "Alumnos___sala": "N/D",
+                "Arancel_pre_kinder_a_7_": "357000",
+                "Arancel_8__a_IV__medio": "No tiene",
+                "Superficie_terreno": "N/D ",
+                "Sitio_web": "https://www.colegiomadrigal.cl/",
+                "FID": 14
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 15,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6029000365757,
+                    -33.4398900084235
+                ]
+            },
+            "properties": {
+                "Nombre": "English Institute",
+                "Dirección_": "Av. Ricardo Lyon 2102",
+                "Comuna": "Providencia",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "654.2",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "86",
+                "Alumnos___sala": "29",
+                "Arancel_pre_kinder_a_7_": "330000",
+                "Arancel_8__a_IV__medio": "330000",
+                "Superficie_terreno": "8400",
+                "Sitio_web": "https://www.tei.cl/",
+                "FID": 15
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 16,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5238903048807,
+                    -33.4704385626418
+                ]
+            },
+            "properties": {
+                "Nombre": "Epullay",
+                "Dirección_": "Alvaro Casanova 916",
+                "Comuna": "Peñalolen",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "N/D",
+                "Cursos_por_nivel": "N/D ",
+                "Alumnos_por_nivel": "N/D ",
+                "Alumnos___sala": "N/D",
+                "Arancel_pre_kinder_a_7_": "270000",
+                "Arancel_8__a_IV__medio": "347000",
+                "Superficie_terreno": "12300",
+                "Sitio_web": "https://www.epullay.cl/",
+                "FID": 16
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 17,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.528748686788,
+                    -33.441662631859
+                ]
+            },
+            "properties": {
+                "Nombre": "Etievan",
+                "Dirección_": "Carlos Silva Vildosola 9820",
+                "Comuna": "La Reina",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "585.2",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "20",
+                "Alumnos___sala": "20",
+                "Arancel_pre_kinder_a_7_": "357000",
+                "Arancel_8__a_IV__medio": "400000",
+                "Superficie_terreno": "3900",
+                "Sitio_web": "http://colegioetievan.cl/",
+                "FID": 17
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 18,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5541799736168,
+                    -33.3342999886263
+                ]
+            },
+            "properties": {
+                "Nombre": "Everest",
+                "Dirección_": "Camino Real 4518",
+                "Comuna": "Lo Barnechea",
+                "Formación": "Religioso",
+                "Género": "N/D ",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "666.9",
+                "Cursos_por_nivel": "8",
+                "Alumnos_por_nivel": "208",
+                "Alumnos___sala": "26",
+                "Arancel_pre_kinder_a_7_": "490000",
+                "Arancel_8__a_IV__medio": "535000",
+                "Superficie_terreno": "69500",
+                "Sitio_web": "https://www.colegioeverest.cl/",
+                "FID": 18
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 19,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6003699594257,
+                    -33.4638599884032
+                ]
+            },
+            "properties": {
+                "Nombre": "Francisco Encina ",
+                "Dirección_": "Exequiel Fernández 1001",
+                "Comuna": "Ñuñoa",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "664.3",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "26",
+                "Alumnos___sala": "26",
+                "Arancel_pre_kinder_a_7_": "238000",
+                "Arancel_8__a_IV__medio": "249000",
+                "Superficie_terreno": "N/D ",
+                "Sitio_web": "https://www.colegiofranciscoencina.com/",
+                "FID": 19
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 20,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5714900285431,
+                    -33.4672899883052
+                ]
+            },
+            "properties": {
+                "Nombre": "Francisco Miranda",
+                "Dirección_": "Cruz Almeyda 1388",
+                "Comuna": "Peñalolen",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "520.5",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "15",
+                "Alumnos___sala": "15",
+                "Arancel_pre_kinder_a_7_": "N/D",
+                "Arancel_8__a_IV__medio": "N/D",
+                "Superficie_terreno": "16380",
+                "Sitio_web": "http://franciscodemiranda.cl ",
+                "FID": 20
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 21,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5244600074507,
+                    -33.4678799904655
+                ]
+            },
+            "properties": {
+                "Nombre": "Francisco Varela",
+                "Dirección_": "Av. Jose Arrieta 10117",
+                "Comuna": "Peñalolen",
+                "Formación": "Budista",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "N/D",
+                "Cursos_por_nivel": "N/D ",
+                "Alumnos_por_nivel": "N/D ",
+                "Alumnos___sala": "N/D",
+                "Arancel_pre_kinder_a_7_": "276000",
+                "Arancel_8__a_IV__medio": "281000",
+                "Superficie_terreno": "N/D ",
+                "Sitio_web": "http://www.colegiofranciscovarela.cl/",
+                "FID": 21
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 22,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5493287288244,
+                    -33.374248249175
+                ]
+            },
+            "properties": {
+                "Nombre": "Huelén",
+                "Dirección_": "Av. Santa María 6480",
+                "Comuna": "Vitacura",
+                "Formación": "Religioso",
+                "Género": "solo mujeres",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "646.6",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "56",
+                "Alumnos___sala": "28",
+                "Arancel_pre_kinder_a_7_": "460000",
+                "Arancel_8__a_IV__medio": "460000",
+                "Superficie_terreno": "19600",
+                "Sitio_web": "http://www.huelen.cl/",
+                "FID": 22
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 23,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5073900102161,
+                    -33.3697999886406
+                ]
+            },
+            "properties": {
+                "Nombre": "Instituto Hebreo",
+                "Dirección_": "Av. Las Condes 13450",
+                "Comuna": "Las Condes",
+                "Formación": "Judío",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "692.4",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "64",
+                "Alumnos___sala": "32",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "43555",
+                "Sitio_web": "https://www.institutohebreo.cl/",
+                "FID": 23
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 24,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5644499837637,
+                    -33.4030499929494
+                ]
+            },
+            "properties": {
+                "Nombre": "Internacional Sek",
+                "Dirección_": "Av. Los Militares 6640",
+                "Comuna": "Las Condes",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "654.7",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "50",
+                "Alumnos___sala": "25",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "18100",
+                "Sitio_web": "https://www.sekchile.com/es",
+                "FID": 24
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 25,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5687507364584,
+                    -33.4206745719134
+                ]
+            },
+            "properties": {
+                "Nombre": "La Girouette",
+                "Dirección_": "Mar del Sur 1238",
+                "Comuna": "Las Condes",
+                "Formación": "Laica",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "659.9",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "51",
+                "Alumnos___sala": "26",
+                "Arancel_pre_kinder_a_7_": "400000",
+                "Arancel_8__a_IV__medio": "424000",
+                "Superficie_terreno": "5100",
+                "Sitio_web": "https://www.lagirouette.cl/",
+                "FID": 25
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 26,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5758499586554,
+                    -33.3861200157003
+                ]
+            },
+            "properties": {
+                "Nombre": "La Maisonnette",
+                "Dirección_": "Av. Luis Pasteur 6076",
+                "Comuna": "Vitacura",
+                "Formación": "Religioso",
+                "Género": "solo mujeres",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "593.3",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "55",
+                "Alumnos___sala": "28",
+                "Arancel_pre_kinder_a_7_": "430000",
+                "Arancel_8__a_IV__medio": "430000",
+                "Superficie_terreno": "13700",
+                "Sitio_web": "http://lamaisonnette.cl/",
+                "FID": 26
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 27,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5914999781407,
+                    -33.454170004829
+                ]
+            },
+            "properties": {
+                "Nombre": "Liceo Manuel de Salas",
+                "Dirección_": "Brown Norte 105",
+                "Comuna": "Ñuñoa",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "553.6",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "124",
+                "Alumnos___sala": "31",
+                "Arancel_pre_kinder_a_7_": "278000",
+                "Arancel_8__a_IV__medio": "278000",
+                "Superficie_terreno": "16500",
+                "Sitio_web": "https://www.lms.cl/",
+                "FID": 27
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 28,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5108300268499,
+                    -33.3702800205051
+                ]
+            },
+            "properties": {
+                "Nombre": "Lincoln International Academy",
+                "Dirección_": "Av. Las Condes 13150",
+                "Comuna": "Las Condes",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "N/D ",
+                "Cursos_por_nivel": "N/D ",
+                "Alumnos_por_nivel": "N/D ",
+                "Alumnos___sala": "N/D",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "N/D ",
+                "Sitio_web": "https://lintac.cl/portal/es/",
+                "FID": 28
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 29,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.518810018437,
+                    -33.3640800108453
+                ]
+            },
+            "properties": {
+                "Nombre": "Los Alerces",
+                "Dirección_": "El Radal 437",
+                "Comuna": "Lo Barnechea",
+                "Formación": "Religioso",
+                "Género": "solo mujeres",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "677.8",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "70",
+                "Alumnos___sala": "23",
+                "Arancel_pre_kinder_a_7_": "N/D",
+                "Arancel_8__a_IV__medio": "N/D",
+                "Superficie_terreno": "22800",
+                "Sitio_web": "https://www.colegiolosalerces.cl/",
+                "FID": 29
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 30,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5263165978692,
+                    -33.3754734017667
+                ]
+            },
+            "properties": {
+                "Nombre": "Los Andes",
+                "Dirección_": "San Damián 0100",
+                "Comuna": "Vitacura",
+                "Formación": "Religioso",
+                "Género": "solo mujeres",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "680.9",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "70",
+                "Alumnos___sala": "23",
+                "Arancel_pre_kinder_a_7_": "410000",
+                "Arancel_8__a_IV__medio": "410000",
+                "Superficie_terreno": "22000",
+                "Sitio_web": "http://colegiolosandes.cl/",
+                "FID": 30
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 31,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5797199673747,
+                    -33.3881400123986
+                ]
+            },
+            "properties": {
+                "Nombre": "María Luisa Bombal",
+                "Dirección_": "Lo Arcaya 1970",
+                "Comuna": "Vitacura",
+                "Formación": "N/D ",
+                "Género": "N/D ",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "613.9",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "30",
+                "Alumnos___sala": "30",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "2300",
+                "Sitio_web": "http://www.marialuisabombal.cl/",
+                "FID": 31
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 32,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5981800194766,
+                    -33.4398999827619
+                ]
+            },
+            "properties": {
+                "Nombre": "Mariano",
+                "Dirección_": "Av. Holanda 2323",
+                "Comuna": "Providencia",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "616.3",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "26",
+                "Alumnos___sala": "26",
+                "Arancel_pre_kinder_a_7_": "375000",
+                "Arancel_8__a_IV__medio": "375000",
+                "Superficie_terreno": "N/D ",
+                "Sitio_web": "https://colegiomariano.cl/",
+                "FID": 32
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 33,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5068822725361,
+                    -33.3451841134027
+                ]
+            },
+            "properties": {
+                "Nombre": "Mayflower",
+                "Dirección_": "Camino de la Laguna 13675",
+                "Comuna": "Lo Barnechea",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "640.4",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "79",
+                "Alumnos___sala": "26",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "47500",
+                "Sitio_web": "https://www.mayflower.cl/",
+                "FID": 33
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 34,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5415300046853,
+                    -33.324940001436
+                ]
+            },
+            "properties": {
+                "Nombre": "Monte Tabor y Nazaret",
+                "Dirección_": "Av. Paseo Pie Andino 5894",
+                "Comuna": "Lo Barnechea",
+                "Formación": "Religioso",
+                "Género": "N/D ",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "673.9",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "123",
+                "Alumnos___sala": "31",
+                "Arancel_pre_kinder_a_7_": "480000",
+                "Arancel_8__a_IV__medio": "480000",
+                "Superficie_terreno": "19500",
+                "Sitio_web": "https://www.mtn.cl/",
+                "FID": 34
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 35,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.533139971697,
+                    -33.3600199842065
+                ]
+            },
+            "properties": {
+                "Nombre": "Newland",
+                "Dirección_": "Av. El Tranque 11093",
+                "Comuna": "Lo Barnechea",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "657.4",
+                "Cursos_por_nivel": "29",
+                "Alumnos_por_nivel": "87",
+                "Alumnos___sala": "3",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "29900",
+                "Sitio_web": "https://www.newland.cl",
+                "FID": 35
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 36,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5117773093002,
+                    -33.351702801894
+                ]
+            },
+            "properties": {
+                "Nombre": "Nido de Aguilas ",
+                "Dirección_": "Av. El Rodeo 14200",
+                "Comuna": "Lo Barnechea",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "666.6",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "20",
+                "Alumnos___sala": "20",
+                "Arancel_pre_kinder_a_7_": "1400000",
+                "Arancel_8__a_IV__medio": "1400000",
+                "Superficie_terreno": "146580",
+                "Sitio_web": "https://www.nido.cl/",
+                "FID": 36
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 37,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5524435319692,
+                    -33.4438994651407
+                ]
+            },
+            "properties": {
+                "Nombre": "Nuestra Señora del Camino",
+                "Dirección_": "Vicente Peréz Rosales 929",
+                "Comuna": "La Reina",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "600.5",
+                "Cursos_por_nivel": "18",
+                "Alumnos_por_nivel": "18",
+                "Alumnos___sala": "1",
+                "Arancel_pre_kinder_a_7_": "350000",
+                "Arancel_8__a_IV__medio": "350000",
+                "Superficie_terreno": "4600",
+                "Sitio_web": "http://www.nsdc.cl/acerca-del-colegio/",
+                "FID": 37
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 38,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5117399663338,
+                    -33.4138300006716
+                ]
+            },
+            "properties": {
+                "Nombre": "Padre Hurtado y Juanita de los Andes",
+                "Dirección_": "Francisco Bulnes Correa 3000",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "semi",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "632.5",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "28",
+                "Alumnos___sala": "7",
+                "Arancel_pre_kinder_a_7_": "495000",
+                "Arancel_8__a_IV__medio": "510000",
+                "Superficie_terreno": "38000",
+                "Sitio_web": "http://cph-cja.cl/",
+                "FID": 38
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 39,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5084755541684,
+                    -33.3704033276771
+                ]
+            },
+            "properties": {
+                "Nombre": "Pedro de Valdivia - Las Condes",
+                "Dirección_": "Av. Las Condes 13349",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "622.2",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "50",
+                "Alumnos___sala": "25",
+                "Arancel_pre_kinder_a_7_": "400000",
+                "Arancel_8__a_IV__medio": "400000",
+                "Superficie_terreno": "6900",
+                "Sitio_web": "https://cpvlascondes.cl/",
+                "FID": 39
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 40,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.607219986268,
+                    -33.4405899806665
+                ]
+            },
+            "properties": {
+                "Nombre": "Pedro de Valdivia - Providencia",
+                "Dirección_": "Av. Pedro de Valdivia 1939",
+                "Comuna": "Providencia",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "621",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "68",
+                "Alumnos___sala": "34",
+                "Arancel_pre_kinder_a_7_": "380000",
+                "Arancel_8__a_IV__medio": "380000",
+                "Superficie_terreno": "4800",
+                "Sitio_web": "https://cpvprovidencia.cl/",
+                "FID": 40
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 41,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5501099720675,
+                    -33.4103999998307
+                ]
+            },
+            "properties": {
+                "Nombre": "Sagrado Corazon de Apoquindo (Monjas Inglesas)",
+                "Dirección_": "Santa Magdalena Sofia 277",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "649.8",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "99",
+                "Alumnos___sala": "25",
+                "Arancel_pre_kinder_a_7_": "450000",
+                "Arancel_8__a_IV__medio": "450000",
+                "Superficie_terreno": "37000",
+                "Sitio_web": "https://colegiodelsagradocorazon.cl/",
+                "FID": 41
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 42,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.4998799929312,
+                    -33.3737699938865
+                ]
+            },
+            "properties": {
+                "Nombre": "Saint Andrew",
+                "Dirección_": "Camino La Posada 13823",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "572.7",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "42",
+                "Alumnos___sala": "21",
+                "Arancel_pre_kinder_a_7_": "420000",
+                "Arancel_8__a_IV__medio": "490000",
+                "Superficie_terreno": "12600",
+                "Sitio_web": "http://www.standrew.cl/",
+                "FID": 42
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 43,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5859100028761,
+                    -33.4322299963677
+                ]
+            },
+            "properties": {
+                "Nombre": "Saint Gabriel School",
+                "Dirección_": "Francisco Bilbao 3070",
+                "Comuna": "Providencia",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "650.1",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "122",
+                "Alumnos___sala": "31",
+                "Arancel_pre_kinder_a_7_": "516000",
+                "Arancel_8__a_IV__medio": "516000",
+                "Superficie_terreno": "N/D ",
+                "Sitio_web": "http://www.sangabriel.cl/",
+                "FID": 43
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 44,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6001299852773,
+                    -33.3873700089815
+                ]
+            },
+            "properties": {
+                "Nombre": "Saint George",
+                "Dirección_": "Av. Santa Cruz 5400",
+                "Comuna": "Vitacura",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "648.4",
+                "Cursos_por_nivel": "6",
+                "Alumnos_por_nivel": "180",
+                "Alumnos___sala": "30",
+                "Arancel_pre_kinder_a_7_": "510000",
+                "Arancel_8__a_IV__medio": "510000",
+                "Superficie_terreno": "227640",
+                "Sitio_web": "http://www.saintgeorge.cl/",
+                "FID": 44
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 45,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5546479320994,
+                    -33.4331633580847
+                ]
+            },
+            "properties": {
+                "Nombre": "Saint Jhon Villa Academy",
+                "Dirección_": "Alcalde Manuel de la Lasta 2351",
+                "Comuna": "La Reina",
+                "Formación": "Religioso",
+                "Género": "N/D ",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "635.7",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "33",
+                "Alumnos___sala": "33",
+                "Arancel_pre_kinder_a_7_": "355000",
+                "Arancel_8__a_IV__medio": "355000",
+                "Superficie_terreno": "22900",
+                "Sitio_web": "https://www.sjva.cl/",
+                "FID": 45
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 46,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5806699726186,
+                    -33.3715800121373
+                ]
+            },
+            "properties": {
+                "Nombre": "San Benito",
+                "Dirección_": "Av. Parque Antonio Rabat 6150",
+                "Comuna": "Vitacura",
+                "Formación": "Religioso",
+                "Género": "N/D ",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "651.3",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "108",
+                "Alumnos___sala": "27",
+                "Arancel_pre_kinder_a_7_": "510000",
+                "Arancel_8__a_IV__medio": "540000",
+                "Superficie_terreno": "39700",
+                "Sitio_web": "http://www.colegiosanbenito.org/inicio/",
+                "FID": 46
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 47,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5094099655572,
+                    -33.391989987931
+                ]
+            },
+            "properties": {
+                "Nombre": "San Francisco de Asis",
+                "Dirección_": "Cerro Catedral 12150",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "semi",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "652.9",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "79",
+                "Alumnos___sala": "26",
+                "Arancel_pre_kinder_a_7_": "490000",
+                "Arancel_8__a_IV__medio": "510000",
+                "Superficie_terreno": "23900",
+                "Sitio_web": "https://www.colegiosanfranciscodeasis.cl/csfda/",
+                "FID": 47
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 48,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59536998686,
+                    -33.4331999922129
+                ]
+            },
+            "properties": {
+                "Nombre": "San Ignacio del Bosque",
+                "Dirección_": "Av. Pocuro 2801",
+                "Comuna": "Providencia",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "647",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "119",
+                "Alumnos___sala": "30",
+                "Arancel_pre_kinder_a_7_": "depende de la renta de los padres",
+                "Arancel_8__a_IV__medio": "depende de la renta de los padres",
+                "Superficie_terreno": "76400",
+                "Sitio_web": "https://www.sanignacio.cl/",
+                "FID": 48
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 49,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5634299898778,
+                    -33.4153000185868
+                ]
+            },
+            "properties": {
+                "Nombre": "San Juan Evangelista",
+                "Dirección_": "Martin de Zamora 6395",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "566.8",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "83",
+                "Alumnos___sala": "28",
+                "Arancel_pre_kinder_a_7_": "343000",
+                "Arancel_8__a_IV__medio": "343000",
+                "Superficie_terreno": "15600",
+                "Sitio_web": "https://www.sje.cl/",
+                "FID": 49
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 50,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5044399994169,
+                    -33.39270999314
+                ]
+            },
+            "properties": {
+                "Nombre": "San Nicolás de Myra",
+                "Dirección_": "Republica de Honduras 12737",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "625.8",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "46",
+                "Alumnos___sala": "23",
+                "Arancel_pre_kinder_a_7_": "405000",
+                "Arancel_8__a_IV__medio": "420000",
+                "Superficie_terreno": "8900",
+                "Sitio_web": "https://www.sannicolasdemyra.cl/web/",
+                "FID": 50
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 51,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5730300355875,
+                    -33.3981299833611
+                ]
+            },
+            "properties": {
+                "Nombre": "San Pedro de Nolasco",
+                "Dirección_": "Av. Presidente Kennedy 5850",
+                "Comuna": "Vitacura",
+                "Formación": "Religioso",
+                "Género": "N/D ",
+                "Bilingüe": "no",
+                "Playgroup": "sí",
+                "PSU": "643.2",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "62",
+                "Alumnos___sala": "31",
+                "Arancel_pre_kinder_a_7_": "400000",
+                "Arancel_8__a_IV__medio": "400000",
+                "Superficie_terreno": "36600",
+                "Sitio_web": "https://www.colegiosanpedronolasco.cl/",
+                "FID": 51
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 52,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5972197707436,
+                    -33.39404028206
+                ]
+            },
+            "properties": {
+                "Nombre": "Santa Ursula",
+                "Dirección_": "Av. Nueva Costanera 4190",
+                "Comuna": "Vitacura",
+                "Formación": "Religioso",
+                "Género": "solo mujeres",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "657.6",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "42",
+                "Alumnos___sala": "21",
+                "Arancel_pre_kinder_a_7_": "495000",
+                "Arancel_8__a_IV__medio": "495000",
+                "Superficie_terreno": "50500",
+                "Sitio_web": "https://www.csuv.cl/",
+                "FID": 52
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 53,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5461902119527,
+                    -33.3424830991657
+                ]
+            },
+            "properties": {
+                "Nombre": "Santiago College",
+                "Dirección_": "Av. Camino Los Trapenses 4007",
+                "Comuna": "Lo Barnechea",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "668.1",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "118",
+                "Alumnos___sala": "30",
+                "Arancel_pre_kinder_a_7_": "660000",
+                "Arancel_8__a_IV__medio": "660000",
+                "Superficie_terreno": "106900",
+                "Sitio_web": "http://www.scollege.cl/index.php/es/",
+                "FID": 53
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 54,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5209862438066,
+                    -33.4565618242286
+                ]
+            },
+            "properties": {
+                "Nombre": "Santo Domingo",
+                "Dirección_": "Alvaro Casanova 366",
+                "Comuna": "La Reina",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "606.7",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "71",
+                "Alumnos___sala": "36",
+                "Arancel_pre_kinder_a_7_": "415000",
+                "Arancel_8__a_IV__medio": "415000",
+                "Superficie_terreno": "32750",
+                "Sitio_web": "https://www.colegiosantodomingo.cl/",
+                "FID": 54
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 55,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5225021230008,
+                    -33.3949009495113
+                ]
+            },
+            "properties": {
+                "Nombre": "Scuola Italiana",
+                "Dirección_": "Camino Las Flores 12707",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "603.9",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "53",
+                "Alumnos___sala": "27",
+                "Arancel_pre_kinder_a_7_": "447000",
+                "Arancel_8__a_IV__medio": "447000",
+                "Superficie_terreno": "59000",
+                "Sitio_web": "https://www.scuola.cl/sivm/",
+                "FID": 55
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 56,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5054049104063,
+                    -33.3700357328041
+                ]
+            },
+            "properties": {
+                "Nombre": "Southern Cross",
+                "Dirección_": "Av. Las Condes 13525",
+                "Comuna": "Las Condes",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "N/D ",
+                "PSU": "671.2",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "45",
+                "Alumnos___sala": "23",
+                "Arancel_pre_kinder_a_7_": "465000",
+                "Arancel_8__a_IV__medio": "465000",
+                "Superficie_terreno": "15500",
+                "Sitio_web": "https://www.scross.cl/",
+                "FID": 56
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 57,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5518099897252,
+                    -33.3783999890135
+                ]
+            },
+            "properties": {
+                "Nombre": "SSCC Manquehue",
+                "Dirección_": "Padre Damián de Veuster 2215",
+                "Comuna": "Vitacura",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "639.2",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "131",
+                "Alumnos___sala": "33",
+                "Arancel_pre_kinder_a_7_": "415000",
+                "Arancel_8__a_IV__medio": "415000",
+                "Superficie_terreno": "81750",
+                "Sitio_web": "https://www.ssccmanquehue.cl/",
+                "FID": 57
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 58,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6086500224536,
+                    -33.4566899824226
+                ]
+            },
+            "properties": {
+                "Nombre": "Suizo",
+                "Dirección_": "Av. Jose Domingo Cañas 2206",
+                "Comuna": "Ñuñoa",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "641.4",
+                "Cursos_por_nivel": "1",
+                "Alumnos_por_nivel": "38",
+                "Alumnos___sala": "38",
+                "Arancel_pre_kinder_a_7_": "450000",
+                "Arancel_8__a_IV__medio": "450000",
+                "Superficie_terreno": "N/D ",
+                "Sitio_web": "http://www.css.cl/",
+                "FID": 58
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 59,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5357299790528,
+                    -33.3807700146663
+                ]
+            },
+            "properties": {
+                "Nombre": "Tabancura",
+                "Dirección_": "Av. Las Hualtatas 10030",
+                "Comuna": "Vitacura",
+                "Formación": "Religioso",
+                "Género": "hombres",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "670.1",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "105",
+                "Alumnos___sala": "26",
+                "Arancel_pre_kinder_a_7_": "410000",
+                "Arancel_8__a_IV__medio": "410000",
+                "Superficie_terreno": "53700",
+                "Sitio_web": "http://www.tabancura.cl ",
+                "FID": 59
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 60,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5721847379731,
+                    -33.4430421001672
+                ]
+            },
+            "properties": {
+                "Nombre": "Teresiano Enrique de Ossó",
+                "Dirección_": "Av. Ossa 1157",
+                "Comuna": "La Reina",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "613.6",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "87",
+                "Alumnos___sala": "29",
+                "Arancel_pre_kinder_a_7_": "322000",
+                "Arancel_8__a_IV__medio": "322000",
+                "Superficie_terreno": "25100",
+                "Sitio_web": "http://www.colegioteo.cl/",
+                "FID": 60
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 61,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5682466567182,
+                    -33.4381814141581
+                ]
+            },
+            "properties": {
+                "Nombre": "Tha Grange School",
+                "Dirección_": "Av. Príncipe de Gales 6154",
+                "Comuna": "La Reina",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "682.9",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "128",
+                "Alumnos___sala": "32",
+                "Arancel_pre_kinder_a_7_": "700000",
+                "Arancel_8__a_IV__medio": "700000",
+                "Superficie_terreno": "91800",
+                "Sitio_web": "http://www.grange.cl/es/",
+                "FID": 61
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 62,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5211800014302,
+                    -33.4017399853786
+                ]
+            },
+            "properties": {
+                "Nombre": "The Redland School",
+                "Dirección_": "Camino El Alba 11357",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "612.7",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "55",
+                "Alumnos___sala": "28",
+                "Arancel_pre_kinder_a_7_": "490000",
+                "Arancel_8__a_IV__medio": "490000",
+                "Superficie_terreno": "9800",
+                "Sitio_web": "http://redland.cl/",
+                "FID": 62
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 63,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5970700045177,
+                    -33.4224600084156
+                ]
+            },
+            "properties": {
+                "Nombre": "Trewhela's School",
+                "Dirección_": "Las Camelias 2854",
+                "Comuna": "Providencia",
+                "Formación": "Laico",
+                "Género": "mixto",
+                "Bilingüe": "sí",
+                "Playgroup": "no",
+                "PSU": "639",
+                "Cursos_por_nivel": "3",
+                "Alumnos_por_nivel": "74",
+                "Alumnos___sala": "25",
+                "Arancel_pre_kinder_a_7_": "534000",
+                "Arancel_8__a_IV__medio": "545000",
+                "Superficie_terreno": "3180",
+                "Sitio_web": "http://providencia.trewhelaschool.cl/",
+                "FID": 63
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 64,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5867233114832,
+                    -33.4200300707552
+                ]
+            },
+            "properties": {
+                "Nombre": "Verbo Divino",
+                "Dirección_": "Av. Presidente Errázuriz 4055",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "solo hombres",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "648.2",
+                "Cursos_por_nivel": "6",
+                "Alumnos_por_nivel": "147",
+                "Alumnos___sala": "25",
+                "Arancel_pre_kinder_a_7_": "N/D ",
+                "Arancel_8__a_IV__medio": "N/D ",
+                "Superficie_terreno": "58800",
+                "Sitio_web": "https://www.cvd.cl/",
+                "FID": 64
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 65,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5883549951956,
+                    -33.4203491038726
+                ]
+            },
+            "properties": {
+                "Nombre": "Villa María",
+                "Dirección_": "Av. Presidente Errázuriz 3753",
+                "Comuna": "Las Condes",
+                "Formación": "Religioso",
+                "Género": "solo mujeres",
+                "Bilingüe": "sí",
+                "Playgroup": "sí",
+                "PSU": "666.1",
+                "Cursos_por_nivel": "4",
+                "Alumnos_por_nivel": "116",
+                "Alumnos___sala": "29",
+                "Arancel_pre_kinder_a_7_": "570000",
+                "Arancel_8__a_IV__medio": "570000",
+                "Superficie_terreno": "14900",
+                "Sitio_web": "http://www.villamaria.cl/",
+                "FID": 65
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 66,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5223600059296,
+                    -33.4105900181255
+                ]
+            },
+            "properties": {
+                "Nombre": "Wenlock School",
+                "Dirección_": "Carlos Peña Otaegui 10880",
+                "Comuna": "Las Condes",
+                "Formación": "N/D",
+                "Género": "mixto",
+                "Bilingüe": "no",
+                "Playgroup": "no",
+                "PSU": "658.2",
+                "Cursos_por_nivel": "2",
+                "Alumnos_por_nivel": "51",
+                "Alumnos___sala": "26",
+                "Arancel_pre_kinder_a_7_": "N/D",
+                "Arancel_8__a_IV__medio": "N/D",
+                "Superficie_terreno": "34000",
+                "Sitio_web": "http://www.wenlock.cl/",
+                "FID": 66
+            }
+        }
+    ]
+}

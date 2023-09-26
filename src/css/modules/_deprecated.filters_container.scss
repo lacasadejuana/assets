@@ -1,0 +1,215 @@
+// This stylesheet was meant to be used with an alternative version of the filtros_negocio/indexd.blade.php file.
+.alpinejs-table-pagination {
+	padding-bottom: 0rem !important;
+	margin-bottom: 0.5rem !important;
+	padding-top: 0 !important;
+}
+.alpinejs-table-container {
+	display: flex !important;
+	justify-content: center;
+	.alpinejs-table-layout {
+		min-width: unset !important;
+
+		thead {
+			tr {
+				background-color: #f5f5f5;
+			}
+		}
+		tr {
+			th {
+				border-color: #ccc !important;
+				border-width: 1px !important;
+				&:last-child {
+					svg,
+					.alpinejs-table-filter-text {
+						display: none;
+					}
+				}
+				strong {
+					font-size: 0.85rem;
+
+					text-align: center;
+					color: #666;
+				}
+				svg {
+					color: #666;
+				}
+			}
+		}
+		tbody {
+			tr {
+				border-left: 1px solid #ccc;
+				border-right: 0 none;
+				border-bottom: 1px solid #eee;
+				td {
+					text-align: left;
+					border: 1px solid #ccc;
+					border-color: #cecece;
+					border-bottom: 0 none;
+					border-top: 0 none;
+					span {
+						padding-left: 0.5rem;
+						padding-right: 0.2rem;
+						a {
+							color: white;
+							padding: 2px 5px !important;
+							&.btn-primary {
+								background-color: #2563eb !important;
+							}
+							&.btn-success {
+								background-color: #00a000 !important;
+							}
+							&.btn-secondary {
+								background-color: rgb(75, 85, 99) !important;
+							}
+						}
+						white-space: nowrap;
+						font-size: 0.9rem;
+						text-align: left;
+					}
+				}
+			}
+		}
+	}
+}
+.filters_table {
+	margin: 0 auto;
+	td {
+		transition: opacity 0.7s ease-in-out;
+		opacity: 100;
+		.fade {
+			opacity: 0;
+			td {
+				border: 0;
+			}
+		}
+	}
+	td,
+	th {
+		&.blocked {
+			&::after {
+				content: '\f023';
+				@include sort;
+				display: inline-block;
+				width: 0;
+
+				transform: translate(-20px, 0);
+			}
+		}
+		&.sorting_asc {
+			&:after {
+				content: '\f0dd';
+				@include sort;
+				display: inline-block;
+				width: 0;
+				height: 0;
+			}
+		}
+		&.sorting_desc {
+			&:after {
+				content: '\f0de';
+				@include sort;
+				display: inline-block;
+				width: 0;
+				height: 0;
+			}
+		}
+		&.not_sorting {
+			&:after {
+				content: '\f0dc';
+				@include sort;
+				display: inline-block;
+				width: 0;
+				height: 0;
+			}
+		}
+		.filter_name {
+			&.blocked {
+				&::after {
+					content: '\f023';
+					@include sort;
+					display: inline-block;
+					width: 0;
+
+					transform: translate(-20px, 0);
+				}
+			}
+		}
+	}
+	th {
+		&.name {
+			max-width: 280px;
+			width: 280px;
+		}
+		&.opt_group {
+			max-width: 150px;
+			width: 150px;
+		}
+		&.id {
+			max-width: 70px !important;
+		}
+		&.author {
+			max-width: 170px !important;
+		}
+		&.actions {
+			max-width: 160px !important;
+			width: 160px;
+		}
+		&.acciones {
+			max-width: 150px !important;
+			width: 150px;
+		}
+
+		&.sorting_asc {
+			&:after {
+				content: '\f0dd';
+				@include sort;
+				display: inline-block;
+				width: 0;
+				height: 0;
+			}
+		}
+		&.sorting_desc {
+			&:after {
+				content: '\f0de';
+				@include sort;
+				display: inline-block;
+				width: 0;
+				height: 0;
+			}
+		}
+		&.not_sorting {
+			&:after {
+				content: '\f0dc';
+				@include sort;
+				display: inline-block;
+				width: 0;
+				height: 0;
+			}
+		}
+	}
+	td {
+		&.actions {
+			width: 160px;
+		}
+		&.public {
+			&:after {
+				//content: '\f09c';
+				content: '\f0dc';
+
+				@include sort;
+			}
+		}
+
+		&.private {
+			&:after {
+				content: '\f0dc';
+				@include sort;
+			}
+			&:after {
+				content: '\f023';
+				@include sort;
+			}
+		}
+	}
+}

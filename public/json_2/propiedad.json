@@ -1,0 +1,93 @@
+{
+    "lat": "-33.399319",
+    "lng": "-70.599133",
+    "route": "Gral. Bustamante",
+    "barrio": "Pio XI",
+    "comuna": "Las Condes",
+    "region": "metropolitana",
+    "bodegas": [
+        {
+            "TIPO": "Dominio",
+            "NIVEL": "-2",
+            "NUMERO": "170",
+            "NúMERO": "0"
+        }
+    ],
+    "country": "CL",
+    "m2-util": "67",
+    "rol-sii": [
+        {
+            "TIPO-ROL": "Habitacional",
+            "NUMERO-ROL": "5150-493"
+        },
+        {
+            "TIPO-ROL": "Bodega y estacionamiento",
+            "NUMERO-ROL": "5150-672"
+        }
+    ],
+    "locality": "Vitacura",
+    "m2-total": "0",
+    "ventanas": [
+        null
+    ],
+    "direccion": "Santa Julia 77",
+    "servicios": [
+        null
+    ],
+    "m2-terreno": "460",
+    "subpremise": "depto 1101",
+    "uf-m2-util": null,
+    "banos-total": 4,
+    "destino-sii": [
+        null
+    ],
+    "dormitorios": "2",
+    "m2-terrazas": "6",
+    "oocc-extras": null,
+    "orientacion": "Poniente",
+    "postal_code": "7511103",
+    "fibra-optica": "N/A",
+    "neighborhood": "Barrio Italia",
+    "tipo-caldera": null,
+    "climatizacion": [
+        "Calefacción central por losa radiante"
+    ],
+    "m2-terreno-th": "94",
+    "piso-del-dpto": "3",
+    "street_number": "1620",
+    "tv-e-internet": [
+        null
+    ],
+    "uf-m2-terreno": null,
+    "uso-del-suelo": [
+        null
+    ],
+    "bano-de-visita": "Si",
+    "banos-servicio": "1",
+    "barrio-comment": null,
+    "otros-espacios": [
+        null
+    ],
+    "atributo-barrio": "Cerca del parque Juan XXIII, Plaza Ñuñoa, estación de metro Villa Frey",
+    "banos-completos": "3",
+    "cubierta-cocina": [
+        null
+    ],
+    "m2-util-comment": "Valor de terrazas incluye: 3 m2 terraza normal a nivel de dp, y 20 m2 azotea-mirador.",
+    "coordenadas-mapa": null,
+    "estacionamientos": [
+        {
+            "tipo": "N/A",
+            "nivel": "Dentro de la casa",
+            "numero": "1"
+        }
+    ],
+    "estado-propiedad": "Usada",
+    "items-interes-po": "Ubicación, cerca de colegios. \r\nJardín con piscina.\r\nPrograma familiar. \r\nTermopanel",
+    "m2-total-comment": "incluye jardín de 65 m2",
+    "oocc-valor-total": "0",
+    "sistema-de-aguas": null,
+    "terminacion-piso": [
+        "Flotante"
+    ]
+}

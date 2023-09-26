@@ -1,0 +1,213 @@
+{
+  "version": "v1",
+  "config": {
+    "visState": {
+      "filters": [
+        {
+          "dataId": [
+            "barrios.json"
+          ],
+          "id": "a9talxrh",
+          "name": [
+            "visible"
+          ],
+          "type": "select",
+          "value": true,
+          "enlarged": false,
+          "plotType": "histogram",
+          "animationWindow": "free",
+          "yAxis": null,
+          "speed": 1
+        }
+      ],
+      "layers": [
+        {
+          "id": "s36vddf",
+          "type": "geojson",
+          "config": {
+            "dataId": "barrios.json",
+            "label": "Barrios LCDJ",
+            "color": [
+              255,
+              203,
+              153
+            ],
+            "highlightColor": [
+              252,
+              242,
+              26,
+              255
+            ],
+            "columns": {
+              "geojson": "_geojson"
+            },
+            "isVisible": true,
+            "visConfig": {
+              "opacity": 0.8,
+              "strokeOpacity": 0.8,
+              "thickness": 0.5,
+              "strokeColor": [
+                33,
+                110,
+                86
+              ],
+              "colorRange": {
+                "name": "Uber Viz Sequential 4",
+                "type": "sequential",
+                "category": "Uber",
+                "colors": [
+                  "#E6FAFA",
+                  "#C1E5E6",
+                  "#9DD0D4",
+                  "#75BBC1",
+                  "#4BA7AF",
+                  "#00939C"
+                ]
+              },
+              "strokeColorRange": {
+                "name": "Global Warming",
+                "type": "sequential",
+                "category": "Uber",
+                "colors": [
+                  "#5A1846",
+                  "#900C3F",
+                  "#C70039",
+                  "#E3611C",
+                  "#F1920E",
+                  "#FFC300"
+                ]
+              },
+              "radius": 10,
+              "sizeRange": [
+                0,
+                10
+              ],
+              "radiusRange": [
+                0,
+                50
+              ],
+              "heightRange": [
+                0,
+                500
+              ],
+              "elevationScale": 5,
+              "enableElevationZoomFactor": true,
+              "stroked": true,
+              "filled": true,
+              "enable3d": false,
+              "wireframe": false
+            },
+            "hidden": false,
+            "textLabel": [
+              {
+                "field": null,
+                "color": [
+                  255,
+                  255,
+                  255
+                ],
+                "size": 18,
+                "offset": [
+                  0,
+                  0
+                ],
+                "anchor": "start",
+                "alignment": "center"
+              }
+            ]
+          },
+          "visualChannels": {
+            "colorField": {
+              "name": "Nombre_de_Barrio",
+              "type": "string"
+            },
+            "colorScale": "ordinal",
+            "strokeColorField": null,
+            "strokeColorScale": "quantile",
+            "sizeField": null,
+            "sizeScale": "linear",
+            "heightField": null,
+            "heightScale": "linear",
+            "radiusField": null,
+            "radiusScale": "linear"
+          }
+        }
+      ],
+      "interactionConfig": {
+        "tooltip": {
+          "fieldsToShow": {
+            "barrios.json": [
+              {
+                "name": "OBJECTID",
+                "format": null
+              },
+              {
+                "name": "GlobalID",
+                "format": null
+              },
+              {
+                "name": "CreationDate",
+                "format": null
+              },
+              {
+                "name": "Creator",
+                "format": null
+              },
+              {
+                "name": "EditDate",
+                "format": null
+              },
+              {
+                "name": "Nombre_de_Barrio",
+                "format": null
+              },
+              {
+                "name": "Comuna",
+                "format": null
+              }
+            ]
+          },
+          "compareMode": false,
+          "compareType": "absolute",
+          "enabled": true
+        },
+        "brush": {
+          "size": 0.5,
+          "enabled": false
+        },
+        "geocoder": {
+          "enabled": false
+        },
+        "coordinate": {
+          "enabled": false
+        }
+      },
+      "layerBlending": "normal",
+      "splitMaps": [],
+      "animationConfig": {
+        "currentTime": null,
+        "speed": 1
+      }
+    },
+    "mapState": {
+      "bearing": 0,
+      "dragRotate": false,
+      "latitude": -33.39126368570844,
+      "longitude": -70.5303571467365,
+      "pitch": 0,
+      "zoom": 11.664479156716833,
+      "isSplit": false
+    },
+    "mapStyle": {
+      "styleType": "light_streets",
+      "topLayerGroups": {},
+      "visibleLayerGroups": {},
+      "threeDBuildingColor": [
+        9.665468314072013,
+        17.18305478057247,
+        31.1442867897876
+      ],
+      "mapStyles": {}
+    }
+  }
+}

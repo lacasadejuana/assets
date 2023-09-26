@@ -1,0 +1,513 @@
+.btn-primary {
+  @apply bg-blue-500;
+}
+.btn-primary {
+  @apply bg-blue-500 text-white hover:bg-blue-600;
+}
+.alert {
+    @apply relative px-3 py-3 mb-4 border rounded;
+  }
+  .alert-danger {
+    @apply bg-red-200 border-red-300 text-red-800;
+  }
+  
+  .alert-success {
+    @apply bg-green-200 border-green-300 text-green-800;
+  }
+  .align-items-center {
+    @apply items-center;
+  }
+  .align-items-end {
+    @apply items-end;
+  }
+  .align-self-center {
+    @apply self-center;
+  }
+  .badge {
+    @apply inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded;
+  }
+  .badge-pill {
+    @apply rounded-full py-1 px-3;
+  }
+  .bg-light {
+    @apply bg-gray-100;
+  }
+  .bg-success {
+    @apply bg-green-500;
+  }
+  .bg-warning {
+    @apply bg-yellow-500;
+  }
+  .border-top {
+    @apply border-t;
+  }
+  .breadcrumb {
+    @apply flex flex-wrap  pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded;
+  }
+  .breadcrumb-item {
+    @apply inline-block px-2 py-2 text-gray-700;
+  }
+  .btn {
+    @apply inline-block align-middle text-center select-none border font-normal whitespace-nowrap rounded py-1 px-3 leading-normal no-underline;
+  }
+  .btn-block {
+    @apply block w-full;
+  }
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+  .btn-teal {
+    @apply bg-teal-700 text-white hover:bg-teal-800;
+  }
+  .btn-cyan {
+    @apply bg-cyan-700 text-white hover:bg-cyan-800;
+  }
+  .btn-silver {
+    @apply bg-gray-300 text-gray-800 hover:bg-gray-400;
+  }
+  .btn-outline-silver {
+    @apply bg-gray-50 border-gray-400 text-gray-600 hover:border-gray-600 hover:text-gray-800;
+  }
+  .btn-outline-cyan {
+    @apply text-cyan-700 border-cyan-700 bg-white hover:bg-gray-300;
+  }
+  .btn-emerald {
+    @apply bg-emerald-700 text-white hover:bg-emerald-800;
+  } 
+
+  .btn-group {
+    @apply relative inline-flex align-middle;
+  }
+  .btn-group-sm {
+    @apply py-1 px-2 leading-tight text-xs;
+  }
+  .btn-group-vertical {
+    @apply relative inline-flex align-middle flex-col items-start justify-center;
+  }
+  .btn-info {
+    @apply bg-teal-500 text-white hover:bg-teal-600;
+  }
+  .btn-outline-primary {
+    @apply text-blue-600 border-blue-600 hover:text-white bg-white hover:bg-blue-600;
+  }
+  .btn-outline-secondary {
+    @apply text-gray-600 border-gray-600 hover:text-white bg-white hover:bg-gray-700;
+  }
+  .btn-outline-success {
+    @apply text-green-500 border-green-500 hover:text-white bg-white hover:bg-green-600;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-600 text-white hover:bg-gray-700;
+  }
+  .btn-sm {
+    @apply py-1 px-2 leading-tight text-xs;
+  }
+  .btn-success {
+    @apply bg-green-600 text-white hover:bg-green-800;
+  }
+  .btn-warning {
+    @apply bg-orange-400 text-black hover:bg-orange-500;
+  }
+  .card {
+    @apply relative flex flex-col min-w-0 rounded break-words   bg-white border border-gray-300;
+  }
+  .card-body {
+    @apply flex-auto p-6;
+  }
+  .card-header {
+    @apply py-3 px-6 mb-0 bg-gray-200 border-b  border-gray-300 text-gray-900;
+  }
+  .close {
+    @apply absolute top-0 bottom-0 right-0 px-4 py-3;
+  }
+  .col {
+    @apply relative flex-grow max-w-full flex-1 px-4;
+  }
+  .col-1 {
+    @apply w-1/6;
+  }
+  .col-12 {
+    @apply w-full;
+  }
+  .col-3 {
+    @apply w-1/4;
+  }
+  .col-4 {
+    @apply w-1/3;
+  }
+  .col-5 {
+    @apply w-2/5;
+  }
+  .col-6 {
+    @apply w-1/2;
+  }
+  .col-7 {
+    @apply w-3/5;
+  }
+  .col-8 {
+    @apply w-2/3;
+  }
+  .col-form-label {
+    @apply pt-2 pb-2 mb-0 leading-normal;
+  }
+  .col-lg-10 {
+    @apply lg:w-4/5 pr-4 pl-4;
+  }
+  .col-lg-12 {
+    @apply lg:w-full pr-4 pl-4;
+  }
+  .col-lg-2 {
+    @apply lg:w-1/5 pr-4 pl-4;
+  }
+  .col-lg-4 {
+    @apply lg:w-1/3 pr-4 pl-4;
+  }
+  .col-lg-6 {
+    @apply lg:w-1/2 pr-4 pl-4;
+  }
+  .col-md-1 {
+    @apply md:w-1/6 pr-4 pl-4;
+  }
+  .col-md-10 {
+    @apply md:w-4/5 pr-4 pl-4;
+  }
+  .col-md-12 {
+    @apply md:w-full pr-4 pl-4;
+  }
+  .col-md-2 {
+    @apply md:w-1/5 pr-4 pl-4;
+  }
+  .col-md-3 {
+    @apply md:w-1/4 pr-4 pl-4;
+  }
+  .col-md-4 {
+    @apply md:w-1/3 pr-4 pl-4;
+  }
+  .col-md-5 {
+    @apply md:w-2/5 pr-4 pl-4;
+  }
+  .col-md-6 {
+    @apply md:w-1/2 pr-4 pl-4;
+  }
+  .col-md-7 {
+    @apply md:w-3/5 pr-4 pl-4;
+  }
+  .col-md-8 {
+    @apply md:w-2/3 pr-4 pl-4;
+  }
+  .col-sm-12 {
+    @apply sm:w-full pr-4 pl-4;
+  }
+  .col-sm-6 {
+    @apply sm:w-1/2 pr-4 pl-4;
+  }
+  .col-xl-3 {
+    @apply xl:w-1/4 pr-4 pl-4;
+  }
+  .col-xl-4 {
+    @apply xl:w-1/3 pr-4 pl-4;
+  }
+  .col-xl-5 {
+    @apply xl:w-2/5 pr-4 pl-4;
+  }
+  .col-xl-7 {
+    @apply xl:w-3/5 pr-4 pl-4;
+  }
+  .col-xl-8 {
+    @apply xl:w-2/3 pr-4 pl-4;
+  }
+  .collapse {
+    @apply hidden;
+  }
+  .bs-container {
+    @apply container mx-auto sm:px-4;
+  }
+  .bs-container-fluid {
+    @apply container max-w-full mx-auto sm:px-4;
+  }
+  .d-block {
+    @apply block;
+  }
+  .d-flex {
+    @apply flex;
+  }
+  .d-inline {
+    @apply inline;
+  }
+  .d-lg-block {
+    @apply lg:block;
+  }
+  .d-lg-inline {
+    @apply lg:inline;
+  }
+  .d-lg-none {
+    @apply lg:hidden;
+  }
+  .d-md-block {
+    @apply md:block;
+  }
+  .d-md-flex {
+    @apply md:flex;
+  }
+  .d-md-inline {
+    @apply md:inline;
+  }
+  .d-md-none {
+    @apply md:hidden;
+  }
+  .d-none {
+    @apply hidden;
+  }
+  .d-sm-block {
+    @apply sm:block;
+  }
+  .d-sm-none {
+    @apply sm:hidden;
+  }
+  .d-xl-block {
+    @apply xl:block;
+  }
+  .d-xl-none {
+    @apply xl:hidden;
+  }
+  .disabled {
+    @apply opacity-75;
+  }
+  .dropdown {
+    @apply relative;
+  }
+  .dropdown-item {
+    @apply block w-full py-1 px-6 font-normal text-gray-900 whitespace-nowrap border-0;
+  }
+  .actions_dropdown .dropdown-item {
+    @apply block w-full py-1 px-2 font-normal text-gray-900 whitespace-nowrap border-0 hover:bg-gray-300;
+    padding-left:0;
+    padding-right: 0;
+  }
+  .dropdown-menu {
+    @apply absolute left-0 z-50 float-left hidden  py-2 mt-1 text-base bg-white border border-gray-300 rounded;
+  }
+  .dropdown-toggle {
+    @apply inline-block ml-1   border-b-0 border-t border-r border-l;
+  }
+  .fade {
+    @apply opacity-0;
+  }
+  .fixed-bottom {
+    @apply bottom-0;
+  }
+  .flex-column {
+    @apply flex-col;
+  }
+  .flex-grow-1 {
+    @apply flex-grow;
+  }
+  .form-control {
+    @apply block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded;
+  }
+  .form-control-sm {
+    @apply py-1 px-2 text-sm leading-normal rounded;
+  }
+  .form-group {
+    @apply mb-4;
+  }
+  .h-100 {
+    @apply h-full;
+  }
+  .h-5 {
+    @apply mb-2 font-medium leading-tight text-lg;
+  }
+  .input-group {
+    @apply relative flex items-stretch w-full;
+  }
+  .input-group-text {
+
+  height: 1.85em;
+  padding-top: 0.25em;
+
+  }
+  .select2-container  .select2-selection  {
+    height: 30px;
+    line-height: 1.4;
+    padding: 3px 24px 3px 12px;
+}
+.form-label-2 {
+  font-size:12px;
+}
+  .invalid-feedback {
+    @apply hidden mt-1 text-sm text-red-700;
+  }
+  .is-invalid {
+    @apply bg-red-700;
+  }
+  .justify-content-between {
+    @apply justify-between;
+  }
+  .justify-content-center {
+    @apply justify-center;
+  }
+  .list-group {
+    @apply flex flex-col pl-0 mb-0 border rounded border-gray-300;
+  }
+  /*
+  .nav-item {
+      @apply;
+    }
+    .nav-pills {
+        @apply;
+      }
+  .navbar-expand-lg {
+    @apply;
+  }
+  .alert-dismissible {
+    @apply;
+  }
+  .alert-heading {
+    @apply;
+  }
+  .list-group-flush {
+    @apply;
+  }*/
+  .list-group-item {
+    @apply relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline;
+  }
+  .list-group-item-action {
+    @apply w-full;
+  }
+  .m-3 {
+    @apply m-4;
+  }
+  .m-lg-0 {
+    @apply lg:m-0;
+  }
+  .m-lg-4 {
+    @apply lg:m-6;
+  }
+  .m-md-4 {
+    @apply md:m-6;
+  }
+  .m-xl-0 {
+    @apply xl:m-0;
+  }
+  .mb-md-4 {
+    @apply md:mb-6;
+  }
+  .mb-sm-4 {
+    @apply sm:mb-6;
+  }
+  .mt-lg-2 {
+    @apply lg:mt-2;
+  }
+  .mt-md-2 {
+    @apply md:mt-2;
+  }
+  .mt-sm-3 {
+    @apply sm:mt-4;
+  }
+  .mw-100 {
+    @apply max-w-full;
+  }
+  .mx-lg-2 {
+    @apply lg:mx-2;
+  }
+  .mx-lg-3 {
+    @apply lg:mx-4;
+  }
+  .mx-xl-2 {
+    @apply xl:mx-2;
+  }
+  .nav {
+    @apply flex flex-wrap list-none pl-0 mb-0;
+  }
+  .nav-link {
+    @apply inline-block py-2 px-4 no-underline border border-blue-500 bg-blue-500 rounded text-white mx-1;
+  }
+  .nav-link {
+    @apply inline-block py-2 px-4 no-underline;
+  }
+  
+  .navbar {
+    @apply relative flex flex-wrap items-center content-between py-3 px-4;
+  }
+  .navbar-brand {
+    @apply inline-block pt-1 pb-1 mr-4 text-lg whitespace-nowrap;
+  }
+  .navbar-collapse {
+    @apply flex-grow items-center;
+  }
+  .navbar-dark {
+    @apply text-white;
+  }
+  .negocio_cell {
+    @apply border  border-opacity-10;
+  }
+  
+  .navbar-nav {
+    @apply flex flex-wrap  pl-0 mb-0;
+  }
+  .navbar-toggler {
+    @apply py-1 px-2  leading-normal bg-transparent border border-transparent rounded;
+  }
+
+  .p-3 {
+    @apply p-4;
+  }
+  .p-sm-4 {
+    @apply sm:p-6;
+  }
+  .p-xl-1 {
+    @apply xl:p-1;
+  }
+  .p-xl-4 {
+    @apply xl:p-6;
+  }
+  .page-link {
+    @apply relative block py-2 px-3 -ml-px leading-normal text-blue-500 bg-white border border-gray-200 no-underline hover:text-blue-800 hover:bg-gray-200;
+  }
+  .pagination {
+    @apply flex  pl-0 rounded;
+  }
+  .position-fixed {
+    @apply fixed;
+  }
+  .py-lg-3 {
+    @apply lg:py-4;
+  }
+  .row {
+    @apply flex flex-wrap;
+  }
+  .show {
+    @apply opacity-100 block;
+  }
+  .small {
+    @apply text-xs;
+  }
+  .table {
+    @apply w-full max-w-full mb-4 bg-transparent;
+  }
+  .table-responsive {
+    @apply block w-full overflow-auto;
+  }
+  .dataTables_scrollBody {
+    @apply border  border-opacity-10 ;
+}
+.h-24-em {
+	height: 2.4em;
+}
+.fs-09em {
+	font-size: 0.9em;
+}
+.filter_buttons {
+  @apply btn  flex-shrink btn-primary  h-24-em hidden md:flex align-items-center py-4  ;
+}
+.negocios_full {
+  @apply    small text-left collapse relative   min-w-full table-fixed border-opacity-10  divide-y divide-gray-300;
+}
+
+.modelable_inline_editing {
+  @apply   form-control-sm   align-items-center bg-white      justify-start     overflow-hidden pr-3 cursor-pointer;
+}
+.negocio_dtt_control {
+  @apply   w-full    h-10 align-items-center justify-evenly  flex;
+}

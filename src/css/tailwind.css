@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/** to rebuild main.css run "yarn build:bootstrap" */
+@import './select2/select2.min.css';
+@import './select2/select2-bootstrap.min.css';
+@import './bootstrap_wizard.css';
+@import './_main.css';
+@import './_tw_imports.css';
+@import 'flatpickr/dist/flatpickr.css';
+ 
+/* 
+after vendor stuff, here's our stylesheet: 
+*/
+@import './_app.css';
+
+
+/*
+  .offset-lg-1 {
+    @apply lg:mx-1/6;
+  }
+  .offset-md-1 {
+    @apply md:mx-1/6;
+  }
+  .offset-md-2 {
+    @apply md:mx-1/5;
+  }
+  .offset-md-3 {
+    @apply md:mx-1/4;
+  }
+  .offset-md-4 {
+    @apply md:mx-1/3;
+  }
+  .offset-xl-2 {
+    @apply xl:mx-1/5;
+  }
+  */
+  .text-danger {
+    @apply text-red-600;
+  }
+  .text-muted {
+    @apply text-gray-700;
+  }
+  .text-nowrap {
+    @apply whitespace-nowrap;
+  }
+  .text-primary {
+    @apply text-blue-600;
+  }
+  .text-success {
+    @apply text-green-500;
+  }
+  .text-truncate {
+    @apply truncate;
+  }
+  .w-100 {
+    @apply w-full;
+  }
+  .w-50 {
+    @apply w-1/2;
+  }
+  .w-75 {
+    @apply w-3/4;
+  }
+  

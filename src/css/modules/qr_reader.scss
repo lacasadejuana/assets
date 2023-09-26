@@ -1,0 +1,120 @@
+#qr_container {
+    width: 310px;
+    max-width: 310px;
+    height: 350px;
+    overflow-x: hidden;
+    .qr_slide {
+        flex-basis: 25%;
+        width: 300px;
+        max-width: 300px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    #qr-reader {
+        & > div {
+            [alt="Info icon"] {
+                display: none;
+            }
+            & > div {
+                img {
+                    display: none;
+                }
+            }
+
+            .permission_button {
+                font-size: 1.15em;
+                min-width: 194px;
+            }
+        }
+        &.scanner_scanning {
+            #qr-reader__scan_region {
+                min-height: 250px !important;
+                overflow-y: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+            #qr-reader__dashboard_section_csr {
+                #select_camera {
+                    display: none;
+                }
+                #html5-qrcode-select-camera {
+                    display: none;
+                }
+            }
+        }
+        &__scan_region {
+            #qr-shaded-region {
+                border-width: 15px !important;
+                min-height: 220px;
+            }
+            video {
+                //min-height: 220px;
+
+                // max-height: 250px;
+                // width: 280px;
+            }
+        }
+        &__dashboard {
+            button,
+            select,
+            #html5-qrcode-anchor-scan-type-change {
+                padding: 5px 10px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+                min-width: 215px;
+                font-size: 1.15em;
+                text-decoration: none;
+            }
+            &_section {
+                margin-bottom: 10px;
+                &_csr {
+                    button#html5-qrcode-button-camera-start {
+                        margin-top: 1em;
+                        background: #2f80ed;
+                        color: white;
+                    }
+                    button#html5-qrcode-button-camera-stop {
+                        margin-top: 1em;
+                        background: #ccc;
+                    }
+                    button#html5-qrcode-button-camera-permission {
+                        background: #2f80ed;
+                        color: white;
+                    }
+                }
+                select {
+                    margin-top: 1em;
+                    background: #f9f9f9;
+                    margin-bottom: 1em;
+                }
+                span#html5-qrcode-anchor-scan-type-change {
+                    margin-top: 1em;
+                    background: #f9f9f9;
+                }
+            }
+        }
+    }
+    #qr_slider {
+        transition: all 0.2s ease-in-out;
+        width: 1240px;
+        height: 350px;
+        flex-wrap: nowrap;
+        &.show_geolocation_div {
+            transform: translateX(0);
+        }
+        &.show_camera_permission_div {
+            transform: translateX(-305px);
+        }
+        &.show_qr_dashboard {
+            transform: translateX(-615px);
+        }
+        &.got_scan_result {
+            transform: translateX(-925px);
+        }
+    }
+}

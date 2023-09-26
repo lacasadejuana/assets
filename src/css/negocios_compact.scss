@@ -1,0 +1,368 @@
+@use "./modules/mixins.scss" as mixins;
+@use "./modules/datatable_mixins.scss" as datatable_mixins;
+
+@mixin fixed-table-body {
+}
+
+@mixin sticky-header-container {
+	.sticky-header-container {
+		.th-inner {
+			font-size: 0.85em;
+		}
+		th.direccion_y_nombre {
+			@include mixins.sticky_left;
+		}
+		th.nombre_text {
+			@include mixins.sticky_left;
+			text-align: left;
+		}
+	}
+}
+
+@mixin fixed-table-header {
+	.fixed-table-header {
+		thead.sticky-header {
+			th.nombre_text,
+			th.nombre,
+			th.nombre_del_negocio {
+				//@include mixins.sticky_left;
+				top: 0;
+				z-index: 140;
+				position: sticky;
+				top: 0;
+				left: 0;
+			}
+			th.nombre_del_negocio {
+				background: #fefefe;
+			}
+			tr {
+				th:last-child {
+					border-right-style: solid !important;
+					border-right-color: white !important;
+					border-right-width: 100px !important;
+				}
+			}
+		}
+	}
+}
+@mixin fixed-columns {
+	.fixed-columns {
+		& > div.fixed-table-body {
+			& > table {
+				& > tbody {
+					& > tr {
+						& > td {
+							height: 45px !important;
+							&.col-fecha {
+								white-space: nowrap;
+							}
+						}
+					}
+				}
+
+				& > thead {
+					background-color: #f5f5f5;
+					& > tr {
+						& > th {
+							background-color: #fff;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#spr_tabs_content {
+	li {
+		border: 1px solid #ddd;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-bottom: 0 none;
+		padding-top: 5px;
+		background: #fcfcfc;
+		&.active {
+			margin-bottom: -0.3em;
+
+			background: white;
+			padding-right: 0.6em;
+			font-size: 1.05em;
+			padding-left: 0.6em;
+		}
+		.tab_heads {
+			.tab {
+				margin-left: 1em;
+				margin-right: 1em;
+			}
+		}
+	}
+}
+@mixin fixed-table-pagination {
+	div.fixed-table-pagination {
+		float: right;
+		grid-column: span 2 / span 2;
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+		display: grid !important;
+
+		/* justify-content: space-between; */
+
+		justify-content: space-between;
+		.pagination-detail {
+			align-self: flex-start;
+			justify-content: flex-start;
+			justify-items: flex-start;
+			flex-basis: 300px;
+		}
+		.pagination {
+			display: flex;
+			justify-self: flex-end;
+			justify-items: flex-end;
+			justify-content: flex-end;
+		}
+		& > .page-list {
+			margin-right: 1em;
+		}
+		@media (max-width: 768px) {
+			flex-basis: 600px;
+			div.pagination-detail {
+				flex-basis: 150px;
+				display: flex;
+				align-items: center;
+				.page-list {
+					width: 60px;
+					text-overflow: clip;
+					max-width: 60px;
+					white-space: nowrap;
+
+					& > span {
+						display: none;
+					}
+				}
+				.pagination-info {
+					display: none;
+					max-width: calc(100% - 70px);
+					line-height: unset;
+					padding-left: 0.5em;
+				}
+			}
+		}
+	}
+}
+
+#help_dropdown {
+	z-index: 101;
+	.columns {
+		.keep-open.btn-group {
+			.dropdown-menu.show {
+				z-index: 110;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	#table_outer_container.visitas_outer_container {
+		margin-left: -15px;
+		margin-right: -15px;
+		.loading-wrap {
+			max-width: calc(100vw - 3em);
+		}
+	}
+}
+
+.fade_05 {
+	transition: opacity 0.5s linear;
+	&.out {
+		opacity: 0;
+	}
+}
+
+.spr_table_container,
+.negocios_compact_container {
+	#spr_ejecutadas_head,
+	#spr_table_head,
+	#negocios_compact_head {
+		th.bs_table_header_cell {
+			.tg_days_digit {
+				color: black;
+				font-size: 1.05em;
+				margin-left: 0.25em;
+				margin-right: 0.25em;
+			}
+			.tg_days_text {
+				color: #777;
+			}
+		}
+	}
+	.bootstrap-table.bootstrap5 {
+		& > div.fixed-table-container.fixed-height.has-card-view > div.fixed-table-body > .fixed-table-border {
+			max-width: calc(100vw - 0.2em) !important;
+		}
+		& > div {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+
+			flex-direction: row;
+			&:first-child {
+				display: grid !important;
+				grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+			}
+			@include datatable_mixins.fixed-table-toolbar;
+			@include fixed-table-pagination;
+		}
+
+		.fixed-table-container {
+			.fixed-table-body {
+				@include sticky-header-container;
+				@media (max-width: 768px) {
+					width: 100%;
+					.fixed-table-loading {
+						display: none;
+						&.open {
+							display: block;
+							width: 98vw !important;
+							margin: 0 auto;
+							position: relative;
+							.loading-wrap {
+							}
+							.animation-wrap {
+								.animation-dot {
+									padding: 0;
+								}
+							}
+						}
+					}
+				}
+				table {
+					&#negocios_full,
+					&#spr_table,
+					&#spr_ejecutadas,
+					&#negocios_compact {
+						position: sticky;
+						top: 0;
+						z-index: 2;
+						& > thead {
+							@include mixins.bootstrap-table-thead;
+
+							tr {
+								th:last-child {
+									border-right-style: solid !important;
+									border-right-color: white !important;
+									border-right-width: 100px !important;
+								}
+								& > th {
+								}
+							}
+						}
+						& > tbody {
+							@include mixins.bootstrap-table-tbody;
+
+							& > tr {
+								&.negocio_row {
+									td:nth-child(1) {
+										padding-right: 0 !important;
+										padding-left: 0 !important;
+										&.nombre_del_negocio {
+											padding-top: 0;
+											padding-bottom: 0;
+											.direccion_y_nombre {
+												border-right: 1px solid #efefef;
+												border-left: 1px solid #efefef;
+												width: 100%;
+												height: 100%;
+												padding: 7px;
+												padding-top: 7px !important;
+											}
+										}
+									}
+									td:nth-child(even) {
+										border-left-style: none !important;
+										border-left-color: transparent !important;
+										border-left-width: 0 !important;
+										border-right-style: none !important;
+										border-right-color: transparent !important;
+										border-right-width: 0 !important;
+									}
+									td:last-child {
+										border-right-style: solid !important;
+										border-right-color: white !important;
+										border-right-width: 100px !important;
+									}
+									& > td {
+										height: 45px !important;
+										.text_line_clamp {
+											@include mixins.text_line_clamp;
+										}
+										.actions_inner {
+											min-width: 240px;
+											height: 60px;
+										}
+										&.nombre_del_negocio {
+											position: sticky;
+											left: 0;
+											background-color: white;
+										}
+										&.select,
+										&.select_multiple {
+											span {
+												max-width: 200px;
+												line-break: auto;
+												text-overflow: ellipsis;
+												white-space: break-spaces;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			@include fixed-table-header;
+
+			th.direccion_y_nombre {
+				@include mixins.sticky_left;
+			}
+
+			/*&.nombre {
+				@include mixins.sticky_left;
+				top: 0;
+				z-index: 140;
+			}*/
+			.fixedBody {
+				position: relative;
+				z-index: -1;
+				tr:nth-child(odd) {
+					background: #fafafa;
+					background-color: hsla(34deg, 10%, 90%, 0.9) !important;
+				}
+				tr:nth-child(even) {
+					background-color: hsla(134deg, 10%, 100%, 0.9) !important;
+				}
+			}
+			@include fixed-columns;
+			&.has-card-view {
+				& > div.fixed-table-body {
+					& > table {
+						& > tbody {
+							& > tr {
+								border-color: transparent;
+							}
+							@media (max-width: 768px) {
+								tr {
+									border: 0 none !important;
+									border-color: transparent !important;
+									td {
+										padding-left: 0 !important;
+										padding-right: 0 !important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
