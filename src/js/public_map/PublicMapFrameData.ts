@@ -111,7 +111,11 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     this.$store.campos_busqueda as unknown as CamposBusquedaStore
                 )
             });
-            this.$store.public_maps.once('ready').then((maps) => {
+            console.warn('deciding between createMap and store ready')
+            return this.$store.public_maps.once('ready').then((maps) => {
+                alert('store ready')
+                console.info('mapFrameData, received store ready event')
+
                 console.info({ googleMaps: maps })
                 extendMapDataProtoType(maps);
                 return this.createMap()
@@ -169,7 +173,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
         },
         async createMap(): Promise<google.maps.Map> {
             globalThis.mapframe = this;
-
+            console.warn('creating map or waiting for the store to create it')
             //globalThis.googleMapsOptions.libraries.push('drawing');
             let
                 mapStatusObj = {} as Partial<google.maps.MapOptions>
@@ -185,14 +189,26 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                 isFractionalZoomEnabled: true,
                 streetViewControl: false,
                 mapTypeControl: !this.codigo_interno && !this.extent,
-
+                tiltControl: true,
+                mapTypeControlOptions: {
+                    mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map'],
+                    style: 1, // google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                },
                 ...mapStatusObj,
             };
-            return this.$store.public_maps.once('map_created').then(gmap => {
+            console.info('deciding between initMap and map_created')
+            return (this.$store.public_maps.full_map ?
+                Promise.resolve(new google.maps.Map(this.$el.querySelector('#map_container'), mergedOptions))
+                : this.$store.public_maps.once('map_created')
+            ).then(async gmap => {
+                console.log('map created')
+                if (gmap) {
+                    gmap.setOptions(mergedOptions)
+                } else {
+                    gmap = await initMap(this.$el.querySelector('#map_container'), mergedOptions)
+                }
                 this.gmap = gmap
-                gmap.setOptions(mergedOptions)
-                //   this.gmap = await initMap(google, this.$refs.map_container, mergedOptions, { appendToGlobalThis: true, loadBarrios: false });
-
+                globalThis.gmap = gmap
                 this.mapCreatedHandlers.forEach(handler => handler(this.gmap))
 
                 this.googleReady = true;
@@ -270,7 +286,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             return {
                 center: { lat, lng },
                 zoom: Number(Number(this.gmap?.getZoom()).toFixed(1)),
-                // mapTypeId: this.gmap?.getMapTypeId(),
+                mapTypeId: this.gmap?.getMapTypeId(),
             };
         },
 
@@ -455,7 +471,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
 
                 labelField: 'name',
                 options: this.mapTypeOptions,
-                items: [1],
+                items: [this.gmap.getMapTypeId()],
 
                 onChange: (newValue) => {
                     this.gmap.setMapTypeId(newValue);

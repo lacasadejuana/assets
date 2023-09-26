@@ -64,6 +64,9 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
             extendMapDataProtoType(maps)
             this.ready = true;
             this.processEventListeners('ready', maps)
+            if (this.skipMapCreation) {
+                this.processEventListeners('map_created', null)
+            }
 
         })
     }
@@ -77,10 +80,10 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         this.processEventListeners('map_created', customElementsMap)
         this.marquee('received customElementsMap')
     }
-
+    skipMapCreation: boolean = false
     get verifiers(): Record<Partial<TeventType>, boolean> {
         return {
-            map_created: !!this.customElementsMap,
+            map_created: !!this.customElementsMap || !!this.skipMapCreation,
             ready: !!this.ready,
             layers_added: this.layer_array.length > 0
         } as unknown as Record<Partial<TeventType>, boolean>
@@ -100,7 +103,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
             this.barrioLabels.forEach(({ position, name }) => {
                 const priceTag = document.createElement("div");
 
-                priceTag.className = "price-tag";
+                priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
                 priceTag.textContent = name;
                 const marker = new google.maps.marker.AdvancedMarkerElement({
                     map: null,
@@ -256,7 +259,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     get storedStatus() {
         const defaultMapStatus = {
             center: { lat: -33.415785, lng: -70.578539 },
-            mapTypeId: 'Grass',
+            //mapTypeId: 'Grass',
             zoom: 13.1,
         };
         const mapStatus = {
