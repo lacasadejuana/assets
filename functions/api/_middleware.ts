@@ -14,7 +14,7 @@ export const onRequestOptions: PagesFunction = async () => {
 // Set CORS to all /api responses
 export const onRequest: PagesFunction = async ({ next }) => {
 	const response = await next();
-	response.headers.set('Link', '</js/public_map.js>; rel=preload; as=script');
+	//response.headers.set('Link', '</js/public_map.js>; rel=preload; as=script');
 	//	response.headers.append('link', '</api/negocios>; rel="preload"; as="fetch"');
 
 	response.headers.set('Access-Control-Allow-Origin', '*');

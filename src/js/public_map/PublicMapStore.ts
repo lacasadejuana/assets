@@ -20,6 +20,7 @@ import { AlpineDataComponent, waitFor } from '@/components';
 import { BaseClass } from '@/components/stores';
 import { PublicLayersObject, exampleLayers } from './public_map_modules/exampleLayers';
 import { sharingLevels } from './public_map_modules/sharingLevels';
+import { extendMapDataProtoType } from './public_map_modules';
 
 export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'layers_added'> {
     map_name: string = null
@@ -36,6 +37,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
 
     token: string = null
     active_tab = 'tabs-savemap'
+    ready: boolean = false;
     layer_array: ILayerDefinition[] = []
     savedMaps: ISavedMap[] = []
     url: URL;
@@ -54,7 +56,13 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         this.url = new URL(window.location.href);
 
 
+        this.waitForGoogleMapsLoaded().then(maps => {
+            console.log('will extend prototype', maps)
+            extendMapDataProtoType(maps)
+            this.ready = true;
+            this.processEventListeners('ready', maps)
 
+        })
     }
     get verifiers(): Record<Partial<TeventType>, boolean> {
         return {
@@ -63,7 +71,20 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         } as unknown as Record<Partial<TeventType>, boolean>
 
     }
-
+    async waitForGoogleMapsLoaded(attempt = 0) {
+        let gmaps = globalThis.google && globalThis.google.maps
+        if (gmaps) {
+            console.timerInfo('importing core and maps at attempt ' + attempt)
+            return gmaps.importLibrary('core').then(() => gmaps.importLibrary('maps'))
+        }
+        if (attempt > 9) {
+            return gmaps
+        }
+        return waitFor(300).then(() => {
+            console.timerInfo('google maps not found. Attempt ' + attempt);
+            return this.waitForGoogleMapsLoaded(attempt + 1)
+        })
+    }
 
     init() {
 

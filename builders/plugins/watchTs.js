@@ -11,11 +11,12 @@ const { replaceTimestamp } = require("./replaceTimestamp");
  *
  * @param {string} path
  */
-const watchTs = (watchPath) => {
+const watchTs = (watchPath, onRebuild) => {
     const watcher = chokidar.watch(watchPath, {
         ignored: /(^|[\/\\])\../,
         persistent: true,
     });
+    onRebuild = onRebuild || replaceTimestamp;
 
     // Add event listeners.
     watcher.on('ready', () => {
@@ -25,19 +26,19 @@ const watchTs = (watchPath) => {
                 console.log(
                     `${cyan('[chokidar]')} File ${path} has been added`
                 );
-                replaceTimestamp();
+                onRebuild();
             })
             .on('change', (path) => {
                 console.log(
                     `${cyan('[chokidar]')} File ${path} has been changed`
                 );
-                replaceTimestamp();
+                onRebuild();
             })
             .on('unlink', (path) => {
                 console.log(
                     `${cyan('[chokidar]')} File ${path} has been removed`
                 );
-                replaceTimestamp();
+                onRebuild();
             });
     });
 };

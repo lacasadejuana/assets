@@ -1,4 +1,8 @@
-export function extendMapDataProtoType(maps) {
+export function extendMapDataProtoType() {
+    let maps = google.maps
+
+    console.info({ googleMaps: maps })
+
 
     // Define Marker Shapes
     var MAP_PIN = 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z';
@@ -68,29 +72,29 @@ export function extendMapDataProtoType(maps) {
             div.style.top = (position.y - div.offsetHeight) + 'px';
         }
     };
+    maps.importLibrary('marker').then(() => {
+        class Marker extends maps.Marker {
+            constructor(options) {
+                super();
+                maps.Marker.apply(this, arguments);
 
-    class Marker extends maps.Marker {
-        constructor(options) {
-            super();
-            maps.Marker.apply(this, arguments);
-
-            if (options.map_icon_label) {
-                this.MarkerLabel = new MarkerLabel({
-                    map: this.map,
-                    marker: this,
-                    text: options.map_icon_label
-                });
-                this.MarkerLabel.bindTo('position', this, 'position');
+                if (options.map_icon_label) {
+                    this.MarkerLabel = new MarkerLabel({
+                        map: this.map,
+                        marker: this,
+                        text: options.map_icon_label
+                    });
+                    this.MarkerLabel.bindTo('position', this, 'position');
+                }
+            }
+            setMap() {
+                maps.Marker.prototype.setMap.apply(this, arguments);
+                (this.MarkerLabel) && this.MarkerLabel.setMap.apply(this.MarkerLabel, arguments);
             }
         }
-        setMap() {
-            maps.Marker.prototype.setMap.apply(this, arguments);
-            (this.MarkerLabel) && this.MarkerLabel.setMap.apply(this.MarkerLabel, arguments);
-        }
-    }
 
 
-
+    })
     // Custom Marker SetMap
 
 

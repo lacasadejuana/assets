@@ -66,8 +66,10 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
         },
         bounds: null,
         codigo_interno: null,
-        init() {
-            let qs = new URL(location.href)
+        async init() {
+            let mapPromise = google.maps.importLibrary('maps'),
+                markerPromise = google.maps.importLibrary('marker'),
+                qs = new URL(location.href)
             if (qs.searchParams.get('extent')) {
                 let [west, north, east, south] = qs.searchParams.get('extent').split(',')
 
@@ -77,7 +79,16 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     west: Number(west),
                     south: Number(south),
                 }
-            } else {
+            } else if (codigo_interno) {
+                this.bounds = {
+                    "south": -33.47262469572745,
+                    "west": -70.61415217498778,
+                    "north": -33.4076631444587,
+                    "east": -70.5119278250122
+                }
+            }
+
+            else {
                 this.bounds = { "south": -33.46, "west": -70.67, "north": -33.336, "east": -70.49 }
             }
             if (qs.searchParams.get('codigo_interno')) {
@@ -100,13 +111,20 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     this.$store.campos_busqueda as unknown as CamposBusquedaStore
                 )
             });
-            this.createMap().then(async (gmap) => {
+            this.$store.public_maps.once('ready').then((maps) => {
+                console.info({ googleMaps: maps })
+                return this.createMap()
+            }).then(async (gmap) => {
                 this.gmap = gmap;
                 this.marker = this.createMarker();
                 globalThis.layers = {};
                 this.$store.public_maps.once('layers_added').then(async () => {
+                    console.trace('layers added')
                     this.appendFeatures()
-
+                    this.onMapCreated((gmap) => {
+                        console.warn('map created')
+                        this.panToCodigoInterno()
+                    })
                     if (this.bounds) {
                         this.gmap.fitBounds(this.bounds)
                     } else if (this.storedStatus.center && this.storedStatus.zoom) {
@@ -120,6 +138,8 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                 });
                 this.$store.public_maps.layer_object = PublicLayersObject
                 this.$store.public_maps.createLayers(this);
+                this.createDomManager(this.codigo_interno ?? codigo_interno);
+
                 setTimeout(() => {
                     globalThis.layerComponents.colegios.layer_options.checked = true
                     globalThis.layerComponents.metro.layer_options.checked = true
@@ -148,41 +168,55 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
         async createMap(): Promise<google.maps.Map> {
             globalThis.mapframe = this;
 
-            globalThis.googleMapsOptions.libraries.push('visualization');
             //globalThis.googleMapsOptions.libraries.push('drawing');
-            let mapStatus,
-                mapStatusObj = {};
+            let
+                mapStatusObj = {} as Partial<google.maps.MapOptions>
             this.url = new URL(window.location.href);
 
             //@ts-ignore
             if (!mapStatusObj.center) {
-                mapStatus = this.storedStatus;
                 mapStatusObj = this.storedStatus;
             }
-            if (this.bounds) mapStatusObj.bounds = this.bounds
 
 
             this.gmap = await initMap(google, this.$refs.map_container, {
-                //mapId: '918f8abc9ae2727a',
+                mapId: '918f8abc9ae2727a',
                 rotateControl: true,
                 isFractionalZoomEnabled: true,
+                streetViewControl: false,
+                mapTypeControl: !this.codigo_interno & !this.extent,
                 mapTypeControlOptions: {
                     mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map'],
                     style: 1, // google.maps.MapTypeControlStyle.DROPDOWN_MENU,
                 },
                 ...mapStatusObj,
             }, { appendToGlobalThis: true, loadBarrios: false });
-            if (codigo_interno) this.gmap.setZoom(15)
-            this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(
-                document.querySelector('#map_controls'),
-            );
+
+            this.mapCreatedHandlers.forEach(handler => handler(this.gmap))
+
             this.googleReady = true;
-            setTimeout(() => {
-                this.$nextTick(() => (this.mapDialogOpen = true));
-            }, 2000);
+
+            return this.gmap;
+        },
+        mapCreatedHandlers: [],
+        onMapCreated(handler) {
+            this.mapCreatedHandlers.push(handler)
+        },
+        createDomManager(codigo_interno) {
+
+            if (codigo_interno) {
+                this.gmap.setZoom(15)
+            } else {
+                this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(
+                    document.querySelector('#map_controls'),
+                );
+                setTimeout(() => {
+                    this.$nextTick(() => (this.mapDialogOpen = true));
+                }, 2000);
+
+            }
             this.$refs.map_container.classList.remove('hidden');
             this.$refs.map_container.style.height = `${this.mapHeight}px`;
-            extendMapDataProtoType(google.maps);
             this.mapTypeListener = new MapTypeListener(this.gmap);
             this.mapTypeListener
 
@@ -201,7 +235,6 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             this.infowindow = new google.maps.InfoWindow();
             this.gmap.infowindow = this.infowindow;
 
-            return this.gmap;
         },
 
         googleReady: null,
@@ -269,7 +302,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     await waitFor(50);
                 }
             }
-            this.panToCodigoInterno()
+
 
         },
         panToCodigoInterno() {

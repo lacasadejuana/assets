@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "wrangler pages dev public",
 		"build:tailwind":" tailwind  -i src/css/_app.css -o public/css/app.css",
-		"build":"node builders/esbuild.cjs && npm run build:tailwind"
+		"build":"esbuild src/js/public_map/index.ts --bundle --format=esm --outfile=public/js/public_map.js --tsconfig=tsconfig.json"
+		 
 	},
 	"devDependencies": {
 		"@aerni/alpine-resize": "^1.1.0",

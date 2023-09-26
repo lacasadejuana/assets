@@ -67,13 +67,7 @@ module.exports = {
     replaceTimestamp,
     runEsbuild,
 };
-
-if (require.main === module) {
-    let { _, ...options } = argv;
-    if (options.watch) {
-        return watchTs('src/js');
-    }
-
+const onRebuild = () => {
     runEsbuild({
         entryPoints: [
             'src/js/public_map/index.ts'
@@ -95,5 +89,13 @@ if (require.main === module) {
         format: 'umd',
 
     });
+};
+if (require.main === module) {
+    let { _, ...options } = argv;
+    if (options.watch) {
+        return watchTs('src/js', onRebuild);
+    }
+
+    onRebuild();
 
 }

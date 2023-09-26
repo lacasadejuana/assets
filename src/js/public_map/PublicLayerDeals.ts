@@ -1,5 +1,5 @@
+import { AlpineDataComponent, IMapLayerData } from '@/components/alpine_definitions';
 import { Negocio } from "@/components/entities/Negocio";
-import { AlpineDataComponent, IMapLayerData } from '@lacasadejuana/types';
 import { b64toBlob } from './public_map_modules/b64toBlob';
 import { iconOptions } from "./public_map_modules/iconOptions";
 import { computeColorAlpha } from "./public_map_modules/marker_factory/markerFactory";
@@ -70,10 +70,28 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
 
             const blob = b64toBlob(b64Data, contentType);
             this.blobUrl = URL.createObjectURL(blob);
+            this.lowEmphasisBlobUrl = URL.createObjectURL(b64toBlob(this.layer_options.url_low_emphasis.replace('data:image/png;base64,', ''), 'image/png'));
+
         })
-        setTimeout(() => {
+        setTimeout(async () => {
             this.layer_options.checked = true
+
+
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+            const priceTag = document.createElement("div");
+
+            priceTag.className = "price-tag";
+            priceTag.textContent = "$2.5M";
+
+            const marker = new AdvancedMarkerElement({
+                map: this.gmap,
+                position: this.gmap.getCenter(),
+                content: priceTag,
+            });
+
         })
+
     },
     blobUrls: [],
     destroy() {
@@ -157,12 +175,10 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
                 defaultScale = 1,
                 highlighted = feature.getProperty('highlighted');
 
-            if (this.$store.public_maps.codigo_interno && this.$store.public_maps.codigo_interno == codigo_interno) {
+            if (codigo_interno === this.$store.public_maps.codigo_interno) {
 
-                defaultScale = defaultScale * 1.1
+
                 icon = this.getIconOptions(highlighted ? 1.25 : 1.15, codigo_interno);
-            } else if (highlighted) {
-                icon = this.getIconOptions(highlighted ? 1.1 : 1, codigo_interno);
             }
 
 
@@ -179,10 +195,13 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
         });
         return this
     },
+    isLowEmphasis(codigo_interno) {
+        return this.$store.public_maps.codigo_interno && this.$store.public_maps.codigo_interno != codigo_interno
+    },
     getIconOptions(defaultScale = 1, codigo_interno = null) {
         let iconUrl = this.iconUrl
-        if (this.$store.public_maps.codigo_interno && this.$store.public_maps.codigo_interno != codigo_interno) {
-            iconUrl = this.layer_options.url_low_emphasis || this.iconUrl
+        if (this.isLowEmphasis(codigo_interno)) {
+            iconUrl = this.lowEmphasisBlobUrl || this.iconUrl
             console.log('low_emphasis for codigo_interno', codigo_interno, 'vs', this.$store.public_maps.codigo_interno)
         } else {
             console.log('normal priority for ', codigo_interno)

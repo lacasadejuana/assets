@@ -326,9 +326,9 @@ export const PublicLayerBarrios = ({ index, slug_name, name, layer_options }, co
         this.marker = globalThis.gmap.labelMarker;
         if (!this.mouseOverListener) {
             const layer = this.getLayer()
+            setTimeout(() => {
 
-            if (this.layer_options.labelVisibility.always || this.layer_options.labelVisibility.zoom) {
-                google.maps.event.addListenerOnce(layer, 'map_idle', () => {
+                if (this.layer_options.labelVisibility.always || this.layer_options.labelVisibility.zoom) {
                     layer.forEach((feature) => {
                         if (feature.getGeometry().getType() !== 'Point') {
                             let { lat, lng } = feature.getCenter().toJSON(),
@@ -348,11 +348,28 @@ export const PublicLayerBarrios = ({ index, slug_name, name, layer_options }, co
                         }
 
                     });
-                    this.gmap.addListener('zoom_changed', () => {
-                        this.setStyle()
-                    });
-                })
-            }
+                    let visibilityZoom = this.layer_options.labelVisibility.zoom;
+                    if (visibilityZoom) {
+                        let previousZoom = globalThis.gmap.getZoom();
+
+                        this.gmap.addListener('zoom_changed', (zoom) => {
+                            let currentZoom = globalThis.gmap.getZoom()
+
+                            // When zooming above visibilty threshold, update the style
+                            if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
+                                console.zinfo('went above visibility zoom', zoom)
+                                setTimeout(() => requestAnimationFrame(() => this.setStyle()))
+                            }
+                            // When zooming below visibilty threshold, update the style
+                            if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
+                                console.zinfo('went below visibility zoom', zoom)
+                                setTimeout(() => requestAnimationFrame(() => this.setStyle()))
+                            }
+                            previousZoom = currentZoom
+                        });
+                    }
+                }
+            }, 5000)
             if (this.layer_options.labelVisibility.highlighted) {
                 this.mouseOverListener = (event: google.maps.Data.MouseEvent) => {
                     const { feature } = event;
