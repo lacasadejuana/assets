@@ -18845,48 +18845,27 @@ var PublicLayerBarrios = ({ index, slug_name, name, layer_options }, comunas2) =
   mouseOverListener: null,
   mouseOutListener: null,
   clickListener: null,
-  declareEventHandlers() {
+  async declareEventHandlers() {
     const labelProperty = this.layer_options.labelProperty || "Nombre_de_Barrio";
     this.marker = globalThis.gmap.labelMarker;
     if (!this.mouseOverListener) {
       const layer = this.getLayer();
-      setTimeout(() => {
-        if (this.layer_options.labelVisibility.always || this.layer_options.labelVisibility.zoom) {
-          layer.forEach((feature) => {
-            if (feature.getGeometry().getType() !== "Point") {
-              let { lat, lng } = feature.getCenter().toJSON(), centerFeature = {
-                type: "Feature",
-                id: feature.getId() + "-center",
-                geometry: {
-                  type: "Point",
-                  coordinates: [lng, lat]
-                },
-                properties: {
-                  "is_label": true,
-                  [labelProperty]: feature.getProperty(labelProperty)
-                }
-              };
-              layer.addGeoJson(centerFeature);
-            }
-          });
-          let visibilityZoom = this.layer_options.labelVisibility.zoom;
-          if (visibilityZoom) {
-            let previousZoom = globalThis.gmap.getZoom();
-            this.gmap.addListener("zoom_changed", (zoom) => {
-              let currentZoom = globalThis.gmap.getZoom();
-              if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
-                console.zinfo("went above visibility zoom", zoom);
-                setTimeout(() => requestAnimationFrame(() => this.setStyle()));
-              }
-              if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
-                console.zinfo("went below visibility zoom", zoom);
-                setTimeout(() => requestAnimationFrame(() => this.setStyle()));
-              }
-              previousZoom = currentZoom;
-            });
+      let visibilityZoom = this.layer_options.labelVisibility.zoom;
+      if (visibilityZoom) {
+        let previousZoom = globalThis.gmap.getZoom();
+        this.gmap.addListener("zoom_changed", (zoom) => {
+          let currentZoom = globalThis.gmap.getZoom();
+          if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
+            console.zinfo("went above visibility zoom", zoom);
+            setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach((m) => m.map = globalThis.gmap)));
           }
-        }
-      }, 5e3);
+          if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
+            console.zinfo("went below visibility zoom", zoom);
+            setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach((m) => m.map = globalThis.gmap)));
+          }
+          previousZoom = currentZoom;
+        });
+      }
       if (this.layer_options.labelVisibility.highlighted) {
         this.mouseOverListener = (event) => {
           const { feature } = event;
@@ -19053,6 +19032,7 @@ var negocioFeatureToHtml = class {
       ...campos,
       tipo_negocio: "Modalidad",
       tipo_propiedad: "Tipo Propiedad",
+      "titulo-resumen-web": "Resumen",
       nombre: "Nombre",
       comuna: "Ubicaci\xF3n",
       "banos-completos": "Ba\xF1os",
@@ -19065,7 +19045,7 @@ var negocioFeatureToHtml = class {
     this.coordinates = feature.getCenter().toJSON();
     this.container = new Wrapper("flex flex-col");
     console.log({ feature, campos, id: this.id });
-    this.container.addClass("flex").addClass("flex-col").addStyle("lineHeight", "1.5em").addStyle("fontSize", "13px").addStyle("fontFamily", "Inter, sans-serif").addStyle("fontWeight", "400");
+    this.container.addClass("flex").addClass("flex-col").addStyle("lineHeight", "1.5em").addStyle("fontSize", "13px").addStyle("fontFamily", "Inter, sans-serif").addStyle("fontWeight", "400").addStyle("maxWidth", "350px");
     this.appendProperties();
   }
   get content() {
@@ -19126,7 +19106,10 @@ var negocioFeatureToHtml = class {
       "tipo_negocio",
       "tipo_propiedad",
       "comuna",
-      "dormitorios-servicio"
+      "titulo-resumen-web",
+      "dormitorios-servicio",
+      "servicios",
+      "fecha-publicacion"
     ];
   }
   normalizeProperties() {
@@ -19163,8 +19146,9 @@ var negocioFeatureToHtml = class {
     });
   }
   printUbicacion(wrapper, value) {
+    value = `<span class="nowrap font-bold text-bold">${value}</span>.&nbsp;&nbsp;&nbsp;  ${this.getProperty("titulo-resumen-web")} `;
     wrapper.setInnerHTML(value);
-    wrapper.addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.15em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
+    wrapper.addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.15em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("display", "block").addStyle("marginTop", "0em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
   }
   printServicios(wrapper, value) {
     wrapper.setInnerHTML(value);
@@ -19197,8 +19181,8 @@ var negocioFeatureToHtml = class {
   }
   printTituloResumen(wrapper, value) {
     let words = value.split("|"), wordsQuantity = words.length, firstRow = words.slice(0, wordsQuantity / 2).join(" "), secondRow = words.slice(wordsQuantity / 2).join(" ");
-    wrapper.setInnerHTML([firstRow, secondRow].join("<br>"));
-    wrapper.addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.05em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0.2em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
+    wrapper.setInnerHTML(value);
+    wrapper.addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.1em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0.2em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
   }
   printOtherCampos(wrapper, slug_name, value) {
     wrapper.div.setAttribute("rel", slug_name);
@@ -19530,6 +19514,9 @@ var PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, comunas2) =
   ...saveLayer({ slug_name, layer_options }),
   codigo_interno: null,
   async init() {
+    if (!google.maps.Data.Feature.prototype.getCenter) {
+      extendMapDataProtoType(google.maps);
+    }
     this.bounds = new google.maps.LatLngBounds(this.boundingBox);
     let qs = new URL(location.href);
     if (qs.searchParams.get("codigo_interno")) {
@@ -19767,8 +19754,156 @@ var PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, comunas2) =
   mapDialogOpen: false
 });
 
+// src/js/public_map/public_map_modules/extendMapDataProtoType.ts
+function extendMapDataProtoType2() {
+  let maps = google.maps;
+  console.info({ googleMaps: maps });
+  var MAP_PIN = "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z";
+  var SQUARE_PIN = "M22-48h-44v43h16l6 5 6-5h16z";
+  var SHIELD = "M18.8-31.8c.3-3.4 1.3-6.6 3.2-9.5l-7-6.7c-2.2 1.8-4.8 2.8-7.6 3-2.6.2-5.1-.2-7.5-1.4-2.4 1.1-4.9 1.6-7.5 1.4-2.7-.2-5.1-1.1-7.3-2.7l-7.1 6.7c1.7 2.9 2.7 6 2.9 9.2.1 1.5-.3 3.5-1.3 6.1-.5 1.5-.9 2.7-1.2 3.8-.2 1-.4 1.9-.5 2.5 0 2.8.8 5.3 2.5 7.5 1.3 1.6 3.5 3.4 6.5 5.4 3.3 1.6 5.8 2.6 7.6 3.1.5.2 1 .4 1.5.7l1.5.6c1.2.7 2 1.4 2.4 2.1.5-.8 1.3-1.5 2.4-2.1.7-.3 1.3-.5 1.9-.8.5-.2.9-.4 1.1-.5.4-.1.9-.3 1.5-.6.6-.2 1.3-.5 2.2-.8 1.7-.6 3-1.1 3.8-1.6 2.9-2 5.1-3.8 6.4-5.3 1.7-2.2 2.6-4.8 2.5-7.6-.1-1.3-.7-3.3-1.7-6.1-.9-2.8-1.3-4.9-1.2-6.4z";
+  var ROUTE = "M24-28.3c-.2-13.3-7.9-18.5-8.3-18.7l-1.2-.8-1.2.8c-2 1.4-4.1 2-6.1 2-3.4 0-5.8-1.9-5.9-1.9l-1.3-1.1-1.3 1.1c-.1.1-2.5 1.9-5.9 1.9-2.1 0-4.1-.7-6.1-2l-1.2-.8-1.2.8c-.8.6-8 5.9-8.2 18.7-.2 1.1 2.9 22.2 23.9 28.3 22.9-6.7 24.1-26.9 24-28.3z";
+  var SQUARE = "M-24-48h48v48h-48z";
+  var SQUARE_ROUNDED = "M24-8c0 4.4-3.6 8-8 8h-32c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h32c4.4 0 8 3.6 8 8v32z";
+  var inherits = function(childCtor, parentCtor) {
+    function tempCtor() {
+    }
+    ;
+    tempCtor.prototype = parentCtor.prototype;
+    childCtor.superClass_ = parentCtor.prototype;
+    childCtor.prototype = new tempCtor();
+    childCtor.prototype.constructor = childCtor;
+  };
+  class MarkerLabel extends maps.OverlayView {
+    constructor(options) {
+      super();
+      var self2 = this;
+      this.setValues(options);
+      this.div = document.createElement("div");
+      this.div.className = "map-icon-label";
+      maps.event.addDomListener(this.div, "click", function(e) {
+        e.stopPropagation && e.stopPropagation();
+        maps.event.trigger(self2.marker, "click");
+      });
+    }
+    onAdd() {
+      var pane = this.getPanes().overlayImage.appendChild(this.div);
+      var self2 = this;
+      this.listeners = [
+        google.maps.event.addListener(this, "position_changed", function() {
+          self2.draw();
+        }),
+        google.maps.event.addListener(this, "text_changed", function() {
+          self2.draw();
+        }),
+        google.maps.event.addListener(this, "zindex_changed", function() {
+          self2.draw();
+        })
+      ];
+    }
+    // Marker Label onRemove
+    onRemove() {
+      this.div.parentNode.removeChild(this.div);
+      for (var i = 0, I = this.listeners.length; i < I; ++i) {
+        google.maps.event.removeListener(this.listeners[i]);
+      }
+    }
+    draw() {
+      var projection = this.getProjection();
+      var position = projection.fromLatLngToDivPixel(this.get("position"));
+      var div = this.div;
+      this.div.innerHTML = this.get("text").toString();
+      div.style.zIndex = this.get("zIndex");
+      div.style.position = "absolute";
+      div.style.display = "block";
+      div.style.left = position.x - div.offsetWidth / 2 + "px";
+      div.style.top = position.y - div.offsetHeight + "px";
+    }
+  }
+  ;
+  maps.importLibrary("marker").then(() => {
+    class Marker extends maps.Marker {
+      constructor(options) {
+        super();
+        maps.Marker.apply(this, arguments);
+        if (options.map_icon_label) {
+          this.MarkerLabel = new MarkerLabel({
+            map: this.map,
+            marker: this,
+            text: options.map_icon_label
+          });
+          this.MarkerLabel.bindTo("position", this, "position");
+        }
+      }
+      setMap() {
+        maps.Marker.prototype.setMap.apply(this, arguments);
+        this.MarkerLabel && this.MarkerLabel.setMap.apply(this.MarkerLabel, arguments);
+      }
+    }
+  });
+  google.maps.Data.Feature.prototype.getCenter = function() {
+    return this.getBounds().getCenter();
+  };
+  google.maps.Data.prototype.getBounds = function() {
+    var featuresArray = [];
+    var bounds = new google.maps.LatLngBounds();
+    this.forEach(function(feature) {
+      bounds.union(feature.getBounds());
+    });
+    return bounds;
+  };
+  google.maps.Data.Feature.prototype.getBounds = function() {
+    const bounds = new google.maps.LatLngBounds();
+    this.getGeometry().forEachLatLng(function(latLng) {
+      bounds.extend(latLng);
+    });
+    return bounds;
+  };
+  google.maps.Data.Geometry.prototype.getBounds = function() {
+    const bounds = new google.maps.LatLngBounds();
+    this.forEachLatLng(function(latLng) {
+      bounds.extend(latLng);
+    });
+    return bounds;
+  };
+  maps.Data.prototype.getBounds = function() {
+    var featuresArray = [];
+    var bounds = new maps.LatLngBounds();
+    this.forEach(function(feature) {
+      bounds.union(feature.getBounds());
+    });
+    return bounds;
+  };
+  maps.Data.prototype.removeFeatures = function() {
+    this.forEach((feature) => {
+      this.remove(feature);
+    });
+  };
+  maps.Data.prototype.getArray = function() {
+    const featuresArray = [];
+    this.forEach(function(feature) {
+      featuresArray.push(feature);
+    });
+    return featuresArray;
+  };
+  maps.Data.Feature.prototype.getProperties = function() {
+    const properties = {};
+    this.forEachProperty((value, name) => {
+      properties[name] = value;
+    });
+    return properties;
+  };
+  maps.Data.prototype.getLength = function() {
+    let length = 0;
+    this.forEach(function(feature) {
+      length++;
+    });
+    return length;
+  };
+  return maps;
+}
+
 // src/js/public_map/PublicMapFrameData.ts
-var import_tom_select2 = __toESM(require_tom_select_complete());
+var import_tom_select = __toESM(require_tom_select_complete());
 
 // src/js/public_map/public_map_modules/map_styles/BentleyMap.ts
 var BentleyMap = {
@@ -20544,14 +20679,12 @@ var MapTypeListener = class extends BaseClass {
     this.onSaveHandlers = [];
     this.buttonpromises = [];
     this.gmap = gmap;
-    this.addCustomStyles().then(async () => {
-      this.addClickListener();
-      if (Alpine.store("public_maps").full_map) {
-        let mapSearch = document.querySelector("#search_contextual");
-        this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
-      }
-      return this;
-    });
+    this.addClickListener();
+    if (Alpine.store("public_maps").full_map) {
+      let mapSearch = document.querySelector("#search_contextual");
+      this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
+    }
+    return this;
   }
   onChanged(handler5) {
     this.on("changed", handler5);
@@ -20607,277 +20740,6 @@ var MapTypeListener = class extends BaseClass {
   }
 };
 
-// node_modules/@googlemaps/js-api-loader/dist/index.esm.js
-var LoaderStatus;
-(function(LoaderStatus2) {
-  LoaderStatus2[LoaderStatus2["INITIALIZED"] = 0] = "INITIALIZED";
-  LoaderStatus2[LoaderStatus2["LOADING"] = 1] = "LOADING";
-  LoaderStatus2[LoaderStatus2["SUCCESS"] = 2] = "SUCCESS";
-  LoaderStatus2[LoaderStatus2["FAILURE"] = 3] = "FAILURE";
-})(LoaderStatus || (LoaderStatus = {}));
-
-// src/js/public_map/public_map_modules/getBarrioForPoint.ts
-function getBarrioForPoint(map, lat, lng, barriosLayer) {
-  fetch(`https://workers.lacasadejuana.cl/geo/coords/${lng}/${lat}`).then((res2) => res2.json()).then(async (feature) => {
-    if (!feature) {
-      console.warn("unknown barrio");
-      return;
-    }
-    let { type, properties, geometry } = feature, { idBarrio } = properties || { idBarrio: 0 };
-    if (idBarrio) {
-      let barrio = barriosLayer.getFeatureById(idBarrio);
-      console.log({ idBarrio, barrio });
-      if (barrio) {
-        barrio.setProperty("matches", true);
-        barrio.setProperty("strokeWeight", 3.5);
-      }
-    }
-    globalThis.marker = new google.maps.Marker({
-      map,
-      draggable: false,
-      position: map.getCenter(),
-      animation: google.maps.Animation.BOUNCE
-    });
-    setTimeout(
-      () => globalThis.marker.setOptions({ animation: null }),
-      2e3
-    );
-  });
-}
-
-// src/js/public_map/public_map_modules/loadBarrios.ts
-function loadBarrios(map, layerurl) {
-  if (globalThis.barriosLayer)
-    return globalThis.barriosLayer;
-  function getIcon({ x = 0, y = 0 } = {}) {
-    return {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 5,
-      strokeWeight: 2,
-      labelOrigin: { x, y },
-      strokeColor: "rgba(200,200,200,0)"
-    };
-  }
-  function getLabel(text = "") {
-    return {
-      text,
-      color: "#444",
-      fontSize: "11px",
-      className: "markerLabel"
-    };
-  }
-  let barriosMarker = new google.maps.Marker({
-    position: map.getCenter(),
-    map,
-    icon: getIcon()
-  });
-  barriosMarker.setLabel(getLabel());
-  barriosMarker.setVisible(false);
-  const barriosLayer = new google.maps.Data();
-  barriosLayer.loadGeoJson(layerurl);
-  console.log(layerurl);
-  globalThis.barriosLayer = barriosLayer;
-  globalThis.negociosLayer = new google.maps.Data();
-  google.maps.event.addListener(barriosLayer, "mouseover", (event) => {
-    const { feature } = event;
-    feature.setProperty("highlighted", true);
-    let barrio = feature.getProperty("Nombre_de_Barrio");
-    barriosMarker.setLabel(getLabel(barrio));
-    barriosMarker.setPosition(feature.getCenter());
-    barriosMarker.setVisible(true);
-  });
-  google.maps.event.addListener(barriosLayer, "mouseout", (event) => {
-    event.feature.setProperty("highlighted", false);
-  });
-  return barriosLayer;
-}
-
-// src/js/public_map/public_map_modules/map_create.ts
-function initMap(google2, element, mapOptions, options) {
-  if (globalThis.gmap)
-    return globalThis.gmap;
-  google2.maps.Data.Feature.prototype.getCenter = function() {
-    return this.getBounds().getCenter();
-  };
-  google2.maps.Data.prototype.getBounds = function() {
-    var featuresArray = [];
-    var bounds = new google2.maps.LatLngBounds();
-    this.forEach(function(feature) {
-      bounds.union(feature.getBounds());
-    });
-    return bounds;
-  };
-  google2.maps.Data.Feature.prototype.getBounds = function() {
-    const bounds = new google2.maps.LatLngBounds();
-    this.getGeometry().forEachLatLng(function(latLng) {
-      bounds.extend(latLng);
-    });
-    return bounds;
-  };
-  google2.maps.Data.Geometry.prototype.getBounds = function() {
-    const bounds = new google2.maps.LatLngBounds();
-    this.forEachLatLng(function(latLng) {
-      bounds.extend(latLng);
-    });
-    return bounds;
-  };
-  let { lat, lng } = mapOptions.center || {};
-  mapOptions = {
-    zoom: 15,
-    bounds: {},
-    center: {
-      lat: -33.41,
-      lng: -70.575
-    },
-    mapTypeControl: true,
-    fullscreenControl: true,
-    gestureHandling: "greedy",
-    scaleControl: true,
-    zoomControl: true,
-    streetViewControl: true,
-    ...mapOptions
-  };
-  console.log({ mapOptions });
-  const map = new google2.maps.Map(element, mapOptions);
-  globalThis.overlay = new google2.maps.OverlayView();
-  globalThis.overlay.setMap(map);
-  if (options.appendToGlobalThis)
-    globalThis.gmap = map;
-  if (options.loadBarrios) {
-    const barriosLayer = loadBarrios(map, "/json/barrios.json");
-    if (lat && lng) {
-      getBarrioForPoint(map, lat, lng, barriosLayer);
-    }
-  }
-  return map;
-}
-
-// src/js/public_map/public_map_modules/extendMapDataProtoType.ts
-function extendMapDataProtoType() {
-  let maps = google.maps;
-  console.info({ googleMaps: maps });
-  var MAP_PIN = "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z";
-  var SQUARE_PIN = "M22-48h-44v43h16l6 5 6-5h16z";
-  var SHIELD = "M18.8-31.8c.3-3.4 1.3-6.6 3.2-9.5l-7-6.7c-2.2 1.8-4.8 2.8-7.6 3-2.6.2-5.1-.2-7.5-1.4-2.4 1.1-4.9 1.6-7.5 1.4-2.7-.2-5.1-1.1-7.3-2.7l-7.1 6.7c1.7 2.9 2.7 6 2.9 9.2.1 1.5-.3 3.5-1.3 6.1-.5 1.5-.9 2.7-1.2 3.8-.2 1-.4 1.9-.5 2.5 0 2.8.8 5.3 2.5 7.5 1.3 1.6 3.5 3.4 6.5 5.4 3.3 1.6 5.8 2.6 7.6 3.1.5.2 1 .4 1.5.7l1.5.6c1.2.7 2 1.4 2.4 2.1.5-.8 1.3-1.5 2.4-2.1.7-.3 1.3-.5 1.9-.8.5-.2.9-.4 1.1-.5.4-.1.9-.3 1.5-.6.6-.2 1.3-.5 2.2-.8 1.7-.6 3-1.1 3.8-1.6 2.9-2 5.1-3.8 6.4-5.3 1.7-2.2 2.6-4.8 2.5-7.6-.1-1.3-.7-3.3-1.7-6.1-.9-2.8-1.3-4.9-1.2-6.4z";
-  var ROUTE = "M24-28.3c-.2-13.3-7.9-18.5-8.3-18.7l-1.2-.8-1.2.8c-2 1.4-4.1 2-6.1 2-3.4 0-5.8-1.9-5.9-1.9l-1.3-1.1-1.3 1.1c-.1.1-2.5 1.9-5.9 1.9-2.1 0-4.1-.7-6.1-2l-1.2-.8-1.2.8c-.8.6-8 5.9-8.2 18.7-.2 1.1 2.9 22.2 23.9 28.3 22.9-6.7 24.1-26.9 24-28.3z";
-  var SQUARE = "M-24-48h48v48h-48z";
-  var SQUARE_ROUNDED = "M24-8c0 4.4-3.6 8-8 8h-32c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h32c4.4 0 8 3.6 8 8v32z";
-  var inherits = function(childCtor, parentCtor) {
-    function tempCtor() {
-    }
-    ;
-    tempCtor.prototype = parentCtor.prototype;
-    childCtor.superClass_ = parentCtor.prototype;
-    childCtor.prototype = new tempCtor();
-    childCtor.prototype.constructor = childCtor;
-  };
-  class MarkerLabel extends maps.OverlayView {
-    constructor(options) {
-      super();
-      var self2 = this;
-      this.setValues(options);
-      this.div = document.createElement("div");
-      this.div.className = "map-icon-label";
-      maps.event.addDomListener(this.div, "click", function(e) {
-        e.stopPropagation && e.stopPropagation();
-        maps.event.trigger(self2.marker, "click");
-      });
-    }
-    onAdd() {
-      var pane = this.getPanes().overlayImage.appendChild(this.div);
-      var self2 = this;
-      this.listeners = [
-        google.maps.event.addListener(this, "position_changed", function() {
-          self2.draw();
-        }),
-        google.maps.event.addListener(this, "text_changed", function() {
-          self2.draw();
-        }),
-        google.maps.event.addListener(this, "zindex_changed", function() {
-          self2.draw();
-        })
-      ];
-    }
-    // Marker Label onRemove
-    onRemove() {
-      this.div.parentNode.removeChild(this.div);
-      for (var i = 0, I = this.listeners.length; i < I; ++i) {
-        google.maps.event.removeListener(this.listeners[i]);
-      }
-    }
-    draw() {
-      var projection = this.getProjection();
-      var position = projection.fromLatLngToDivPixel(this.get("position"));
-      var div = this.div;
-      this.div.innerHTML = this.get("text").toString();
-      div.style.zIndex = this.get("zIndex");
-      div.style.position = "absolute";
-      div.style.display = "block";
-      div.style.left = position.x - div.offsetWidth / 2 + "px";
-      div.style.top = position.y - div.offsetHeight + "px";
-    }
-  }
-  ;
-  maps.importLibrary("marker").then(() => {
-    class Marker extends maps.Marker {
-      constructor(options) {
-        super();
-        maps.Marker.apply(this, arguments);
-        if (options.map_icon_label) {
-          this.MarkerLabel = new MarkerLabel({
-            map: this.map,
-            marker: this,
-            text: options.map_icon_label
-          });
-          this.MarkerLabel.bindTo("position", this, "position");
-        }
-      }
-      setMap() {
-        maps.Marker.prototype.setMap.apply(this, arguments);
-        this.MarkerLabel && this.MarkerLabel.setMap.apply(this.MarkerLabel, arguments);
-      }
-    }
-  });
-  maps.Data.prototype.getBounds = function() {
-    var featuresArray = [];
-    var bounds = new maps.LatLngBounds();
-    this.forEach(function(feature) {
-      bounds.union(feature.getBounds());
-    });
-    return bounds;
-  };
-  maps.Data.prototype.removeFeatures = function() {
-    this.forEach((feature) => {
-      this.remove(feature);
-    });
-  };
-  maps.Data.prototype.getArray = function() {
-    const featuresArray = [];
-    this.forEach(function(feature) {
-      featuresArray.push(feature);
-    });
-    return featuresArray;
-  };
-  maps.Data.Feature.prototype.getProperties = function() {
-    const properties = {};
-    this.forEachProperty((value, name) => {
-      properties[name] = value;
-    });
-    return properties;
-  };
-  maps.Data.prototype.getLength = function() {
-    let length = 0;
-    this.forEach(function(feature) {
-      length++;
-    });
-    return length;
-  };
-  return maps;
-}
-
-// src/js/public_map/public_map_modules/iconSelector.ts
-var import_tom_select = __toESM(require_tom_select_complete());
-
 // src/js/public_map/public_map_modules/populateMapFields.ts
 var populateMapFields = (columnas_actuales, campos_busqueda) => {
   return columnas_actuales.columnDefs.concat([
@@ -20905,34 +20767,6 @@ var populateMapFields = (columnas_actuales, campos_busqueda) => {
     )] = campo.name.replace(/^F\.\s/, "Fecha ");
     return accum;
   }, {});
-};
-
-// src/js/public_map/public_map_modules/sharingLevels.ts
-var sharingLevels = {
-  private: {
-    id: "private",
-    title: "Privado",
-    description: "El mapa s\xF3lo ser\xE1 visible para usted y los administradores",
-    icon: "fa fa-lock"
-  },
-  shared: {
-    id: "shared",
-    title: "Compartido",
-    description: "Otros usuarios podr\xE1n ver el mapa, pero no guardar cambios",
-    icon: "fa fa-eye"
-  },
-  collaborative: {
-    id: "collaborative",
-    title: "Colaborativo",
-    description: "Otros usuarios podr\xE1n ver y guardar cambios el mapa",
-    icon: "fa fa-users"
-  },
-  public: {
-    id: "public",
-    title: "P\xFAblico",
-    description: "Visitantes externos podr\xE1n ver una versi\xF3n simplificada del mapa",
-    icon: "fa fa-globe"
-  }
 };
 
 // src/js/public_map/PublicMapFrameData.ts
@@ -21020,11 +20854,15 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
           this.$store.campos_busqueda
         );
       });
-      this.$store.public_maps.once("ready").then((maps) => {
+      console.warn("deciding between createMap and store ready");
+      return this.$store.public_maps.once("ready").then((maps) => {
+        console.info("mapFrameData, received store ready event");
         console.info({ googleMaps: maps });
+        extendMapDataProtoType2(maps);
         return this.createMap();
       }).then(async (gmap) => {
         this.gmap = gmap;
+        globalThis.gmap = gmap;
         this.marker = this.createMarker();
         globalThis.layers = {};
         this.$store.public_maps.once("layers_added").then(async () => {
@@ -21072,27 +20910,38 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
     },
     async createMap() {
       globalThis.mapframe = this;
+      console.warn("creating map or waiting for the store to create it");
       let mapStatusObj = {};
       this.url = new URL(window.location.href);
       if (!mapStatusObj.center) {
         mapStatusObj = this.storedStatus;
       }
-      this.gmap = await initMap(google, this.$refs.map_container, {
-        mapId: "918f8abc9ae2727a",
+      let mergedOptions = {
+        mapId: "3b1abace91810cf",
         rotateControl: true,
         isFractionalZoomEnabled: true,
         streetViewControl: false,
-        mapTypeControl: !this.codigo_interno & !this.extent,
+        mapTypeControl: !this.codigo_interno && !this.extent,
+        tiltControl: true,
         mapTypeControlOptions: {
           mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"],
           style: 1
           // google.maps.MapTypeControlStyle.DROPDOWN_MENU,
         },
         ...mapStatusObj
-      }, { appendToGlobalThis: true, loadBarrios: false });
-      this.mapCreatedHandlers.forEach((handler5) => handler5(this.gmap));
-      this.googleReady = true;
-      return this.gmap;
+      };
+      console.info("deciding between initMap and map_created");
+      return (this.$store.public_maps.full_map ? Promise.resolve(new google.maps.Map(this.$el.querySelector("#map_container"), mergedOptions)) : this.$store.public_maps.once("map_created")).then(async (gmap) => {
+        console.log("map created");
+        if (gmap) {
+          gmap.setOptions(mergedOptions);
+        }
+        this.gmap = gmap;
+        globalThis.gmap = gmap;
+        this.mapCreatedHandlers.forEach((handler5) => handler5(this.gmap));
+        this.googleReady = true;
+        return this.gmap;
+      });
     },
     mapCreatedHandlers: [],
     onMapCreated(handler5) {
@@ -21102,9 +20951,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
       if (codigo_interno2) {
         this.gmap.setZoom(15);
       } else {
-        this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(
-          document.querySelector("#map_controls")
-        );
+        this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(document.querySelector("#map_controls"));
         setTimeout(() => {
           this.$nextTick(() => this.mapDialogOpen = true);
         }, 2e3);
@@ -21112,15 +20959,6 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
       this.$refs.map_container.classList.remove("hidden");
       this.$refs.map_container.style.height = `${this.mapHeight}px`;
       this.mapTypeListener = new MapTypeListener(this.gmap);
-      this.mapTypeListener.addCustomStyles().then(() => {
-        setTimeout(
-          () => this.tomSelect = new import_tom_select2.default(
-            this.$el.querySelector("#maptype_selector"),
-            this.tomselectOptions
-          ),
-          1e3
-        );
-      });
       this.infowindow = new google.maps.InfoWindow();
       this.gmap.infowindow = this.infowindow;
     },
@@ -21307,6 +21145,46 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
   };
 };
 
+// src/js/public_map/public_map_modules/sharingLevels.ts
+var sharingLevels = {
+  private: {
+    id: "private",
+    title: "Privado",
+    description: "El mapa s\xF3lo ser\xE1 visible para usted y los administradores",
+    icon: "fa fa-lock"
+  },
+  shared: {
+    id: "shared",
+    title: "Compartido",
+    description: "Otros usuarios podr\xE1n ver el mapa, pero no guardar cambios",
+    icon: "fa fa-eye"
+  },
+  collaborative: {
+    id: "collaborative",
+    title: "Colaborativo",
+    description: "Otros usuarios podr\xE1n ver y guardar cambios el mapa",
+    icon: "fa fa-users"
+  },
+  public: {
+    id: "public",
+    title: "P\xFAblico",
+    description: "Visitantes externos podr\xE1n ver una versi\xF3n simplificada del mapa",
+    icon: "fa fa-globe"
+  }
+};
+
+// node_modules/@googlemaps/js-api-loader/dist/index.esm.js
+var LoaderStatus;
+(function(LoaderStatus2) {
+  LoaderStatus2[LoaderStatus2["INITIALIZED"] = 0] = "INITIALIZED";
+  LoaderStatus2[LoaderStatus2["LOADING"] = 1] = "LOADING";
+  LoaderStatus2[LoaderStatus2["SUCCESS"] = 2] = "SUCCESS";
+  LoaderStatus2[LoaderStatus2["FAILURE"] = 3] = "FAILURE";
+})(LoaderStatus || (LoaderStatus = {}));
+
+// src/js/public_map/public_map_modules/iconSelector.ts
+var import_tom_select2 = __toESM(require_tom_select_complete());
+
 // src/js/public_map/PublicMapStore.ts
 var PublicMapStore = class extends BaseClass {
   constructor() {
@@ -21330,6 +21208,10 @@ var PublicMapStore = class extends BaseClass {
     this.feature_collection = { type: "FeatureCollection", features: [] };
     this.layerSlugs = [];
     this.codigo_interno = null;
+    this._customElementsMap = null;
+    this.skipMapCreation = false;
+    this.barrioLabels = [];
+    this.barrioMarkers = [];
     //@ts-ignore
     this.__$store = {
       tipos_busqueda: module_default.store("tipos_busqueda"),
@@ -21349,20 +21231,54 @@ var PublicMapStore = class extends BaseClass {
       active_filter: module_default.store("active_filter"),
       user: module_default.store("user")
     };
+    this._console = bindConsole(this.className, this.classNameColor);
     this.exampleLayers = exampleLayers;
     this.url = new URL(window.location.href);
     this.waitForGoogleMapsLoaded().then((maps) => {
       console.log("will extend prototype", maps);
-      extendMapDataProtoType(maps);
+      extendMapDataProtoType2(maps);
       this.ready = true;
       this.processEventListeners("ready", maps);
+      if (this.skipMapCreation) {
+        this.processEventListeners("map_created", null);
+      }
     });
+  }
+  get customElementsMap() {
+    return this._customElementsMap;
+  }
+  set customElementsMap(customElementsMap) {
+    this._customElementsMap = customElementsMap;
+    globalThis.gmap = customElementsMap;
+    this.processEventListeners("map_created", customElementsMap);
+    this.marquee("received customElementsMap");
   }
   get verifiers() {
     return {
+      map_created: !!this.customElementsMap || !!this.skipMapCreation,
       ready: !!this.ready,
       layers_added: this.layer_array.length > 0
     };
+  }
+  setBarrioLabels(features) {
+    this.barrioLabels = features.map((feature) => {
+      let { geometry, id, properties } = feature;
+      let [lng, lat] = geometry.coordinates;
+      return { position: { lng, lat }, id, name: properties.Nombre_de_Barrio };
+    });
+    this.once("map_created", (gmap) => {
+      this.barrioLabels.forEach(({ position, name }) => {
+        const priceTag = document.createElement("div");
+        priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
+        priceTag.textContent = name;
+        const marker = new google.maps.marker.AdvancedMarkerElement({
+          map: null,
+          position,
+          content: priceTag
+        });
+        this.barrioMarkers.push(marker);
+      });
+    });
   }
   async waitForGoogleMapsLoaded(attempt = 0) {
     let gmaps = globalThis.google && globalThis.google.maps;
@@ -21473,7 +21389,7 @@ var PublicMapStore = class extends BaseClass {
   get storedStatus() {
     const defaultMapStatus = {
       center: { lat: -33.415785, lng: -70.578539 },
-      mapTypeId: "Grass",
+      //mapTypeId: 'Grass',
       zoom: 13.1
     };
     const mapStatus = {

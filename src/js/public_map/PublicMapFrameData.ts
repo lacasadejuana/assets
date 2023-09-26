@@ -111,11 +111,16 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     this.$store.campos_busqueda as unknown as CamposBusquedaStore
                 )
             });
-            this.$store.public_maps.once('ready').then((maps) => {
+            console.warn('deciding between createMap and store ready')
+            return this.$store.public_maps.once('ready').then((maps) => {
+                console.info('mapFrameData, received store ready event')
+
                 console.info({ googleMaps: maps })
+                extendMapDataProtoType(maps);
                 return this.createMap()
             }).then(async (gmap) => {
                 this.gmap = gmap;
+                globalThis.gmap = gmap;
                 this.marker = this.createMarker();
                 globalThis.layers = {};
                 this.$store.public_maps.once('layers_added').then(async () => {
@@ -167,7 +172,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
         },
         async createMap(): Promise<google.maps.Map> {
             globalThis.mapframe = this;
-
+            console.warn('creating map or waiting for the store to create it')
             //globalThis.googleMapsOptions.libraries.push('drawing');
             let
                 mapStatusObj = {} as Partial<google.maps.MapOptions>
@@ -177,26 +182,37 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             if (!mapStatusObj.center) {
                 mapStatusObj = this.storedStatus;
             }
-
-
-            this.gmap = await initMap(google, this.$refs.map_container, {
-                mapId: '918f8abc9ae2727a',
+            let mergedOptions = {
+                mapId: '3b1abace91810cf',
                 rotateControl: true,
                 isFractionalZoomEnabled: true,
                 streetViewControl: false,
-                mapTypeControl: !this.codigo_interno & !this.extent,
+                mapTypeControl: !this.codigo_interno && !this.extent,
+                tiltControl: true,
                 mapTypeControlOptions: {
                     mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map'],
                     style: 1, // google.maps.MapTypeControlStyle.DROPDOWN_MENU,
                 },
                 ...mapStatusObj,
-            }, { appendToGlobalThis: true, loadBarrios: false });
+            };
+            console.info('deciding between initMap and map_created')
+            return (this.$store.public_maps.full_map ?
+                Promise.resolve(new google.maps.Map(this.$el.querySelector('#map_container'), mergedOptions))
+                : this.$store.public_maps.once('map_created')
+            ).then(async gmap => {
+                console.log('map created')
+                if (gmap) {
+                    gmap.setOptions(mergedOptions)
+                }
+                this.gmap = gmap
+                globalThis.gmap = gmap
+                this.mapCreatedHandlers.forEach(handler => handler(this.gmap))
 
-            this.mapCreatedHandlers.forEach(handler => handler(this.gmap))
+                this.googleReady = true;
 
-            this.googleReady = true;
+                return this.gmap;
+            })
 
-            return this.gmap;
         },
         mapCreatedHandlers: [],
         onMapCreated(handler) {
@@ -207,9 +223,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             if (codigo_interno) {
                 this.gmap.setZoom(15)
             } else {
-                this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(
-                    document.querySelector('#map_controls'),
-                );
+                this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(document.querySelector('#map_controls'),);
                 setTimeout(() => {
                     this.$nextTick(() => (this.mapDialogOpen = true));
                 }, 2000);
@@ -218,7 +232,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             this.$refs.map_container.classList.remove('hidden');
             this.$refs.map_container.style.height = `${this.mapHeight}px`;
             this.mapTypeListener = new MapTypeListener(this.gmap);
-            this.mapTypeListener
+            false && this.mapTypeListener
 
                 .addCustomStyles()
                 .then(() => {

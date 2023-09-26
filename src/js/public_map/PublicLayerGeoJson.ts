@@ -34,6 +34,9 @@ export const PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, co
     ...saveLayer({ slug_name, layer_options }),
     codigo_interno: null,
     async init() {
+        if (!google.maps.Data.Feature.prototype.getCenter) {
+            extendMapDataProtoType(google.maps)
+        }
         this.bounds = new google.maps.LatLngBounds(this.boundingBox)
         let qs = new URL(location.href)
         if (qs.searchParams.get('codigo_interno')) {

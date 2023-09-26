@@ -100,7 +100,41 @@ export function extendMapDataProtoType() {
 
 
 
+    google.maps.Data.Feature.prototype.getCenter = function () {
+        return this.getBounds().getCenter();
+    };
 
+    google.maps.Data.prototype.getBounds = function () {
+        var featuresArray = [];
+        var bounds = new google.maps.LatLngBounds();
+        this.forEach(function (feature) {
+            bounds.union(feature.getBounds());
+
+            /*feature.getGeometry().forEachLatLng(function (latLng) {
+                bounds.extend(latLng);
+              });*/
+        });
+        return bounds;
+    };
+
+    google.maps.Data.Feature.prototype.getBounds = function () {
+        const bounds = new google.maps.LatLngBounds();
+        this.getGeometry().forEachLatLng(function (latLng) {
+            bounds.extend(latLng);
+        });
+        return bounds;
+    };
+
+    /**
+     * Extiende la familia google.maps.Data.Geometry
+     */
+    google.maps.Data.Geometry.prototype.getBounds = function () {
+        const bounds = new google.maps.LatLngBounds();
+        this.forEachLatLng(function (latLng) {
+            bounds.extend(latLng);
+        });
+        return bounds;
+    };
 
 
     //@ts-ignore

@@ -12,20 +12,19 @@ export class MapTypeListener extends BaseClass implements IBaseClass<'changed' |
     constructor(gmap: google.maps.Map) {
         super();
         this.gmap = gmap
-        this.addCustomStyles().then(async () => {
 
 
-            this.addClickListener()
+        this.addClickListener()
+        //@ts-ignore
+        if (Alpine.store('public_maps').full_map) {
+            let mapSearch = document.querySelector('#search_contextual');
+
             //@ts-ignore
-            if (Alpine.store('public_maps').full_map) {
-                let mapSearch = document.querySelector('#search_contextual');
+            this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
+        }
 
-                //@ts-ignore
-                this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
-            }
+        return this
 
-            return this
-        })
     }
 
     onChanged(handler: (mapTypeId: string) => void) {

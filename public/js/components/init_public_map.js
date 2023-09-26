@@ -25446,6 +25446,31 @@ function extendMapDataProtoType() {
       }
     }
   });
+  google.maps.Data.Feature.prototype.getCenter = function() {
+    return this.getBounds().getCenter();
+  };
+  google.maps.Data.prototype.getBounds = function() {
+    var featuresArray = [];
+    var bounds = new google.maps.LatLngBounds();
+    this.forEach(function(feature) {
+      bounds.union(feature.getBounds());
+    });
+    return bounds;
+  };
+  google.maps.Data.Feature.prototype.getBounds = function() {
+    const bounds = new google.maps.LatLngBounds();
+    this.getGeometry().forEachLatLng(function(latLng) {
+      bounds.extend(latLng);
+    });
+    return bounds;
+  };
+  google.maps.Data.Geometry.prototype.getBounds = function() {
+    const bounds = new google.maps.LatLngBounds();
+    this.forEachLatLng(function(latLng) {
+      bounds.extend(latLng);
+    });
+    return bounds;
+  };
   maps.Data.prototype.getBounds = function() {
     var featuresArray = [];
     var bounds = new maps.LatLngBounds();
@@ -25552,6 +25577,10 @@ var PublicMapStore = class extends BaseClass {
     this.feature_collection = { type: "FeatureCollection", features: [] };
     this.layerSlugs = [];
     this.codigo_interno = null;
+    this._customElementsMap = null;
+    this.skipMapCreation = false;
+    this.barrioLabels = [];
+    this.barrioMarkers = [];
     //@ts-ignore
     this.__$store = {
       tipos_busqueda: module_default8.store("tipos_busqueda"),
@@ -25571,6 +25600,7 @@ var PublicMapStore = class extends BaseClass {
       active_filter: module_default8.store("active_filter"),
       user: module_default8.store("user")
     };
+    this._console = bindConsole(this.className, this.classNameColor);
     this.exampleLayers = exampleLayers;
     this.url = new URL(window.location.href);
     this.waitForGoogleMapsLoaded().then((maps) => {
@@ -25578,13 +25608,46 @@ var PublicMapStore = class extends BaseClass {
       extendMapDataProtoType(maps);
       this.ready = true;
       this.processEventListeners("ready", maps);
+      if (this.skipMapCreation) {
+        this.processEventListeners("map_created", null);
+      }
     });
+  }
+  get customElementsMap() {
+    return this._customElementsMap;
+  }
+  set customElementsMap(customElementsMap) {
+    this._customElementsMap = customElementsMap;
+    globalThis.gmap = customElementsMap;
+    this.processEventListeners("map_created", customElementsMap);
+    this.marquee("received customElementsMap");
   }
   get verifiers() {
     return {
+      map_created: !!this.customElementsMap || !!this.skipMapCreation,
       ready: !!this.ready,
       layers_added: this.layer_array.length > 0
     };
+  }
+  setBarrioLabels(features) {
+    this.barrioLabels = features.map((feature) => {
+      let { geometry, id, properties } = feature;
+      let [lng, lat] = geometry.coordinates;
+      return { position: { lng, lat }, id, name: properties.Nombre_de_Barrio };
+    });
+    this.once("map_created", (gmap) => {
+      this.barrioLabels.forEach(({ position, name }) => {
+        const priceTag = document.createElement("div");
+        priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
+        priceTag.textContent = name;
+        const marker = new google.maps.marker.AdvancedMarkerElement({
+          map: null,
+          position,
+          content: priceTag
+        });
+        this.barrioMarkers.push(marker);
+      });
+    });
   }
   async waitForGoogleMapsLoaded(attempt = 0) {
     let gmaps = globalThis.google && globalThis.google.maps;
@@ -25695,7 +25758,7 @@ var PublicMapStore = class extends BaseClass {
   get storedStatus() {
     const defaultMapStatus = {
       center: { lat: -33.415785, lng: -70.578539 },
-      mapTypeId: "Grass",
+      //mapTypeId: 'Grass',
       zoom: 13.1
     };
     const mapStatus = {

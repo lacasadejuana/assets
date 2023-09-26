@@ -21,6 +21,7 @@ export class negocioFeatureToHtml {
             ...campos,
             tipo_negocio: 'Modalidad',
             tipo_propiedad: 'Tipo Propiedad',
+            'titulo-resumen-web': 'Resumen',
             nombre: 'Nombre',
             comuna: 'Ubicación',
             'banos-completos': 'Baños',
@@ -43,7 +44,8 @@ export class negocioFeatureToHtml {
             .addStyle('lineHeight', '1.5em')
             .addStyle('fontSize', '13px')
             .addStyle('fontFamily', 'Inter, sans-serif')
-            .addStyle('fontWeight', '400');
+            .addStyle('fontWeight', '400')
+            .addStyle('maxWidth', '350px')
 
         this.appendProperties();
     }
@@ -120,7 +122,11 @@ export class negocioFeatureToHtml {
             'banos',
             'tipo_negocio', 'tipo_propiedad',
             'comuna',
-            'dormitorios-servicio'
+            'titulo-resumen-web',
+            'dormitorios-servicio',
+            'servicios',
+
+            'fecha-publicacion'
         ];
     }
     normalizeProperties() {
@@ -167,7 +173,7 @@ export class negocioFeatureToHtml {
         });
     }
     printUbicacion(wrapper, value) {
-
+        value = `<span class="nowrap font-bold text-bold">${value}</span>.&nbsp;&nbsp;&nbsp;  ${this.getProperty('titulo-resumen-web')} `
         wrapper.setInnerHTML(value);
         wrapper
             .addStyle('fontWeight', '500')
@@ -175,6 +181,7 @@ export class negocioFeatureToHtml {
             .addStyle('fontSize', '1.15em')
             .addStyle('maxWidth', '350px')
             .addStyle('white-space', 'normal')
+            .addStyle('display', 'block')
             .addStyle('marginTop', '0em')
             .addStyle('marginBottom', '0.3em')
             .prependTo(this.container.div);
@@ -257,11 +264,12 @@ export class negocioFeatureToHtml {
             wordsQuantity = words.length,
             firstRow = words.slice(0, wordsQuantity / 2).join(' '),
             secondRow = words.slice(wordsQuantity / 2).join(' ');
-        wrapper.setInnerHTML([firstRow, secondRow].join('<br>'));
+        //wrapper.setInnerHTML([firstRow, secondRow].join('<br>'));
+        wrapper.setInnerHTML(value);
         wrapper
             .addStyle('fontWeight', '500')
             .addStyle('order', '3')
-            .addStyle('fontSize', '1.05em')
+            .addStyle('fontSize', '1.1em')
             .addStyle('maxWidth', '350px')
             .addStyle('white-space', 'normal')
             .addStyle('marginTop', '0.2em')
