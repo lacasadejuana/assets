@@ -3192,7 +3192,7 @@ var require_lodash = __commonJS({
           }
           return arrayPush(isArray4(array) ? copyArray(array) : [array], baseFlatten(args, 1));
         }
-        var difference2 = baseRest(function(array, values2) {
+        var difference = baseRest(function(array, values2) {
           return isArrayLikeObject(array) ? baseDifference(array, baseFlatten(values2, 1, isArrayLikeObject, true)) : [];
         });
         var differenceBy = baseRest(function(array, values2) {
@@ -5042,7 +5042,7 @@ var require_lodash = __commonJS({
         lodash.defaultsDeep = defaultsDeep;
         lodash.defer = defer;
         lodash.delay = delay;
-        lodash.difference = difference2;
+        lodash.difference = difference;
         lodash.differenceBy = differenceBy;
         lodash.differenceWith = differenceWith;
         lodash.drop = drop;
@@ -6838,7 +6838,7 @@ var require_tom_select_complete = __commonJS({
         return Object.assign({}, defaults, settings_element, settings_user);
       }
       var instance_i = 0;
-      class TomSelect4 extends MicroPlugin(MicroEvent) {
+      class TomSelect3 extends MicroPlugin(MicroEvent) {
         // @deprecated 1.8
         constructor(input_arg, user_settings) {
           super();
@@ -9519,21 +9519,21 @@ var require_tom_select_complete = __commonJS({
           });
         });
       }
-      TomSelect4.define("change_listener", change_listener);
-      TomSelect4.define("checkbox_options", checkbox_options);
-      TomSelect4.define("clear_button", clear_button);
-      TomSelect4.define("drag_drop", drag_drop);
-      TomSelect4.define("dropdown_header", dropdown_header);
-      TomSelect4.define("caret_position", caret_position);
-      TomSelect4.define("dropdown_input", dropdown_input);
-      TomSelect4.define("input_autogrow", input_autogrow);
-      TomSelect4.define("no_backspace_delete", no_backspace_delete);
-      TomSelect4.define("no_active_items", no_active_items);
-      TomSelect4.define("optgroup_columns", optgroup_columns);
-      TomSelect4.define("remove_button", remove_button);
-      TomSelect4.define("restore_on_backspace", restore_on_backspace);
-      TomSelect4.define("virtual_scroll", virtual_scroll);
-      return TomSelect4;
+      TomSelect3.define("change_listener", change_listener);
+      TomSelect3.define("checkbox_options", checkbox_options);
+      TomSelect3.define("clear_button", clear_button);
+      TomSelect3.define("drag_drop", drag_drop);
+      TomSelect3.define("dropdown_header", dropdown_header);
+      TomSelect3.define("caret_position", caret_position);
+      TomSelect3.define("dropdown_input", dropdown_input);
+      TomSelect3.define("input_autogrow", input_autogrow);
+      TomSelect3.define("no_backspace_delete", no_backspace_delete);
+      TomSelect3.define("no_active_items", no_active_items);
+      TomSelect3.define("optgroup_columns", optgroup_columns);
+      TomSelect3.define("remove_button", remove_button);
+      TomSelect3.define("restore_on_backspace", restore_on_backspace);
+      TomSelect3.define("virtual_scroll", virtual_scroll);
+      return TomSelect3;
     });
   }
 });
@@ -18455,7 +18455,6 @@ var genericFeatureToHtml = class {
 };
 
 // src/js/public_map/public_map_modules/saveLayer.ts
-var import_lodash2 = __toESM(require_lodash());
 var saveLayer = ({ slug_name, layer_options }) => ({
   layer_options,
   _checked: false,
@@ -18481,6 +18480,7 @@ var saveLayer = ({ slug_name, layer_options }) => ({
     this.debouncedSetStyle = Alpine.debounce(this.setStyle.bind(this), 200);
     this.debouncedSaveLayer = Alpine.debounce(this.saveLayer);
     this.$watch("layer_options", (layer_options2, previous_options) => {
+      console.log("layer_options changed", { [this.slug_name]: layer_options2 });
       layer_options2 = {
         ...layer_options2,
         icon: this.updateIcon ? this.updateIcon() : this.icon
@@ -18491,7 +18491,7 @@ var saveLayer = ({ slug_name, layer_options }) => ({
       this.isSaving = true;
       this.layer_options = layer_options2;
       this.length = this.getLayer()?.getLength();
-      this.debouncedSaveLayer({ layer_options: layer_options2, previous_options });
+      this.debouncedSaveLayer({ layer_options: layer_options2 });
     });
     google.maps.event.addListener(this.getLayer(), "map_changed", () => {
       console.log("map_changed");
@@ -18518,8 +18518,7 @@ var saveLayer = ({ slug_name, layer_options }) => ({
   get featuresMatchingSearch() {
     return [];
   },
-  saveLayer({ layer_options: layer_options2, previous_options }) {
-    console.log("layer_options changed", { [this.slug_name]: (0, import_lodash2.difference)(Alpine.raw(layer_options2), Alpine.raw(previous_options)) });
+  saveLayer({ layer_options: layer_options2 }) {
     if (this.iconPreview && this.iconPreview.url) {
       this.iconPreview = this.updateIcon();
       layer_options2.icon.url = this.iconPreview.url;
@@ -18858,11 +18857,15 @@ var PublicLayerBarrios = ({ index, slug_name, name, layer_options }, comunas2) =
           let currentZoom = globalThis.gmap.getZoom();
           if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
             console.zinfo("went above visibility zoom", zoom);
-            setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach((m) => m.map = globalThis.gmap)));
+            setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach((m) => {
+              return m.setMap ? m.setMap(globalThis.gmap) : m.map = globalThis.gmap;
+            })));
           }
           if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
             console.zinfo("went below visibility zoom", zoom);
-            setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach((m) => m.map = null)));
+            setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach((m) => {
+              return m.setMap ? m.setMap(null) : m.map = null;
+            })));
           }
           previousZoom = currentZoom;
         });
@@ -19033,6 +19036,7 @@ var negocioFeatureToHtml = class {
       ...campos,
       tipo_negocio: "Modalidad",
       tipo_propiedad: "Tipo Propiedad",
+      "titulo-resumen-web": "Resumen",
       nombre: "Nombre",
       comuna: "Ubicaci\xF3n",
       "banos-completos": "Ba\xF1os",
@@ -19045,7 +19049,7 @@ var negocioFeatureToHtml = class {
     this.coordinates = feature.getCenter().toJSON();
     this.container = new Wrapper("flex flex-col");
     console.log({ feature, campos, id: this.id });
-    this.container.addClass("flex").addClass("flex-col").addStyle("lineHeight", "1.5em").addStyle("fontSize", "13px").addStyle("fontFamily", "Inter, sans-serif").addStyle("fontWeight", "400");
+    this.container.addClass("flex").addClass("flex-col").addStyle("lineHeight", "1.5em").addStyle("fontSize", "13px").addStyle("fontFamily", "Inter, sans-serif").addStyle("fontWeight", "400").addStyle("maxWidth", "350px");
     this.appendProperties();
   }
   get content() {
@@ -19106,7 +19110,10 @@ var negocioFeatureToHtml = class {
       "tipo_negocio",
       "tipo_propiedad",
       "comuna",
-      "dormitorios-servicio"
+      "titulo-resumen-web",
+      "dormitorios-servicio",
+      "servicios",
+      "fecha-publicacion"
     ];
   }
   normalizeProperties() {
@@ -19143,8 +19150,9 @@ var negocioFeatureToHtml = class {
     });
   }
   printUbicacion(wrapper, value) {
+    value = `<span class="nowrap font-bold text-bold">${value}</span>.&nbsp;&nbsp;&nbsp;  ${this.getProperty("titulo-resumen-web")} `;
     wrapper.setInnerHTML(value);
-    wrapper.addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.15em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
+    wrapper.addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.15em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("display", "block").addStyle("marginTop", "0em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
   }
   printServicios(wrapper, value) {
     wrapper.setInnerHTML(value);
@@ -19177,8 +19185,8 @@ var negocioFeatureToHtml = class {
   }
   printTituloResumen(wrapper, value) {
     let words = value.split("|"), wordsQuantity = words.length, firstRow = words.slice(0, wordsQuantity / 2).join(" "), secondRow = words.slice(wordsQuantity / 2).join(" ");
-    wrapper.setInnerHTML([firstRow, secondRow].join("<br>"));
-    wrapper.addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.05em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0.2em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
+    wrapper.setInnerHTML(value);
+    wrapper.addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.1em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0.2em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
   }
   printOtherCampos(wrapper, slug_name, value) {
     wrapper.div.setAttribute("rel", slug_name);
@@ -19484,6 +19492,419 @@ var PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria 
   },
   tomselect: null
 });
+
+// src/js/public_map/PublicLayerGeoJson.ts
+var PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, comunas2) => ({
+  mapTypes: [],
+  lastType: null,
+  layer_options,
+  filters_open: false,
+  _map: null,
+  index,
+  controls: [
+    //  { property: 'className', name: 'Icon', inputType: 'icon' },
+    { property: "fillOpacity", name: "Opacidad", min: 0, max: 1, step: 0.01, inputType: "range" },
+    { property: "strokeWeight", name: "Grosor", min: 0, max: 5, step: 0.05, inputType: "range" },
+    { property: "scale", name: "Tama\xF1o", min: 0, max: 1, step: 0.05, inputType: "range" },
+    { property: "strokeColor", name: "Color", inputType: "color" }
+  ],
+  boundingBox: {
+    "south": -33.48730404102389,
+    "west": -70.68367683729824,
+    "north": -33.35133207833821,
+    "east": -70.4783698304623
+  },
+  bounds: null,
+  ...saveLayer({ slug_name, layer_options }),
+  codigo_interno: null,
+  async init() {
+    if (!google.maps.Data.Feature.prototype.getCenter) {
+      extendMapDataProtoType(google.maps);
+    }
+    this.bounds = new google.maps.LatLngBounds(this.boundingBox);
+    let qs = new URL(location.href);
+    if (qs.searchParams.get("codigo_interno")) {
+      this.codigo_interno = qs.searchParams.get("codigo_interno");
+    }
+    let { layer_options: layer_options2, ...featureCollection } = await staticFetchWrapper(this.layer_options.url, {});
+    this.layer_options = { ...this.layer_options, ...layer_options2 };
+    this.featureCollection = featureCollection;
+    this.original_icon = JSON.parse(JSON.stringify(this.layer_options.icon ?? {}));
+    this.iconPreview = this.updateIcon();
+    globalThis.exampleLayerObject = PublicLayersObject;
+    let example_layer = PublicLayersObject[slug_name] || { layer_options: layer_options2 }, icon = (example_layer.layer_options || layer_options2).icon;
+    this.name = name;
+    this.slug_name = slug_name;
+    globalThis.layers = globalThis.layers || {};
+    this.addLayerToMap();
+    this.declareEventHandlers();
+    globalThis.layerComponents = globalThis.layerComponents || {};
+    globalThis.layerComponents[this.slug_name] = this;
+    this.$watch("index", this.setStyle.bind(this));
+    this.watch();
+    const checked = this.layer_options.checked;
+    this.layer_options.checked = false;
+    this.layer_options = { ...layer_options2, name, slug_name };
+    setTimeout(() => {
+      this.layer_options.checked = checked;
+    }, 1e3);
+  },
+  updateIcon(defaultScale = 1) {
+    let {
+      text,
+      fontFamily,
+      strokeColor,
+      fillOpacity,
+      fillColor,
+      strokeOpacity,
+      fontSize,
+      scale,
+      icon,
+      strokeWeight,
+      rotation
+    } = this.layer_options;
+    if (!icon)
+      return null;
+    if (icon.path) {
+      return {
+        path: icon.path,
+        scale: (scale ?? icon.scale) / 10,
+        fillColor: strokeColor || icon.strokeColor || strokeColor,
+        strokeColor,
+        strokeOpacity,
+        strokeWeight: icon.strokeWeight ?? (strokeWeight || 0.1),
+        fillOpacity,
+        rotation: icon.rotation ?? (rotation ?? 90),
+        anchor: new google.maps.Point(96, 48)
+      };
+    }
+    if (icon.url) {
+      defaultScale = defaultScale * Number(this.layer_options.scale);
+      let width = 54 * defaultScale, height = 54 * defaultScale;
+      return {
+        scale: defaultScale,
+        url: icon.url,
+        size: new google.maps.Size(54, 54),
+        anchor: { x: width / 2, y: height },
+        scaledSize: new google.maps.Size(width, height)
+      };
+    }
+  },
+  get base64Icon() {
+    return (this.iconPreview ?? this.layer_options.icon ?? {}).url;
+  },
+  get iconUrl() {
+    return this.blobUrl || this.base64Icon;
+  },
+  getIconOptions(defaultScale = 1) {
+    let iconUrl = this.iconUrl;
+    if (iconUrl) {
+      defaultScale = defaultScale * Number(this.layer_options.scale);
+      let width = 54 * defaultScale, height = 54 * defaultScale;
+      return {
+        scale: defaultScale,
+        url: iconUrl,
+        size: { width: 96, height: 96 },
+        anchor: { x: width / 2, y: height },
+        scaledSize: { width, height }
+      };
+    }
+  },
+  setStyle() {
+    requestAnimationPromise3().then(() => {
+      let icon = this.iconPreview;
+      let label = this.getMarkerLabel();
+      this.getLayer().setStyle((feature) => {
+        let isPoint = feature.getGeometry().getType() === "Point", isVisible = !isPoint || this.bounds.contains(feature.getCenter());
+        let tipo_propiedad = feature.getProperty("tipo_propiedad");
+        let comuna = feature.getProperty("Comuna"), comunaOffset = Object.keys(comunas2).indexOf(comuna);
+        if (!comuna || comunaOffset === -1) {
+          comunaOffset = 0;
+        }
+        let highlighted = feature.getProperty("highlighted"), matches = feature.getProperty("matches"), transparencia = feature.getProperty("Transparencia") ?? 0, fillOpacity = this.layer_options.fillOpacity * (1 - transparencia / 10) * ((matches ? 2.5 : 0.9) * highlighted ? 1 : 0.8), fillColor = `hsl(${(matches ? 20 : 0) + comunaOffset * 40},${matches ? 65 : 55}%,${matches ? 60 : 70}%)`;
+        let styleObj = {
+          icon: this.getIconOptions(
+            tipo_propiedad === "Casa" ? 1 : feature.getProperty("highlighted") || feature.getProperty("draggable") ? 1.1 : 1
+          ),
+          visible: isVisible,
+          zIndex: 100 - (this.index ?? 0) * 10,
+          // label,
+          fillColor,
+          strokeColor: feature.getProperty("strokeColor") || `hsl(${comunaOffset * 40},45%,40%)`,
+          strokeWeight: this.layer_options.strokeWeight || 1,
+          strokeOpacity: matches ? 1 : 0.7,
+          // visible: feature.getProperty('comuna') && comunas[feature.getProperty('comuna')] === true,
+          fillOpacity
+        };
+        return styleObj;
+      });
+    });
+    return this;
+  },
+  fontSize: 33,
+  setFontSize(fontSize) {
+    this.fontSize = fontSize;
+    this.setStyle();
+  },
+  mouseover_added: false,
+  infowindow_added: false,
+  addLayerToMap() {
+    const layer = globalThis.layers[this.slug_name] || new google.maps.Data();
+    globalThis.layers[this.slug_name] = layer;
+    return this.appendFeatures().then(() => {
+      google.maps.event.addListener(layer, "map_changed", () => {
+        this.checked = layer.getMap() ? true : false;
+        if (this.checked) {
+          this.addMouseOverBehavior(layer);
+          this.addInfoWindowBehavior(layer);
+        } else {
+          this.removeMouseOverBehavior(layer);
+          this.removeInfoWindowBehavior(layer);
+        }
+      });
+      this.length = layer.getLength();
+      return this.setStyle();
+    });
+  },
+  mouseOverListener: null,
+  mouseOutListener: null,
+  clickListener: null,
+  declareEventHandlers() {
+    const labelProperty = this.layer_options.labelProperty || "Nombre_de_Barrio";
+    this.marker = this.marker || new google.maps.Marker({
+      position: this.getLayer().getBounds().getCenter(),
+      visible: true,
+      map: globalThis.gmap,
+      zIndex: 210,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 5,
+        strokeWeight: 2,
+        labelOrigin: new google.maps.Point(0, 2),
+        strokeColor: "rgba(200,200,200,0)"
+      }
+    });
+    if (!this.mouseOverListener) {
+      this.mouseOverListener = (event) => {
+        const { feature } = event;
+        feature.setProperty("highlighted", true);
+        let featureLabel = feature.getProperty(labelProperty);
+        if (featureLabel) {
+          this.marker.setLabel(this.getNameLabel(featureLabel));
+          this.marker.setPosition(feature.getCenter());
+          this.marker.setVisible(true);
+        }
+      };
+    }
+    if (!this.mouseOutListener) {
+      this.mouseOutListener = (event) => {
+        event.feature.setProperty("highlighted", false);
+        this.marker.setLabel("");
+        this.marker.setVisible(false);
+      };
+    }
+    if (!this.clickListener) {
+      this.clickListener = (event) => {
+        globalThis.gmap.infowindow.close();
+        let negocio = event.feature;
+        console.log({ latLng: event.latLng });
+        this.getMap().panTo(event.latLng);
+        let html = new genericFeatureToHtml(negocio, this.layer_options.campos).content;
+        this.getInfoWindow().setContent(html);
+        this.getInfoWindow().setPosition(event.latLng);
+        this.getInfoWindow().open({ map: globalThis.gmap });
+      };
+    }
+  },
+  get infowindow() {
+    return globalThis.gmap.infowindow;
+  },
+  getInfoWindow() {
+    return globalThis.gmap.infowindow;
+  },
+  getLayer() {
+    return globalThis.layers[this.slug_name];
+  },
+  getLength() {
+    return this.getLayer().getLength();
+  },
+  length: 0,
+  setMap(map) {
+    return this.getLayer().setMap(map);
+  },
+  getMap() {
+    return this.getLayer().getMap();
+  },
+  get gmap() {
+    return globalThis.gmap;
+  },
+  get layer() {
+    return this.getLayer();
+  },
+  removeFeatures() {
+    return;
+  },
+  async appendFeatures() {
+    if (this.getLayer() && this.getLayer().getLength() > 0)
+      return this.getLayer();
+    if (this.featureCollection) {
+      this.getLayer().addGeoJson(this.featureCollection);
+    } else if (this.layer_options.url) {
+      this.getLayer().loadGeoJson(this.layer_options.url);
+    }
+    setTimeout(() => this.length = this.getLength(), 1500);
+    return this.getLayer();
+  },
+  mapDialogOpen: false
+});
+
+// src/js/public_map/public_map_modules/extendMapDataProtoType.ts
+function extendMapDataProtoType2() {
+  let maps = google.maps;
+  console.info({ googleMaps: maps });
+  var MAP_PIN = "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z";
+  var SQUARE_PIN = "M22-48h-44v43h16l6 5 6-5h16z";
+  var SHIELD = "M18.8-31.8c.3-3.4 1.3-6.6 3.2-9.5l-7-6.7c-2.2 1.8-4.8 2.8-7.6 3-2.6.2-5.1-.2-7.5-1.4-2.4 1.1-4.9 1.6-7.5 1.4-2.7-.2-5.1-1.1-7.3-2.7l-7.1 6.7c1.7 2.9 2.7 6 2.9 9.2.1 1.5-.3 3.5-1.3 6.1-.5 1.5-.9 2.7-1.2 3.8-.2 1-.4 1.9-.5 2.5 0 2.8.8 5.3 2.5 7.5 1.3 1.6 3.5 3.4 6.5 5.4 3.3 1.6 5.8 2.6 7.6 3.1.5.2 1 .4 1.5.7l1.5.6c1.2.7 2 1.4 2.4 2.1.5-.8 1.3-1.5 2.4-2.1.7-.3 1.3-.5 1.9-.8.5-.2.9-.4 1.1-.5.4-.1.9-.3 1.5-.6.6-.2 1.3-.5 2.2-.8 1.7-.6 3-1.1 3.8-1.6 2.9-2 5.1-3.8 6.4-5.3 1.7-2.2 2.6-4.8 2.5-7.6-.1-1.3-.7-3.3-1.7-6.1-.9-2.8-1.3-4.9-1.2-6.4z";
+  var ROUTE = "M24-28.3c-.2-13.3-7.9-18.5-8.3-18.7l-1.2-.8-1.2.8c-2 1.4-4.1 2-6.1 2-3.4 0-5.8-1.9-5.9-1.9l-1.3-1.1-1.3 1.1c-.1.1-2.5 1.9-5.9 1.9-2.1 0-4.1-.7-6.1-2l-1.2-.8-1.2.8c-.8.6-8 5.9-8.2 18.7-.2 1.1 2.9 22.2 23.9 28.3 22.9-6.7 24.1-26.9 24-28.3z";
+  var SQUARE = "M-24-48h48v48h-48z";
+  var SQUARE_ROUNDED = "M24-8c0 4.4-3.6 8-8 8h-32c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h32c4.4 0 8 3.6 8 8v32z";
+  var inherits = function(childCtor, parentCtor) {
+    function tempCtor() {
+    }
+    ;
+    tempCtor.prototype = parentCtor.prototype;
+    childCtor.superClass_ = parentCtor.prototype;
+    childCtor.prototype = new tempCtor();
+    childCtor.prototype.constructor = childCtor;
+  };
+  class MarkerLabel extends maps.OverlayView {
+    constructor(options) {
+      super();
+      var self2 = this;
+      this.setValues(options);
+      this.div = document.createElement("div");
+      this.div.className = "map-icon-label";
+      maps.event.addDomListener(this.div, "click", function(e) {
+        e.stopPropagation && e.stopPropagation();
+        maps.event.trigger(self2.marker, "click");
+      });
+    }
+    onAdd() {
+      var pane = this.getPanes().overlayImage.appendChild(this.div);
+      var self2 = this;
+      this.listeners = [
+        google.maps.event.addListener(this, "position_changed", function() {
+          self2.draw();
+        }),
+        google.maps.event.addListener(this, "text_changed", function() {
+          self2.draw();
+        }),
+        google.maps.event.addListener(this, "zindex_changed", function() {
+          self2.draw();
+        })
+      ];
+    }
+    // Marker Label onRemove
+    onRemove() {
+      this.div.parentNode.removeChild(this.div);
+      for (var i = 0, I = this.listeners.length; i < I; ++i) {
+        google.maps.event.removeListener(this.listeners[i]);
+      }
+    }
+    draw() {
+      var projection = this.getProjection();
+      var position = projection.fromLatLngToDivPixel(this.get("position"));
+      var div = this.div;
+      this.div.innerHTML = this.get("text").toString();
+      div.style.zIndex = this.get("zIndex");
+      div.style.position = "absolute";
+      div.style.display = "block";
+      div.style.left = position.x - div.offsetWidth / 2 + "px";
+      div.style.top = position.y - div.offsetHeight + "px";
+    }
+  }
+  ;
+  maps.importLibrary("marker").then(() => {
+    class Marker extends maps.Marker {
+      constructor(options) {
+        super();
+        maps.Marker.apply(this, arguments);
+        if (options.map_icon_label) {
+          this.MarkerLabel = new MarkerLabel({
+            map: this.map,
+            marker: this,
+            text: options.map_icon_label
+          });
+          this.MarkerLabel.bindTo("position", this, "position");
+        }
+      }
+      setMap() {
+        maps.Marker.prototype.setMap.apply(this, arguments);
+        this.MarkerLabel && this.MarkerLabel.setMap.apply(this.MarkerLabel, arguments);
+      }
+    }
+  });
+  google.maps.Data.Feature.prototype.getCenter = function() {
+    return this.getBounds().getCenter();
+  };
+  google.maps.Data.prototype.getBounds = function() {
+    var featuresArray = [];
+    var bounds = new google.maps.LatLngBounds();
+    this.forEach(function(feature) {
+      bounds.union(feature.getBounds());
+    });
+    return bounds;
+  };
+  google.maps.Data.Feature.prototype.getBounds = function() {
+    const bounds = new google.maps.LatLngBounds();
+    this.getGeometry().forEachLatLng(function(latLng) {
+      bounds.extend(latLng);
+    });
+    return bounds;
+  };
+  google.maps.Data.Geometry.prototype.getBounds = function() {
+    const bounds = new google.maps.LatLngBounds();
+    this.forEachLatLng(function(latLng) {
+      bounds.extend(latLng);
+    });
+    return bounds;
+  };
+  maps.Data.prototype.getBounds = function() {
+    var featuresArray = [];
+    var bounds = new maps.LatLngBounds();
+    this.forEach(function(feature) {
+      bounds.union(feature.getBounds());
+    });
+    return bounds;
+  };
+  maps.Data.prototype.removeFeatures = function() {
+    this.forEach((feature) => {
+      this.remove(feature);
+    });
+  };
+  maps.Data.prototype.getArray = function() {
+    const featuresArray = [];
+    this.forEach(function(feature) {
+      featuresArray.push(feature);
+    });
+    return featuresArray;
+  };
+  maps.Data.Feature.prototype.getProperties = function() {
+    const properties = {};
+    this.forEachProperty((value, name) => {
+      properties[name] = value;
+    });
+    return properties;
+  };
+  maps.Data.prototype.getLength = function() {
+    let length = 0;
+    this.forEach(function(feature) {
+      length++;
+    });
+    return length;
+  };
+  return maps;
+}
 
 // src/js/public_map/public_map_modules/map_styles/BentleyMap.ts
 var BentleyMap = {
@@ -20261,11 +20682,14 @@ var MapTypeListener = class extends BaseClass {
     this.gmap = gmap;
     this.addCustomStyles().then(async () => {
       this.addClickListener();
-      let styleTag = document.querySelector("#css_map"), styleTag2 = document.createElement("style");
-      styleTag2.textContent = `@import url('/css/app.css')`;
-      this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
       if (Alpine.store("public_maps").full_map) {
         let mapSearch = document.querySelector("#searchCampo");
+        this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
+      } else {
+        console.log("inject styles to gmap");
+        let styleTag2 = document.createElement("style");
+        styleTag2.textContent = `@import url('/css/app.css')`;
+        this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
       }
       return this;
     });
@@ -20299,7 +20723,7 @@ var MapTypeListener = class extends BaseClass {
   }
   addMapTypeChangedListener() {
     google.maps.event.addListener(this.gmap, "maptypeid_changed", () => {
-      const id = this.gmap.getMapTypeId();
+      const id = 1;
       this.processEventListeners("changed", id);
       const gmnoPrint = this.gmnoPrint || document.querySelector(".gmnoprint.custom_maps");
       if (!gmnoPrint)
@@ -20323,166 +20747,6 @@ var MapTypeListener = class extends BaseClass {
     });
   }
 };
-
-// node_modules/@googlemaps/js-api-loader/dist/index.esm.js
-var LoaderStatus;
-(function(LoaderStatus2) {
-  LoaderStatus2[LoaderStatus2["INITIALIZED"] = 0] = "INITIALIZED";
-  LoaderStatus2[LoaderStatus2["LOADING"] = 1] = "LOADING";
-  LoaderStatus2[LoaderStatus2["SUCCESS"] = 2] = "SUCCESS";
-  LoaderStatus2[LoaderStatus2["FAILURE"] = 3] = "FAILURE";
-})(LoaderStatus || (LoaderStatus = {}));
-
-// src/js/public_map/public_map_modules/extendMapDataProtoType.ts
-function extendMapDataProtoType() {
-  let maps = google.maps;
-  console.info({ googleMaps: maps });
-  var MAP_PIN = "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z";
-  var SQUARE_PIN = "M22-48h-44v43h16l6 5 6-5h16z";
-  var SHIELD = "M18.8-31.8c.3-3.4 1.3-6.6 3.2-9.5l-7-6.7c-2.2 1.8-4.8 2.8-7.6 3-2.6.2-5.1-.2-7.5-1.4-2.4 1.1-4.9 1.6-7.5 1.4-2.7-.2-5.1-1.1-7.3-2.7l-7.1 6.7c1.7 2.9 2.7 6 2.9 9.2.1 1.5-.3 3.5-1.3 6.1-.5 1.5-.9 2.7-1.2 3.8-.2 1-.4 1.9-.5 2.5 0 2.8.8 5.3 2.5 7.5 1.3 1.6 3.5 3.4 6.5 5.4 3.3 1.6 5.8 2.6 7.6 3.1.5.2 1 .4 1.5.7l1.5.6c1.2.7 2 1.4 2.4 2.1.5-.8 1.3-1.5 2.4-2.1.7-.3 1.3-.5 1.9-.8.5-.2.9-.4 1.1-.5.4-.1.9-.3 1.5-.6.6-.2 1.3-.5 2.2-.8 1.7-.6 3-1.1 3.8-1.6 2.9-2 5.1-3.8 6.4-5.3 1.7-2.2 2.6-4.8 2.5-7.6-.1-1.3-.7-3.3-1.7-6.1-.9-2.8-1.3-4.9-1.2-6.4z";
-  var ROUTE = "M24-28.3c-.2-13.3-7.9-18.5-8.3-18.7l-1.2-.8-1.2.8c-2 1.4-4.1 2-6.1 2-3.4 0-5.8-1.9-5.9-1.9l-1.3-1.1-1.3 1.1c-.1.1-2.5 1.9-5.9 1.9-2.1 0-4.1-.7-6.1-2l-1.2-.8-1.2.8c-.8.6-8 5.9-8.2 18.7-.2 1.1 2.9 22.2 23.9 28.3 22.9-6.7 24.1-26.9 24-28.3z";
-  var SQUARE = "M-24-48h48v48h-48z";
-  var SQUARE_ROUNDED = "M24-8c0 4.4-3.6 8-8 8h-32c-4.4 0-8-3.6-8-8v-32c0-4.4 3.6-8 8-8h32c4.4 0 8 3.6 8 8v32z";
-  var inherits = function(childCtor, parentCtor) {
-    function tempCtor() {
-    }
-    ;
-    tempCtor.prototype = parentCtor.prototype;
-    childCtor.superClass_ = parentCtor.prototype;
-    childCtor.prototype = new tempCtor();
-    childCtor.prototype.constructor = childCtor;
-  };
-  class MarkerLabel extends maps.OverlayView {
-    constructor(options) {
-      super();
-      var self2 = this;
-      this.setValues(options);
-      this.div = document.createElement("div");
-      this.div.className = "map-icon-label";
-      maps.event.addDomListener(this.div, "click", function(e) {
-        e.stopPropagation && e.stopPropagation();
-        maps.event.trigger(self2.marker, "click");
-      });
-    }
-    onAdd() {
-      var pane = this.getPanes().overlayImage.appendChild(this.div);
-      var self2 = this;
-      this.listeners = [
-        google.maps.event.addListener(this, "position_changed", function() {
-          self2.draw();
-        }),
-        google.maps.event.addListener(this, "text_changed", function() {
-          self2.draw();
-        }),
-        google.maps.event.addListener(this, "zindex_changed", function() {
-          self2.draw();
-        })
-      ];
-    }
-    // Marker Label onRemove
-    onRemove() {
-      this.div.parentNode.removeChild(this.div);
-      for (var i = 0, I = this.listeners.length; i < I; ++i) {
-        google.maps.event.removeListener(this.listeners[i]);
-      }
-    }
-    draw() {
-      var projection = this.getProjection();
-      var position = projection.fromLatLngToDivPixel(this.get("position"));
-      var div = this.div;
-      this.div.innerHTML = this.get("text").toString();
-      div.style.zIndex = this.get("zIndex");
-      div.style.position = "absolute";
-      div.style.display = "block";
-      div.style.left = position.x - div.offsetWidth / 2 + "px";
-      div.style.top = position.y - div.offsetHeight + "px";
-    }
-  }
-  ;
-  maps.importLibrary("marker").then(() => {
-    class Marker extends maps.Marker {
-      constructor(options) {
-        super();
-        maps.Marker.apply(this, arguments);
-        if (options.map_icon_label) {
-          this.MarkerLabel = new MarkerLabel({
-            map: this.map,
-            marker: this,
-            text: options.map_icon_label
-          });
-          this.MarkerLabel.bindTo("position", this, "position");
-        }
-      }
-      setMap() {
-        maps.Marker.prototype.setMap.apply(this, arguments);
-        this.MarkerLabel && this.MarkerLabel.setMap.apply(this.MarkerLabel, arguments);
-      }
-    }
-  });
-  google.maps.Data.Feature.prototype.getCenter = function() {
-    return this.getBounds().getCenter();
-  };
-  google.maps.Data.prototype.getBounds = function() {
-    var featuresArray = [];
-    var bounds = new google.maps.LatLngBounds();
-    this.forEach(function(feature) {
-      bounds.union(feature.getBounds());
-    });
-    return bounds;
-  };
-  google.maps.Data.Feature.prototype.getBounds = function() {
-    const bounds = new google.maps.LatLngBounds();
-    this.getGeometry().forEachLatLng(function(latLng) {
-      bounds.extend(latLng);
-    });
-    return bounds;
-  };
-  google.maps.Data.Geometry.prototype.getBounds = function() {
-    const bounds = new google.maps.LatLngBounds();
-    this.forEachLatLng(function(latLng) {
-      bounds.extend(latLng);
-    });
-    return bounds;
-  };
-  maps.Data.prototype.getBounds = function() {
-    var featuresArray = [];
-    var bounds = new maps.LatLngBounds();
-    this.forEach(function(feature) {
-      bounds.union(feature.getBounds());
-    });
-    return bounds;
-  };
-  maps.Data.prototype.removeFeatures = function() {
-    this.forEach((feature) => {
-      this.remove(feature);
-    });
-  };
-  maps.Data.prototype.getArray = function() {
-    const featuresArray = [];
-    this.forEach(function(feature) {
-      featuresArray.push(feature);
-    });
-    return featuresArray;
-  };
-  maps.Data.Feature.prototype.getProperties = function() {
-    const properties = {};
-    this.forEachProperty((value, name) => {
-      properties[name] = value;
-    });
-    return properties;
-  };
-  maps.Data.prototype.getLength = function() {
-    let length = 0;
-    this.forEach(function(feature) {
-      length++;
-    });
-    return length;
-  };
-  return maps;
-}
-
-// src/js/public_map/public_map_modules/iconSelector.ts
-var import_tom_select = __toESM(require_tom_select_complete());
 
 // src/js/public_map/public_map_modules/populateMapFields.ts
 var populateMapFields = (columnas_actuales, campos_busqueda) => {
@@ -20513,301 +20777,7 @@ var populateMapFields = (columnas_actuales, campos_busqueda) => {
   }, {});
 };
 
-// src/js/public_map/public_map_modules/sharingLevels.ts
-var sharingLevels = {
-  private: {
-    id: "private",
-    title: "Privado",
-    description: "El mapa s\xF3lo ser\xE1 visible para usted y los administradores",
-    icon: "fa fa-lock"
-  },
-  shared: {
-    id: "shared",
-    title: "Compartido",
-    description: "Otros usuarios podr\xE1n ver el mapa, pero no guardar cambios",
-    icon: "fa fa-eye"
-  },
-  collaborative: {
-    id: "collaborative",
-    title: "Colaborativo",
-    description: "Otros usuarios podr\xE1n ver y guardar cambios el mapa",
-    icon: "fa fa-users"
-  },
-  public: {
-    id: "public",
-    title: "P\xFAblico",
-    description: "Visitantes externos podr\xE1n ver una versi\xF3n simplificada del mapa",
-    icon: "fa fa-globe"
-  }
-};
-
-// src/js/public_map/PublicLayerGeoJson.ts
-var PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, comunas2) => ({
-  mapTypes: [],
-  lastType: null,
-  layer_options,
-  filters_open: false,
-  _map: null,
-  index,
-  controls: [
-    //  { property: 'className', name: 'Icon', inputType: 'icon' },
-    { property: "fillOpacity", name: "Opacidad", min: 0, max: 1, step: 0.01, inputType: "range" },
-    { property: "strokeWeight", name: "Grosor", min: 0, max: 5, step: 0.05, inputType: "range" },
-    { property: "scale", name: "Tama\xF1o", min: 0, max: 1, step: 0.05, inputType: "range" },
-    { property: "strokeColor", name: "Color", inputType: "color" }
-  ],
-  boundingBox: {
-    "south": -33.48730404102389,
-    "west": -70.68367683729824,
-    "north": -33.35133207833821,
-    "east": -70.4783698304623
-  },
-  bounds: null,
-  ...saveLayer({ slug_name, layer_options }),
-  codigo_interno: null,
-  async init() {
-    if (!google.maps.Data.Feature.prototype.getCenter) {
-      extendMapDataProtoType(google.maps);
-    }
-    this.bounds = new google.maps.LatLngBounds(this.boundingBox);
-    let qs = new URL(location.href);
-    if (qs.searchParams.get("codigo_interno")) {
-      this.codigo_interno = qs.searchParams.get("codigo_interno");
-    }
-    let { layer_options: layer_options2, ...featureCollection } = await staticFetchWrapper(this.layer_options.url, {});
-    this.layer_options = { ...this.layer_options, ...layer_options2 };
-    this.featureCollection = featureCollection;
-    this.original_icon = JSON.parse(JSON.stringify(this.layer_options.icon ?? {}));
-    this.iconPreview = this.updateIcon();
-    globalThis.exampleLayerObject = PublicLayersObject;
-    let example_layer = PublicLayersObject[slug_name] || { layer_options: layer_options2 }, icon = (example_layer.layer_options || layer_options2).icon;
-    this.name = name;
-    this.slug_name = slug_name;
-    globalThis.layers = globalThis.layers || {};
-    this.addLayerToMap();
-    this.declareEventHandlers();
-    globalThis.layerComponents = globalThis.layerComponents || {};
-    globalThis.layerComponents[this.slug_name] = this;
-    this.$watch("index", this.setStyle.bind(this));
-    this.watch();
-    const checked = this.layer_options.checked;
-    this.layer_options.checked = false;
-    this.layer_options = { ...layer_options2, name, slug_name };
-    setTimeout(() => {
-      this.layer_options.checked = checked;
-    }, 1e3);
-  },
-  updateIcon(defaultScale = 1) {
-    let {
-      text,
-      fontFamily,
-      strokeColor,
-      fillOpacity,
-      fillColor,
-      strokeOpacity,
-      fontSize,
-      scale,
-      icon,
-      strokeWeight,
-      rotation
-    } = this.layer_options;
-    if (!icon)
-      return null;
-    if (icon.path) {
-      return {
-        path: icon.path,
-        scale: (scale ?? icon.scale) / 10,
-        fillColor: strokeColor || icon.strokeColor || strokeColor,
-        strokeColor,
-        strokeOpacity,
-        strokeWeight: icon.strokeWeight ?? (strokeWeight || 0.1),
-        fillOpacity,
-        rotation: icon.rotation ?? (rotation ?? 90),
-        anchor: new google.maps.Point(96, 48)
-      };
-    }
-    if (icon.url) {
-      defaultScale = defaultScale * Number(this.layer_options.scale);
-      let width = 54 * defaultScale, height = 54 * defaultScale;
-      return {
-        scale: defaultScale,
-        url: icon.url,
-        size: new google.maps.Size(54, 54),
-        anchor: { x: width / 2, y: height },
-        scaledSize: new google.maps.Size(width, height)
-      };
-    }
-  },
-  get base64Icon() {
-    return (this.iconPreview ?? this.layer_options.icon ?? {}).url;
-  },
-  get iconUrl() {
-    return this.blobUrl || this.base64Icon;
-  },
-  getIconOptions(defaultScale = 1) {
-    let iconUrl = this.iconUrl;
-    if (iconUrl) {
-      defaultScale = defaultScale * Number(this.layer_options.scale);
-      let width = 54 * defaultScale, height = 54 * defaultScale;
-      return {
-        scale: defaultScale,
-        url: iconUrl,
-        size: { width: 96, height: 96 },
-        anchor: { x: width / 2, y: height },
-        scaledSize: { width, height }
-      };
-    }
-  },
-  setStyle() {
-    requestAnimationPromise3().then(() => {
-      let icon = this.iconPreview;
-      let label = this.getMarkerLabel();
-      this.getLayer().setStyle((feature) => {
-        let isPoint = feature.getGeometry().getType() === "Point", isVisible = !isPoint || this.bounds.contains(feature.getCenter());
-        let tipo_propiedad = feature.getProperty("tipo_propiedad");
-        let comuna = feature.getProperty("Comuna"), comunaOffset = Object.keys(comunas2).indexOf(comuna);
-        if (!comuna || comunaOffset === -1) {
-          comunaOffset = 0;
-        }
-        let highlighted = feature.getProperty("highlighted"), matches = feature.getProperty("matches"), transparencia = feature.getProperty("Transparencia") ?? 0, fillOpacity = this.layer_options.fillOpacity * (1 - transparencia / 10) * ((matches ? 2.5 : 0.9) * highlighted ? 1 : 0.8), fillColor = `hsl(${(matches ? 20 : 0) + comunaOffset * 40},${matches ? 65 : 55}%,${matches ? 60 : 70}%)`;
-        let styleObj = {
-          icon: this.getIconOptions(
-            tipo_propiedad === "Casa" ? 1 : feature.getProperty("highlighted") || feature.getProperty("draggable") ? 1.1 : 1
-          ),
-          visible: isVisible,
-          zIndex: 100 - (this.index ?? 0) * 10,
-          // label,
-          fillColor,
-          strokeColor: feature.getProperty("strokeColor") || `hsl(${comunaOffset * 40},45%,40%)`,
-          strokeWeight: this.layer_options.strokeWeight || 1,
-          strokeOpacity: matches ? 1 : 0.7,
-          // visible: feature.getProperty('comuna') && comunas[feature.getProperty('comuna')] === true,
-          fillOpacity
-        };
-        return styleObj;
-      });
-    });
-    return this;
-  },
-  fontSize: 33,
-  setFontSize(fontSize) {
-    this.fontSize = fontSize;
-    this.setStyle();
-  },
-  mouseover_added: false,
-  infowindow_added: false,
-  addLayerToMap() {
-    const layer = globalThis.layers[this.slug_name] || new google.maps.Data();
-    globalThis.layers[this.slug_name] = layer;
-    return this.appendFeatures().then(() => {
-      google.maps.event.addListener(layer, "map_changed", () => {
-        this.checked = layer.getMap() ? true : false;
-        if (this.checked) {
-          this.addMouseOverBehavior(layer);
-          this.addInfoWindowBehavior(layer);
-        } else {
-          this.removeMouseOverBehavior(layer);
-          this.removeInfoWindowBehavior(layer);
-        }
-      });
-      this.length = layer.getLength();
-      return this.setStyle();
-    });
-  },
-  mouseOverListener: null,
-  mouseOutListener: null,
-  clickListener: null,
-  declareEventHandlers() {
-    const labelProperty = this.layer_options.labelProperty || "Nombre_de_Barrio";
-    this.marker = this.marker || new google.maps.Marker({
-      position: this.getLayer().getBounds().getCenter(),
-      visible: true,
-      map: globalThis.gmap,
-      zIndex: 210,
-      icon: {
-        path: google.maps.SymbolPath.CIRCLE,
-        scale: 5,
-        strokeWeight: 2,
-        labelOrigin: new google.maps.Point(0, 2),
-        strokeColor: "rgba(200,200,200,0)"
-      }
-    });
-    if (!this.mouseOverListener) {
-      this.mouseOverListener = (event) => {
-        const { feature } = event;
-        feature.setProperty("highlighted", true);
-        let featureLabel = feature.getProperty(labelProperty);
-        if (featureLabel) {
-          this.marker.setLabel(this.getNameLabel(featureLabel));
-          this.marker.setPosition(feature.getCenter());
-          this.marker.setVisible(true);
-        }
-      };
-    }
-    if (!this.mouseOutListener) {
-      this.mouseOutListener = (event) => {
-        event.feature.setProperty("highlighted", false);
-        this.marker.setLabel("");
-        this.marker.setVisible(false);
-      };
-    }
-    if (!this.clickListener) {
-      this.clickListener = (event) => {
-        globalThis.gmap.infowindow.close();
-        let negocio = event.feature;
-        console.log({ latLng: event.latLng });
-        this.getMap().panTo(event.latLng);
-        let html = new genericFeatureToHtml(negocio, this.layer_options.campos).content;
-        this.getInfoWindow().setContent(html);
-        this.getInfoWindow().setPosition(event.latLng);
-        this.getInfoWindow().open({ map: globalThis.gmap });
-      };
-    }
-  },
-  get infowindow() {
-    return globalThis.gmap.infowindow;
-  },
-  getInfoWindow() {
-    return globalThis.gmap.infowindow;
-  },
-  getLayer() {
-    return globalThis.layers[this.slug_name];
-  },
-  getLength() {
-    return this.getLayer().getLength();
-  },
-  length: 0,
-  setMap(map) {
-    return this.getLayer().setMap(map);
-  },
-  getMap() {
-    return this.getLayer().getMap();
-  },
-  get gmap() {
-    return globalThis.gmap;
-  },
-  get layer() {
-    return this.getLayer();
-  },
-  removeFeatures() {
-    return;
-  },
-  async appendFeatures() {
-    if (this.getLayer() && this.getLayer().getLength() > 0)
-      return this.getLayer();
-    if (this.featureCollection) {
-      this.getLayer().addGeoJson(this.featureCollection);
-    } else if (this.layer_options.url) {
-      this.getLayer().loadGeoJson(this.layer_options.url);
-    }
-    setTimeout(() => this.length = this.getLength(), 1500);
-    return this.getLayer();
-  },
-  mapDialogOpen: false
-});
-
 // src/js/public_map/PublicMapFrameData.ts
-var import_tom_select2 = __toESM(require_tom_select_complete());
 var comunas = [
   "Lo Barnechea",
   "Las Condes",
@@ -20892,11 +20862,14 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
           this.$store.campos_busqueda
         );
       });
-      this.$store.public_maps.once("ready").then((maps) => {
+      console.warn("deciding between createMap and store ready");
+      return this.$store.public_maps.once("ready").then((maps) => {
+        console.info("mapFrameData, received store ready event");
         console.info({ googleMaps: maps });
-        extendMapDataProtoType(maps);
+        extendMapDataProtoType2(maps);
         return this.createMap();
       }).then(async (gmap) => {
+        console.warn("map created", gmap);
         this.gmap = gmap;
         globalThis.gmap = gmap;
         this.marker = this.createMarker();
@@ -20946,30 +20919,35 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
     },
     async createMap() {
       globalThis.mapframe = this;
+      console.warn("creating map or waiting for the store to create it");
       let mapStatusObj = {};
       this.url = new URL(window.location.href);
       if (!mapStatusObj.center) {
         mapStatusObj = this.storedStatus;
       }
       let mergedOptions = {
-        mapId: "918f8abc9ae2727a",
+        mapId: "3b1abace91810cf",
         rotateControl: true,
         isFractionalZoomEnabled: true,
         streetViewControl: false,
         mapTypeControl: !this.codigo_interno && !this.extent,
-        mapTypeControlOptions: {
-          mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"],
-          style: 1
-          // google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-        },
+        tiltControl: true,
         ...mapStatusObj
       };
-      return this.$store.public_maps.once("map_created").then((gmap) => {
+      console.info("deciding between initMap and map_created");
+      return (this.$store.public_maps.full_map ? Promise.resolve(new google.maps.Map(this.$el.querySelector("#map_container"), mergedOptions)) : this.$store.public_maps.once("map_created")).then(async (gmap) => {
+        console.log("map created", gmap);
+        if (gmap) {
+          gmap.setOptions(mergedOptions);
+        } else {
+          gmap = new google.maps.Map(this.$el.querySelector("#map_container"), mergedOptions);
+          this.$store.public_maps.customElementsMap = gmap;
+        }
         this.gmap = gmap;
-        gmap.setOptions(mergedOptions);
+        globalThis.gmap = gmap;
         this.mapCreatedHandlers.forEach((handler5) => handler5(this.gmap));
         this.googleReady = true;
-        return this.gmap;
+        return gmap;
       });
     },
     mapCreatedHandlers: [],
@@ -20988,6 +20966,8 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
       this.$refs.map_container.classList.remove("hidden");
       this.$refs.map_container.style.height = `${this.mapHeight}px`;
       this.mapTypeListener = new MapTypeListener(this.gmap);
+      this.mapTypeListener.addCustomStyles().then(() => {
+      });
       this.infowindow = new google.maps.InfoWindow();
       this.gmap.infowindow = this.infowindow;
     },
@@ -21016,8 +20996,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
       let lat = Number(Number(center?.lat()).toFixed(6)), lng = Number(Number(center?.lng()).toFixed(6));
       return {
         center: { lat, lng },
-        zoom: Number(Number(this.gmap?.getZoom()).toFixed(1)),
-        mapTypeId: this.gmap?.getMapTypeId()
+        zoom: Number(Number(this.gmap?.getZoom()).toFixed(1))
       };
     },
     get dealsWithCoords() {
@@ -21140,9 +21119,6 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
       return this.gmap ? this.gmap.getMapTypeId() : "roadmap";
     },
     set mapTypeId(mapTypeId) {
-      if (this.gmap) {
-        this.gmap.setMapTypeId(mapTypeId);
-      }
     },
     get mapTypeOptions() {
       return this.gmap ? Object.entries(
@@ -21174,6 +21150,46 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
   };
 };
 
+// src/js/public_map/public_map_modules/sharingLevels.ts
+var sharingLevels = {
+  private: {
+    id: "private",
+    title: "Privado",
+    description: "El mapa s\xF3lo ser\xE1 visible para usted y los administradores",
+    icon: "fa fa-lock"
+  },
+  shared: {
+    id: "shared",
+    title: "Compartido",
+    description: "Otros usuarios podr\xE1n ver el mapa, pero no guardar cambios",
+    icon: "fa fa-eye"
+  },
+  collaborative: {
+    id: "collaborative",
+    title: "Colaborativo",
+    description: "Otros usuarios podr\xE1n ver y guardar cambios el mapa",
+    icon: "fa fa-users"
+  },
+  public: {
+    id: "public",
+    title: "P\xFAblico",
+    description: "Visitantes externos podr\xE1n ver una versi\xF3n simplificada del mapa",
+    icon: "fa fa-globe"
+  }
+};
+
+// node_modules/@googlemaps/js-api-loader/dist/index.esm.js
+var LoaderStatus;
+(function(LoaderStatus2) {
+  LoaderStatus2[LoaderStatus2["INITIALIZED"] = 0] = "INITIALIZED";
+  LoaderStatus2[LoaderStatus2["LOADING"] = 1] = "LOADING";
+  LoaderStatus2[LoaderStatus2["SUCCESS"] = 2] = "SUCCESS";
+  LoaderStatus2[LoaderStatus2["FAILURE"] = 3] = "FAILURE";
+})(LoaderStatus || (LoaderStatus = {}));
+
+// src/js/public_map/public_map_modules/iconSelector.ts
+var import_tom_select = __toESM(require_tom_select_complete());
+
 // src/js/public_map/PublicMapStore.ts
 var PublicMapStore = class extends BaseClass {
   constructor() {
@@ -21198,6 +21214,7 @@ var PublicMapStore = class extends BaseClass {
     this.layerSlugs = [];
     this.codigo_interno = null;
     this._customElementsMap = null;
+    this.skipMapCreation = false;
     this.barrioLabels = [];
     this.barrioMarkers = [];
     //@ts-ignore
@@ -21224,9 +21241,12 @@ var PublicMapStore = class extends BaseClass {
     this.url = new URL(window.location.href);
     this.waitForGoogleMapsLoaded().then((maps) => {
       console.log("will extend prototype", maps);
-      extendMapDataProtoType(maps);
+      extendMapDataProtoType2(maps);
       this.ready = true;
       this.processEventListeners("ready", maps);
+      if (this.skipMapCreation) {
+        this.processEventListeners("map_created", null);
+      }
     });
   }
   get customElementsMap() {
@@ -21234,15 +21254,24 @@ var PublicMapStore = class extends BaseClass {
   }
   set customElementsMap(customElementsMap) {
     this._customElementsMap = customElementsMap;
+    this.processEventListeners("ready", google.maps);
     globalThis.gmap = customElementsMap;
     this.processEventListeners("map_created", customElementsMap);
     this.marquee("received customElementsMap");
   }
   get verifiers() {
     return {
-      map_created: !!this.customElementsMap,
+      map_created: !!this.customElementsMap || !!this.skipMapCreation,
       ready: !!this.ready,
       layers_added: this.layer_array.length > 0
+    };
+  }
+  getNameLabel(text = "", className = "markerLabel bg-white border radius-4 p-1  ") {
+    return {
+      text,
+      color: "#444",
+      fontSize: "14px",
+      className
     };
   }
   setBarrioLabels(features) {
@@ -21251,18 +21280,41 @@ var PublicMapStore = class extends BaseClass {
       let [lng, lat] = geometry.coordinates;
       return { position: { lng, lat }, id, name: properties.Nombre_de_Barrio };
     });
-    this.once("map_created", (gmap) => {
-      this.barrioLabels.forEach(({ position, name }) => {
-        const priceTag = document.createElement("div");
-        priceTag.className = "price-tag";
-        priceTag.textContent = name;
-        const marker = new google.maps.marker.AdvancedMarkerElement({
-          map: null,
-          position,
-          content: priceTag
+    this.once("map_created", async (gmap) => {
+      if (this.full_map && this.skipMapCreation) {
+        this.barrioLabels.forEach(({ position, name }) => {
+          const priceTag = document.createElement("div");
+          priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
+          priceTag.textContent = name;
+          const marker = new google.maps.Marker({
+            map: null,
+            position,
+            icon: {
+              path: 1,
+              scale: 5,
+              strokeWeight: 2,
+              labelOrigin: new google.maps.Point(0, 2),
+              strokeColor: "rgba(200,200,200,0)"
+            },
+            label: this.getNameLabel(name, priceTag.className)
+          });
+          this.barrioMarkers.push(marker);
         });
-        this.barrioMarkers.push(marker);
-      });
+      } else {
+        const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+        this.barrioLabels.forEach(({ position, name }) => {
+          const priceTag = document.createElement("div");
+          priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
+          priceTag.textContent = name;
+          const marker = new AdvancedMarkerElement({
+            map: null,
+            position,
+            content: priceTag,
+            title: name
+          });
+          this.barrioMarkers.push(marker);
+        });
+      }
     });
   }
   async waitForGoogleMapsLoaded(attempt = 0) {
@@ -21374,7 +21426,7 @@ var PublicMapStore = class extends BaseClass {
   get storedStatus() {
     const defaultMapStatus = {
       center: { lat: -33.415785, lng: -70.578539 },
-      mapTypeId: "Grass",
+      //mapTypeId: 'Grass',
       zoom: 13.1
     };
     const mapStatus = {

@@ -326,53 +326,7 @@ export const PublicLayerBarrios = ({ index, slug_name, name, layer_options }, co
         this.marker = globalThis.gmap.labelMarker;
         if (!this.mouseOverListener) {
             const layer = this.getLayer()
-            /*  setTimeout(() => {
-  
-                  /*if (this.layer_options.labelVisibility.always || this.layer_options.labelVisibility.zoom) {
-                      this.centerFc = new google.maps.Data();
-  
-                      layer.forEach((feature) => {
-                          if (feature.getGeometry().getType() !== 'Point') {
-                              let { lat, lng } = feature.getCenter().toJSON(),
-                                  centerFeature = {
-                                      type: 'Feature',
-                                      id: feature.getId() + '-center',
-                                      geometry: {
-                                          type: 'Point',
-                                          coordinates: [lng, lat]
-                                      },
-                                      properties: {
-                                          'is_label': true,
-                                          [labelProperty]: feature.getProperty(labelProperty),
-                                      }
-                                  }
-                              this.centerFc.addGeoJson(centerFeature)
-                          }
-  
-                      });
-                      (this.centerFc as google.maps.Data).toGeoJson((geojson) => console.log({ centerFc: geojson }))
-                      let visibilityZoom = this.layer_options.labelVisibility.zoom;
-                      if (visibilityZoom) {
-                          let previousZoom = globalThis.gmap.getZoom();
-  
-                          this.gmap.addListener('zoom_changed', (zoom) => {
-                              let currentZoom = globalThis.gmap.getZoom()
-  
-                              // When zooming above visibilty threshold, update the style
-                              if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
-                                  console.zinfo('went above visibility zoom', zoom)
-                                  setTimeout(() => requestAnimationFrame(() => this.setStyle()))
-                              }
-                              // When zooming below visibilty threshold, update the style
-                              if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
-                                  console.zinfo('went below visibility zoom', zoom)
-                                  setTimeout(() => requestAnimationFrame(() => this.setStyle()))
-                              }
-                              previousZoom = currentZoom
-                          });
-                      }
-                  }
-              }, 5000)*/
+
             let visibilityZoom = this.layer_options.labelVisibility.zoom;
             if (visibilityZoom) {
                 let previousZoom = globalThis.gmap.getZoom();
@@ -383,12 +337,16 @@ export const PublicLayerBarrios = ({ index, slug_name, name, layer_options }, co
                     // When zooming above visibilty threshold, update the style
                     if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
                         console.zinfo('went above visibility zoom', zoom)
-                        setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach(m => m.map = globalThis.gmap)))
+                        setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach(m => {
+                            return m.setMap ? m.setMap(globalThis.gmap) : (m.map = globalThis.gmap)
+                        })))
                     }
                     // When zooming below visibilty threshold, update the style
                     if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
                         console.zinfo('went below visibility zoom', zoom)
-                        setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach(m => m.map = null)))
+                        setTimeout(() => requestAnimationFrame(() => this.$store.public_maps.barrioMarkers.forEach(m => {
+                            return m.setMap ? m.setMap(null) : (m.map = null)
+                        })))
                     }
                     previousZoom = currentZoom
                 });

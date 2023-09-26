@@ -1,7 +1,7 @@
 
 import { AlpineDataComponent } from "@lacasadejuana/types";
 
-import { difference } from "lodash";
+
 
 const comunas = [
     "Lo Barnechea",
@@ -47,6 +47,7 @@ export const saveLayer = ({ slug_name, layer_options }) => ({
 
 
         this.$watch('layer_options', (layer_options, previous_options) => {
+            console.log('layer_options changed', { [this.slug_name]: layer_options })
 
 
 
@@ -60,7 +61,7 @@ export const saveLayer = ({ slug_name, layer_options }) => ({
             this.isSaving = true
             this.layer_options = layer_options
             this.length = this.getLayer()?.getLength()
-            this.debouncedSaveLayer({ layer_options, previous_options })
+            this.debouncedSaveLayer({ layer_options })
         })
 
         google.maps.event.addListener(this.getLayer(), 'map_changed', () => {
@@ -92,9 +93,7 @@ export const saveLayer = ({ slug_name, layer_options }) => ({
     get featuresMatchingSearch(): google.maps.Data.Feature[] {
         return [] as google.maps.Data.Feature[]
     },
-    saveLayer({ layer_options, previous_options }) {
-        console.log('layer_options changed', { [this.slug_name]: difference(Alpine.raw(layer_options), Alpine.raw(previous_options)) })
-
+    saveLayer({ layer_options }) {
 
         // if the layer offer an icon preview UI, set the generated preview image
         // as the icon url

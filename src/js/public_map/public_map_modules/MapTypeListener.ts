@@ -26,8 +26,8 @@ export class MapTypeListener extends BaseClass implements IBaseClass<'changed' |
                 //@ts-ignore
                 this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
             } else {
-                let styleTag = document.querySelector('#css_map'),
-                    styleTag2 = document.createElement('style')
+                console.log('inject styles to gmap')
+                let styleTag2 = document.createElement('style')
                 styleTag2.textContent = `@import url('/css/app.css')`
 
                 this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);

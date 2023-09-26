@@ -4,7 +4,6 @@ import { AlpineDataComponent, IGeoJsonLayerData, ILayerOptions } from '@lacasade
 import { PublicLayersObject } from './public_map_modules/exampleLayers';
 import { genericFeatureToHtml } from "./public_map_modules/genericFeatureToHtml";
 import { saveLayer } from "./public_map_modules/saveLayer";
-import { extendMapDataProtoType } from './public_map_modules';
 
 
 export const PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, comunas) => ({

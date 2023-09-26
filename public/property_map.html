@@ -189,7 +189,7 @@
             </header>
 
         </div>
-        <gmp-map  style="height:600px" id="custom_element_map"  center="-33.398,-70.58" zoom="10" map-id="918f8abc9ae2727a">
+        <gmp-map  style="height:600px" id="custom_element_map"  center="-33.398,-70.58" zoom="14" map-id="3b1abace91810cf">
 <template x-for="marker in $store.public_maps.barrioLabels" :key="marker.id">
     <gmp-advanced-marker @click="()=>{
 console.log({$el})
@@ -449,6 +449,10 @@ console.log({$el})
                 customElements.whenDefined(advancedMarker.localName).then(async () => {
 Alpine.store('public_maps').customElementsMap=  advancedMarker.map;
 console.timerInfo('got reference to custom element map')
+let  styleTag2 = document.createElement('style')
+                styleTag2.textContent = `@import url('/css/app.css')`
+
+                advancedMarker.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
 
                   advancedMarker.addEventListener('gmp-click', async () => {
                     console.info('gmp-click')

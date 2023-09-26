@@ -171,7 +171,7 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
 
         return (globalThis.layers[this.slug_name] as google.maps.Data).setStyle((feature) => {
 
-            let codigo_interno = feature.getId() ?? feature.getProperty('codigo_interno') ?? feature.getProperty('codigo_interno'),
+            let codigo_interno = feature.getId(),
                 defaultScale = 1,
                 highlighted = feature.getProperty('highlighted');
 
@@ -196,7 +196,7 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
         return this
     },
     isLowEmphasis(codigo_interno) {
-        return codigo_interno && this.$store.public_maps.codigo_interno && this.$store.public_maps.codigo_interno != codigo_interno
+        return this.$store.public_maps.codigo_interno && this.$store.public_maps.codigo_interno != codigo_interno
     },
     getIconOptions(defaultScale = 1, codigo_interno = null) {
         let iconUrl = this.iconUrl

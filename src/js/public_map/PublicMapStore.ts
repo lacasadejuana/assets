@@ -76,6 +76,8 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     }
     set customElementsMap(customElementsMap) {
         this._customElementsMap = customElementsMap
+        this.processEventListeners('ready', google.maps)
+
         globalThis.gmap = customElementsMap
         this.processEventListeners('map_created', customElementsMap)
         this.marquee('received customElementsMap')
@@ -89,6 +91,14 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         } as unknown as Record<Partial<TeventType>, boolean>
 
     }
+    getNameLabel(text = '', className = 'markerLabel bg-white border radius-4 p-1  ') {
+        return {
+            text,
+            color: '#444',
+            fontSize: '14px',
+            className,
+        };
+    }
     barrioLabels: { position: { lng: any; lat: any; }; id: string | number; name: any; }[] = []
     barrioMarkers: google.maps.marker.AdvancedMarkerClickEvent[] = []
     setBarrioLabels(features: Feature[]) {
@@ -97,24 +107,50 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
             let [lng, lat] = geometry.coordinates
             return { position: { lng, lat }, id, name: properties.Nombre_de_Barrio }
         })
-        this.once('map_created', gmap => {
+        this.once('map_created', async gmap => {
 
+            if (this.full_map && this.skipMapCreation) {
+                this.barrioLabels.forEach(({ position, name }) => {
+                    const priceTag = document.createElement("div");
 
-            this.barrioLabels.forEach(({ position, name }) => {
-                const priceTag = document.createElement("div");
+                    priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
+                    priceTag.textContent = name;
+                    const marker = new google.maps.Marker({
+                        map: null,
+                        position,
+                        icon: {
+                            path: 1,
+                            scale: 5,
+                            strokeWeight: 2,
+                            labelOrigin: new google.maps.Point(0, 2),
+                            strokeColor: 'rgba(200,200,200,0)',
+                        },
+                        label: this.getNameLabel(name, priceTag.className)
 
-                priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
-                priceTag.textContent = name;
-                const marker = new google.maps.marker.AdvancedMarkerElement({
-                    map: null,
-                    position,
-                    content: priceTag,
-                });
-                this.barrioMarkers.push(marker)
+                    });
+                    this.barrioMarkers.push(marker)
 
-            })
+                })
+            } else {
 
+                const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
+                this.barrioLabels.forEach(({ position, name }) => {
+                    const priceTag = document.createElement("div");
 
+                    priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
+                    priceTag.textContent = name;
+                    const marker = new AdvancedMarkerElement({
+                        map: null,
+                        position,
+                        content: priceTag,
+                        title: name,
+
+                    });
+                    this.barrioMarkers.push(marker)
+
+                })
+
+            }
         });
     }
     async waitForGoogleMapsLoaded(attempt = 0) {

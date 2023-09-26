@@ -113,13 +113,13 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             });
             console.warn('deciding between createMap and store ready')
             return this.$store.public_maps.once('ready').then((maps) => {
-                alert('store ready')
                 console.info('mapFrameData, received store ready event')
 
                 console.info({ googleMaps: maps })
                 extendMapDataProtoType(maps);
                 return this.createMap()
             }).then(async (gmap) => {
+                console.warn('map created', gmap)
                 this.gmap = gmap;
                 globalThis.gmap = gmap;
                 this.marker = this.createMarker();
@@ -144,6 +144,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                 });
                 this.$store.public_maps.layer_object = PublicLayersObject
                 this.$store.public_maps.createLayers(this);
+                //alert('createDomManager created')
                 this.createDomManager(this.codigo_interno ?? codigo_interno);
 
                 setTimeout(() => {
@@ -190,10 +191,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                 streetViewControl: false,
                 mapTypeControl: !this.codigo_interno && !this.extent,
                 tiltControl: true,
-                mapTypeControlOptions: {
-                    mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map'],
-                    style: 1, // google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-                },
+
                 ...mapStatusObj,
             };
             console.info('deciding between initMap and map_created')
@@ -201,11 +199,12 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                 Promise.resolve(new google.maps.Map(this.$el.querySelector('#map_container'), mergedOptions))
                 : this.$store.public_maps.once('map_created')
             ).then(async gmap => {
-                console.log('map created')
+                console.log('map created', gmap)
                 if (gmap) {
                     gmap.setOptions(mergedOptions)
                 } else {
-                    gmap = await initMap(this.$el.querySelector('#map_container'), mergedOptions)
+                    gmap = new google.maps.Map(this.$el.querySelector('#map_container'), mergedOptions)
+                    this.$store.public_maps.customElementsMap = gmap
                 }
                 this.gmap = gmap
                 globalThis.gmap = gmap
@@ -213,7 +212,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
 
                 this.googleReady = true;
 
-                return this.gmap;
+                return gmap;
             })
 
         },
@@ -232,21 +231,15 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                 }, 2000);
 
             }
+
             this.$refs.map_container.classList.remove('hidden');
             this.$refs.map_container.style.height = `${this.mapHeight}px`;
             this.mapTypeListener = new MapTypeListener(this.gmap);
-            false && this.mapTypeListener
+            this.mapTypeListener
 
                 .addCustomStyles()
                 .then(() => {
-                    setTimeout(
-                        () =>
-                        (this.tomSelect = new TomSelect(
-                            this.$el.querySelector('#maptype_selector'),
-                            this.tomselectOptions,
-                        )),
-                        1000,
-                    );
+
                 });
 
             this.infowindow = new google.maps.InfoWindow();
@@ -286,7 +279,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             return {
                 center: { lat, lng },
                 zoom: Number(Number(this.gmap?.getZoom()).toFixed(1)),
-                mapTypeId: this.gmap?.getMapTypeId(),
+
             };
         },
 
@@ -437,9 +430,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             return this.gmap ? this.gmap.getMapTypeId() : 'roadmap';
         },
         set mapTypeId(mapTypeId) {
-            if (this.gmap) {
-                this.gmap.setMapTypeId(mapTypeId);
-            }
+
         },
         get mapTypeOptions() {
             return this.gmap
