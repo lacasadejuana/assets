@@ -113,9 +113,11 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             });
             this.$store.public_maps.once('ready').then((maps) => {
                 console.info({ googleMaps: maps })
+                extendMapDataProtoType(maps);
                 return this.createMap()
             }).then(async (gmap) => {
                 this.gmap = gmap;
+                globalThis.gmap = gmap;
                 this.marker = this.createMarker();
                 globalThis.layers = {};
                 this.$store.public_maps.once('layers_added').then(async () => {
@@ -177,26 +179,27 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             if (!mapStatusObj.center) {
                 mapStatusObj = this.storedStatus;
             }
-
-
-            this.gmap = await initMap(google, this.$refs.map_container, {
-                mapId: '918f8abc9ae2727a',
+            let mergedOptions = {
+                mapId: '3b1abace91810cf',
                 rotateControl: true,
                 isFractionalZoomEnabled: true,
                 streetViewControl: false,
-                mapTypeControl: !this.codigo_interno & !this.extent,
-                mapTypeControlOptions: {
-                    mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map'],
-                    style: 1, // google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-                },
+                mapTypeControl: !this.codigo_interno && !this.extent,
+
                 ...mapStatusObj,
-            }, { appendToGlobalThis: true, loadBarrios: false });
+            };
+            return this.$store.public_maps.once('map_created').then(gmap => {
+                this.gmap = gmap
+                gmap.setOptions(mergedOptions)
+                //   this.gmap = await initMap(google, this.$refs.map_container, mergedOptions, { appendToGlobalThis: true, loadBarrios: false });
 
-            this.mapCreatedHandlers.forEach(handler => handler(this.gmap))
+                this.mapCreatedHandlers.forEach(handler => handler(this.gmap))
 
-            this.googleReady = true;
+                this.googleReady = true;
 
-            return this.gmap;
+                return this.gmap;
+            })
+
         },
         mapCreatedHandlers: [],
         onMapCreated(handler) {
@@ -207,9 +210,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             if (codigo_interno) {
                 this.gmap.setZoom(15)
             } else {
-                this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(
-                    document.querySelector('#map_controls'),
-                );
+                this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(document.querySelector('#map_controls'),);
                 setTimeout(() => {
                     this.$nextTick(() => (this.mapDialogOpen = true));
                 }, 2000);
@@ -218,7 +219,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             this.$refs.map_container.classList.remove('hidden');
             this.$refs.map_container.style.height = `${this.mapHeight}px`;
             this.mapTypeListener = new MapTypeListener(this.gmap);
-            this.mapTypeListener
+            false && this.mapTypeListener
 
                 .addCustomStyles()
                 .then(() => {
@@ -269,7 +270,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             return {
                 center: { lat, lng },
                 zoom: Number(Number(this.gmap?.getZoom()).toFixed(1)),
-                mapTypeId: this.gmap?.getMapTypeId(),
+                // mapTypeId: this.gmap?.getMapTypeId(),
             };
         },
 
@@ -454,7 +455,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
 
                 labelField: 'name',
                 options: this.mapTypeOptions,
-                items: [this.gmap.getMapTypeId()],
+                items: [1],
 
                 onChange: (newValue) => {
                     this.gmap.setMapTypeId(newValue);

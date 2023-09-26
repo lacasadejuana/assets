@@ -16,13 +16,15 @@ import type {
 } from '@lacasadejuana/types';
 import Alpine from 'alpinejs';
 
-import { AlpineDataComponent, waitFor } from '@/components';
+import { AlpineDataComponent, bindConsole, waitFor } from '@/components';
 import { BaseClass } from '@/components/stores';
 import { PublicLayersObject, exampleLayers } from './public_map_modules/exampleLayers';
 import { sharingLevels } from './public_map_modules/sharingLevels';
 import { extendMapDataProtoType } from './public_map_modules';
+import { Feature } from 'geojson';
+import { globalAgent } from 'http';
 
-export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'layers_added'> {
+export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'layers_added' | 'map_created'> {
     map_name: string = null
     map_description: string = null
     sharing_level: string = null
@@ -47,6 +49,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     constructor() {
         super()
 
+        this._console = bindConsole(this.className, this.classNameColor)
 
         //@ts-ignore
         this.exampleLayers = exampleLayers
@@ -64,12 +67,52 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
 
         })
     }
+    _customElementsMap: google.maps.Map = null
+    get customElementsMap() {
+        return this._customElementsMap
+    }
+    set customElementsMap(customElementsMap) {
+        this._customElementsMap = customElementsMap
+        globalThis.gmap = customElementsMap
+        this.processEventListeners('map_created', customElementsMap)
+        this.marquee('received customElementsMap')
+    }
+
     get verifiers(): Record<Partial<TeventType>, boolean> {
         return {
+            map_created: !!this.customElementsMap,
             ready: !!this.ready,
             layers_added: this.layer_array.length > 0
         } as unknown as Record<Partial<TeventType>, boolean>
 
+    }
+    barrioLabels: { position: { lng: any; lat: any; }; id: string | number; name: any; }[] = []
+    barrioMarkers: google.maps.marker.AdvancedMarkerClickEvent[] = []
+    setBarrioLabels(features: Feature[]) {
+        this.barrioLabels = features.map((feature): { position: { lng: any; lat: any; }; id: string | number; name: any; } => {
+            let { geometry, id, properties } = feature
+            let [lng, lat] = geometry.coordinates
+            return { position: { lng, lat }, id, name: properties.Nombre_de_Barrio }
+        })
+        this.once('map_created', gmap => {
+
+
+            this.barrioLabels.forEach(({ position, name }) => {
+                const priceTag = document.createElement("div");
+
+                priceTag.className = "price-tag";
+                priceTag.textContent = name;
+                const marker = new google.maps.marker.AdvancedMarkerElement({
+                    map: null,
+                    position,
+                    content: priceTag,
+                });
+                this.barrioMarkers.push(marker)
+
+            })
+
+
+        });
     }
     async waitForGoogleMapsLoaded(attempt = 0) {
         let gmaps = globalThis.google && globalThis.google.maps

@@ -26,6 +26,7 @@ import { CamposBusquedaStore } from '@/components/stores/CamposBusquedaStore';
 import { ActiveFilterStore } from '@/components/stores/activeFilterStore';
 import { createNegociosStore } from '@/components/stores';
 import { PublicMapStore } from './PublicMapStore';
+import { FeatureCollection, GeoJsonProperties, Polygon } from 'geojson';
 
 if (!globalThis.storeCamposBusqueda) {
     const createAlpineStore = <T extends XData>(name: string, factoryFn: () => T): T => {
@@ -49,6 +50,19 @@ if (!globalThis.storeCamposBusqueda) {
             console.timerInfo('received camposBusquedaPromise result from sw');
             return globalThis.camposBusquedaJson;
         })
+    const barrios = staticFetchWrapper<FeatureCollection<Polygon, GeoJsonProperties>>(
+        '/json/barrios.json', {}).then(res => {
+            globalThis.barriosJson = res;
+            console.timerInfo('received barrios result from sw');
+            return globalThis.barriosJson;
+        })
+    const barrioLabelsJson = staticFetchWrapper<FeatureCollection<Polygon, GeoJsonProperties>>(
+        '/json/barrios_label.geojson', {}).then(res => {
+            globalThis.barrioLabelsJson = res;
+            console.timerInfo('received barrioLabelsJson result from sw');
+            storePublicMaps.setBarrioLabels(res.features)
+            return globalThis.barrioLabelsJson;
+        })
     globalThis.columnasVisiblesPromise = staticFetchWrapper<Record<string, NegocioColumn>>(
         '/api/columnas_actuales', {}).then(res => {
             globalThis.camposBusquedaJson = res;
@@ -58,8 +72,8 @@ if (!globalThis.storeCamposBusqueda) {
     camposBusquedaPromise.then(campos => {
         storeCamposBusqueda.reloadCampos(Object.values(campos), false);
         storePublicMaps.fetchPublicaciones();
-
     });
+
     storeCamposBusqueda.on('ready', () => {
         storeColumnasActuales.setDefaultColumns(storeCamposBusqueda.findMany(['id', 'nombre']))
         globalThis.columnasVisiblesPromise.then(columnasVisibles => {

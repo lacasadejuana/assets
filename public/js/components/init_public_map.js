@@ -3211,7 +3211,7 @@ var require_lodash = __commonJS({
           }
           return arrayPush(isArray4(array) ? copyArray(array) : [array], baseFlatten(args, 1));
         }
-        var difference = baseRest(function(array, values2) {
+        var difference2 = baseRest(function(array, values2) {
           return isArrayLikeObject(array) ? baseDifference(array, baseFlatten(values2, 1, isArrayLikeObject, true)) : [];
         });
         var differenceBy = baseRest(function(array, values2) {
@@ -5061,7 +5061,7 @@ var require_lodash = __commonJS({
         lodash.defaultsDeep = defaultsDeep;
         lodash.defer = defer;
         lodash.delay = delay3;
-        lodash.difference = difference;
+        lodash.difference = difference2;
         lodash.differenceBy = differenceBy;
         lodash.differenceWith = differenceWith;
         lodash.drop = drop;
@@ -25446,6 +25446,31 @@ function extendMapDataProtoType() {
       }
     }
   });
+  google.maps.Data.Feature.prototype.getCenter = function() {
+    return this.getBounds().getCenter();
+  };
+  google.maps.Data.prototype.getBounds = function() {
+    var featuresArray = [];
+    var bounds = new google.maps.LatLngBounds();
+    this.forEach(function(feature) {
+      bounds.union(feature.getBounds());
+    });
+    return bounds;
+  };
+  google.maps.Data.Feature.prototype.getBounds = function() {
+    const bounds = new google.maps.LatLngBounds();
+    this.getGeometry().forEachLatLng(function(latLng) {
+      bounds.extend(latLng);
+    });
+    return bounds;
+  };
+  google.maps.Data.Geometry.prototype.getBounds = function() {
+    const bounds = new google.maps.LatLngBounds();
+    this.forEachLatLng(function(latLng) {
+      bounds.extend(latLng);
+    });
+    return bounds;
+  };
   maps.Data.prototype.getBounds = function() {
     var featuresArray = [];
     var bounds = new maps.LatLngBounds();
@@ -25529,6 +25554,9 @@ var iconOptions = [
   return icon;
 });
 
+// src/js/public_map/public_map_modules/saveLayer.ts
+var import_lodash2 = __toESM(require_lodash());
+
 // src/js/public_map/PublicMapStore.ts
 var PublicMapStore = class extends BaseClass {
   constructor() {
@@ -25552,6 +25580,9 @@ var PublicMapStore = class extends BaseClass {
     this.feature_collection = { type: "FeatureCollection", features: [] };
     this.layerSlugs = [];
     this.codigo_interno = null;
+    this._customElementsMap = null;
+    this.barrioLabels = [];
+    this.barrioMarkers = [];
     //@ts-ignore
     this.__$store = {
       tipos_busqueda: module_default8.store("tipos_busqueda"),
@@ -25571,6 +25602,7 @@ var PublicMapStore = class extends BaseClass {
       active_filter: module_default8.store("active_filter"),
       user: module_default8.store("user")
     };
+    this._console = bindConsole(this.className, this.classNameColor);
     this.exampleLayers = exampleLayers;
     this.url = new URL(window.location.href);
     this.waitForGoogleMapsLoaded().then((maps) => {
@@ -25580,11 +25612,41 @@ var PublicMapStore = class extends BaseClass {
       this.processEventListeners("ready", maps);
     });
   }
+  get customElementsMap() {
+    return this._customElementsMap;
+  }
+  set customElementsMap(customElementsMap) {
+    this._customElementsMap = customElementsMap;
+    globalThis.gmap = customElementsMap;
+    this.processEventListeners("map_created", customElementsMap);
+    this.marquee("received customElementsMap");
+  }
   get verifiers() {
     return {
+      map_created: !!this.customElementsMap,
       ready: !!this.ready,
       layers_added: this.layer_array.length > 0
     };
+  }
+  setBarrioLabels(features) {
+    this.barrioLabels = features.map((feature) => {
+      let { geometry, id, properties } = feature;
+      let [lng, lat] = geometry.coordinates;
+      return { position: { lng, lat }, id, name: properties.Nombre_de_Barrio };
+    });
+    this.once("map_created", (gmap) => {
+      this.barrioLabels.forEach(({ position, name }) => {
+        const priceTag = document.createElement("div");
+        priceTag.className = "price-tag";
+        priceTag.textContent = name;
+        const marker = new google.maps.marker.AdvancedMarkerElement({
+          map: null,
+          position,
+          content: priceTag
+        });
+        this.barrioMarkers.push(marker);
+      });
+    });
   }
   async waitForGoogleMapsLoaded(attempt = 0) {
     let gmaps = globalThis.google && globalThis.google.maps;
@@ -25778,6 +25840,23 @@ if (!globalThis.storeCamposBusqueda) {
     globalThis.camposBusquedaJson = res2;
     console.timerInfo("received camposBusquedaPromise result from sw");
     return globalThis.camposBusquedaJson;
+  });
+  const barrios = staticFetchWrapper(
+    "/json/barrios.json",
+    {}
+  ).then((res2) => {
+    globalThis.barriosJson = res2;
+    console.timerInfo("received barrios result from sw");
+    return globalThis.barriosJson;
+  });
+  const barrioLabelsJson = staticFetchWrapper(
+    "/json/barrios_label.geojson",
+    {}
+  ).then((res2) => {
+    globalThis.barrioLabelsJson = res2;
+    console.timerInfo("received barrioLabelsJson result from sw");
+    storePublicMaps.setBarrioLabels(res2.features);
+    return globalThis.barrioLabelsJson;
   });
   globalThis.columnasVisiblesPromise = staticFetchWrapper(
     "/api/columnas_actuales",

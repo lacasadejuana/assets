@@ -16,12 +16,19 @@ export class MapTypeListener extends BaseClass implements IBaseClass<'changed' |
 
 
             this.addClickListener()
+
+            let styleTag = document.querySelector('#css_map'),
+                styleTag2 = document.createElement('style')
+            styleTag2.textContent = `@import url('/css/app.css')`
+
+            this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
             //@ts-ignore
             if (Alpine.store('public_maps').full_map) {
-                let mapSearch = document.querySelector('#search_contextual');
+                let mapSearch = document.querySelector('#searchCampo');
+                //  mapSearch.appendChild(styleTag2[0])
 
                 //@ts-ignore
-                this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
+                //   this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
             }
 
             return this
@@ -64,7 +71,7 @@ export class MapTypeListener extends BaseClass implements IBaseClass<'changed' |
     }
     addMapTypeChangedListener() {
         google.maps.event.addListener(this.gmap, 'maptypeid_changed', () => {
-            const id = this.gmap.getMapTypeId()
+            const id = 1;// this.gmap.getMapTypeId()
             this.processEventListeners('changed', id)
 
             const gmnoPrint = this.gmnoPrint || document.querySelector('.gmnoprint.custom_maps');

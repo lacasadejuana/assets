@@ -189,246 +189,287 @@
             </header>
 
         </div>
+        <gmp-map  style="height:600px" id="custom_element_map"  center="-33.398,-70.58" zoom="10" map-id="918f8abc9ae2727a">
+<template x-for="marker in $store.public_maps.barrioLabels" :key="marker.id">
+    <gmp-advanced-marker @click="()=>{
+console.log({$el})
 
-        <!-- ========== section start ========== -->
-        <section class="section max-w-136rem mx-auto" id="outer_section">
-            <div class="container-fluid pl-2 px-0" x-data='{}'>
+    }" class="barrio_label" :position="`${marker.position.lat},${marker.position.lng}`" :title="marker.name"></gmp-advanced-marker>
+</template>
+            <gmp-advanced-marker position="37.4220656,-122.0840897" title="Mountain View, CA"></gmp-advanced-marker>
+            
 
+            <section class="section max-w-136rem mx-auto" id="outer_section">
+                <div class="container-fluid pl-2 px-0" x-data='{}'>
+    
+    
+    
+    
+                    <article class="outer_container" id="barebone_container">
+                        <div class="w-full" x-data="{
+                            codigo_interno:null,
+                            extent:null,
+           init(){
+                                
+                                this.importComponent(); 
+                               let qs = new URL(location.href)
+                               if(qs.searchParams.get('codigo_interno')) {
+                               this.codigo_interno=qs.searchParams.get('codigo_interno')
+                               }
+                               if (qs.searchParams.get('extent')) {
+                               
+                                this.extent=qs.searchParams.get('extent')
+                                
+                                  // this.full_map=false;
+                                  this.full_map=false;
+                                  this.$store.public_maps.full_map=this.full_map;
+                               } else {
+                                   this.full_map=true
+                                   this.$store.public_maps.full_map=this.full_map;
+                               }
+                               
+                           },
+                           full_map:false,
+            
+            componentsReady: false, 
+            importComponent() {
+               
+                return import('/js/components/public_map.js') .then((module)=> {
+                    console.log('PublicMapMoldules', module);
+                    //Alpine.store('public_maps',()=>new module.createPublicMapStore())
+                    //this.$store.public_maps.$store.negocios=this.$store.negocios;
+                    //this.$store.public_maps.updateProperties([]).refreshSavedMaps();
+                    //globalThis.$store.public_maps=this.$store.public_maps
+    
+                    Alpine.data('PublicLayerDeals', module.PublicLayerDeals);
+                    Alpine.data('PublicLayerGeoJson',module.PublicLayerGeoJson);
+                    Alpine.data('PublicMapFrameData',module.PublicMapFrameData);
+    Alpine.data('PublicLayerBarrios',module.PublicLayerBarrios);
+                    this.PublicLayerDeals = module.PublicLayerDeals;
+                    this.PublicLayerGeoJson=module.PublicLayerGeoJson
+                    this.PublicMapFrameData=module.PublicMapFrameData
+                    this.componentsReady=true;
+                    
+                });
+            },
+        }">
+    
+                            <template x-if="componentsReady">
+                                <div class="map_outer_container" style="text-align: center"
+                                    x-data="PublicMapFrameData({extent,codigo_interno})">
+                                    
+                                        <div class="flex-nowrap input-group justify-content-end w-full" id="searchCampo"
+                                            >
+                                            <span class="input-group-text h-24-em"><i class="fa fa-search"></i></span>
+                                            <input type="text" x-model="$store.negocios.searchValue" x-ref="searchInput"
+                                                @input.debounce="()=>{
+            const term=String(searchValue).normalize('NFD').replace(/\p{Diacritic}/gu,'').trim()
+            search(term)
+        }" class="border border-color-gray border-opacity-10 flex-fill focus:tw-outline-none px-2 py-1 rounded w-auto"
+                                                placeholder="Buscar propiedad">
+    
+                                        </div>
+                                    
+    
+                                    
+                                    <div class="w-full flex flex-col items-center justify-center border gmap   " :class="{
+                           'controls_closed': !mapDialogOpen,
+                       }" x-ref="map_container" id="map_container">
+                                    </div>
+    
+    
+                                    <div id="map_controls" style="transition: left 0.4s ease; " x-show="full_map" x-data="{
+    
+                    
+                    init() {
+                       
+                        globalThis.mapControls = this;
+                
+                    }
+                
+                }" :class="{
+                    'pl-[15px]': mapDialogOpen && googleReady,
+                    'pr-[5px]': mapDialogOpen && googleReady,
+                    '-left-[240px]': !mapDialogOpen,
+                    '-left-[270px]': !googleReady,
+                    '-left-[5px]': mapDialogOpen && googleReady,
+                }" class="bg-white max-w-[400px] min-w-[270px] shadow-lg border min-h-[400px] pl-4 pt-2                absolute">
+                                        <style>
+                                            .icon_preview_container {
+                                                border: 1px solid #ccc;
+                                                border-left-color: white;
+                                                left: 250px;
+                                                transform: translate(4px, -5px);
+                                                background: white;
+                                                max-height: 90px;
+                                                border-top-right-radius: 5px;
+                                                border-bottom-right-radius: 5px;
+                                                align-items: center;
+                                            }
+    
+                                            .icon_preview_container img {
+                                                transform: scale(0.9);
+                                            }
+                                        </style>
+    
+                                        <select id="maptype_selector"
+                                            class="font-normal radius-1 text-left ml-2 mb-2 fs-1rem cursor-pointer maptype_selector"
+                                            x-ref="maptype_selector" 
+                                            x-model="mapTypeId"></select>
+    
+                                        <template
+                                            x-for="({checked, slug_name,url, name, path, layer_options, criteria,type },index) in $store.public_maps.layer_array"
+                                            :key="slug_name">
+                                            <span class="flex flex-col map_collapsible">
+                                                <template x-if="type==='deals'">
+                                                    <div x-id="['map-layer']"
+                                                        x-data="PublicLayerDeals({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
+                                                        class="border accordion flex flex-col ">
+    
+                                                        <div class="accordion-header  bg-gray-50 flex py-1 justify-start map_controls_layer"
+                                                            x-init="slug_name = slug_name"
+                                                            :style="'color:' + (length ? layer_options.strokeColor : '#aaa')"
+                                                            x-on:click="()=>{
+                                                            filters_open=!filters_open
+                                                        }">
+                                                            <input :name="$id('map-layer')" type="checkbox"
+                                                                class="form-check-input  mr-2"
+                                                                x-on:click.stop="layer_options.checked=!layer_options.checked"
+                                                                x-model="layer_options.checked"
+                                                                :checked="layer_options.checked" />
+    
+                                                            <i class="mr-2 collapsible_tooltip fontello" :class="{
+                                            [layer_options.className]:true
+                                        }" x-tooltip.theme.light="length+' registros'"></i><label
+                                                                style="transform: translate(0,1px)" :for="$id('map-layer')"
+                                                                x-text="name" class=""></label>
+                                                        </div>
+    
+                                                    </div>
+    
+    
+                                                </template>
+                                                <template x-if="type==='barrios'">
+                                                    <div x-id="['map-layer']"
+                                                        x-data="PublicLayerBarrios({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
+                                                        class="border accordion flex flex-col ">
+    
+                                                        <div class="accordion-header  bg-gray-50 flex py-1 justify-start map_controls_layer"
+                                                            x-init="slug_name = slug_name"
+                                                            :style="'color:' + (length ? layer_options.strokeColor : '#aaa')"
+                                                            x-on:click="()=>{
+                                                            filters_open=!filters_open
+                                                        }">
+                                                            <input :name="$id('map-layer')" type="checkbox"
+                                                                class="form-check-input  mr-2"
+                                                                x-on:click.stop="layer_options.checked=!layer_options.checked"
+                                                                x-model="layer_options.checked"
+                                                                :checked="layer_options.checked" />
+    
+                                                            <i class="mr-2 collapsible_tooltip fontello" :class="{
+                                            [layer_options.className]:true
+                                        }" x-tooltip.theme.light="length+' registros'"></i><label
+                                                                style="transform: translate(0,1px)" :for="$id('map-layer')"
+                                                                x-text="name" class=""></label>
+                                                        </div>
+    
+                                                    </div>
+    
+    
+                                                </template>
+                                                <template x-if="type==='geojson'">
+                                                    <div x-id="['map-layer']"
+                                                        x-data="PublicLayerGeoJson({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
+                                                        class="border accordion flex flex-col ">
+    
+                                                        <div class="accordion-header  bg-gray-50 flex py-1 justify-start map_controls_layer"
+                                                            x-init="slug_name = slug_name"
+                                                            :style="'color:' + (length ? layer_options.strokeColor : '#aaa')"
+                                                            x-on:click="()=>{
+                                                            filters_open=!filters_open
+                                                        }">
+                                                            <input :name="$id('map-layer')" type="checkbox"
+                                                                class="form-check-input  mr-2"
+                                                                x-on:click.stop="layer_options.checked=!layer_options.checked"
+                                                                x-model="layer_options.checked"
+                                                                :checked="layer_options.checked" />
+    
+                                                            <i class="mr-2 collapsible_tooltip fontello" :class="{
+                                            [layer_options.className]:true
+                                        }" x-tooltip.theme.light="length+' registros'"></i><label
+                                                                style="transform: translate(0,1px)" :for="$id('map-layer')"
+                                                                x-text="name" class=""></label>
+                                                        </div>
+    
+                                                    </div>
+    
+    
+                                                </template>
+    
+                                            </span>
+                                        </template>
+                                        <div class="absolute h-full w-[30px] bg-gray-200 top-0 hover:bg-gray-300 z-10 "
+                                            :class="{
+                            'w-[30px]': !mapDialogOpen,
+                            'w-[20px]': mapDialogOpen,
+                            'right-0': !mapDialogOpen,
+                            'left-0': mapDialogOpen
+                        }" style="    border: 1px solid #aaa;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1.9em;" x-on:click="()=>{
+                        $el.parentElement.classList.toggle('-left-[220px]')
+                        console.log({mapDialogOpen})
+                        mapDialogOpen = !mapDialogOpen
+                    }">
+                                            <i class="fas " :class="{
+                                'fa-chevron-right': !mapDialogOpen,
+                                'fa-chevron-left': mapDialogOpen,
+                            }"></i>
+                                        </div>
+    
+    
+                                    </div>
+                                </div>
+    
+    
+                            </template>
+                        </div>
+                    </article>
+                </div>
+                <!-- end container -->
+            </section>
+        </gmp-map>
+        <script>
+            const custom_element_map=document.querySelector('#custom_element_map');
+            customElements.whenDefined(custom_element_map.localName).then(async () => {
+                console.timerInfo('custom_element_map loaded')
+                 
+              });
+             const advancedMarkers = document.querySelectorAll("#custom_element_map gmp-advanced-marker");
+              for (const advancedMarker of advancedMarkers) {
+                customElements.whenDefined(advancedMarker.localName).then(async () => {
+Alpine.store('public_maps').customElementsMap=  advancedMarker.map;
+console.timerInfo('got reference to custom element map')
 
-
-
-                <article class="outer_container" id="barebone_container">
-                    <div class="w-full" x-data="{
-                        codigo_interno:null,
-                        extent:null,
-       init(){
-                            
-                            this.importComponent(); 
-                           let qs = new URL(location.href)
-                           if(qs.searchParams.get('codigo_interno')) {
-                           this.codigo_interno=qs.searchParams.get('codigo_interno')
-                           }
-                           if (qs.searchParams.get('extent')) {
-                           
-                            this.extent=qs.searchParams.get('extent')
-                            
-                              // this.full_map=false;
-                              this.full_map=false;
-                              this.$store.public_maps.full_map=this.full_map;
-                           } else {
-                               this.full_map=true
-                               this.$store.public_maps.full_map=this.full_map;
-                           }
-                           
-                       },
-                       full_map:false,
+                  advancedMarker.addEventListener('gmp-click', async () => {
+                    console.info('gmp-click')
+                    const {InfoWindow} = await google.maps.importLibrary("maps");
+                    const infoWindow = new InfoWindow({
+                      content: advancedMarker.title
+                    });
+                    infoWindow.open({
+                      anchor: advancedMarker
+                    });
+                  });
+                });
+              }
+               
         
-        componentsReady: false, 
-        importComponent() {
-           
-            return import('/js/components/public_map.js') .then((module)=> {
-                console.log('PublicMapMoldules', module);
-                //Alpine.store('public_maps',()=>new module.createPublicMapStore())
-                //this.$store.public_maps.$store.negocios=this.$store.negocios;
-                //this.$store.public_maps.updateProperties([]).refreshSavedMaps();
-                //globalThis.$store.public_maps=this.$store.public_maps
-
-                Alpine.data('PublicLayerDeals', module.PublicLayerDeals);
-                Alpine.data('PublicLayerGeoJson',module.PublicLayerGeoJson);
-                Alpine.data('PublicMapFrameData',module.PublicMapFrameData);
-Alpine.data('PublicLayerBarrios',module.PublicLayerBarrios);
-                this.PublicLayerDeals = module.PublicLayerDeals;
-                this.PublicLayerGeoJson=module.PublicLayerGeoJson
-                this.PublicMapFrameData=module.PublicMapFrameData
-                this.componentsReady=true;
-                
-            });
-        },
-    }">
-
-                        <template x-if="componentsReady">
-                            <div class="map_outer_container" style="text-align: center"
-                                x-data="PublicMapFrameData({extent,codigo_interno})">
-                                <template x-teleport="#search_contextual">
-                                    <div class="flex-nowrap input-group justify-content-end w-full" id="searchCampo"
-                                        x-init="setTimeout(() => document.querySelector('#search_contextual').append(document.querySelector('#searchCampo')), 1000)">
-                                        <span class="input-group-text h-24-em"><i class="fa fa-search"></i></span>
-                                        <input type="text" x-model="$store.negocios.searchValue" x-ref="searchInput"
-                                            @input.debounce="()=>{
-        const term=String(searchValue).normalize('NFD').replace(/\p{Diacritic}/gu,'').trim()
-        search(term)
-    }" class="border border-color-gray border-opacity-10 flex-fill focus:tw-outline-none px-2 py-1 rounded w-auto"
-                                            placeholder="Buscar propiedad">
-
-                                    </div>
-                                </template>
-                                <div class="w-full flex flex-col items-center justify-center border gmap   " :class="{
-                       'controls_closed': !mapDialogOpen,
-                   }" x-ref="map_container" id="map_container">
-                                </div>
-
-
-                                <div id="map_controls" style="transition: left 0.4s ease; " x-show="full_map" x-data="{
-
-                
-                init() {
-                   
-                    globalThis.mapControls = this;
-            
-                }
-            
-            }" :class="{
-                'pl-[15px]': mapDialogOpen && googleReady,
-                'pr-[5px]': mapDialogOpen && googleReady,
-                '-left-[240px]': !mapDialogOpen,
-                '-left-[270px]': !googleReady,
-                '-left-[5px]': mapDialogOpen && googleReady,
-            }" class="bg-white max-w-[400px] min-w-[270px] shadow-lg border min-h-[400px] pl-4 pt-2                absolute">
-                                    <style>
-                                        .icon_preview_container {
-                                            border: 1px solid #ccc;
-                                            border-left-color: white;
-                                            left: 250px;
-                                            transform: translate(4px, -5px);
-                                            background: white;
-                                            max-height: 90px;
-                                            border-top-right-radius: 5px;
-                                            border-bottom-right-radius: 5px;
-                                            align-items: center;
-                                        }
-
-                                        .icon_preview_container img {
-                                            transform: scale(0.9);
-                                        }
-                                    </style>
-
-                                    <select id="maptype_selector"
-                                        class="font-normal radius-1 text-left ml-2 mb-2 fs-1rem cursor-pointer maptype_selector"
-                                        x-ref="maptype_selector" x-model="mapTypeId"></select>
-
-                                    <template
-                                        x-for="({checked, slug_name,url, name, path, layer_options, criteria,type },index) in $store.public_maps.layer_array"
-                                        :key="slug_name">
-                                        <span class="flex flex-col map_collapsible">
-                                            <template x-if="type==='deals'">
-                                                <div x-id="['map-layer']"
-                                                    x-data="PublicLayerDeals({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
-                                                    class="border accordion flex flex-col ">
-
-                                                    <div class="accordion-header  bg-gray-50 flex py-1 justify-start map_controls_layer"
-                                                        x-init="slug_name = slug_name"
-                                                        :style="'color:' + (length ? layer_options.strokeColor : '#aaa')"
-                                                        x-on:click="()=>{
-                                                        filters_open=!filters_open
-                                                    }">
-                                                        <input :name="$id('map-layer')" type="checkbox"
-                                                            class="form-check-input  mr-2"
-                                                            x-on:click.stop="layer_options.checked=!layer_options.checked"
-                                                            x-model="layer_options.checked"
-                                                            :checked="layer_options.checked" />
-
-                                                        <i class="mr-2 collapsible_tooltip fontello" :class="{
-                                        [layer_options.className]:true
-                                    }" x-tooltip.theme.light="length+' registros'"></i><label
-                                                            style="transform: translate(0,1px)" :for="$id('map-layer')"
-                                                            x-text="name" class=""></label>
-                                                    </div>
-
-                                                </div>
-
-
-                                            </template>
-                                            <template x-if="type==='barrios'">
-                                                <div x-id="['map-layer']"
-                                                    x-data="PublicLayerBarrios({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
-                                                    class="border accordion flex flex-col ">
-
-                                                    <div class="accordion-header  bg-gray-50 flex py-1 justify-start map_controls_layer"
-                                                        x-init="slug_name = slug_name"
-                                                        :style="'color:' + (length ? layer_options.strokeColor : '#aaa')"
-                                                        x-on:click="()=>{
-                                                        filters_open=!filters_open
-                                                    }">
-                                                        <input :name="$id('map-layer')" type="checkbox"
-                                                            class="form-check-input  mr-2"
-                                                            x-on:click.stop="layer_options.checked=!layer_options.checked"
-                                                            x-model="layer_options.checked"
-                                                            :checked="layer_options.checked" />
-
-                                                        <i class="mr-2 collapsible_tooltip fontello" :class="{
-                                        [layer_options.className]:true
-                                    }" x-tooltip.theme.light="length+' registros'"></i><label
-                                                            style="transform: translate(0,1px)" :for="$id('map-layer')"
-                                                            x-text="name" class=""></label>
-                                                    </div>
-
-                                                </div>
-
-
-                                            </template>
-                                            <template x-if="type==='geojson'">
-                                                <div x-id="['map-layer']"
-                                                    x-data="PublicLayerGeoJson({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
-                                                    class="border accordion flex flex-col ">
-
-                                                    <div class="accordion-header  bg-gray-50 flex py-1 justify-start map_controls_layer"
-                                                        x-init="slug_name = slug_name"
-                                                        :style="'color:' + (length ? layer_options.strokeColor : '#aaa')"
-                                                        x-on:click="()=>{
-                                                        filters_open=!filters_open
-                                                    }">
-                                                        <input :name="$id('map-layer')" type="checkbox"
-                                                            class="form-check-input  mr-2"
-                                                            x-on:click.stop="layer_options.checked=!layer_options.checked"
-                                                            x-model="layer_options.checked"
-                                                            :checked="layer_options.checked" />
-
-                                                        <i class="mr-2 collapsible_tooltip fontello" :class="{
-                                        [layer_options.className]:true
-                                    }" x-tooltip.theme.light="length+' registros'"></i><label
-                                                            style="transform: translate(0,1px)" :for="$id('map-layer')"
-                                                            x-text="name" class=""></label>
-                                                    </div>
-
-                                                </div>
-
-
-                                            </template>
-
-                                        </span>
-                                    </template>
-                                    <div class="absolute h-full w-[30px] bg-gray-200 top-0 hover:bg-gray-300 z-10 "
-                                        :class="{
-                        'w-[30px]': !mapDialogOpen,
-                        'w-[20px]': mapDialogOpen,
-                        'right-0': !mapDialogOpen,
-                        'left-0': mapDialogOpen
-                    }" style="    border: 1px solid #aaa;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 1.9em;" x-on:click="()=>{
-                    $el.parentElement.classList.toggle('-left-[220px]')
-                    console.log({mapDialogOpen})
-                    mapDialogOpen = !mapDialogOpen
-                }">
-                                        <i class="fas " :class="{
-                            'fa-chevron-right': !mapDialogOpen,
-                            'fa-chevron-left': mapDialogOpen,
-                        }"></i>
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-
-                        </template>
-                    </div>
-                </article>
-            </div>
-            <!-- end container -->
-        </section>
+          </script>
+        <!-- ========== section start ========== -->
+        
         <!-- ========== section end ========== -->
 
         <!-- ========== footer start =========== -->
@@ -448,10 +489,17 @@ Alpine.data('PublicLayerBarrios',module.PublicLayerBarrios);
     <!-- ========= All Javascript files linkup ======== -->
 
     <script>
-        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+        function cargamos() {
+            console.trace('cagamos')
+        }
+        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",
+        l="importLibrary",q="__ib__",m=document,
+        b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),
+        r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");
+        for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
           key: "AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8",
           v: "beta",
-          // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+           // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
           // Add other bootstrap parameters as needed, using camel case.
         });
       </script>
@@ -539,5 +587,10 @@ Alpine.data('PublicLayerBarrios',module.PublicLayerBarrios);
     </script>
 
 </body>
-
+<style id="style_css"><</style>
+<template id="css_map">
+    <style id="css_style">
+       
+    </style>
+</template>
 </html>
