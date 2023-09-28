@@ -1,0 +1,155 @@
+import { echarts } from "./echarts-extension-gmap-esm.js";
+import { sampleData as data } from "./sample_data.js";
+var convertData = function(features) {
+  return features.map(({ id, geometry, properties }) => {
+    let [lng, lat] = geometry.coordinates, { title: name, address, city, state, telefono, email, subcategoria, categoria } = properties;
+    return { name, value: [lat, lng, 1], address, city, state, telefono, email, subcategoria, categoria };
+  });
+  var res = [];
+  for (let record of dataArray) {
+    let { lng, lat, name, value } = record;
+    res.push({
+      name,
+      value: [lng, lat, value]
+    });
+  }
+  return res;
+};
+import { Loader } from "@googlemaps/js-api-loader";
+Object.defineProperty(console, "timerInfo", {
+  get: function() {
+    return Function.prototype.bind.call(
+      console.log,
+      console,
+      "%c" + Number(performance.now() / 1e3).toFixed(1) + " Timer:",
+      "color:#03C;font-weight:bold;"
+    );
+  }
+});
+globalThis.googleMapsOptions = {
+  "apiKey": "AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8",
+  "version": "beta",
+  "region": "CL",
+  "language": "es",
+  "mapId": "8f541b0e0f5f6c31",
+  "libraries": ["places", "localContext"]
+};
+globalThis.gmapsloader = new Loader(globalThis.googleMapsOptions);
+globalThis.gmapsloader.load().then(() => {
+  return fetch("/geojson/dataset_colegios.json").then((res) => res.json());
+}).then(({ features }) => {
+  var option = {
+    // google map component
+    gmap: {
+      // initial options of Google Map
+      // See https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions for details
+      // initial map center, accepts an array like [lng, lat] or an object like { lng, lat }
+      center: [-70.64, -33.4],
+      // center: { lng: 108.39, lat: 39.9 },
+      // initial map zoom
+      zoom: 11,
+      // whether ECharts layer should be re-rendered when the map is moving. `true` by default.
+      // if false, it will only be re-rendered after the map `moveend`.
+      // It's better to set this option to false if data is large.
+      renderOnMoving: true,
+      // the zIndex of echarts layer for Google Map. `2000` by default.
+      echartsLayerZIndex: 2019,
+      // whether to enable gesture handling. `true` by default.
+      // since v1.4.0
+      roam: true
+      // More initial options...
+    },
+    tooltip: {
+      trigger: "item"
+    },
+    animation: true,
+    toolbox: {
+      itemSize: 30,
+      left: "center",
+      top: "top",
+      iconStyle: {
+        color: "rgba(136, 153, 153, 1)"
+      },
+      feature: {
+        mark: { show: true },
+        dataView: { show: true, readOnly: false },
+        // magicType: { show: true, type: ['line', 'bar', 'stack'] },
+        dataZoom: {
+          yAxisIndex: "none"
+        },
+        restore: {},
+        saveAsImage: {}
+      }
+    },
+    series: [
+      {
+        name: "PM2.5",
+        type: "scatter",
+        // use `amap` as the coordinate system
+        coordinateSystem: "gmap",
+        // data items [[lng, lat, value], [lng, lat, value], ...]
+        data: convertData(features),
+        symbolSize: function(val) {
+          return Math.pow(val[2], 2) / 200;
+        },
+        encode: {
+          value: 2,
+          lng: 0,
+          lat: 1
+        },
+        label: {
+          formatter: "{b}",
+          position: "right",
+          show: false
+        },
+        itemStyle: {
+          color: "#00c1de"
+        },
+        emphasis: {
+          label: {
+            show: true
+          }
+        }
+      },
+      {
+        name: "Top 5",
+        type: "effectScatter",
+        coordinateSystem: "gmap",
+        data: convertData(
+          data.sort(function(a, b) {
+            return b.value - a.value;
+          }).slice(0, 6)
+        ),
+        symbolSize: function(val) {
+          return val[2] / 10;
+        },
+        encode: {
+          value: 2,
+          lng: 0,
+          lat: 1
+        },
+        showEffectOn: "render",
+        rippleEffect: {
+          brushType: "stroke"
+        },
+        label: {
+          formatter: "{b}",
+          position: "right",
+          show: true
+        },
+        itemStyle: {
+          color: "#fff",
+          shadowBlur: 10,
+          shadowColor: "#333"
+        },
+        zlevel: 1
+      }
+    ]
+  };
+  var chart = echarts.init(document.getElementById("echarts-google-map"));
+  chart.setOption(option);
+  var gmap = chart.getModel().getComponent("gmap").getGoogleMap();
+  var marker = new google.maps.Marker({ position: gmap.getCenter() });
+  marker.setMap(gmap);
+  console.timerInfo({ chart });
+});

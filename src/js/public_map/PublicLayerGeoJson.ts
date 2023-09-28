@@ -64,7 +64,6 @@ export const PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, co
         globalThis.layerComponents[this.slug_name] = this;
 
 
-        this.$watch('index', this.setStyle.bind(this))
 
         this.watch()
         const checked = this.layer_options.checked
@@ -75,6 +74,7 @@ export const PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, co
 
         setTimeout(() => {
             this.layer_options.checked = checked
+
 
         }, 1000)
     },
@@ -165,47 +165,25 @@ export const PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, co
         requestAnimationPromise().then(() => {
             let icon = this.iconPreview;
             let label = this.getMarkerLabel();
+            icon = this.getIconOptions()
             this.getLayer().setStyle((feature) => {
+                //  console.log('setStyle layer' + this.slug_name + ' feature' + feature.getId())
 
-                let isPoint = feature.getGeometry().getType() === 'Point',
+                /*let isPoint = feature.getGeometry().get+ype() === 'Point',
                     isVisible = !isPoint || this.bounds.contains(feature.getCenter());
-
-                let tipo_propiedad = feature.getProperty('tipo_propiedad');
+*/
                 let comuna = feature.getProperty('Comuna'),
                     comunaOffset = Object.keys(comunas).indexOf(comuna);
                 if (!comuna || comunaOffset === -1) {
                     comunaOffset = 0
                 }
-                let
-                    highlighted = feature.getProperty('highlighted'),
-                    matches = feature.getProperty('matches'),
-                    transparencia = feature.getProperty('Transparencia') ?? 0,
-
-                    fillOpacity = this.layer_options.fillOpacity *
-                        (1 - transparencia / 10) *
-                        ((matches ? 2.5 : 0.9) *
-                            highlighted
-                            ? 1
-                            : 0.8),
-                    fillColor = `hsl(${(matches ? 20 : 0) + comunaOffset * 40},${matches ? 65 : 55}%,${matches ? 60 : 70}%)`;
-
-                //console.log({ matches, highlighted, fillColor, fillOpacity });
 
                 let styleObj = {
-                    icon: this.getIconOptions(
-                        tipo_propiedad === 'Casa' ? 1 : (feature.getProperty('highlighted') || feature.getProperty('draggable') ? 1.1 : 1),
-
-                    ),
-                    visible: isVisible,
-                    zIndex: 100 - (this.index ?? 0) * 10,
+                    icon,
+                    //      visible: isVisible,
                     // label,
-                    fillColor,
-                    strokeColor: feature.getProperty('strokeColor') || `hsl(${comunaOffset * 40},45%,40%)`,
-                    strokeWeight: this.layer_options.strokeWeight || 1 || (feature.getProperty('strokeWeight') || 1) * this.layer_options.strokeWeight,
-                    strokeOpacity: matches ? 1 : 0.7,
-                    // visible: feature.getProperty('comuna') && comunas[feature.getProperty('comuna')] === true,
 
-                    fillOpacity
+
                 };
 
                 return styleObj;

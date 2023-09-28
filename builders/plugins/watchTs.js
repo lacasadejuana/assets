@@ -17,7 +17,7 @@ const watchTs = (watchPath, onRebuild) => {
         persistent: true,
     });
     onRebuild = onRebuild || replaceTimestamp;
-
+    onRebuild();
     // Add event listeners.
     watcher.on('ready', () => {
         console.log(`${cyan('[chokidar]')} ready`);

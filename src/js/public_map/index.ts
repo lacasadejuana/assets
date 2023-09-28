@@ -1,18 +1,26 @@
 
-import { PublicLayerBarrios } from './PublicLayerBarrios';
+import { PublicLayerBarriosDataLayer } from './PublicLayerBarriosDataLayer'
+
+import { PublicLayerBarriosWebGL } from './PublicLayerBarriosWebGL'
+    ;
 import { PublicLayerDeals } from './PublicLayerDeals';
 import { PublicLayerGeoJson } from './PublicLayerGeoJson';
 import { PublicMapFrameData } from './PublicMapFrameData';
-export * from './PublicLayerBarrios';
+
+
 export * from './PublicLayerDeals';
 export * from './PublicLayerGeoJson';
 export * from './PublicMapFrameData';
+//export * from './PublicLayerBarriosWebGL'
+;
 export { createPublicMapStore } from './PublicMapStore';
 export const PublicMapComponents = {
     PublicLayerDeals,
     PublicLayerGeoJson,
-    PublicLayerBarrios,
-    PublicMapFrameData
+    PublicLayerBarriosDataLayer,
+    PublicMapFrameData,
+    PublicLayerBarriosWebGL,
+    PublicLayerBarrios: PublicLayerBarriosDataLayer
 }
 
 

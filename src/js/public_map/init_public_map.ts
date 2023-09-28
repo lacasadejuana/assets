@@ -50,12 +50,12 @@ if (!globalThis.storeCamposBusqueda) {
             console.timerInfo('received camposBusquedaPromise result from sw');
             return globalThis.camposBusquedaJson;
         })
-    const barrios = staticFetchWrapper<FeatureCollection<Polygon, GeoJsonProperties>>(
+    /*const barrios = staticFetchWrapper<FeatureCollection<Polygon, GeoJsonProperties>>(
         '/json/barrios.json', {}).then(res => {
             globalThis.barriosJson = res;
             console.timerInfo('received barrios result from sw');
             return globalThis.barriosJson;
-        })
+        })*/
     const barrioLabelsJson = staticFetchWrapper<FeatureCollection<Polygon, GeoJsonProperties>>(
         '/json/barrios_label.geojson', {}).then(res => {
             globalThis.barrioLabelsJson = res;

@@ -19195,6 +19195,17 @@ html {
   font-size: 14px;
 }
 
+.markerLabel_break_words {
+  background-color: rgba(150, 150, 150, 0.8);
+}
+
+.gm-style.hide-labels .markerLabel_break_words {
+  display: none;
+}
+.gm-style.show_labels .markerLabel_break_words {
+  display: block !important;
+}
+
 .tippy-box[data-theme~=translucent] {
   background: transparent !important;
 }

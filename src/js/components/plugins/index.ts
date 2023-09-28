@@ -11,3 +11,4 @@ export * from './tap';
 export * from './transformableBehavior';
 export * from './waitFor';
 
+export * from './parsers';

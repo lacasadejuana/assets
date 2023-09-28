@@ -176,6 +176,9 @@ export class negocioFeatureToHtml {
         value = `<span class="nowrap font-bold text-bold">${value}</span>.&nbsp;&nbsp;&nbsp;  ${this.getProperty('titulo-resumen-web')} `
         wrapper.setInnerHTML(value);
         wrapper
+            .addClass('justify')
+
+            .addStyle('textAlign', 'justify')
             .addStyle('fontWeight', '500')
             .addStyle('order', '3')
             .addStyle('fontSize', '1.15em')
@@ -242,13 +245,18 @@ export class negocioFeatureToHtml {
     printTipo(wrapper, value) {
 
         wrapper.div.setAttribute('rel', 'tipo')
-        new Wrapper('py-1 pl-1 flex border border-1/2 min-w-[165px]')
+        new Wrapper('py-1 pl-1 flex border border-1/2 min-w-[150px]')
             .addStyle('fontFamily', 'Inter, sans-serif')
             .setTextContent(this.campos.tipo)
+            .addStyle('minWidth', '130px')
+            .addStyle('maxWidth', '140px')
             .appendTo(wrapper.div);
         new Wrapper(
             'py-1 flex border border-1/2 pl-2 max-w-[350px] min-w-[200px] flex-grow overflow-hidden whitespace-nowrap',
         )
+            .addStyle('maxWidth', '350px')
+            .addStyle('minWidth', '200px')
+            .addStyle('overflow', 'hidden')
             .addStyle('fontFamily', 'Inter, sans-serif')
             .setInnerHTML(value)
             .appendTo(wrapper.div);
@@ -268,6 +276,7 @@ export class negocioFeatureToHtml {
         wrapper.setInnerHTML(value);
         wrapper
             .addStyle('fontWeight', '500')
+            .addStyle('fontWeight', '500')
             .addStyle('order', '3')
             .addStyle('fontSize', '1.1em')
             .addStyle('maxWidth', '350px')
@@ -282,11 +291,16 @@ export class negocioFeatureToHtml {
         new Wrapper('py-1 pl-1 flex border border-1/2 min-w-[165px]')
             .addStyle('fontFamily', 'Inter, sans-serif')
             .addStyle('fontWeight', '400')
+            .addStyle('minWidth', '130px')
+            .addStyle('maxWidth', '140px')
             .setTextContent(this.campos[slug_name])
             .appendTo(wrapper.div);
         new Wrapper(
             'py-1 flex border border-1/2 pl-2 max-w-[350px] min-w-[200px] flex-grow overflow-hidden whitespace-nowrap',
         )
+            .addStyle('maxWidth', '350px')
+            .addStyle('minWidth', '200px')
+            .addStyle('overflow', 'hidden')
             .addStyle('fontFamily', 'Inter, sans-serif')
             .setTextContent(value)
             .appendTo(wrapper.div);

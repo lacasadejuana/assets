@@ -57,16 +57,16 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         //if (!this.$store.active_filter) this.$store.active_filter = $store.active_filter;
         //if (!this.$store.user) this.$store.user = $store.user;
         this.url = new URL(window.location.href);
-
+        let qs = this.url.searchParams
+        this.no_labels = qs.has('no_labels')
+        this.no_infowindows = qs.has('no_infowindows')
 
         this.waitForGoogleMapsLoaded().then(maps => {
             console.log('will extend prototype', maps)
             extendMapDataProtoType(maps)
             this.ready = true;
             this.processEventListeners('ready', maps)
-            if (this.skipMapCreation) {
-                this.processEventListeners('map_created', null)
-            }
+
 
         })
     }
@@ -75,17 +75,28 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         return this._customElementsMap
     }
     set customElementsMap(customElementsMap) {
-        this._customElementsMap = customElementsMap
-        this.processEventListeners('ready', google.maps)
+        if (customElementsMap) {
+            if (!this._customElementsMap) this._customElementsMap = customElementsMap
+            if (!this.ready) this.processEventListeners('ready', google.maps)
 
-        globalThis.gmap = customElementsMap
-        this.processEventListeners('map_created', customElementsMap)
-        this.marquee('received customElementsMap')
+            globalThis.gmap = customElementsMap
+            this.processEventListeners('map_created', customElementsMap)
+            this.marquee('received customElementsMap')
+            if (this.codigo_interno) {
+                this.marquee('setting center on codigo interno')
+                let negocio = this.$store.negocios.get(this.codigo_interno)
+                if (negocio) {
+                    let { lat, lng } = negocio
+                    customElementsMap.setCenter({ lat, lng })
+                }
+            }
+        }
+
     }
     skipMapCreation: boolean = false
     get verifiers(): Record<Partial<TeventType>, boolean> {
         return {
-            map_created: !!this.customElementsMap || !!this.skipMapCreation,
+            map_created: !!this.customElementsMap,
             ready: !!this.ready,
             layers_added: this.layer_array.length > 0
         } as unknown as Record<Partial<TeventType>, boolean>
@@ -100,66 +111,102 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         };
     }
     barrioLabels: { position: { lng: any; lat: any; }; id: string | number; name: any; }[] = []
-    barrioMarkers: google.maps.marker.AdvancedMarkerClickEvent[] = []
+    barrioMarkers: Map<string, google.maps.marker.AdvancedMarkerClickEvent | google.maps.Marker>
+    async waitForGmStyleElement(selector: string, attempt = 0) {
+        let gm = document.querySelector(selector)
+        if (gm) return Promise.resolve(gm)
+        return attempt > 10 ? Promise.reject(new Error('Cannot find an element with thaat elector'))
+            : waitFor(300).then(() => this.waitForGmStyleElement(selector, attempt + 1))
+    }
+    full_map: boolean = false
+    no_labels: boolean = false
     setBarrioLabels(features: Feature[]) {
+        this.barrioMarkers = new Map()
+
         this.barrioLabels = features.map((feature): { position: { lng: any; lat: any; }; id: string | number; name: any; } => {
             let { geometry, id, properties } = feature
             let [lng, lat] = geometry.coordinates
             return { position: { lng, lat }, id, name: properties.Nombre_de_Barrio }
         })
+        if (this.no_labels) return
         this.once('map_created', async gmap => {
+            //@ts-ignore
+            const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
+
+
+
 
             if (this.full_map && this.skipMapCreation) {
-                this.barrioLabels.forEach(({ position, name }) => {
-                    const priceTag = document.createElement("div");
+                let gmElement = await this.waitForGmStyleElement('.gm-style')
 
-                    priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
-                    priceTag.textContent = name;
-                    const marker = new google.maps.Marker({
-                        map: null,
-                        position,
-                        icon: {
-                            path: 1,
-                            scale: 5,
-                            strokeWeight: 2,
-                            labelOrigin: new google.maps.Point(0, 2),
-                            strokeColor: 'rgba(200,200,200,0)',
-                        },
-                        label: this.getNameLabel(name, priceTag.className)
-
-                    });
-                    this.barrioMarkers.push(marker)
-
-                })
+                gmElement.classList.add('hide-labels')
+                this.createClassicMarkers()
             } else {
-
-                const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
-                this.barrioLabels.forEach(({ position, name }) => {
-                    const priceTag = document.createElement("div");
-
-                    priceTag.className = " uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
-                    priceTag.textContent = name;
-                    const marker = new AdvancedMarkerElement({
-                        map: null,
-                        position,
-                        content: priceTag,
-                        title: name,
-
-                    });
-                    this.barrioMarkers.push(marker)
-
-                })
-
+                this.createAdvancedMarkers(AdvancedMarkerElement)
             }
         });
+    }
+    createClassicMarkers() {
+        this.barrioLabels.forEach(({ id, position, name }) => {
+            const priceTag = document.createElement("div");
+
+            priceTag.className = " uppercase max-w-[125px] text-gray-500 visible_over_zoom_15 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
+            priceTag.textContent = name;
+            if (name) {
+                const marker = new google.maps.Marker({
+                    map: globalThis.gmap,
+                    position,
+                    icon: {
+                        path: 1,
+                        scale: 5,
+                        strokeWeight: 2,
+
+                        strokeColor: 'rgba(200,200,200,0)',
+                    },
+                    label: this.getNameLabel(name, priceTag.className)
+
+                });
+                this.barrioMarkers.set(String(id), marker)
+            }
+
+        })
+    }
+    createAdvancedMarkers(constructor: google.maps.marker.AdvancedMarkerElement) {
+        console.warn(this.customElementsMap)
+        this.barrioLabels.forEach(async ({ id, position, name }) => {
+            const priceTag = document.createElement("div");
+
+            priceTag.className = " uppercase max-w-[125px] visible_over_zoom_15 text-gray-500 markerLabel_break_words markerLabel bg-gray-50   p-1 bg-opacity-10";
+
+            priceTag.textContent = name;
+            priceTag.style.backgroundColor = 'rgba(190,190,190,0.2)'
+            const marker = new constructor({
+                map: null,
+                position,
+                content: priceTag,
+                title: name,
+
+            });
+            this.barrioMarkers.set(String(id), marker)
+
+
+        })
+
+    }
+    get markerArray() {
+        return this.barrioMarkers ? Array.from(this.barrioMarkers.values()) : []
     }
     async waitForGoogleMapsLoaded(attempt = 0) {
         let gmaps = globalThis.google && globalThis.google.maps
         if (gmaps) {
             console.timerInfo('importing core and maps at attempt ' + attempt)
-            return gmaps.importLibrary('core').then(() => gmaps.importLibrary('maps'))
+            return gmaps.importLibrary('core')
+                .then(() => Promise.all([
+                    gmaps.importLibrary('maps'),
+                    gmaps.importLibrary('marker')
+                ]))
         }
-        if (attempt > 9) {
+        if (attempt > 19) {
             return gmaps
         }
         return waitFor(300).then(() => {
@@ -239,6 +286,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     }
     fetchPublicaciones() {
         return this.$store.negocios.fetchAll().then((result) => {
+
             //ifDefined(globalThis.mapFrameData, (mapFrameData) => mapFrameData.reload())
             //ifDefined(globalThis.bsTable, (bsTable) => bsTable.reload && bsTable.reload())
             setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1000);

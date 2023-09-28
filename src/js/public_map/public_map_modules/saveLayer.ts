@@ -1,4 +1,5 @@
 
+import { requestAnimationPromise } from "@/components/plugins";
 import { AlpineDataComponent } from "@lacasadejuana/types";
 
 
@@ -103,28 +104,6 @@ export const saveLayer = ({ slug_name, layer_options }) => ({
             layer_options.icon.url = this.iconPreview.url
 
         }
-        // in case the icon is an SVG path
-        else if (this.layer_options.icon && this.layer_options.icon.path) {
-            let {
-
-                scale,
-                fillColor,
-                strokeColor,
-                strokeOpacity,
-                fillOpacity
-            } = this.layer_options
-            layer_options.path = this.layer_options.icon.path
-            layer_options.icon = {
-                path: this.layer_options.icon.path,
-                scale: scale / 10,
-                fillColor,
-                strokeColor: strokeColor || fillColor,
-                strokeOpacity,
-                fillOpacity: fillOpacity || strokeOpacity,
-                anchor: new google.maps.Point(-96, 46)
-            }
-
-        }
 
 
         let {
@@ -136,9 +115,7 @@ export const saveLayer = ({ slug_name, layer_options }) => ({
                 }
             };
         // console.log({ mergedOptions });
-
-        (Alpine.store('public_maps') as IMapStore).saveLayer(this.slug_name, mergedOptions as ILayerDefinition)
-            //@ts-ignore    
+        return requestAnimationPromise()      //@ts-ignore    
             .then(() => {
                 this.debouncedSetStyle()
                 this.isSaving = false;

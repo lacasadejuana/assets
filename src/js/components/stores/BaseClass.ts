@@ -87,7 +87,12 @@ export abstract class BaseClass implements IBaseClass<TeventType> {
             this.marquee(' firing ' + onceHandlers.length + ' onceHandlers for ' + event + ' event ');
             while (onceHandlers.length) {
                 let onceHandler = onceHandlers.shift()
-                requestAnimationFrame(() => onceHandler(callbackArgument))
+                if (typeof onceHandler !== 'function') continue
+                try {
+                    requestAnimationFrame(() => onceHandler(callbackArgument))
+                } catch (e) {
+                    console.error('error in onceHandler', e)
+                }
                 //console.log('process onceHandler ' + onceHandlers.length + ' remaining')
             }
         }

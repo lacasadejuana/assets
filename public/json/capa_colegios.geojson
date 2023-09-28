@@ -30,15 +30,12 @@
         },
         "campos": {
             "Nombre": "Nombre",
-            "Dirección_": "Dirección",
-            "Comuna": "Comuna",
-            "Formación": "Formación",
+              
+        
             "Género": "Género",
             "Bilingüe": "Bilingüe",
-            "Playgroup": "Playgroup",
-            "Cursos_por_nivel": "Cursos por nivel",
-            "Alumnos_por_nivel": "Alumnos por nivel",
-            "Superficie_terreno": "Superficieterreno"
+            "Playgroup": "Playgroup"
+     
         }
     },
     "features": [

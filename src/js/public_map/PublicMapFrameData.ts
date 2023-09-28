@@ -112,53 +112,90 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                 )
             });
             console.warn('deciding between createMap and store ready')
-            return this.$store.public_maps.once('ready').then((maps) => {
+            this.$store.public_maps.once('ready', maps => {
                 console.info('mapFrameData, received store ready event')
 
                 console.info({ googleMaps: maps })
                 extendMapDataProtoType(maps);
-                return this.createMap()
-            }).then(async (gmap) => {
-                console.warn('map created', gmap)
-                this.gmap = gmap;
-                globalThis.gmap = gmap;
-                this.marker = this.createMarker();
-                globalThis.layers = {};
-                this.$store.public_maps.once('layers_added').then(async () => {
-                    console.trace('layers added')
-                    this.appendFeatures()
-                    this.onMapCreated((gmap) => {
-                        console.warn('map created')
-                        this.panToCodigoInterno()
-                    })
-                    if (this.bounds) {
-                        this.gmap.fitBounds(this.bounds)
-                    } else if (this.storedStatus.center && this.storedStatus.zoom) {
-                        this.gmap.setOptions(this.storedStatus);
-                    } else {
-                        await waitFor(1000);
-                        this.fitBounds();
-                    }
+
+                this.$store.public_maps.once('map_created', gmap => {
 
 
-                });
-                this.$store.public_maps.layer_object = PublicLayersObject
-                this.$store.public_maps.createLayers(this);
-                //alert('createDomManager created')
-                this.createDomManager(this.codigo_interno ?? codigo_interno);
+                    console.log('map_created', this.gmap, gmap)
 
-                setTimeout(() => {
-                    globalThis.layerComponents.colegios.layer_options.checked = true
-                    globalThis.layerComponents.metro.layer_options.checked = true
-                }, 2000)
+                    this.gmap = this.$store.public_maps.customElementsMap
+                    globalThis.gmap = Alpine.raw(this.gmap)
+                    this.mapCreatedHandlers.forEach(handler => handler(this.gmap))
+
+                    this.googleReady = true;
+
+                    this.marker = this.createMarker();
+                    globalThis.layers = {};
+                    this.$store.public_maps.once('layers_added').then(async () => {
+                        console.trace('layers added')
+                        this.appendFeatures()
+                        this.onMapCreated((gmap) => {
+                            console.warn('map created')
+                            this.panToCodigoInterno()
+                        })
+                        if (this.bounds) {
+                            this.gmap.fitBounds(this.bounds)
+                        } else if (this.storedStatus.center && this.storedStatus.zoom) {
+                            this.gmap.setOptions(this.storedStatus);
+                        } else {
+                            await waitFor(1000);
+                            this.fitBounds();
+                        }
+
+
+                    });
+                    this.$store.public_maps.layer_object = PublicLayersObject
+                    this.$store.public_maps.createLayers(this);
+                    //alert('createDomManager created')
+                    this.createDomManager(this.codigo_interno ?? codigo_interno);
+
+                    setTimeout(() => {
+                        if (globalThis.layerComponents.colegios) globalThis.layerComponents.colegios.layer_options.checked = true
+                        if (globalThis.layerComponents.metro) globalThis.layerComponents.metro.layer_options.checked = true
+                    }, 2000)
+                    return gmap;
+                })
+
+
+                let
+                    mapStatusObj = {} as Partial<google.maps.MapOptions>
+                this.url = new URL(window.location.href);
+
+                //@ts-ignore
+                if (!mapStatusObj.center) {
+                    mapStatusObj = this.storedStatus;
+                }
+
+                let mergedOptions = {
+
+                    rotateControl: true,
+                    isFractionalZoomEnabled: false,
+                    streetViewControl: false,
+                    mapTypeControl: !this.codigo_interno && !this.extent,
+                    tiltControl: true,
+
+                    ...mapStatusObj,
+                    mapId: '3b1abace91810cf',
+                };
+                if (this.$store.public_maps.skipMapCreation || this.$store.public_maps.full_map) {
+                    this.gmap = new google.maps.Map(this.$el.querySelector('#map_container'), mergedOptions)
+                    this.$store.public_maps.customElementsMap = this.gmap
+                }
+
             });
+
 
         },
         marker: null as google.maps.Marker,
         createMarker() {
             this.marker = this.marker || new google.maps.Marker({
                 position: this.gmap.getCenter(),
-                visible: true,
+                visible: false,
                 map: globalThis.gmap,
                 zIndex: 210,
                 icon: {
@@ -176,44 +213,14 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
             globalThis.mapframe = this;
             console.warn('creating map or waiting for the store to create it')
             //globalThis.googleMapsOptions.libraries.push('drawing');
-            let
-                mapStatusObj = {} as Partial<google.maps.MapOptions>
-            this.url = new URL(window.location.href);
 
-            //@ts-ignore
-            if (!mapStatusObj.center) {
-                mapStatusObj = this.storedStatus;
-            }
-            let mergedOptions = {
-                mapId: '3b1abace91810cf',
-                rotateControl: true,
-                isFractionalZoomEnabled: true,
-                streetViewControl: false,
-                mapTypeControl: !this.codigo_interno && !this.extent,
-                tiltControl: true,
-
-                ...mapStatusObj,
-            };
             console.info('deciding between initMap and map_created')
-            return (this.$store.public_maps.full_map ?
-                Promise.resolve(new google.maps.Map(this.$el.querySelector('#map_container'), mergedOptions))
-                : this.$store.public_maps.once('map_created')
-            ).then(async gmap => {
-                console.log('map created', gmap)
-                if (gmap) {
-                    gmap.setOptions(mergedOptions)
-                } else {
-                    gmap = new google.maps.Map(this.$el.querySelector('#map_container'), mergedOptions)
-                    this.$store.public_maps.customElementsMap = gmap
-                }
-                this.gmap = gmap
-                globalThis.gmap = gmap
-                this.mapCreatedHandlers.forEach(handler => handler(this.gmap))
 
-                this.googleReady = true;
 
-                return gmap;
-            })
+
+
+
+
 
         },
         mapCreatedHandlers: [],
@@ -427,7 +434,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
         },
 
         get mapTypeId() {
-            return this.gmap ? this.gmap.getMapTypeId() : 'roadmap';
+            return 1
         },
         set mapTypeId(mapTypeId) {
 

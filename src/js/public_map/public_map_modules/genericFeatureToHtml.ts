@@ -39,6 +39,7 @@ export class genericFeatureToHtml {
                 || slug_name.includes('etapa')
                 || slug_name === 'lat'
                 || slug_name === 'searchstring'
+                || slug_name === 'Color'
                 || slug_name === 'lng'
                 || slug_name === 'codigo_interno'
                 || slug_name.includes('codigo-wordpress')
@@ -91,10 +92,12 @@ export class genericFeatureToHtml {
             } else {
                 new Wrapper('py-1 flex border min-w-[135px]')
                     .addStyle('fontFamily', 'Inter, sans-serif')
+                    .addStyle('minWidth', '135px')
                     .setTextContent(this.campos[slug_name])
                     .appendTo(wrapper.div)
                 new Wrapper('py-1 flex border pl-2 max-w-[350px] min-w-[170px] flex-grow overflow-hidden whitespace-nowrap')
                     .addStyle('fontFamily', 'Inter, sans-serif')
+                    .addStyle('minWidth', '170px')
                     .setTextContent(value)
                     .appendTo(wrapper.div)
 

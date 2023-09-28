@@ -165,13 +165,15 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
         //console.log(`setStyle for layer ${this.slug_name} `, this.markerLabel.color);
 
         let label = this.getMarkerLabel(),
-            icon = this.getIconOptions();
+            icon = this.getIconOptions(),
+            highlightedIcon = this.getIconOptions(1.25);
+
 
 
 
         return (globalThis.layers[this.slug_name] as google.maps.Data).setStyle((feature) => {
 
-            let codigo_interno = feature.getId(),
+            let codigo_interno = null,//feature.getId(),
                 defaultScale = 1,
                 highlighted = feature.getProperty('highlighted');
 
@@ -188,7 +190,7 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
                 zIndex: (140 - (this.index ?? 0) * 10) + 100 * (feature.getProperty('highlighted') ? 1 : 0),
                 draggable: feature.getProperty('draggable'),
                 //icon: this.layer_options.icon.url,
-                icon,
+                icon: highlighted ? highlightedIcon : icon,
                 label: feature.getProperty('draggable') ? label : null
             };
             return result;
@@ -200,13 +202,13 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
     },
     getIconOptions(defaultScale = 1, codigo_interno = null) {
         let iconUrl = this.iconUrl
-        if (this.isLowEmphasis(codigo_interno)) {
-            iconUrl = this.lowEmphasisBlobUrl || this.iconUrl
-            console.log('low_emphasis for codigo_interno', codigo_interno, 'vs', this.$store.public_maps.codigo_interno)
-        } else {
-            console.log('normal priority for ', codigo_interno)
-        }
-
+        /*  if (this.isLowEmphasis(codigo_interno)) {
+              iconUrl = this.lowEmphasisBlobUrl || this.iconUrl
+              console.log('low_emphasis for codigo_interno', codigo_interno, 'vs', this.$store.public_maps.codigo_interno)
+          } else {
+              console.log('normal priority for ', codigo_interno)
+          }
+  */
         if (iconUrl) {
 
             //   console.log({ url, slug_name: this.slug_name })
