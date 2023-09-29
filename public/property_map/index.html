@@ -10,47 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Negocios: Maps negocioslocal</title>
     <script>
-        if (!console.timerInfo) {
-            Object.defineProperty(console, 'timerInfo', {
-                get: function () {
-                    return Function.prototype.bind.call(
-                        console.debug,
-                        console,
-                        '%c' +
-                        Number(performance.now() / 1000).toFixed(2) +
-                        ' Timer:',
-                        'color:#03C;font-weight:bold;'
-                    );
-                },
-            });
-        }
-        if (!console.marquee) {
-
-            Object.defineProperty(console, 'marquee', {
-                get: function () {
-                    return (obj, ...args) => {
-                        let colors = Object.values(obj),
-                            payload = [''].concat(Object.keys(obj));
-                        console.log(payload.join('%c '), ...colors, ...args);
-                    };
-                },
-            });
-        }
+       
     </script>
-    <script src="/js/components/init_public_map.js"></script>
+    <script src="/js/components/init_public_map.js"></script> 
 
 
-    <!-- ========== All CSS files linkup ========= -->
-    <link rel="stylesheet" href="/css/app.css" />
-     
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css">
-
-
-</head>
-
-
-<body>
          <gmp-map  style="height:600px" id="custom_element_map"  center="-33.398,-70.58" zoom="14" map-id="3b1abace91810cf">
 
             <gmp-advanced-marker position="-33.398,-70.58" title=""></gmp-advanced-marker>
@@ -127,17 +91,10 @@
                                  <div x-id="['map-layer']" x-data="componentMap[type]({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
                                     class="border accordion flex flex-col ">
 
-                                     
-
-                               
-
-
                             </span>
                         </template>
                           
                         </div>
-
-
                     </template>
                 </div>
             </article>

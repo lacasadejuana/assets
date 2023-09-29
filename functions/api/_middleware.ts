@@ -18,6 +18,7 @@ export const onRequest: PagesFunction = async ({ next }) => {
 	//	response.headers.append('link', '</api/negocios>; rel="preload"; as="fetch"');
 
 	response.headers.set('Access-Control-Allow-Origin', '*');
+	response.headers.delete('X-Frame-Options');
 	response.headers.set('Access-Control-Max-Age', '86400');
 	return response;
 };
