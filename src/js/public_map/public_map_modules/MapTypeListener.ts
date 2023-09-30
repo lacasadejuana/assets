@@ -14,6 +14,7 @@ export class MapTypeListener extends BaseClass implements IBaseClass<'changed' |
         this.gmap = gmap
         this.addCustomStyles().then(async () => {
 
+            //la vacunada Alpine.store('public_maps')
 
             this.addClickListener()
 
@@ -25,13 +26,22 @@ export class MapTypeListener extends BaseClass implements IBaseClass<'changed' |
 
                 //@ts-ignore
                 this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
-            } else {
+            } 
+            
+            
                 console.log('inject styles to gmap')
                 let styleTag2 = document.createElement('style')
                 styleTag2.textContent = `@import url('/css/app.css')`
 
                 this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
-            }
+            
+                const mapName = document.createElement('div')
+            mapName.id = 'map_name'
+
+            mapName.setAttribute('x-text', "'Viendo mapa: '+window.top.location.pathname")
+            mapName.className = 'flex map_name py-1 px-3 bg-gradient  text-black h8 min-w[200px] justify-center items-center'
+
+            this.gmap.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(mapName);
 
             return this
         })

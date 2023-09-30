@@ -129,6 +129,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
             return { position: { lng, lat }, id, name: properties.Nombre_de_Barrio }
         })
         if (this.no_labels) return
+        
         this.once('map_created', async gmap => {
             //@ts-ignore
             const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
@@ -290,6 +291,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
             //ifDefined(globalThis.mapFrameData, (mapFrameData) => mapFrameData.reload())
             //ifDefined(globalThis.bsTable, (bsTable) => bsTable.reload && bsTable.reload())
             setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1000);
+             console.info('fetched negocios', this.$store.negocios.properties.length);
             return result;
         })
 

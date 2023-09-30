@@ -5,7 +5,7 @@ import { iconOptions } from "./public_map_modules/iconOptions";
 import { computeColorAlpha } from "./public_map_modules/marker_factory/markerFactory";
 import { negocioFeatureToHtml } from "./public_map_modules/negocioFeatureToHtml";
 import { saveLayer } from './public_map_modules/saveLayer';
-
+import {negocioFeatureToHtmlMini} from './public_map_modules/negocioFeatureToHtmlMini'
 
 
 export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria }, comunas) => ({
@@ -264,18 +264,32 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
     addInfoWindowBehavior(layer: google.maps.Data): void {
         if (this.infowindow_added) return
         this.infowindow_added = true
+        const main_codigo_interno=this.$store.public_maps.codigo_interno
 
         google.maps.event.addListener(layer, 'click', (event: google.maps.Data.MouseEvent) => {
             globalThis.gmap.infowindow.close();
             let negocio = event.feature as google.maps.Data.Feature;
+
+            const codigo_interno = negocio.getProperty('codigo_interno')
 
 
 
             this.getMap().panTo(event.latLng)
 
 
-            let html = new negocioFeatureToHtml(negocio, this.$store.columnas_actuales.featureProperties).content;
-            this.getInfoWindow().setContent(html);
+            
+
+            let html = (main_codigo_interno)? (new negocioFeatureToHtmlMini(
+                negocio,
+                 this.$store.columnas_actuales.featureProperties,
+                 main_codigo_interno ? 'property_map' : 'public'
+            )):(new negocioFeatureToHtml(
+                negocio,
+                 this.$store.columnas_actuales.featureProperties,
+                 main_codigo_interno ? 'property_map' : 'public'
+            )) ;
+
+            this.getInfoWindow().setContent(html.content);
             this.getInfoWindow().setPosition(event.latLng);
             this.getInfoWindow().open({ map: globalThis.gmap });
 
@@ -327,9 +341,7 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
                 this.marker.setVisible(false);
                 this.marker.setMap(null)
             };
-        }
-
-        if (!this.clickListener) {
+        
             this.clickListener = (event: google.maps.Data.MouseEvent) => {
                 globalThis.gmap.infowindow.close();
                 let negocio = event.feature as google.maps.Data.Feature,

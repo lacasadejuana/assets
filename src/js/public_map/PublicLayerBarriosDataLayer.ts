@@ -303,30 +303,7 @@ export const PublicLayerBarriosDataLayer = ({ index, slug_name, name, layer_opti
             const layer = this.getLayer()
 
             let visibilityZoom = this.layer_options.labelVisibility.zoom;
-            if (visibilityZoom && document.querySelector('.gm-style')) {
-                let previousZoom = globalThis.gmap.getZoom();
-                const zoomChangedHandler = e => {
-                    let currentZoom = globalThis.gmap.getZoom()
 
-                    // When zooming above visibilty threshold, update the style
-                    if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
-                        console.zinfo('went above visibility zoom', currentZoom)
-                        document.querySelector('.gm-style').classList.remove('hide-labels')
-                        document.querySelector('.gm-style').classList.add('show-labels')
-                    }
-                    // When zooming below visibilty threshold, update the style
-                    if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
-                        console.zinfo('went below visibility zoom', currentZoom)
-                        document.querySelector('.gm-style').classList.remove('show-labels')
-                        document.querySelector('.gm-style').classList.add('hide-labels')
-                    }
-                    console.timerInfo(`zoom changed from ${previousZoom} to ${currentZoom}`)
-                    previousZoom = currentZoom
-                };
-                this.gmap.addListener('idle', () => zoomChangedHandler(null));
-                // this.gmap.addListener('zoom_changed', Alpine.debounce(zoomChangedHandler, 100));
-
-            }
             if (this.layer_options.labelVisibility.highlighted) {
                 this.mouseOverListener = (event: google.maps.Data.MouseEvent) => {
                     const { feature } = event;
@@ -366,7 +343,30 @@ export const PublicLayerBarriosDataLayer = ({ index, slug_name, name, layer_opti
     },
 
 
+    if(visibilityZoom) {
+        let previousZoom = globalThis.gmap.getZoom();
+        const zoomChangedHandler = e => {
+            let currentZoom = globalThis.gmap.getZoom()
 
+            // When zooming above visibilty threshold, update the style
+            if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
+                console.zinfo('went above visibility zoom', currentZoom)
+                document.querySelector('.gm-style').classList.remove('hide-labels')
+                document.querySelector('.gm-style').classList.add('show-labels')
+            }
+            // When zooming below visibilty threshold, update the style
+            if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
+                console.zinfo('went below visibility zoom', currentZoom)
+                document.querySelector('.gm-style').classList.remove('show-labels')
+                document.querySelector('.gm-style').classList.add('hide-labels')
+            }
+            console.timerInfo(`zoom changed from ${previousZoom} to ${currentZoom}`)
+            previousZoom = currentZoom
+        };
+        this.gmap.addListener('idle', () => zoomChangedHandler(null));
+        // this.gmap.addListener('zoom_changed', Alpine.debounce(zoomChangedHandler, 100));
+
+    },
 
     get infowindow(): google.maps.InfoWindow {
         return globalThis.gmap.infowindow

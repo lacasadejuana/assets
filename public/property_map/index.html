@@ -2,20 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta name="csrf" content="" />
 
+    <script src="/js/components/init_public_map.js"></script>
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Negocios: Maps negocioslocal</title>
-    <script>
-       
-    </script>
-    <script src="/js/components/init_public_map.js"></script> 
+</head>
 
-
-         <gmp-map  style="height:600px" id="custom_element_map"  center="-33.398,-70.58" zoom="14" map-id="3b1abace91810cf">
+<body>
+         <gmp-map  style="height:600px" id="custom_element_map"  center="-33.398,-70.58" zoom="14" map-id="8f541b0e0f5f6c31">
+    <link rel="stylesheet" href="/css/app.css" />
 
             <gmp-advanced-marker position="-33.398,-70.58" title=""></gmp-advanced-marker>
             <article class="outer_container" id="barebone_container">
@@ -86,62 +80,82 @@
                             </div>
 
                             <template
-                            x-for="({checked, slug_name,url, name, path, layer_options, criteria,type},index) in                                         $store.public_maps.layer_array"
+                            x-for="({checked, slug_name,url, name, path, layer_options, criteria,type},index) in  $store.public_maps.layer_array"
                             :key="slug_name">
                                  <div x-id="['map-layer']" x-data="componentMap[type]({ index, checked, slug_name, name, path, layer_options, criteria }, comunas)"
                                     class="border accordion flex flex-col ">
+
+                                     
+
+                               
+
 
                             </span>
                         </template>
                           
                         </div>
+
+
                     </template>
                 </div>
             </article>
+            <style id="style_css"><</style>
+<template id="css_map">
+    <style id="css_style">
+       
+    </style>
+</template>
+
+
+
 
         </gmp-map>
 
    
 
         <script>
-            const custom_element_map = document.querySelector("#custom_element_map");
-
-setTimeout(() => {
-    customElements.whenDefined(custom_element_map.localName).then(async (mapElement) => {
-        //let {map,shadowRoot}=mapElement 
-        console.warn(mapElement)
-        console.info('custom_element_map', custom_element_map.shadowRoot)
-        //Alpine.initTree(map)
-
-    });
-}, 400)
-const advancedMarker= document.querySelector("#custom_element_map gmp-advanced-marker");
-
-
-customElements.whenDefined(advancedMarker.localName)
-    .then(async () => {
-        Alpine.store('public_maps').customElementsMap = advancedMarker.map;
-        advancedMarker.map.setOptions({ streetViewControl: false, mapTypeControl: false })
-        console.timerInfo('got reference to custom element map')
-        //Alpine.initTree(advancedMap)
-
-        advancedMarker.addEventListener('gmp-click', async () => {
-            console.info('gmp-click')
-            const { InfoWindow } = await google.maps.importLibrary("maps");
-            const infoWindow = new InfoWindow({
-                content: advancedMarker.title
-            });
-            infoWindow.open({
-                anchor: advancedMarker
-            });
-        });
-    });
-
-console.timerInfo('DOMContentLoaded') 
             
+               
             
+            const custom_element_map=document.querySelector("#custom_element_map");
+
+            setTimeout(()=>{
+              customElements.whenDefined(custom_element_map.localName).then(async (mapElement) => {
+                //let {map,shadowRoot}=mapElement 
+                console.warn(mapElement)
+                //Alpine.initTree(map)
+                 
+              });
+            },400)
+             const advancedMarkers = document.querySelectorAll("#custom_element_map gmp-advanced-marker");
+              for (const advancedMarker of advancedMarkers) {
+                
+                customElements.whenDefined(advancedMarker.localName)
+                    .then(async () => {
+                    Alpine.store('public_maps').customElementsMap=  advancedMarker.map;
+                    advancedMarker.map.setOptions({streetViewControl:false,mapTypeControl:false})
+                    console.timerInfo('got reference to custom element map')
+                    //Alpine.initTree(advancedMap)
+                    let  styleTag2 = document.createElement('style')
+                styleTag2.textContent = `@import url('/css/app.css')`
+
+                advancedMarker.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
+
+                  advancedMarker.addEventListener('gmp-click', async () => {
+                    console.info('gmp-click')
+                    const {InfoWindow} = await google.maps.importLibrary("maps");
+                    const infoWindow = new InfoWindow({
+                      content: advancedMarker.title
+                    });
+                    infoWindow.open({
+                      anchor: advancedMarker
+                    });
+                  });
+                });
+              }
+              console.timerInfo('DOMContentLoaded')
    
-//google.maps.__ib__
+               
         
          
         function cargamos() {
@@ -176,14 +190,6 @@ console.timerInfo('DOMContentLoaded')
  
 
         </script>
-
-<style id="style_css"><</style>
-<template id="css_map">
-    <style id="css_style">
-       
-    </style>
-</template>
-
 
 
 
