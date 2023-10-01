@@ -225,7 +225,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
         createDomManager(codigo_interno) {
 
             if (codigo_interno) {
-                this.gmap.setZoom(15)
+                this.gmap.setZoom(17)
             } else {
                 this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(document.querySelector('#map_controls'),);
                 setTimeout(() => {

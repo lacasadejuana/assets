@@ -54559,7 +54559,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
     },
     createDomManager(codigo_interno2) {
       if (codigo_interno2) {
-        this.gmap.setZoom(15);
+        this.gmap.setZoom(17);
       } else {
         this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(document.querySelector("#map_controls"));
         setTimeout(() => {
