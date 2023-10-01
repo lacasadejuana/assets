@@ -67,24 +67,31 @@ module.exports = {
     replaceTimestamp,
     runEsbuild,
 };
-const onRebuild = () => {
+const onRebuild = (outdir=`public_map`) => {
     runEsbuild({
         entryPoints: [
-            'src/js/public_map/index.ts'
+             
+            `src/js/public_map/index.ts`
         ],
-        outfile: 'public/js/components/public_map.js',
+        outfile: `public/${outdir}/js/public_map.js`,
         quiet: true,
         format: 'esm',
-        saas: [['src/css/map_view.scss', 'public/css/map_view.css']]
+        saas: [[
+            'src/css/map_view.scss',
+             `public/css/map_view.css`
+            ]]
 
     });
     runEsbuild({
         entryPoints: [
-            'src/js/public_map/init_public_map.ts'
+            `src/js/public_map/init_public_map.ts`
         ],
-        outfile: 'public/js/components/init_public_map.js',
+        outfile: `public/${outdir}/js/init_public_map.js`,
         quiet: true,
-        saas: [['src/css/_app.scss', 'src/css/_app.css']]
+        saas: [[
+            'src/css/_app.scss', 
+            'src/css/_app.css'
+        ]]
         ,
         format: 'umd',
 
@@ -93,7 +100,8 @@ const onRebuild = () => {
 if (require.main === module) {
     let { _, ...options } = argv;
     if (options.watch) {
-        return watchTs('src/js', onRebuild);
+
+        return watchTs('src/js', ()=>onRebuild(options.outdir));
     }
 
     onRebuild();

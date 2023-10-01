@@ -1,11 +1,13 @@
 {
 	"private": true,
-	"name": "assets.juana.house",
+	"name": "assets",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "wrangler pages dev public",
+		"build:esbuild": "node builders/esbuild.cjs --watch ",
 		"build:tailwind": " tailwind  -i src/css/_app.css -o public/css/app.css",
-		"build": "esbuild src/js/public_map/index.ts --bundle --format=esm --outfile=public/js/public_map.js --tsconfig=tsconfig.json",
+		"build": "npm run build:esbuild && npm run build:tailwind",
+		"build:all": "npm run build:esbuild && npm run build:tailwind",
 		"watch:esbuild": "node builders/esbuild.cjs --watch ",
 		"watch:tailwind": "tailwind -i src/css/_app.css -o public/css/app.css --watch",
 		"watch": "concurrently \"npm run watch:esbuild\" \"npm run watch:tailwind\""
