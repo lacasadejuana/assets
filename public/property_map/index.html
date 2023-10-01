@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<script src="/js/components/init_public_map.js"></script>
+		<script src="./js/init_public_map.js"></script>
 	</head>
 
 	<body>
@@ -13,7 +13,7 @@
 			zoom="15"
 			map-id="8f541b0e0f5f6c31"
 			x-data="{
-			
+			 
             codigo_interno: null,
             extent: null,
 			bounds: null,
@@ -50,7 +50,7 @@
             PublicMapComponents: {},
             importComponent() {
         
-                return import('/js/components/property_map.js').then((module) => {
+                return import('/maps/js/property_map.js').then((module) => {
                     console.log('PublicMapMoldules', module);
 
         
@@ -71,7 +71,7 @@
 		>
 			<gmp-advanced-marker position="-33.398,-70.58" title=""></gmp-advanced-marker>
 			<article class="outer_container" id="barebone_container">
-				<link rel="stylesheet" href="/css/app.css" />
+				<!--<link rel="stylesheet" href="./css/app.css" />-->
 				<div class="w-full">
 					<template x-if="componentsReady">
 						<div
@@ -129,7 +129,11 @@
 						console.timerInfo('got reference to custom element map');
 						//Alpine.initTree(advancedMap)
 						let styleTag2 = document.createElement('style');
-						styleTag2.textContent = `@import url('/css/app.css')`;
+						styleTag2.textContent = `
+							@import url('/css/app.css')
+							
+							
+						`;
 
 						advancedMarker.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
 

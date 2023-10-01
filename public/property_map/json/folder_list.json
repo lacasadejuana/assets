@@ -1,0 +1,1804 @@
+[
+    {
+        "id": "124",
+        "text": "Negocio 124",
+        "currrent_working_dir": "/124/1 Imágenes preliminares/",
+        "parent": "#",
+        "state": {
+            "opened": false,
+            "selected": true,
+            "disabled": true
+        },
+        "li_attr": {
+            "data-working_dir": "/124"
+        },
+        "a_attr": {
+            "data-working_dir": "/124"
+        }
+    },
+    {
+        "id": "124:Comercial",
+        "text": "Comercial",
+        "parent": "124",
+        "fullpath": "/124/Comercial",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Comercial",
+            "data-working_dir": "/124/comercial",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/comercial"
+        }
+    },
+    {
+        "id": "124:Comercial:Informes de seguimiento",
+        "text": "Informes de seguimiento",
+        "parent": "124:Comercial",
+        "fullpath": "/124/Comercial/Informes de seguimiento",
+        "icon": "fa fa-folder",
+        "slug_name": "informes-de-seguimiento-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Comercial:Informes de seguimiento",
+            "data-working_dir": "/124/comercial/informes_de_seguimiento",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/comercial/informes_de_seguimiento"
+        }
+    },
+    {
+        "id": "124:Comercial:Prorrateo de cuentas",
+        "text": "Prorrateo de cuentas",
+        "parent": "124:Comercial",
+        "fullpath": "/124/Comercial/Prorrateo de cuentas",
+        "icon": "fa fa-folder",
+        "slug_name": "prorrateo-de-cuentas-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Comercial:Prorrateo de cuentas",
+            "data-working_dir": "/124/comercial/prorrateo_de_cuentas",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/comercial/prorrateo_de_cuentas"
+        }
+    },
+    {
+        "id": "124:Comercial:Antecedentes de arrendatarios",
+        "text": "Antecedentes de arrendatarios",
+        "parent": "124:Comercial",
+        "fullpath": "/124/Comercial/Antecedentes de arrendatarios",
+        "icon": "fa fa-folder",
+        "slug_name": "antecedentes-de-arrendatarios-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Comercial:Antecedentes de arrendatarios",
+            "data-working_dir": "/124/comercial/antecedentes_de_arrendatarios",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/comercial/antecedentes_de_arrendatarios"
+        }
+    },
+    {
+        "id": "124:Comercial:Varios comercial",
+        "text": "Varios comercial",
+        "parent": "124:Comercial",
+        "fullpath": "/124/Comercial/Varios comercial",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Comercial:Varios comercial",
+            "data-working_dir": "/124/comercial/varios_comercial",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/comercial/varios_comercial"
+        }
+    },
+    {
+        "id": "124:Comercial:Varios comercial:Colilla gasto com\u00fan",
+        "text": "Colilla gasto com\u00fan",
+        "parent": "124:Comercial:Varios comercial",
+        "fullpath": "/124/Comercial/Varios comercial/Colilla gasto com\u00fan",
+        "icon": "fa fa-folder",
+        "slug_name": "colilla-gasto-comun-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Comercial:Varios comercial:Colilla gasto com\u00fan",
+            "data-working_dir": "/124/comercial/varios_comercial/colilla_gasto_comun",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/comercial/varios_comercial/colilla_gasto_comun"
+        }
+    },
+    {
+        "id": "124:Comercial:Varios comercial:Colilla gasto com\u00fan:hola",
+        "text": "hola",
+        "parent": "124:Comercial:Varios comercial:Colilla gasto com\u00fan",
+        "fullpath": "/124/Comercial/Varios comercial/Colilla gasto com\u00fan/hola",
+        "icon": "fa fa-folder",
+        "slug_name": "colilla-gasto-comun-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Comercial:Varios comercial:Colilla gasto com\u00fan:hola",
+            "data-working_dir": "/124/comercial/varios_comercial/colilla_gasto_comun/hola",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/comercial/varios_comercial/colilla_gasto_comun/hola"
+        }
+    },
+    {
+        "id": "124:Comercial:Varios comercial:Colilla gasto com\u00fan:ensayo",
+        "text": "ensayo",
+        "parent": "124:Comercial:Varios comercial:Colilla gasto com\u00fan",
+        "fullpath": "/124/Comercial/Varios comercial/Colilla gasto com\u00fan/ensayo",
+        "icon": "fa fa-folder",
+        "slug_name": "colilla-gasto-comun-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Comercial:Varios comercial:Colilla gasto com\u00fan:ensayo",
+            "data-working_dir": "/124/comercial/varios_comercial/colilla_gasto_comun/ensayo",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/comercial/varios_comercial/colilla_gasto_comun/ensayo"
+        }
+    },
+    {
+        "id": "124:Comercial:Varios comercial:Contribuciones",
+        "text": "Contribuciones",
+        "parent": "124:Comercial:Varios comercial",
+        "fullpath": "/124/Comercial/Varios comercial/Contribuciones",
+        "icon": "fa fa-folder",
+        "slug_name": "contribuciones-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Comercial:Varios comercial:Contribuciones",
+            "data-working_dir": "/124/comercial/varios_comercial/contribuciones",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/comercial/varios_comercial/contribuciones"
+        }
+    },
+    {
+        "id": "124:Contabilidad",
+        "text": "Contabilidad",
+        "parent": "124",
+        "fullpath": "/124/Contabilidad",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Contabilidad",
+            "data-working_dir": "/124/contabilidad",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/contabilidad"
+        }
+    },
+    {
+        "id": "124:Contabilidad:Facturas",
+        "text": "Facturas",
+        "parent": "124:Contabilidad",
+        "fullpath": "/124/Contabilidad/Facturas",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Contabilidad:Facturas",
+            "data-working_dir": "/124/contabilidad/facturas",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/contabilidad/facturas"
+        }
+    },
+    {
+        "id": "124:Contabilidad:Facturas:Factura vendedor o arrendador",
+        "text": "Factura vendedor o arrendador",
+        "parent": "124:Contabilidad:Facturas",
+        "fullpath": "/124/Contabilidad/Facturas/Factura vendedor o arrendador",
+        "icon": "fa fa-folder",
+        "slug_name": "factura-vendedor-o-arrendador-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Contabilidad:Facturas:Factura vendedor o arrendador",
+            "data-working_dir": "/124/contabilidad/facturas/factura_vendedor_o_arrendador",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/contabilidad/facturas/factura_vendedor_o_arrendador"
+        }
+    },
+    {
+        "id": "124:Contabilidad:Facturas:Factura comprador o arrendatario",
+        "text": "Factura comprador o arrendatario",
+        "parent": "124:Contabilidad:Facturas",
+        "fullpath": "/124/Contabilidad/Facturas/Factura comprador o arrendatario",
+        "icon": "fa fa-folder",
+        "slug_name": "factura-comprador-o-arrendatario-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Contabilidad:Facturas:Factura comprador o arrendatario",
+            "data-working_dir": "/124/contabilidad/facturas/factura_comprador_o_arrendatario",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/contabilidad/facturas/factura_comprador_o_arrendatario"
+        }
+    },
+    {
+        "id": "124:Contabilidad:Gastos comprador o arrendatario",
+        "text": "Gastos comprador o arrendatario",
+        "parent": "124:Contabilidad",
+        "fullpath": "/124/Contabilidad/Gastos comprador o arrendatario",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Contabilidad:Gastos comprador o arrendatario",
+            "data-working_dir": "/124/contabilidad/gastos_comprador_o_arrendatario",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/contabilidad/gastos_comprador_o_arrendatario"
+        }
+    },
+    {
+        "id": "124:Contabilidad:Gastos",
+        "text": "Gastos",
+        "parent": "124:Contabilidad",
+        "fullpath": "/124/Contabilidad/Gastos",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Contabilidad:Gastos",
+            "data-working_dir": "/124/contabilidad/gastos",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/contabilidad/gastos"
+        }
+    },
+    {
+        "id": "124:Contabilidad:Gastos vendedor o arrendador",
+        "text": "Gastos vendedor o arrendador",
+        "parent": "124:Contabilidad",
+        "fullpath": "/124/Contabilidad/Gastos vendedor o arrendador",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Contabilidad:Gastos vendedor o arrendador",
+            "data-working_dir": "/124/contabilidad/gastos_vendedor_o_arrendador",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/contabilidad/gastos_vendedor_o_arrendador"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario",
+        "text": "Análisis inmobiliario",
+        "parent": "124",
+        "fullpath": "/124/Análisis inmobiliario",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario",
+            "data-working_dir": "/124/analisis_inmobiliario",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Valorizacion preliminar LCDJ",
+        "text": "Valorizacion preliminar LCDJ",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/Valorizacion preliminar LCDJ",
+        "icon": "fa fa-folder",
+        "slug_name": "valorizacion-preliminar-lcdj-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Valorizacion preliminar LCDJ",
+            "data-working_dir": "/124/analisis_inmobiliario/valorizacion_preliminar_lcdj",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/valorizacion_preliminar_lcdj"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:sanbomba",
+        "text": "sanbomba",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/sanbomba",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:sanbomba",
+            "data-working_dir": "/124/analisis_inmobiliario/sanbomba",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/sanbomba"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Valorizaci\u00f3n de terceros",
+        "text": "Valorizaci\u00f3n de terceros",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/Valorizaci\u00f3n de terceros",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Valorizaci\u00f3n de terceros",
+            "data-working_dir": "/124/analisis_inmobiliario/valorizacion_de_terceros",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/valorizacion_de_terceros"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Documentos municipales",
+        "text": "Documentos municipales",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/Documentos municipales",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Documentos municipales",
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Documentos municipales:amor",
+        "text": "amor",
+        "parent": "124:Análisis inmobiliario:Documentos municipales",
+        "fullpath": "/124/Análisis inmobiliario/Documentos municipales/amor",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Documentos municipales:amor",
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/amor",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/amor"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Documentos municipales:Varios documentos municipales",
+        "text": "Varios documentos municipales",
+        "parent": "124:Análisis inmobiliario:Documentos municipales",
+        "fullpath": "/124/Análisis inmobiliario/Documentos municipales/Varios documentos municipales",
+        "icon": "fa fa-folder",
+        "slug_name": "doc-legales-y-municipales-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Documentos municipales:Varios documentos municipales",
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/varios_documentos_municipales",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/varios_documentos_municipales"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Documentos municipales:RF",
+        "text": "RF",
+        "parent": "124:Análisis inmobiliario:Documentos municipales",
+        "fullpath": "/124/Análisis inmobiliario/Documentos municipales/RF",
+        "icon": "fa fa-folder",
+        "slug_name": "rf-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Documentos municipales:RF",
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/rf",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/rf"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Documentos municipales:PE",
+        "text": "PE",
+        "parent": "124:Análisis inmobiliario:Documentos municipales",
+        "fullpath": "/124/Análisis inmobiliario/Documentos municipales/PE",
+        "icon": "fa fa-folder",
+        "slug_name": "pe-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Documentos municipales:PE",
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/pe",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/pe"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Documentos municipales:CIP",
+        "text": "CIP",
+        "parent": "124:Análisis inmobiliario:Documentos municipales",
+        "fullpath": "/124/Análisis inmobiliario/Documentos municipales/CIP",
+        "icon": "fa fa-folder",
+        "slug_name": "cip-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Documentos municipales:CIP",
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/cip",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/cip"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Documentos municipales:cedazo",
+        "text": "cedazo",
+        "parent": "124:Análisis inmobiliario:Documentos municipales",
+        "fullpath": "/124/Análisis inmobiliario/Documentos municipales/cedazo",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Documentos municipales:cedazo",
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/cedazo",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/documentos_municipales/cedazo"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Planos originales",
+        "text": "Planos originales",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/Planos originales",
+        "icon": "fa fa-folder",
+        "slug_name": "planos-originales-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Planos originales",
+            "data-working_dir": "/124/analisis_inmobiliario/planos_originales",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/planos_originales"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:jardin",
+        "text": "jardin",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/jardin",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:jardin",
+            "data-working_dir": "/124/analisis_inmobiliario/jardin",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/jardin"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Varios análisis inmobiliario",
+        "text": "Varios análisis inmobiliario",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/Varios análisis inmobiliario",
+        "icon": "fa fa-folder",
+        "slug_name": "varios-analisis-inmobiliario-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Varios análisis inmobiliario",
+            "data-working_dir": "/124/analisis_inmobiliario/varios_analisis_inmobiliario",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/varios_analisis_inmobiliario"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:lfmlocal",
+        "text": "lfmlocal",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/lfmlocal",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:lfmlocal",
+            "data-working_dir": "/124/analisis_inmobiliario/lfmlocal",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/lfmlocal"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:Valorizaci\u00f3n LCDJ",
+        "text": "Valorizaci\u00f3n LCDJ",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/Valorizaci\u00f3n LCDJ",
+        "icon": "fa fa-folder",
+        "slug_name": "tasacion-realizada-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:Valorizaci\u00f3n LCDJ",
+            "data-working_dir": "/124/analisis_inmobiliario/valorizacion_lcdj",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/valorizacion_lcdj"
+        }
+    },
+    {
+        "id": "124:Análisis inmobiliario:aa",
+        "text": "aa",
+        "parent": "124:Análisis inmobiliario",
+        "fullpath": "/124/Análisis inmobiliario/aa",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Análisis inmobiliario:aa",
+            "data-working_dir": "/124/analisis_inmobiliario/aa",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/analisis_inmobiliario/aa"
+        }
+    },
+    {
+        "id": "124:0 Otros antecedentes EETT",
+        "text": "0 Otros antecedentes EETT",
+        "parent": "124",
+        "fullpath": "/124/0 Otros antecedentes EETT",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:0 Otros antecedentes EETT",
+            "data-working_dir": "/124/0_otros_antecedentes_eett",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/0_otros_antecedentes_eett"
+        }
+    },
+    {
+        "id": "124:0 Otros antecedentes EETT:Certificado no deuda gasto com\u00fan",
+        "text": "Certificado no deuda gasto com\u00fan",
+        "parent": "124:0 Otros antecedentes EETT",
+        "fullpath": "/124/0 Otros antecedentes EETT/Certificado no deuda gasto com\u00fan",
+        "icon": "fa fa-folder",
+        "slug_name": "certificado-no-deuda-gasto-comun-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:0 Otros antecedentes EETT:Certificado no deuda gasto com\u00fan",
+            "data-working_dir": "/124/0_otros_antecedentes_eett/certificado_no_deuda_gasto_comun",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/0_otros_antecedentes_eett/certificado_no_deuda_gasto_comun"
+        }
+    },
+    {
+        "id": "124:0 Otros antecedentes EETT:Mandato o Poder",
+        "text": "Mandato o Poder",
+        "parent": "124:0 Otros antecedentes EETT",
+        "fullpath": "/124/0 Otros antecedentes EETT/Mandato o Poder",
+        "icon": "fa fa-folder",
+        "slug_name": "mandato-o-poder-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:0 Otros antecedentes EETT:Mandato o Poder",
+            "data-working_dir": "/124/0_otros_antecedentes_eett/mandato_o_poder",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/0_otros_antecedentes_eett/mandato_o_poder"
+        }
+    },
+    {
+        "id": "124:0 Otros antecedentes EETT:Inscripci\u00f3n sin vigencia",
+        "text": "Inscripci\u00f3n sin vigencia",
+        "parent": "124:0 Otros antecedentes EETT",
+        "fullpath": "/124/0 Otros antecedentes EETT/Inscripci\u00f3n sin vigencia",
+        "icon": "fa fa-folder",
+        "slug_name": "inscripcion-sin-vigencia-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:0 Otros antecedentes EETT:Inscripci\u00f3n sin vigencia",
+            "data-working_dir": "/124/0_otros_antecedentes_eett/inscripcion_sin_vigencia",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/0_otros_antecedentes_eett/inscripcion_sin_vigencia"
+        }
+    },
+    {
+        "id": "124:0 Otros antecedentes EETT:Reglamento de copropiedad",
+        "text": "Reglamento de copropiedad",
+        "parent": "124:0 Otros antecedentes EETT",
+        "fullpath": "/124/0 Otros antecedentes EETT/Reglamento de copropiedad",
+        "icon": "fa fa-folder",
+        "slug_name": "reglamento-de-copropiedad-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:0 Otros antecedentes EETT:Reglamento de copropiedad",
+            "data-working_dir": "/124/0_otros_antecedentes_eett/reglamento_de_copropiedad",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/0_otros_antecedentes_eett/reglamento_de_copropiedad"
+        }
+    },
+    {
+        "id": "124:Material de publicaci\u00f3n",
+        "text": "Material de publicaci\u00f3n",
+        "parent": "124",
+        "fullpath": "/124/Material de publicaci\u00f3n",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Material de publicaci\u00f3n",
+            "data-working_dir": "/124/material_de_publicacion",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/material_de_publicacion"
+        }
+    },
+    {
+        "id": "124:Material de publicaci\u00f3n:2 Texto descriptivo",
+        "text": "2 Texto descriptivo",
+        "parent": "124:Material de publicaci\u00f3n",
+        "fullpath": "/124/Material de publicaci\u00f3n/2 Texto descriptivo",
+        "icon": "fa fa-folder",
+        "slug_name": "texto-descriptivo-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Material de publicaci\u00f3n:2 Texto descriptivo",
+            "data-working_dir": "/124/material_de_publicacion/2_texto_descriptivo",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/material_de_publicacion/2_texto_descriptivo"
+        }
+    },
+    {
+        "id": "124:Material de publicaci\u00f3n:1 Imágenes",
+        "text": "1 Imágenes",
+        "parent": "124:Material de publicaci\u00f3n",
+        "fullpath": "/124/Material de publicaci\u00f3n/1 Imágenes",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Material de publicaci\u00f3n:1 Imágenes",
+            "data-working_dir": "/124/material_de_publicacion/1_imagenes",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/material_de_publicacion/1_imagenes"
+        }
+    },
+    {
+        "id": "124:Material de publicaci\u00f3n:1 Imágenes:1 Imágenes preliminares",
+        "text": "1 Imágenes preliminares",
+        "parent": "124:Material de publicaci\u00f3n:1 Imágenes",
+        "fullpath": "/124/Material de publicaci\u00f3n/1 Imágenes/1 Imágenes preliminares",
+        "icon": "fa fa-folder",
+        "slug_name": "imgs-preliminares-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Material de publicaci\u00f3n:1 Imágenes:1 Imágenes preliminares",
+            "data-working_dir": "/124/material_de_publicacion/1_imagenes/1_imagenes_preliminares",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/material_de_publicacion/1_imagenes/1_imagenes_preliminares"
+        }
+    },
+    {
+        "id": "124:Material de publicaci\u00f3n:1 Imágenes:1 Imágenes preliminares:alta",
+        "text": "alta",
+        "parent": "124:Material de publicaci\u00f3n:1 Imágenes:1 Imágenes preliminares",
+        "fullpath": "/124/Material de publicaci\u00f3n/1 Imágenes/1 Imágenes preliminares/alta",
+        "icon": "fa fa-folder",
+        "slug_name": "imgs-preliminares-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Material de publicaci\u00f3n:1 Imágenes:1 Imágenes preliminares:alta",
+            "data-working_dir": "/124/material_de_publicacion/1_imagenes/1_imagenes_preliminares/alta",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/material_de_publicacion/1_imagenes/1_imagenes_preliminares/alta"
+        }
+    },
+    {
+        "id": "124:Material de publicaci\u00f3n:3 Planos para publicaci\u00f3n",
+        "text": "3 Planos para publicaci\u00f3n",
+        "parent": "124:Material de publicaci\u00f3n",
+        "fullpath": "/124/Material de publicaci\u00f3n/3 Planos para publicaci\u00f3n",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Material de publicaci\u00f3n:3 Planos para publicaci\u00f3n",
+            "data-working_dir": "/124/material_de_publicacion/3_planos_para_publicacion",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/material_de_publicacion/3_planos_para_publicacion"
+        }
+    },
+    {
+        "id": "124:Material de publicaci\u00f3n:3 Planos para publicaci\u00f3n:Planos web",
+        "text": "Planos web",
+        "parent": "124:Material de publicaci\u00f3n:3 Planos para publicaci\u00f3n",
+        "fullpath": "/124/Material de publicaci\u00f3n/3 Planos para publicaci\u00f3n/Planos web",
+        "icon": "fa fa-folder",
+        "slug_name": "planos-web-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Material de publicaci\u00f3n:3 Planos para publicaci\u00f3n:Planos web",
+            "data-working_dir": "/124/material_de_publicacion/3_planos_para_publicacion/planos_web",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/material_de_publicacion/3_planos_para_publicacion/planos_web"
+        }
+    },
+    {
+        "id": "124:Material de publicaci\u00f3n:3 Planos para publicaci\u00f3n:Planos portales",
+        "text": "Planos portales",
+        "parent": "124:Material de publicaci\u00f3n:3 Planos para publicaci\u00f3n",
+        "fullpath": "/124/Material de publicaci\u00f3n/3 Planos para publicaci\u00f3n/Planos portales",
+        "icon": "fa fa-folder",
+        "slug_name": "planos-portales-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Material de publicaci\u00f3n:3 Planos para publicaci\u00f3n:Planos portales",
+            "data-working_dir": "/124/material_de_publicacion/3_planos_para_publicacion/planos_portales",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/material_de_publicacion/3_planos_para_publicacion/planos_portales"
+        }
+    },
+    {
+        "id": "124:Legal",
+        "text": "Legal",
+        "parent": "124",
+        "fullpath": "/124/Legal",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal",
+            "data-working_dir": "/124/legal",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal"
+        }
+    },
+    {
+        "id": "124:Legal:1 Contratos LCDJ",
+        "text": "1 Contratos LCDJ",
+        "parent": "124:Legal",
+        "fullpath": "/124/Legal/1 Contratos LCDJ",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:1 Contratos LCDJ",
+            "data-working_dir": "/124/legal/1_contratos_lcdj",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/1_contratos_lcdj"
+        }
+    },
+    {
+        "id": "124:Legal:1 Contratos LCDJ:Contrato servicios LCDJ",
+        "text": "Contrato servicios LCDJ",
+        "parent": "124:Legal:1 Contratos LCDJ",
+        "fullpath": "/124/Legal/1 Contratos LCDJ/Contrato servicios LCDJ",
+        "icon": "fa fa-folder",
+        "slug_name": "contrato-prestacion-servicios-lcdj-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:1 Contratos LCDJ:Contrato servicios LCDJ",
+            "data-working_dir": "/124/legal/1_contratos_lcdj/contrato_servicios_lcdj",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/1_contratos_lcdj/contrato_servicios_lcdj"
+        }
+    },
+    {
+        "id": "124:Legal:1 Contratos LCDJ:Anexo de contrato servicios LCDJ",
+        "text": "Anexo de contrato servicios LCDJ",
+        "parent": "124:Legal:1 Contratos LCDJ",
+        "fullpath": "/124/Legal/1 Contratos LCDJ/Anexo de contrato servicios LCDJ",
+        "icon": "fa fa-folder",
+        "slug_name": "anexo-de-contrato-servicios-lcdj-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:1 Contratos LCDJ:Anexo de contrato servicios LCDJ",
+            "data-working_dir": "/124/legal/1_contratos_lcdj/anexo_de_contrato_servicios_lcdj",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/1_contratos_lcdj/anexo_de_contrato_servicios_lcdj"
+        }
+    },
+    {
+        "id": "124:Legal:1 Contratos LCDJ:Mutuo a cliente",
+        "text": "Mutuo a cliente",
+        "parent": "124:Legal:1 Contratos LCDJ",
+        "fullpath": "/124/Legal/1 Contratos LCDJ/Mutuo a cliente",
+        "icon": "fa fa-folder",
+        "slug_name": "mutuo-a-cliente-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:1 Contratos LCDJ:Mutuo a cliente",
+            "data-working_dir": "/124/legal/1_contratos_lcdj/mutuo_a_cliente",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/1_contratos_lcdj/mutuo_a_cliente"
+        }
+    },
+    {
+        "id": "124:Legal:5 Escritura e instrucciones",
+        "text": "5 Escritura e instrucciones",
+        "parent": "124:Legal",
+        "fullpath": "/124/Legal/5 Escritura e instrucciones",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:5 Escritura e instrucciones",
+            "data-working_dir": "/124/legal/5_escritura_e_instrucciones",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/5_escritura_e_instrucciones"
+        }
+    },
+    {
+        "id": "124:Legal:5 Escritura e instrucciones:1 Borrador escritura CV",
+        "text": "1 Borrador escritura CV",
+        "parent": "124:Legal:5 Escritura e instrucciones",
+        "fullpath": "/124/Legal/5 Escritura e instrucciones/1 Borrador escritura CV",
+        "icon": "fa fa-folder",
+        "slug_name": "borrador-escritura-cv-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:5 Escritura e instrucciones:1 Borrador escritura CV",
+            "data-working_dir": "/124/legal/5_escritura_e_instrucciones/1_borrador_escritura_cv",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/5_escritura_e_instrucciones/1_borrador_escritura_cv"
+        }
+    },
+    {
+        "id": "124:Legal:5 Escritura e instrucciones:2 Instrucciones escritura CV",
+        "text": "2 Instrucciones escritura CV",
+        "parent": "124:Legal:5 Escritura e instrucciones",
+        "fullpath": "/124/Legal/5 Escritura e instrucciones/2 Instrucciones escritura CV",
+        "icon": "fa fa-folder",
+        "slug_name": "instrucciones-escritura-cv-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:5 Escritura e instrucciones:2 Instrucciones escritura CV",
+            "data-working_dir": "/124/legal/5_escritura_e_instrucciones/2_instrucciones_escritura_cv",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/5_escritura_e_instrucciones/2_instrucciones_escritura_cv"
+        }
+    },
+    {
+        "id": "124:Legal:5 Escritura e instrucciones:3 Escritura CV inscrita en CBR",
+        "text": "3 Escritura CV inscrita en CBR",
+        "parent": "124:Legal:5 Escritura e instrucciones",
+        "fullpath": "/124/Legal/5 Escritura e instrucciones/3 Escritura CV inscrita en CBR",
+        "icon": "fa fa-folder",
+        "slug_name": "escritura-cv-inscrita-en-cbr-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:5 Escritura e instrucciones:3 Escritura CV inscrita en CBR",
+            "data-working_dir": "/124/legal/5_escritura_e_instrucciones/3_escritura_cv_inscrita_en_cbr",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/5_escritura_e_instrucciones/3_escritura_cv_inscrita_en_cbr"
+        }
+    },
+    {
+        "id": "124:Legal:3 Promesa e instrucciones",
+        "text": "3 Promesa e instrucciones",
+        "parent": "124:Legal",
+        "fullpath": "/124/Legal/3 Promesa e instrucciones",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:3 Promesa e instrucciones",
+            "data-working_dir": "/124/legal/3_promesa_e_instrucciones",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/3_promesa_e_instrucciones"
+        }
+    },
+    {
+        "id": "124:Legal:3 Promesa e instrucciones:1 Promesa CV",
+        "text": "1 Promesa CV",
+        "parent": "124:Legal:3 Promesa e instrucciones",
+        "fullpath": "/124/Legal/3 Promesa e instrucciones/1 Promesa CV",
+        "icon": "fa fa-folder",
+        "slug_name": "promesa-cv-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:3 Promesa e instrucciones:1 Promesa CV",
+            "data-working_dir": "/124/legal/3_promesa_e_instrucciones/1_promesa_cv",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/3_promesa_e_instrucciones/1_promesa_cv"
+        }
+    },
+    {
+        "id": "124:Legal:3 Promesa e instrucciones:2 Instrucciones Promesa CV",
+        "text": "2 Instrucciones Promesa CV",
+        "parent": "124:Legal:3 Promesa e instrucciones",
+        "fullpath": "/124/Legal/3 Promesa e instrucciones/2 Instrucciones Promesa CV",
+        "icon": "fa fa-folder",
+        "slug_name": "instrucciones-promesa-cv-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:3 Promesa e instrucciones:2 Instrucciones Promesa CV",
+            "data-working_dir": "/124/legal/3_promesa_e_instrucciones/2_instrucciones_promesa_cv",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/3_promesa_e_instrucciones/2_instrucciones_promesa_cv"
+        }
+    },
+    {
+        "id": "124:Legal:6 Inscripcio\u0301n CBR",
+        "text": "6 Inscripcio\u0301n CBR",
+        "parent": "124:Legal",
+        "fullpath": "/124/Legal/6 Inscripcio\u0301n CBR",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:6 Inscripcio\u0301n CBR",
+            "data-working_dir": "/124/legal/6_inscripcion_cbr",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/6_inscripcion_cbr"
+        }
+    },
+    {
+        "id": "124:Legal:6 Inscripcio\u0301n CBR:Inscripci\u00f3n post CBR",
+        "text": "Inscripci\u00f3n post CBR",
+        "parent": "124:Legal:6 Inscripcio\u0301n CBR",
+        "fullpath": "/124/Legal/6 Inscripcio\u0301n CBR/Inscripci\u00f3n post CBR",
+        "icon": "fa fa-folder",
+        "slug_name": "inscripcion-post-cbr-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:6 Inscripcio\u0301n CBR:Inscripci\u00f3n post CBR",
+            "data-working_dir": "/124/legal/6_inscripcion_cbr/inscripcion_post_cbr",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/6_inscripcion_cbr/inscripcion_post_cbr"
+        }
+    },
+    {
+        "id": "124:Legal:6 Inscripcio\u0301n CBR:GP post CBR",
+        "text": "GP post CBR",
+        "parent": "124:Legal:6 Inscripcio\u0301n CBR",
+        "fullpath": "/124/Legal/6 Inscripcio\u0301n CBR/GP post CBR",
+        "icon": "fa fa-folder",
+        "slug_name": "gp-post-cbr-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:6 Inscripcio\u0301n CBR:GP post CBR",
+            "data-working_dir": "/124/legal/6_inscripcion_cbr/gp_post_cbr",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/6_inscripcion_cbr/gp_post_cbr"
+        }
+    },
+    {
+        "id": "124:Legal:6 Inscripcio\u0301n CBR:Liquidaci\u00f3n post CBR",
+        "text": "Liquidaci\u00f3n post CBR",
+        "parent": "124:Legal:6 Inscripcio\u0301n CBR",
+        "fullpath": "/124/Legal/6 Inscripcio\u0301n CBR/Liquidaci\u00f3n post CBR",
+        "icon": "fa fa-folder",
+        "slug_name": "liquidacion-post-cbr-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:6 Inscripcio\u0301n CBR:Liquidaci\u00f3n post CBR",
+            "data-working_dir": "/124/legal/6_inscripcion_cbr/liquidacion_post_cbr",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/6_inscripcion_cbr/liquidacion_post_cbr"
+        }
+    },
+    {
+        "id": "124:Legal:8 Contrato de arriendo",
+        "text": "8 Contrato de arriendo",
+        "parent": "124:Legal",
+        "fullpath": "/124/Legal/8 Contrato de arriendo",
+        "icon": "fa fa-folder",
+        "slug_name": "contrato-de-arriendo-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:8 Contrato de arriendo",
+            "data-working_dir": "/124/legal/8_contrato_de_arriendo",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/8_contrato_de_arriendo"
+        }
+    },
+    {
+        "id": "124:Legal:2 Oferta y aceptaci\u00f3n",
+        "text": "2 Oferta y aceptaci\u00f3n",
+        "parent": "124:Legal",
+        "fullpath": "/124/Legal/2 Oferta y aceptaci\u00f3n",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:2 Oferta y aceptaci\u00f3n",
+            "data-working_dir": "/124/legal/2_oferta_y_aceptacion",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/2_oferta_y_aceptacion"
+        }
+    },
+    {
+        "id": "124:Legal:2 Oferta y aceptaci\u00f3n:3 Minuta reunion de cierre",
+        "text": "3 Minuta reunion de cierre",
+        "parent": "124:Legal:2 Oferta y aceptaci\u00f3n",
+        "fullpath": "/124/Legal/2 Oferta y aceptaci\u00f3n/3 Minuta reunion de cierre",
+        "icon": "fa fa-folder",
+        "slug_name": "minuta-reunion-de-cierre-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:2 Oferta y aceptaci\u00f3n:3 Minuta reunion de cierre",
+            "data-working_dir": "/124/legal/2_oferta_y_aceptacion/3_minuta_reunion_de_cierre",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/2_oferta_y_aceptacion/3_minuta_reunion_de_cierre"
+        }
+    },
+    {
+        "id": "124:Legal:2 Oferta y aceptaci\u00f3n:2 Aceptaci\u00f3n formal",
+        "text": "2 Aceptaci\u00f3n formal",
+        "parent": "124:Legal:2 Oferta y aceptaci\u00f3n",
+        "fullpath": "/124/Legal/2 Oferta y aceptaci\u00f3n/2 Aceptaci\u00f3n formal",
+        "icon": "fa fa-folder",
+        "slug_name": "aceptacion-formal-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:2 Oferta y aceptaci\u00f3n:2 Aceptaci\u00f3n formal",
+            "data-working_dir": "/124/legal/2_oferta_y_aceptacion/2_aceptacion_formal",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/2_oferta_y_aceptacion/2_aceptacion_formal"
+        }
+    },
+    {
+        "id": "124:Legal:2 Oferta y aceptaci\u00f3n:1 Oferta formal",
+        "text": "1 Oferta formal",
+        "parent": "124:Legal:2 Oferta y aceptaci\u00f3n",
+        "fullpath": "/124/Legal/2 Oferta y aceptaci\u00f3n/1 Oferta formal",
+        "icon": "fa fa-folder",
+        "slug_name": "oferta-formal-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:2 Oferta y aceptaci\u00f3n:1 Oferta formal",
+            "data-working_dir": "/124/legal/2_oferta_y_aceptacion/1_oferta_formal",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/2_oferta_y_aceptacion/1_oferta_formal"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT",
+        "text": "4 EETT",
+        "parent": "124:Legal",
+        "fullpath": "/124/Legal/4 EETT",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT",
+            "data-working_dir": "/124/legal/4_eett",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:13 Liquidaci\u00f3n deuda pre inscripci\u00f3n",
+        "text": "13 Liquidaci\u00f3n deuda pre inscripci\u00f3n",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/13 Liquidaci\u00f3n deuda pre inscripci\u00f3n",
+        "icon": "fa fa-folder",
+        "slug_name": "liquidacion-deuda-pre-inscripcion-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:13 Liquidaci\u00f3n deuda pre inscripci\u00f3n",
+            "data-working_dir": "/124/legal/4_eett/13_liquidacion_deuda_pre_inscripcion",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/13_liquidacion_deuda_pre_inscripcion"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:cert-dominio-propietario",
+        "text": "cert-dominio-propietario",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/cert-dominio-propietario",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:cert-dominio-propietario",
+            "data-working_dir": "/124/legal/4_eett/cert_dominio_propietario",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/cert_dominio_propietario"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:9 No expropiaci\u00f3n",
+        "text": "9 No expropiaci\u00f3n",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/9 No expropiaci\u00f3n",
+        "icon": "fa fa-folder",
+        "slug_name": "no-expropiacion-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:9 No expropiaci\u00f3n",
+            "data-working_dir": "/124/legal/4_eett/9_no_expropiacion",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/9_no_expropiacion"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:12 Certificado de avaluo",
+        "text": "12 Certificado de avaluo",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/12 Certificado de avaluo",
+        "icon": "fa fa-folder",
+        "slug_name": "certificado-de-avaluo-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:12 Certificado de avaluo",
+            "data-working_dir": "/124/legal/4_eett/12_certificado_de_avaluo",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/12_certificado_de_avaluo"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:1 Cedulas de identidad",
+        "text": "1 Cedulas de identidad",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/1 Cedulas de identidad",
+        "icon": "fa fa-folder",
+        "slug_name": "cedulas-de-identidad-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:1 Cedulas de identidad",
+            "data-working_dir": "/124/legal/4_eett/1_cedulas_de_identidad",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/1_cedulas_de_identidad"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:8 No afectaci\u00f3n",
+        "text": "8 No afectaci\u00f3n",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/8 No afectaci\u00f3n",
+        "icon": "fa fa-folder",
+        "slug_name": "no-afectacion-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:8 No afectaci\u00f3n",
+            "data-working_dir": "/124/legal/4_eett/8_no_afectacion",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/8_no_afectacion"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:6 GP",
+        "text": "6 GP",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/6 GP",
+        "icon": "fa fa-folder",
+        "slug_name": "gp-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:6 GP",
+            "data-working_dir": "/124/legal/4_eett/6_gp",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/6_gp"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:7 Acta de entrega",
+        "text": "7 Acta de entrega",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/7 Acta de entrega",
+        "icon": "fa fa-folder",
+        "slug_name": "acta-de-entrega-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:7 Acta de entrega",
+            "data-working_dir": "/124/legal/4_eett/7_acta_de_entrega",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/7_acta_de_entrega"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:instrucciones-de-cv",
+        "text": "instrucciones-de-cv",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/instrucciones-de-cv",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:instrucciones-de-cv",
+            "data-working_dir": "/124/legal/4_eett/instrucciones_de_cv",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/instrucciones_de_cv"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:4 Inscripci\u00f3n vigente",
+        "text": "4 Inscripci\u00f3n vigente",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/4 Inscripci\u00f3n vigente",
+        "icon": "fa fa-folder",
+        "slug_name": "inscripcion-vigente-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:4 Inscripci\u00f3n vigente",
+            "data-working_dir": "/124/legal/4_eett/4_inscripcion_vigente",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/4_inscripcion_vigente"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:5 Inscripciones 10 an\u0303os",
+        "text": "5 Inscripciones 10 an\u0303os",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/5 Inscripciones 10 an\u0303os",
+        "icon": "fa fa-folder",
+        "slug_name": "inscripciones-10-anos-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:5 Inscripciones 10 an\u0303os",
+            "data-working_dir": "/124/legal/4_eett/5_inscripciones_10_anos",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/5_inscripciones_10_anos"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:10 Certificado de numero",
+        "text": "10 Certificado de numero",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/10 Certificado de numero",
+        "icon": "fa fa-folder",
+        "slug_name": "certificado-de-numero-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:10 Certificado de numero",
+            "data-working_dir": "/124/legal/4_eett/10_certificado_de_numero",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/10_certificado_de_numero"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:escritura-cv-del-vendedor",
+        "text": "escritura-cv-del-vendedor",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/escritura-cv-del-vendedor",
+        "icon": "fa fa-folder",
+        "slug_name": "-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:escritura-cv-del-vendedor",
+            "data-working_dir": "/124/legal/4_eett/escritura_cv_del_vendedor",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/escritura_cv_del_vendedor"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:2 Escritura o titulo vigente",
+        "text": "2 Escritura o titulo vigente",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/2 Escritura o titulo vigente",
+        "icon": "fa fa-folder",
+        "slug_name": "escritura-o-titulo-vigente-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:2 Escritura o titulo vigente",
+            "data-working_dir": "/124/legal/4_eett/2_escritura_o_titulo_vigente",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/2_escritura_o_titulo_vigente"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:3 Escritura o titulo 10 an\u0303os",
+        "text": "3 Escritura o titulo 10 an\u0303os",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/3 Escritura o titulo 10 an\u0303os",
+        "icon": "fa fa-folder",
+        "slug_name": "escritura-o-titulo-10-anos-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:3 Escritura o titulo 10 an\u0303os",
+            "data-working_dir": "/124/legal/4_eett/3_escritura_o_titulo_10_anos",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/3_escritura_o_titulo_10_anos"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:7 Certificados de matrimonio",
+        "text": "7 Certificados de matrimonio",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/7 Certificados de matrimonio",
+        "icon": "fa fa-folder",
+        "slug_name": "certificados-de-matrimonio-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:7 Certificados de matrimonio",
+            "data-working_dir": "/124/legal/4_eett/7_certificados_de_matrimonio",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/7_certificados_de_matrimonio"
+        }
+    },
+    {
+        "id": "124:Legal:4 EETT:11 Pago Contribuciones",
+        "text": "11 Pago Contribuciones",
+        "parent": "124:Legal:4 EETT",
+        "fullpath": "/124/Legal/4 EETT/11 Pago Contribuciones",
+        "icon": "fa fa-folder",
+        "slug_name": "pago-contribuciones-files",
+        "state": {
+            "opened": false,
+            "selected": false,
+            "disabled": false
+        },
+        "li_attr": {
+            "data-id": "124:Legal:4 EETT:11 Pago Contribuciones",
+            "data-working_dir": "/124/legal/4_eett/11_pago_contribuciones",
+            "data-enabled_node": true
+        },
+        "a_attr": {
+            "data-working_dir": "/124/legal/4_eett/11_pago_contribuciones"
+        }
+    }
+]

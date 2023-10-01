@@ -1,0 +1,903 @@
+[
+    {
+        "orden": 1,
+        "nombre": "Afganistan",
+        "sigla2": "AF",
+        "sigla3": "AFG",
+        "codigo": "004"
+    },
+    {
+        "orden": 3,
+        "nombre": "Albania",
+        "sigla2": "AL",
+        "sigla3": "ALB",
+        "codigo": "008"
+    },
+    {
+        "orden": 4,
+        "nombre": "Alemania",
+        "sigla2": "DE",
+        "sigla3": "DEU",
+        "codigo": "276"
+    },
+    {
+        "orden": 5,
+        "nombre": "Andorra",
+        "sigla2": "AD",
+        "sigla3": "AND",
+        "codigo": "020"
+    },
+    {
+        "orden": 6,
+        "nombre": "Angola",
+        "sigla2": "AO",
+        "sigla3": "AGO",
+        "codigo": "024"
+    },
+    {
+        "orden": 7,
+        "nombre": "Anguilla",
+        "sigla2": "AI",
+        "sigla3": "AIA",
+        "codigo": "660"
+    },
+    {
+        "orden": 8,
+        "nombre": "Antártida",
+        "sigla2": "AQ",
+        "sigla3": "ATA",
+        "codigo": "010"
+    },
+    {
+        "orden": 9,
+        "nombre": "Antígua y Barbuda",
+        "sigla2": "AG",
+        "sigla3": "ATG",
+        "codigo": "028"
+    },
+    {
+        "orden": 10,
+        "nombre": "Antilhas Holandesas",
+        "sigla2": "AN",
+        "sigla3": "ANT",
+        "codigo": "530"
+    },
+    {
+        "orden": 11,
+        "nombre": "Arábia Saudita",
+        "sigla2": "SA",
+        "sigla3": "SAU",
+        "codigo": "682"
+    },
+    {
+        "orden": 12,
+        "nombre": "Argélia",
+        "sigla2": "DZ",
+        "sigla3": "DZA",
+        "codigo": "012"
+    },
+    {
+        "orden": 13,
+        "nombre": "Argentina",
+        "sigla2": "AR",
+        "sigla3": "ARG",
+        "codigo": "032"
+    },
+    {
+        "orden": 14,
+        "nombre": "Armenia",
+        "sigla2": "AM",
+        "sigla3": "ARM",
+        "codigo": "51"
+    },
+    {
+        "orden": 15,
+        "nombre": "Aruba",
+        "sigla2": "AW",
+        "sigla3": "ABW",
+        "codigo": "533"
+    },
+    {
+        "orden": 16,
+        "nombre": "Australia",
+        "sigla2": "AU",
+        "sigla3": "AUS",
+        "codigo": "036"
+    },
+    {
+        "orden": 17,
+        "nombre": "Austria",
+        "sigla2": "AT",
+        "sigla3": "AUT",
+        "codigo": "040"
+    },
+    {
+        "orden": 19,
+        "nombre": "Bahamas",
+        "sigla2": "BS",
+        "sigla3": "BHS",
+        "codigo": "044"
+    },
+    {
+        "orden": 20,
+        "nombre": "Bahrein",
+        "sigla2": "BH",
+        "sigla3": "BHR",
+        "codigo": "048"
+    },
+    {
+        "orden": 21,
+        "nombre": "Bangladesh",
+        "sigla2": "BD",
+        "sigla3": "BGD",
+        "codigo": "050"
+    },
+    {
+        "orden": 22,
+        "nombre": "Barbados",
+        "sigla2": "BB",
+        "sigla3": "BRB",
+        "codigo": "052"
+    },
+    {
+        "orden": 24,
+        "nombre": "Bélgica",
+        "sigla2": "BE",
+        "sigla3": "BEL",
+        "codigo": "056"
+    },
+    {
+        "orden": 25,
+        "nombre": "Belize",
+        "sigla2": "BZ",
+        "sigla3": "BLZ",
+        "codigo": "084"
+    },
+    {
+        "orden": 26,
+        "nombre": "Benin",
+        "sigla2": "BJ",
+        "sigla3": "BEN",
+        "codigo": "204"
+    },
+    {
+        "orden": 27,
+        "nombre": "Bermudas",
+        "sigla2": "BM",
+        "sigla3": "BMU",
+        "codigo": "060"
+    },
+    {
+        "orden": 28,
+        "nombre": "Bolivia",
+        "sigla2": "BO",
+        "sigla3": "BOL",
+        "codigo": "068"
+    },
+    {
+        "orden": 29,
+        "nombre": "Bosnia",
+        "sigla2": "BA",
+        "sigla3": "BIH",
+        "codigo": "070"
+    },
+    {
+        "orden": 31,
+        "nombre": "Brasil",
+        "sigla2": "BR",
+        "sigla3": "BRA",
+        "codigo": "076"
+    },
+    {
+        "orden": 32,
+        "nombre": "Brunei",
+        "sigla2": "BN",
+        "sigla3": "BRN",
+        "codigo": "096"
+    },
+    {
+        "orden": 33,
+        "nombre": "Bulgaria",
+        "sigla2": "BG",
+        "sigla3": "BGR",
+        "codigo": "100"
+    },
+    {
+        "orden": 37,
+        "nombre": "Cabo Verde",
+        "sigla2": "CV",
+        "sigla3": "CPV",
+        "codigo": "132"
+    },
+    {
+        "orden": 38,
+        "nombre": "Camerum",
+        "sigla2": "CM",
+        "sigla3": "CMR",
+        "codigo": "120"
+    },
+    {
+        "orden": 39,
+        "nombre": "Camboya",
+        "sigla2": "KH",
+        "sigla3": "KHM",
+        "codigo": "116"
+    },
+    {
+        "orden": 40,
+        "nombre": "Canada",
+        "sigla2": "CA",
+        "sigla3": "CAN",
+        "codigo": "124"
+    },
+    {
+        "orden": 41,
+        "nombre": "Kazajistan",
+        "sigla2": "KZ",
+        "sigla3": "KAZ",
+        "codigo": "398"
+    },
+    {
+        "orden": 43,
+        "nombre": "Chile",
+        "sigla2": "CL",
+        "sigla3": "CHL",
+        "codigo": "152"
+    },
+    {
+        "orden": 44,
+        "nombre": "China",
+        "sigla2": "CN",
+        "sigla3": "CHN",
+        "codigo": "156"
+    },
+    {
+        "orden": 45,
+        "nombre": "Chipre",
+        "sigla2": "CY",
+        "sigla3": "CYP",
+        "codigo": "196"
+    },
+    {
+        "orden": 46,
+        "nombre": "Singapur",
+        "sigla2": "SG",
+        "sigla3": "SGP",
+        "codigo": "702"
+    },
+    {
+        "orden": 47,
+        "nombre": "Colombia",
+        "sigla2": "CO",
+        "sigla3": "COL",
+        "codigo": "170"
+    },
+    {
+        "orden": 48,
+        "nombre": "Congo",
+        "sigla2": "CG",
+        "sigla3": "COG",
+        "codigo": "178"
+    },
+    {
+        "orden": 49,
+        "nombre": "Corea del norte",
+        "sigla2": "KP",
+        "sigla3": "PRK",
+        "codigo": "408"
+    },
+    {
+        "orden": 50,
+        "nombre": "Corea del sur",
+        "sigla2": "KR",
+        "sigla3": "KOR",
+        "codigo": "410"
+    },
+    {
+        "orden": 51,
+        "nombre": "Costa de Marfil",
+        "sigla2": "CI",
+        "sigla3": "CIV",
+        "codigo": "384"
+    },
+    {
+        "orden": 52,
+        "nombre": "Costa Rica",
+        "sigla2": "CR",
+        "sigla3": "CRI",
+        "codigo": "188"
+    },
+    {
+        "orden": 53,
+        "nombre": "Croacia",
+        "sigla2": "HR",
+        "sigla3": "HRV",
+        "codigo": "191"
+    },
+    {
+        "orden": 54,
+        "nombre": "Cuba",
+        "sigla2": "CU",
+        "sigla3": "CUB",
+        "codigo": "192"
+    },
+    {
+        "orden": 55,
+        "nombre": "Dinamarca",
+        "sigla2": "DK",
+        "sigla3": "DNK",
+        "codigo": "208"
+    },
+    {
+        "orden": 58,
+        "nombre": "Egipto",
+        "sigla2": "EG",
+        "sigla3": "EGY",
+        "codigo": "818"
+    },
+    {
+        "orden": 59,
+        "nombre": "El Salvador",
+        "sigla2": "SV",
+        "sigla3": "SLV",
+        "codigo": "222"
+    },
+    {
+        "orden": 60,
+        "nombre": "Emiratos Árabes Unidos",
+        "sigla2": "AE",
+        "sigla3": "ARE",
+        "codigo": "784"
+    },
+    {
+        "orden": 61,
+        "nombre": "Ecuador",
+        "sigla2": "EC",
+        "sigla3": "ECU",
+        "codigo": "218"
+    },
+    {
+        "orden": 63,
+        "nombre": "Eslovaquia",
+        "sigla2": "SK",
+        "sigla3": "SVK",
+        "codigo": "703"
+    },
+    {
+        "orden": 64,
+        "nombre": "Eslovenia",
+        "sigla2": "SI",
+        "sigla3": "SVN",
+        "codigo": "705"
+    },
+    {
+        "orden": 65,
+        "nombre": "España",
+        "sigla2": "ES",
+        "sigla3": "ESP",
+        "codigo": "724"
+    },
+    {
+        "orden": 66,
+        "nombre": "Estados Unidos",
+        "sigla2": "US",
+        "sigla3": "USA",
+        "codigo": "840"
+    },
+    {
+        "orden": 67,
+        "nombre": "Estonia",
+        "sigla2": "EE",
+        "sigla3": "EST",
+        "codigo": "233"
+    },
+    {
+        "orden": 68,
+        "nombre": "Etiópia",
+        "sigla2": "ET",
+        "sigla3": "ETH",
+        "codigo": "231"
+    },
+    {
+        "orden": 70,
+        "nombre": "Filipinas",
+        "sigla2": "PH",
+        "sigla3": "PHL",
+        "codigo": "608"
+    },
+    {
+        "orden": 71,
+        "nombre": "Finlandia",
+        "sigla2": "FI",
+        "sigla3": "FIN",
+        "codigo": "246"
+    },
+    {
+        "orden": 72,
+        "nombre": "Francia",
+        "sigla2": "FR",
+        "sigla3": "FRA",
+        "codigo": "250"
+    },
+    {
+        "orden": 80,
+        "nombre": "Grecia",
+        "sigla2": "GR",
+        "sigla3": "GRC",
+        "codigo": "300"
+    },
+    {
+        "orden": 81,
+        "nombre": "Groelandia",
+        "sigla2": "GL",
+        "sigla3": "GRL",
+        "codigo": "304"
+    },
+    {
+        "orden": 83,
+        "nombre": "Guam (Território dos Estados Unidos)",
+        "sigla2": "GU",
+        "sigla3": "GUM",
+        "codigo": "316"
+    },
+    {
+        "orden": 84,
+        "nombre": "Guatemala",
+        "sigla2": "GT",
+        "sigla3": "GTM",
+        "codigo": "320"
+    },
+
+    {
+        "orden": 87,
+        "nombre": "Guiana Francesa",
+        "sigla2": "GF",
+        "sigla3": "GUF",
+        "codigo": "254"
+    },
+    {
+        "orden": 88,
+        "nombre": "Guiné",
+        "sigla2": "GN",
+        "sigla3": "GIN",
+        "codigo": "324"
+    },
+    {
+        "orden": 89,
+        "nombre": "Guinea Ecuatorial",
+        "sigla2": "GQ",
+        "sigla3": "GNQ",
+        "codigo": "226"
+    },
+    {
+        "orden": 91,
+        "nombre": "Haiti",
+        "sigla2": "HT",
+        "sigla3": "HTI",
+        "codigo": "332"
+    },
+    {
+        "orden": 92,
+        "nombre": "Holanda",
+        "sigla2": "NL",
+        "sigla3": "NLD",
+        "codigo": "528"
+    },
+    {
+        "orden": 93,
+        "nombre": "Honduras",
+        "sigla2": "HN",
+        "sigla3": "HND",
+        "codigo": "340"
+    },
+    {
+        "orden": 94,
+        "nombre": "Hong Kong",
+        "sigla2": "HK",
+        "sigla3": "HKG",
+        "codigo": "344"
+    },
+    {
+        "orden": 95,
+        "nombre": "Hungria",
+        "sigla2": "HU",
+        "sigla3": "HUN",
+        "codigo": "348"
+    },
+    {
+        "orden": 123,
+        "nombre": "India",
+        "sigla2": "IN",
+        "sigla3": "IND",
+        "codigo": "356"
+    },
+    {
+        "orden": 124,
+        "nombre": "Indonesia",
+        "sigla2": "ID",
+        "sigla3": "IDN",
+        "codigo": "360"
+    },
+    {
+        "orden": 125,
+        "nombre": "Iraq",
+        "sigla2": "IR",
+        "sigla3": "IRN",
+        "codigo": "364"
+    },
+    {
+        "orden": 127,
+        "nombre": "Irlanda",
+        "sigla2": "IE",
+        "sigla3": "IRL",
+        "codigo": "372"
+    },
+    {
+        "orden": 128,
+        "nombre": "Islandia",
+        "sigla2": "IS",
+        "sigla3": "ISL",
+        "codigo": "352"
+    },
+    {
+        "orden": 129,
+        "nombre": "Israel",
+        "sigla2": "IL",
+        "sigla3": "ISR",
+        "codigo": "376"
+    },
+    {
+        "orden": 130,
+        "nombre": "Italia",
+        "sigla2": "IT",
+        "sigla3": "ITA",
+        "codigo": "380"
+    },
+    {
+        "orden": 131,
+        "nombre": "Jamaica",
+        "sigla2": "JM",
+        "sigla3": "JAM",
+        "codigo": "388"
+    },
+    {
+        "orden": 132,
+        "nombre": "Japon",
+        "sigla2": "JP",
+        "sigla3": "JPN",
+        "codigo": "392"
+    },
+    {
+        "orden": 135,
+        "nombre": "Kenia",
+        "sigla2": "KE",
+        "sigla3": "KEN",
+        "codigo": "404"
+    },
+    {
+        "orden": 143,
+        "nombre": "Líbia",
+        "sigla2": "LY",
+        "sigla3": "LBY",
+        "codigo": "434"
+    },
+    {
+        "orden": 144,
+        "nombre": "Liechtenstein",
+        "sigla2": "LI",
+        "sigla3": "LIE",
+        "codigo": "438"
+    },
+    {
+        "orden": 145,
+        "nombre": "Lituania",
+        "sigla2": "LT",
+        "sigla3": "LTU",
+        "codigo": "440"
+    },
+    {
+        "orden": 146,
+        "nombre": "Luxemburgo",
+        "sigla2": "LU",
+        "sigla3": "LUX",
+        "codigo": "442"
+    },
+    {
+        "orden": 148,
+        "nombre": "Macedonia (Republica Yugoslava)",
+        "sigla2": "MK",
+        "sigla3": "MKD",
+        "codigo": "807"
+    },
+    {
+        "orden": 149,
+        "nombre": "Madagascar",
+        "sigla2": "MG",
+        "sigla3": "MDG",
+        "codigo": "450"
+    },
+    {
+        "orden": 150,
+        "nombre": "Malasia",
+        "sigla2": "MY",
+        "sigla3": "MYS",
+        "codigo": "458"
+    },
+
+    {
+        "orden": 155,
+        "nombre": "Marruecos",
+        "sigla2": "MA",
+        "sigla3": "MAR",
+        "codigo": "504"
+    },
+
+    {
+        "orden": 160,
+        "nombre": "Mexico",
+        "sigla2": "MX",
+        "sigla3": "MEX",
+        "codigo": "484"
+    },
+    {
+        "orden": 165,
+        "nombre": "Mongólia",
+        "sigla2": "MN",
+        "sigla3": "MNG",
+        "codigo": "496"
+    },
+    {
+        "orden": 166,
+        "nombre": "Montenegro",
+        "sigla2": "ME",
+        "sigla3": "MNE",
+        "codigo": "499"
+    },
+    {
+        "orden": 171,
+        "nombre": "Nepal",
+        "sigla2": "NP",
+        "sigla3": "NPL",
+        "codigo": "524"
+    },
+    {
+        "orden": 172,
+        "nombre": "Nicaragua",
+        "sigla2": "NI",
+        "sigla3": "NIC",
+        "codigo": "558"
+    },
+    {
+        "orden": 174,
+        "nombre": "Nigeria",
+        "sigla2": "NG",
+        "sigla3": "NGA",
+        "codigo": "566"
+    },
+    {
+        "orden": 176,
+        "nombre": "Noruega",
+        "sigla2": "NO",
+        "sigla3": "NOR",
+        "codigo": "578"
+    },
+    {
+        "orden": 177,
+        "nombre": "Nova Caledônia",
+        "sigla2": "NC",
+        "sigla3": "NCL",
+        "codigo": "540"
+    },
+    {
+        "orden": 178,
+        "nombre": "Nueva Zelanda",
+        "sigla2": "NZ",
+        "sigla3": "NZL",
+        "codigo": "554"
+    },
+    {
+        "orden": 181,
+        "nombre": "Panama",
+        "sigla2": "PA",
+        "sigla3": "PAN",
+        "codigo": "591"
+    },
+    {
+        "orden": 183,
+        "nombre": "Pakistan",
+        "sigla2": "PK",
+        "sigla3": "PAK",
+        "codigo": "586"
+    },
+    {
+        "orden": 184,
+        "nombre": "Paraguay",
+        "sigla2": "PY",
+        "sigla3": "PRY",
+        "codigo": "600"
+    },
+    {
+        "orden": 185,
+        "nombre": "Peru",
+        "sigla2": "PE",
+        "sigla3": "PER",
+        "codigo": "604"
+    },
+   
+    {
+        "orden": 187,
+        "nombre": "Polonia",
+        "sigla2": "PL",
+        "sigla3": "POL",
+        "codigo": "616"
+    },
+    {
+        "orden": 188,
+        "nombre": "Puerto Rico",
+        "sigla2": "PR",
+        "sigla3": "PRI",
+        "codigo": "630"
+    },
+    {
+        "orden": 189,
+        "nombre": "Portugal",
+        "sigla2": "PT",
+        "sigla3": "PRT",
+        "codigo": "620"
+    },
+    {
+        "orden": 190,
+        "nombre": "Qatar",
+        "sigla2": "QA",
+        "sigla3": "QAT",
+        "codigo": "634"
+    },
+    {
+        "orden": 194,
+        "nombre": "Republica Dominicana",
+        "sigla2": "DO",
+        "sigla3": "DOM",
+        "codigo": "214"
+    },
+    {
+        "orden": 195,
+        "nombre": "Republica Checa",
+        "sigla2": "CZ",
+        "sigla3": "CZE",
+        "codigo": "203"
+    },
+    {
+        "orden": 196,
+        "nombre": "Rumania",
+        "sigla2": "RO",
+        "sigla3": "ROM",
+        "codigo": "642"
+    },
+    {
+        "orden": 198,
+        "nombre": "Rusia",
+        "sigla2": "RU",
+        "sigla3": "RUS",
+        "codigo": "643"
+    },
+   
+    {
+        "orden": 210,
+        "nombre": "Senegal",
+        "sigla2": "SN",
+        "sigla3": "SEN",
+        "codigo": "686"
+    },
+    {
+        "orden": 212,
+        "nombre": "Servia",
+        "sigla2": "RS",
+        "sigla3": "SRB",
+        "codigo": "688"
+    },
+    {
+        "orden": 213,
+        "nombre": "Siria",
+        "sigla2": "SY",
+        "sigla3": "SYR",
+        "codigo": "760"
+    },
+   
+    {
+        "orden": 219,
+        "nombre": "Suecia",
+        "sigla2": "SE",
+        "sigla3": "SWE",
+        "codigo": "752"
+    },
+    {
+        "orden": 220,
+        "nombre": "Suiza",
+        "sigla2": "CH",
+        "sigla3": "CHE",
+        "codigo": "756"
+    },
+    
+    {
+        "orden": 223,
+        "nombre": "Tailandia",
+        "sigla2": "TH",
+        "sigla3": "THA",
+        "codigo": "764"
+    },
+    {
+        "orden": 224,
+        "nombre": "Taiwan",
+        "sigla2": "TW",
+        "sigla3": "TWN",
+        "codigo": "158"
+    },
+    {
+        "orden": 225,
+        "nombre": "Tanzania",
+        "sigla2": "TZ",
+        "sigla3": "TZA",
+        "codigo": "834"
+    },
+    
+    {
+        "orden": 232,
+        "nombre": "Trinidad y Tobago",
+        "sigla2": "TT",
+        "sigla3": "TTO",
+        "codigo": "780"
+    },
+   
+    {
+        "orden": 235,
+        "nombre": "Turquia",
+        "sigla2": "TR",
+        "sigla3": "TUR",
+        "codigo": "792"
+    },
+    
+    {
+        "orden": 237,
+        "nombre": "Ucrania",
+        "sigla2": "UA",
+        "sigla3": "UKR",
+        "codigo": "804"
+    },
+    {
+        "orden": 238,
+        "nombre": "Uganda",
+        "sigla2": "UG",
+        "sigla3": "UGA",
+        "codigo": "800"
+    },
+    {
+        "orden": 239,
+        "nombre": "Uruguay",
+        "sigla2": "UY",
+        "sigla3": "URY",
+        "codigo": "858"
+    },
+    
+    {
+        "orden": 243,
+        "nombre": "Venezuela",
+        "sigla2": "VE",
+        "sigla3": "VEN",
+        "codigo": "862"
+    },
+    {
+        "orden": 244,
+        "nombre": "Vietnã",
+        "sigla2": "VN",
+        "sigla3": "VNM",
+        "codigo": "704"
+    },
+    {
+        "orden": 245,
+        "nombre": "Zsmbia",
+        "sigla2": "ZM",
+        "sigla3": "ZMB",
+        "codigo": "894"
+    }
+
+]

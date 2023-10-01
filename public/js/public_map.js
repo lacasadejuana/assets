@@ -54407,7 +54407,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
     barriosButton: null,
     barriosVisible: false,
     mapOptions: {
-      zoom: 15,
+      zoom: 17,
       bounds: {},
       center: {
         lat: -33.41,
@@ -54559,7 +54559,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
     },
     createDomManager(codigo_interno2) {
       if (codigo_interno2) {
-        this.gmap.setZoom(15);
+        this.gmap.setZoom(17);
       } else {
         this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(document.querySelector("#map_controls"));
         setTimeout(() => {
@@ -54634,7 +54634,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
         if (negocio) {
           let gmap = this.gmap;
           this.gmap.setCenter({ lat: Number(negocio.lat), lng: Number(negocio.lng) });
-          this.gmap.setZoom(Math.max(this.gmap.getZoom(), 15));
+          this.gmap.setZoom(Math.max(this.gmap.getZoom(), 17));
         }
       }
     },

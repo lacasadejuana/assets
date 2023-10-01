@@ -1,0 +1,2559 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/Negocio"
+    },
+    "definitions": {
+        "Negocio": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "date_": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "dlf-2": {
+                    "$ref": "#/definitions/Dlf2"
+                },
+                "gp-fecha": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "gp-files": {
+                    "$ref": "#/definitions/GpFiles"
+                },
+                "rf-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "cip-fecha": {
+                    "type": "null"
+                },
+                "cip-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "sello-gas": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "tipo-tasa": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "gp-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "rf-comment": {
+                    "type": "null"
+                },
+                "tipo-dueno": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "cip-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "etapa-sesion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "id_wordpress": {
+                    "$ref": "#/definitions/IDWordpress"
+                },
+                "tasa-credito": {
+                    "$ref": "#/definitions/MontoDividendoUf"
+                },
+                "ano-de-compra": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "cliente-feliz": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },
+                "nota-de-cobro": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "tasacion-eett": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/CartelEnSesion"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "workflows_log": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/WorkflowsLog"
+                    }
+                },
+                "carta-s-oferta": {
+                    "type": "string"
+                },
+                "contribuciones": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "date_captacion": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dias-publicado": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "estado-de-eett": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "financiamiento": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "link-video-360": {
+                    "type": "null"
+                },
+                "log_plantillas": {
+                    "$ref": "#/definitions/LogPlantillas"
+                },
+                "motivo-negocio": {
+                    "$ref": "#/definitions/DetallesNegocioClass"
+                },
+                "propiedad_tipo": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "canal-de-cierre": {
+                    "type": "string"
+                },
+                "contactar_horas": {
+                    "type": "string"
+                },
+                "mandato-o-poder": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "motivo-de-venta": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "cartel-en-sesion": {
+                    "$ref": "#/definitions/CartelEnSesion"
+                },
+                "codigo-wordpress": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "coordenadas-mapa": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "date_publicacion": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "detalles-negocio": {
+                    "$ref": "#/definitions/DetallesNegocioClass"
+                },
+                "id_mercado_libre": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "permite-novacion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "precio-cierre-uf": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "prioridad-sesion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "promesa-cv-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "caratula-contador": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "comision-vendedor": {
+                    "type": "string"
+                },
+                "dias-de-publicado": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "estatus-captacion": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "fecha-publicacion": {
+                    "type": "string"
+                },
+                "gasto-comun-en-uf": {
+                    "type": "null"
+                },
+                "plazo-de-prorroga": {
+                    "type": "string"
+                },
+                "valorizacion-lcdj": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "variacion-de-tasa": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "canal-de-captacion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "comision-comprador": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "estado-del-negocio": {
+                    "$ref": "#/definitions/EstadoDelNegocio"
+                },
+                "info-contrato-lcdj": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "link-video-youtube": {
+                    "type": "null"
+                },
+                "monto-dividendo-uf": {
+                    "$ref": "#/definitions/MontoDividendoUf"
+                },
+                "motivo-neg-perdido": {
+                    "type": "string"
+                },
+                "notas-de-captacion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "precio-publicacion": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "promesa-cv-comment": {
+                    "type": "null"
+                },
+                "seguimiento-precio": {
+                    "type": "null"
+                },
+                "titulo-resumen-web": {
+                    "type": "string"
+                },
+                "fecha-abono-informe": {
+                    "type": "null"
+                },
+                "fecha-firma-promesa": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "inscripcion-vigente": {
+                    "type": "string"
+                },
+                "precio-mayor-oferta": {
+                    "type": "null"
+                },
+                "prioridad-captacion": {
+                    "$ref": "#/definitions/PrioridadCaptacion"
+                },
+                "prioridad-marketing": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "reg-de-coprop-fecha": {
+                    "type": "null"
+                },
+                "seudonimo-propiedad": {
+                    "type": "string"
+                },
+                "check-info-sitio-web": {
+                    "$ref": "#/definitions/CheckInfoSitioWebUnion"
+                },
+                "enviar-contrato-lcdj": {
+                    "type": "null"
+                },
+                "etapa-sesion-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "evaluacion-comercial": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "fecha-esperada-venta": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "fecha_esperada_venta": {
+                    "type": "string"
+                },
+                "gasto-comun-en-pesos": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "info-publicacion-web": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "link-publicacion-web": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "monto-del-credito-uf": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "precio-cierre-dollar": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "se-permiten-mascotas": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "tasa-credito-comment": {
+                    "type": "null"
+                },
+                "valor_esperado_venta": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "acta-de-entrega-fecha": {
+                    "type": "null"
+                },
+                "acta-de-entrega-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "date_contacto_inicial": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "ejecutiv-lcdj-comment": {
+                    "type": "null"
+                },
+                "fecha-inscripcion-cbr": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "problemas-del-proceso": {
+                    "type": "string"
+                },
+                "prop-equivalentes-web": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Prop"
+                    }
+                },
+                "recepcion-final-fecha": {
+                    "type": "null"
+                },
+                "tasacion-eett-comment": {
+                    "type": "null"
+                },
+                "comentario_propietario": {
+                    "type": "string"
+                },
+                "contribuciones-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "equipamiento-comunidad": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },
+                "estado-de-eett-comment": {
+                    "type": "null"
+                },
+                "f-entrega-de-propiedad": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "fecha-tentativa-sesion": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "log-precio-publicacion": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LogPrecioPublicacion"
+                    }
+                },
+                "motivo-negocio-perdido": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "notas-para-el-analista": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "precio-compra-vendedor": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "requisitos-de-arriendo": {
+                    "type": "null"
+                },
+                "acta-de-entrega-comment": {
+                    "type": "null"
+                },
+                "advertencia-a-la-visita": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "canal-de-cierre-comment": {
+                    "type": "null"
+                },
+                "consideraciones-legales": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },
+                "date_comisiones_pagadas": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "destaque-p-inmobiliario": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DestaquePInmobiliario"
+                    }
+                },
+                "fecha-aceptacion-oferta": {
+                    "$ref": "#/definitions/FechaAceptacionOferta"
+                },
+                "fecha-de-disponibilidad": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "mandato-o-poder-comment": {
+                    "type": "null"
+                },
+                "motivo-de-venta-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "perfil-publico-objetivo": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },
+                "planos-originales-fecha": {
+                    "type": "null"
+                },
+                "planos-originales-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "publicacion-previa-lcdj": {
+                    "$ref": "#/definitions/Dlf2"
+                },
+                "texto-descriptivo-fecha": {
+                    "type": "null"
+                },
+                "valor-total-arriendo-uf": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "arriendo-requisitos-adic": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "como_llegaste_a_nosotros": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "detalles-negocio-perdido": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "estatus-pago-hipotecario": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "fecha-envio-valorizacion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "fecha-firma-de-escritura": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "fecha-ideal-valorizacion": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "inscripciones-en-10-anos": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "permite-novacion-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "persona-contacto-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "prioridad-de-publicacion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "valorizacion-de-terceros": {
+                    "type": "null"
+                },
+                "colilla-gasto-comun-fecha": {
+                    "type": "null"
+                },
+                "colilla-gasto-comun-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "comision-vendedor-comment": {
+                    "type": "null"
+                },
+                "contrato-arriendo-digital": {
+                    "type": "null"
+                },
+                "date_entrega_antecedentes": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "f-envio-precio-preliminar": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "fecha-limite-valorizacion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "inscripcion-vigente-fecha": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "inscripcion-vigente-files": {
+                    "$ref": "#/definitions/InscripcionVigenteFiles"
+                },
+                "instrucciones-de-cv-fecha": {
+                    "type": "null"
+                },
+                "planos-originales-comment": {
+                    "type": "null"
+                },
+                "remodelacion-dueno-actual": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },
+                "tipo-de-sesion-solicitada": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/TipoDeSesionSolicitada"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                },
+                "tipo-informe-valorizacion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "acta-de-entrega-en-promesa": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/CartelEnSesion"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "check-info-sitio-web-fecha": {
+                    "type": "null"
+                },
+                "comision-comprador-comment": {
+                    "type": "null"
+                },
+                "contrato-de-arriendo-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "escritura-cv-10-anos-fecha": {
+                    "type": "null"
+                },
+                "estatus-abono-valorizacion": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "estatus-pago-cuota-contado": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "fecha-inicio-contrato-lcdj": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "fecha-sesion-de-fotografia": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "inscripcion-post-cbr-fecha": {
+                    "type": "null"
+                },
+                "inscripcion-post-cbr-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "link-img-portada-wordpress": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string",
+                            "qt-uri-protocols": [
+                                "https"
+                            ],
+                            "qt-uri-extensions": [
+                                ".jpg"
+                            ]
+                        }
+                    ]
+                },
+                "plazo-escritura-s-prorroga": {
+                    "type": "string"
+                },
+                "plazo-promesa-sin-prorroga": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "valor-total-arriendo-pesos": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "colilla-gasto-comun-comment": {
+                    "type": "null"
+                },
+                "date_promesa_de_compraventa": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "fecha-termino-contrato-lcdj": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "imagenes-preliminares-fecha": {
+                    "type": "null"
+                },
+                "imagenes-preliminares-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "inscripcion-vigente-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "inscripciones-10-anos-fecha": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "inscripciones-10-anos-files": {
+                    "$ref": "#/definitions/Inscripciones10-AnosFilesUnion"
+                },
+                "requerimiento-para-posventa": {
+                    "type": "string"
+                },
+                "valor-total-arriendo-dollar": {
+                    "type": "null"
+                },
+                "valor-uf-dia-firma-arriendo": {
+                    "type": "null"
+                },
+                "contrato-de-arriendo-comment": {
+                    "type": "null"
+                },
+                "gasto-comun-en-pesos-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "gastos-vendedor-o-arrendador": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "inscripcion-post-cbr-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "institucion-credito-vendedor": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "promesa-proceso-actual-fecha": {
+                    "type": "null"
+                },
+                "estado-de-entrega-de-borrador": {
+                    "anyOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "null"
+                                    },
+                                    {
+                                        "type": "string"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "f-limite-promesa-sin-prorroga": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "fecha-firma-contrato-arriendo": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "inscripciones-10-anos-comment": {
+                    "type": "null"
+                },
+                "institucion-credito-comprador": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "planos-para-publicacion-fecha": {
+                    "type": "null"
+                },
+                "plazo-prorroga-para-escritura": {
+                    "type": "string"
+                },
+                "prop-equivalentes-web-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "equipamiento-comunidad-comment": {
+                    "type": "null"
+                },
+                "info-y-solicitudes-para-sesion": {
+                    "type": "string"
+                },
+                "inventario-marcas-sesion-fecha": {
+                    "type": "null"
+                },
+                "requisitos-de-plazos-postventa": {
+                    "type": "string"
+                },
+                "consideraciones-legales-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "date_produccion_pre_lanzamiento": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "doc-legales-y-municipales-fecha": {
+                    "type": "null"
+                },
+                "doc-legales-y-municipales-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "f-limite-escritura-con-prorroga": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "f-limite-escritura-sin-prorroga": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "fecha-de-disponibilidad-comment": {
+                    "type": "null"
+                },
+                "gastos-comprador-o-arrendatario": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "publicacion-previa-lcdj-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "reglamento-de-copropiedad-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "enviar-contrato-arriendo-digital": {
+                    "type": "null"
+                },
+                "escritura-cv-del-comprador-fecha": {
+                    "type": "null"
+                },
+                "escritura-o-titulo-10-anos-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "escritura-o-titulo-vigente-fecha": {
+                    "type": "null"
+                },
+                "escritura-o-titulo-vigente-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "fecha-esperada-de-cierre-cliente": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "instrucciones-escritura-cv-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "inventario-marcas-sesion-comment": {
+                    "type": "null"
+                },
+                "precio-de-publicacion-inicial-uf": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "prioridad-de-publicacion-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "acta-de-entrega-en-instruccion-cv": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/CartelEnSesion"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "date_contrato_de_arriendo_firmado": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dias-entre-contrato-lcdj-y-sesion": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "doc-legales-y-municipales-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "f-envio-precio-preliminar-comment": {
+                    "type": "null"
+                },
+                "facilidad-pago-comision-comprador": {
+                    "type": "string"
+                },
+                "reglamento-de-copropiedad-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "remodelacion-dueno-actual-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "tipo-informe-valorizacion-comment": {
+                    "type": "null"
+                },
+                "comentarios-prioridad-de-marketing": {
+                    "anyOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "null"
+                            }
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "contrato-arriendo-legalizado-fecha": {
+                    "type": "null"
+                },
+                "dias-contrato_lcdj-y-f-publicacion": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "escritura-cv-inscrita-en-cbr-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "escritura-o-titulo-10-anos-comment": {
+                    "type": "null"
+                },
+                "escritura-o-titulo-vigente-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "firma-de-escritura-e-instrucciones": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
+                },
+                "instrucciones-escritura-cv-comment": {
+                    "type": "null"
+                },
+                "plazo-escritura-s-prorroga-comment": {
+                    "type": "null"
+                },
+                "date_aceptacion_de_oferta_de_compra": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "date_firma_de_contrato_de_servicios": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "escritura-cv-inscrita-en-cbr-comment": {
+                    "type": "null"
+                },
+                "props-equivalentes-para-valorizacion": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Prop"
+                    }
+                },
+                "estado-de-entrega-de-borrador-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "plazo-prorroga-para-escritura-comment": {
+                    "type": "null"
+                },
+                "contrato-prestacion-servicios-lcdj-fecha": {
+                    "type": "null"
+                },
+                "contrato-prestacion-servicios-lcdj-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "dias-aceptacion-oferta-y-f-firma-promesa": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "contrato-prestacion-servicios-lcdj-comment": {
+                    "type": "null"
+                },
+                "firma-de-escritura-e-instrucciones-comment": {
+                    "type": "null"
+                },
+                "props-equivalentes-para-valorizacion-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "monto-credito-uf": {
+                    "type": "integer"
+                },
+                "monto-del-pie-uf": {
+                    "type": "integer"
+                },
+                "imgs-videos-fecha": {
+                    "type": "null"
+                },
+                "imgs-videos-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "imgs-portada-fecha": {
+                    "type": "null"
+                },
+                "imgs-portada-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "modalidad-pago-pie": {
+                    "type": "string"
+                },
+                "imgs-videos-comment": {
+                    "type": "null"
+                },
+                "date_ingreso_al_cbrs": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "imgs-instagram-fecha": {
+                    "type": "null"
+                },
+                "imgs-instagram-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "imgs-portada-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "qt-uri-protocols": [
+                                "https"
+                            ],
+                            "qt-uri-extensions": [
+                                ".jpg"
+                            ]
+                        }
+                    ]
+                },
+                "imgs-sitio-web-fecha": {
+                    "type": "null"
+                },
+                "imgs-sitio-web-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "info-prepago-credito": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "date_pago_hipotecario": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "imgs-instagram-comment": {
+                    "type": "null"
+                },
+                "imgs-sitio-web-comment": {
+                    "type": "null"
+                },
+                "plazo-del-credito-anos": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "date_firma_de_escritura": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "imgs-preliminares-fecha": {
+                    "type": "null"
+                },
+                "imgs-preliminares-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "date_entrega_de_borrador": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "tipo-de-sesion-realizada": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "date_entrega_de_propiedad": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "imgs-preliminares-comment": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "qt-uri-protocols": [
+                                "https"
+                            ],
+                            "qt-uri-extensions": [
+                                ".jpg"
+                            ]
+                        }
+                    ]
+                },
+                "escritura-o-titulo-vigente": {
+                    "type": "string"
+                },
+                "imgs-alta-resolucion-fecha": {
+                    "type": "null"
+                },
+                "imgs-alta-resolucion-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "comentarios-para-facturacion": {
+                    "type": "string"
+                },
+                "imgs-alta-resolucion-comment": {
+                    "type": "null"
+                },
+                "factura-vendedor-o-arrendador": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "planos-para-publicacion-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "imgs-portal-inmobiliario-fecha": {
+                    "type": "null"
+                },
+                "imgs-portal-inmobiliario-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "factura-comprador-o-arrendatario": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "imgs-portal-inmobiliario-comment": {
+                    "type": "null"
+                },
+                "date_finalizacion_y_despacho_cbrs": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "factura-vendedor-o-arrendador-files": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/1_Value"
+                    }
+                },
+                "factura-comprador-o-arrendatario-files": {
+                    "$ref": "#/definitions/FacturaCompradorOArrendatarioFiles"
+                },
+                "date_vendedor_recibe_la_totalidad_de_los_fondos": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "gp": {
+                    "type": "string"
+                },
+                "date_alzamiento": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "date_ingreso-al-cbrs": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "inscripciones-10-anos": {
+                    "type": "string"
+                },
+                "comentarios-prioridad-de-marketing-comment": {
+                    "type": "string"
+                },
+                "filename": {
+                    "type": "string"
+                },
+                "date_negocio_descartado_o_perdido": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "precio-cierre-pesos": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "date_aprobacion_de_eett": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "monto-abono-valorizacion": {
+                    "type": "string"
+                },
+                "date_fecha_de_inscripcion_cbrs": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "inventario-marcas-sesion-files": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                "date_cierre_de_proceso": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "mutuo-a-cliente": {
+                    "type": "string"
+                },
+                "mutuo-a-cliente-files": {
+                    "$ref": "#/definitions/MutuoAClienteFiles"
+                },
+                "banco-vendedor": {
+                    "type": "string"
+                },
+                "texto-descriptivo-comment": {
+                    "type": "null"
+                }
+            },
+            "required": [],
+            "title": "Negocio"
+        },
+        "DestaquePInmobiliario": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "FECHA-TERMINO": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "TIPO-DESTAQUE": {
+                    "type": "string"
+                },
+                "FECHA-COMIENZO": {
+                    "type": "string",
+                    "format": "date"
+                }
+            },
+            "required": [],
+            "title": "DestaquePInmobiliario"
+        },
+        "DetallesNegocioClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "perdido": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                }
+            },
+            "required": [],
+            "title": "DetallesNegocioClass"
+        },
+        "FacturaCompradorOArrendatarioFiles": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "1": {
+                    "$ref": "#/definitions/1_Value"
+                }
+            },
+            "required": [],
+            "title": "FacturaCompradorOArrendatarioFiles"
+        },
+        "1_Value": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "$ref": "#/definitions/ID"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "disk": {
+                    "type": "string"
+                },
+                "user": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "folder": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "string"
+                },
+                "filepath": {
+                    "type": "string"
+                },
+                "slug_name": {
+                    "type": "string"
+                },
+                "subfolder": {
+                    "type": "string"
+                },
+                "id_negocio": {
+                    "type": "integer"
+                },
+                "negocio_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "environment": {
+                    "type": "string"
+                },
+                "working_dir": {
+                    "type": "string"
+                },
+                "lfm_pathname": {
+                    "type": "string"
+                },
+                "parent_folder": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "time": {
+                    "type": "integer"
+                },
+                "checksum": {
+                    "type": "string"
+                },
+                "mimeType": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "1_Value"
+        },
+        "File": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "user": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "folder": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "null"
+                },
+                "subfolder": {
+                    "type": "null"
+                }
+            },
+            "required": [],
+            "title": "File"
+        },
+        "Files": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "1": {
+                    "$ref": "#/definitions/GpFiles1"
+                }
+            },
+            "required": [],
+            "title": "Files"
+        },
+        "GpFiles1": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "user": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "folder": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "string"
+                },
+                "subfolder": {
+                    "type": "null"
+                }
+            },
+            "required": [],
+            "title": "GpFiles1"
+        },
+        "InscripcionVigenteFile": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "doc": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "user": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "folder": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "subfolder": {
+                    "type": "null"
+                }
+            },
+            "required": [],
+            "title": "InscripcionVigenteFile"
+        },
+        "Inscripciones10-AnosFilesClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "1": {
+                    "$ref": "#/definitions/Inscripciones10-AnosFiles1"
+                }
+            },
+            "required": [],
+            "title": "Inscripciones10-AnosFilesClass"
+        },
+        "Inscripciones10-AnosFiles1": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "user": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "folder": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "string"
+                },
+                "subfolder": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "disk": {
+                    "type": "string"
+                },
+                "filepath": {
+                    "type": "string"
+                },
+                "mimeType": {
+                    "type": "string"
+                },
+                "slug_name": {
+                    "type": "string"
+                },
+                "id_negocio": {
+                    "type": "integer"
+                },
+                "negocio_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "working_dir": {
+                    "type": "string"
+                },
+                "lfm_pathname": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "Inscripciones10-AnosFiles1"
+        },
+        "LogPrecioPublicacion": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "fecha": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "precio": {
+                    "type": "string",
+                    "format": "integer"
+                }
+            },
+            "required": [],
+            "title": "LogPrecioPublicacion"
+        },
+        "LogPlantillas": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "2022-11-24 17:40:12": {
+                    "$ref": "#/definitions/2022-11-24 1"
+                },
+                "2022-11-24 18:08:48": {
+                    "$ref": "#/definitions/2022-11-24 1"
+                },
+                "2022-11-24 18:21:54": {
+                    "$ref": "#/definitions/2022-11-24 1"
+                },
+                "2023-03-14 16:17:13": {
+                    "$ref": "#/definitions/2023-03-14 16:17:13"
+                },
+                "2023-07-12 14:36:20": {
+                    "$ref": "#/definitions/2023-0"
+                },
+                "2023-07-18 19:47:20": {
+                    "$ref": "#/definitions/2023-0"
+                },
+                "2023-06-15 13:40:24": {
+                    "$ref": "#/definitions/2023-0"
+                },
+                "2023-07-19 19:42:23": {
+                    "$ref": "#/definitions/2023-0"
+                },
+                "2023-07-25 14:45:59": {
+                    "$ref": "#/definitions/2023-0"
+                }
+            },
+            "required": [],
+            "title": "LogPlantillas"
+        },
+        "2022-11-24 1": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "para": {
+                    "type": "string"
+                },
+                "usuario": {
+                    "type": "string"
+                },
+                "plantilla": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "2022-11-24 1"
+        },
+        "2023-03-14 16:17:13": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "para": {
+                    "type": "string"
+                },
+                "medio": {
+                    "type": "string"
+                },
+                "usuario": {
+                    "type": "string"
+                },
+                "plantilla": {
+                    "type": "string"
+                },
+                "id_negocio": {
+                    "type": "string",
+                    "format": "integer"
+                }
+            },
+            "required": [],
+            "title": "2023-03-14 16:17:13"
+        },
+        "2023-0": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "para": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "medio": {
+                    "type": "string"
+                },
+                "usuario": {
+                    "type": "string"
+                },
+                "plantilla": {
+                    "type": "string"
+                },
+                "id_negocio": {
+                    "type": "string",
+                    "format": "integer"
+                }
+            },
+            "required": [],
+            "title": "2023-0"
+        },
+        "MutuoAClienteFiles": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "1": {
+                    "$ref": "#/definitions/MutuoAClienteFiles1"
+                }
+            },
+            "required": [],
+            "title": "MutuoAClienteFiles"
+        },
+        "MutuoAClienteFiles1": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "disk": {
+                    "type": "string"
+                },
+                "user": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "folder": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "string"
+                },
+                "filepath": {
+                    "type": "string"
+                },
+                "slug_name": {
+                    "type": "string"
+                },
+                "subfolder": {
+                    "type": "string"
+                },
+                "id_negocio": {
+                    "type": "integer"
+                },
+                "negocio_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "environment": {
+                    "type": "string"
+                },
+                "working_dir": {
+                    "type": "string"
+                },
+                "lfm_pathname": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "MutuoAClienteFiles1"
+        },
+        "WorkflowsLog": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer"
+                }
+            },
+            "required": [],
+            "title": "WorkflowsLog"
+        },
+        "CheckInfoSitioWebUnion": {
+            "anyOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CheckInfoSitioWebEnum"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "CheckInfoSitioWebUnion"
+        },
+        "ID": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "string",
+                    "format": "integer"
+                }
+            ],
+            "title": "ID"
+        },
+        "FechaAceptacionOferta": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "format": "date"
+                },
+                {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            ],
+            "title": "FechaAceptacionOferta"
+        },
+        "GpFiles": {
+            "anyOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                {
+                    "$ref": "#/definitions/Files"
+                }
+            ],
+            "title": "GpFiles"
+        },
+        "IDWordpress": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "format": "integer"
+                },
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "string",
+                    "format": "uri"
+                }
+            ],
+            "title": "IDWordpress"
+        },
+        "InscripcionVigenteFiles": {
+            "anyOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/InscripcionVigenteFile"
+                    }
+                },
+                {
+                    "$ref": "#/definitions/Files"
+                }
+            ],
+            "title": "InscripcionVigenteFiles"
+        },
+        "Inscripciones10-AnosFilesUnion": {
+            "anyOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/File"
+                    }
+                },
+                {
+                    "$ref": "#/definitions/Inscripciones10-AnosFilesClass"
+                }
+            ],
+            "title": "Inscripciones10-AnosFilesUnion"
+        },
+        "MontoDividendoUf": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "MontoDividendoUf"
+        },
+        "Prop": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "string",
+                    "format": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "title": "Prop"
+        },
+        "CartelEnSesion": {
+            "type": "string",
+            "enum": [
+                "Por definir",
+                "Si",
+                "No"
+            ],
+            "title": "CartelEnSesion"
+        },
+        "CheckInfoSitioWebEnum": {
+            "type": "string",
+            "enum": [
+                "Marcas Participantes",
+                "Texto Revisado",
+                "Planimetría"
+            ],
+            "title": "CheckInfoSitioWebEnum"
+        },
+        "Dlf2": {
+            "type": "string",
+            "enum": [
+                "No",
+                "N/A",
+                "Si"
+            ],
+            "title": "Dlf2"
+        },
+        "EstadoDelNegocio": {
+            "type": "string",
+            "enum": [
+                "Vigente",
+                "Perdido",
+                "Cerrado"
+            ],
+            "title": "EstadoDelNegocio"
+        },
+        "PrioridadCaptacion": {
+            "type": "string",
+            "enum": [
+                "Alta",
+                "N/A"
+            ],
+            "title": "PrioridadCaptacion"
+        },
+        "TipoDeSesionSolicitada": {
+            "type": "string",
+            "enum": [
+                "Sesión de 360",
+                "Sesión de fotografía"
+            ],
+            "title": "TipoDeSesionSolicitada"
+        }
+    }
+}

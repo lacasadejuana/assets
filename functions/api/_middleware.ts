@@ -15,7 +15,7 @@ export const onRequestOptions: PagesFunction = async () => {
 export const onRequest: PagesFunction = async ({ next }) => {
 	const response = await next();
 	//response.headers.set('Link', '</js/public_map.js>; rel=preload; as=script');
-	//	response.headers.append('link', '</api/negocios>; rel="preload"; as="fetch"');
+	response.headers.append('link', '</api/publicaciones>; rel="preload"; as="fetch"');
 
 	response.headers.set('Access-Control-Allow-Origin', '*');
 	response.headers.delete('X-Frame-Options');

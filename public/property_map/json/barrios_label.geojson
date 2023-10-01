@@ -1,0 +1,2525 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5984642252885,
+                    -33.41090414899025
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Cerro San Luis"
+            },
+            "id": "194-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53730255249056,
+                    -33.414119274994945
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Colón Oriente"
+            },
+            "id": "117-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.49589563674115,
+                    -33.38876280421065
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Cumbres de San Damián"
+            },
+            "id": "146-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53017994645654,
+                    -33.41858008210845
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Dipreca"
+            },
+            "id": "120-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5480161845779,
+                    -33.42745440376035
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Duqueco"
+            },
+            "id": "83-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56763515930695,
+                    -33.40990163065895
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "El Faro"
+            },
+            "id": "80-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59300937541661,
+                    -33.41523482622425
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "El Golf"
+            },
+            "id": "74-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5594416219523,
+                    -33.427462602911646
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "El Pillán"
+            },
+            "id": "82-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55786529111424,
+                    -33.4038838991732
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "El Rosario"
+            },
+            "id": "116-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5650549072275,
+                    -33.4037818464326
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Escandinavia"
+            },
+            "id": "87-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57883801613079,
+                    -33.40934975485325
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Escuela Militar"
+            },
+            "id": "81-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53412507086585,
+                    -33.38821913495125
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Estoril"
+            },
+            "id": "110-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54519250346385,
+                    -33.42053366259095
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Fuenteovejuna"
+            },
+            "id": "90-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54339853612339,
+                    -33.39839937116815
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Gran Bretaña"
+            },
+            "id": "195-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57050542106396,
+                    -33.41438063745635
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "La Capitania"
+            },
+            "id": "79-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.52054457070825,
+                    -33.407785286757345
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "La Foresta"
+            },
+            "id": "200-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57032171590795,
+                    -33.428199789507445
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Latadía"
+            },
+            "id": "76-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5284972842893,
+                    -33.3849184962712
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lo Fontecilla"
+            },
+            "id": "109-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56599033964389,
+                    -33.4213639566104
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Descubridores"
+            },
+            "id": "77-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.544828335441,
+                    -33.411518878242305
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Domínicos"
+            },
+            "id": "91-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5250743139368,
+                    -33.3989648769313
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Dominicos Antiguo"
+            },
+            "id": "118-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5131715085197,
+                    -33.3772284391959
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Frailes"
+            },
+            "id": "107-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5501116022488,
+                    -33.42187783295855
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Pintores"
+            },
+            "id": "84-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54579358194735,
+                    -33.39106913589935
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Mardoñal"
+            },
+            "id": "111-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54761782545195,
+                    -33.4051670081396
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Montegrande"
+            },
+            "id": "115-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57318786756105,
+                    -33.405215174017954
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Nueva Las Condes"
+            },
+            "id": "86-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57476239399176,
+                    -33.40153878274375
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Parque Araucano"
+            },
+            "id": "88-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59000141390041,
+                    -33.42074974480865
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Presidente Errazuriz"
+            },
+            "id": "214-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.49886668351459,
+                    -33.37302071597115
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Quinchamalí"
+            },
+            "id": "145-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5515178434816,
+                    -33.40132739714125
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Renacimiento Italiano"
+            },
+            "id": "114-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5590492420604,
+                    -33.4127098942636
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Roncesvalles"
+            },
+            "id": "85-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.50208836382444,
+                    -33.400302878930006
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "San Carlos de Apoquindo"
+            },
+            "id": "201-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.52359919344619,
+                    -33.3810874773491
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "San Damián"
+            },
+            "id": "108-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.50266115250615,
+                    -33.384020070572106
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "San Damián"
+            },
+            "id": "212-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57850215536806,
+                    -33.41736058781325
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "San Pascual"
+            },
+            "id": "78-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5602953134276,
+                    -33.3985792747444
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Garcia Pica"
+            },
+            "id": "180-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56083929719031,
+                    -33.39536265495775
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Hermanos Cabot"
+            },
+            "id": "179-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5526902048853,
+                    -33.39813166982585
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Las Tranqueras"
+            },
+            "id": "181-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5421339759445,
+                    -33.42632271833445
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Portal La Reina"
+            },
+            "id": "189-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58371458174801,
+                    -33.426739187043
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Vaticano"
+            },
+            "id": "75-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53737131734475,
+                    -33.411011158735505
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Villa Los Municipales"
+            },
+            "id": "92-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5342589158131,
+                    -33.4200461495049
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Villa Unión de Cooperativas"
+            },
+            "id": "119-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53229576117495,
+                    -33.42545056191565
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Vital Apoquindo Sur"
+            },
+            "id": "89-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58231011829355,
+                    -33.44005479740785
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Amapolas"
+            },
+            "id": "41-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61675814132829,
+                    -33.47279066255825
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Bernardo O''Higiggins"
+            },
+            "id": "70-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61164291156675,
+                    -33.455977526444556
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Eusebio Lillo"
+            },
+            "id": "52-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6192036134101,
+                    -33.469725335621305
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Exequiel González Cortés"
+            },
+            "id": "69-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61598880877824,
+                    -33.4490724406624
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Guillermo Franke"
+            },
+            "id": "59-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6273348131154,
+                    -33.458890271513695
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Industrial Lo Valdivieso"
+            },
+            "id": "56-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62269742647425,
+                    -33.45540285064345
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Javiera Carrera"
+            },
+            "id": "53-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5876915911262,
+                    -33.469171900443854
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lo Plaza"
+            },
+            "id": "64-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57902642390826,
+                    -33.438482929959804
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Adoquines"
+            },
+            "id": "40-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57756145632375,
+                    -33.45151505291025
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Guindos"
+            },
+            "id": "44-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58236975316376,
+                    -33.469743557041454
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Jardines"
+            },
+            "id": "65-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61005186828615,
+                    -33.470874788318
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Municipales"
+            },
+            "id": "71-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59074744060194,
+                    -33.4694045721183
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Presidentes"
+            },
+            "id": "63-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5764470969457,
+                    -33.45846951058345
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Micalvi"
+            },
+            "id": "49-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5875690018127,
+                    -33.4519432680312
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Montenegro"
+            },
+            "id": "46-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58707320831455,
+                    -33.44396730013125
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Parque Botánico"
+            },
+            "id": "43-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61128144269895,
+                    -33.459962117303604
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Parque del deporte"
+            },
+            "id": "190-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61062217403085,
+                    -33.46621350245705
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Parque del Deporte"
+            },
+            "id": "55-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5885330085642,
+                    -33.460299535499544
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Parque Juan XXIII"
+            },
+            "id": "50-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6249411930263,
+                    -33.4641084902817
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Parque San Eugenio"
+            },
+            "id": "57-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57541504625149,
+                    -33.456142078527805
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Plaza Egaña"
+            },
+            "id": "45-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59481431891186,
+                    -33.453905225556255
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Plaza Ñuñoa"
+            },
+            "id": "48-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6042833346152,
+                    -33.47147486248845
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Plaza Zañartu"
+            },
+            "id": "61-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5776229580396,
+                    -33.44482872207285
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Pucará"
+            },
+            "id": "42-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6155115526996,
+                    -33.469507834910246
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Rebeca Matte"
+            },
+            "id": "68-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61801767656385,
+                    -33.46713269464165
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Salvador Cruz Gana"
+            },
+            "id": "67-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60293723336295,
+                    -33.45933907925015
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Los Tres Antonios"
+            },
+            "id": "191-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59709276175985,
+                    -33.461844718418845
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Universidad Metropolitana"
+            },
+            "id": "192-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62088135082979,
+                    -33.45935621554895
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Suárez Mujica"
+            },
+            "id": "54-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6108774039975,
+                    -33.452311824321654
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Suboficiales de Caballería"
+            },
+            "id": "60-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57981112552855,
+                    -33.461696886831604
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Villa Frei"
+            },
+            "id": "51-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59478145504815,
+                    -33.47159846977185
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Villa Los Alerces"
+            },
+            "id": "62-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6191764501879,
+                    -33.463722512008104
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Villa Olímpica"
+            },
+            "id": "66-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60364695927206,
+                    -33.4521230864705
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Villaseca"
+            },
+            "id": "58-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.63298658746805,
+                    -33.4303292536417
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Bellavista"
+            },
+            "id": "32-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6143920850779,
+                    -33.44498101552095
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Dalmacia"
+            },
+            "id": "33-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5895725763898,
+                    -33.43610792259125
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Diego de Almagro"
+            },
+            "id": "39-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5885253323366,
+                    -33.4382554195696
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Dinamarca"
+            },
+            "id": "37-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60440537841545,
+                    -33.414093577107195
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Distrito Financiero"
+            },
+            "id": "28-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61339023384329,
+                    -33.4282282247848
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Divina Providencia"
+            },
+            "id": "35-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59763392443159,
+                    -33.44500619031645
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "El Aguilucho"
+            },
+            "id": "29-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6102499566783,
+                    -33.443251798092646
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Escuela de Carabineros"
+            },
+            "id": "193-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61121356122285,
+                    -33.43940664906965
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Inés de Suárez"
+            },
+            "id": "17-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61925490642099,
+                    -33.442197359591006
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Infante"
+            },
+            "id": "26-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62384784884415,
+                    -33.44639970983745
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Italia"
+            },
+            "id": "25-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59051992224275,
+                    -33.433339655587204
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Las Flores"
+            },
+            "id": "38-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5956132393696,
+                    -33.42808656504485
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Las Lilas"
+            },
+            "id": "6-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60998852487285,
+                    -33.43509926542305
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Estanques"
+            },
+            "id": "16-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60574651510271,
+                    -33.4210551899765
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Leones"
+            },
+            "id": "8-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62918423322915,
+                    -33.43797214543295
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Obispos - Vaticano Chico"
+            },
+            "id": "23-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60675629145561,
+                    -33.4292815542227
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lyon"
+            },
+            "id": "7-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61729468271861,
+                    -33.43571158128525
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Manuel Montt"
+            },
+            "id": "34-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62846114322201,
+                    -33.4457892408704
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Parque Bustamante"
+            },
+            "id": "24-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61517645926696,
+                    -33.41823807318205
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Pedro de Valdivia Norte"
+            },
+            "id": "27-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5988626584597,
+                    -33.43806813169735
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Plaza de la Alcaldesa"
+            },
+            "id": "14-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6053721508126,
+                    -33.4394651599393
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Plaza Pedro de Valdivia"
+            },
+            "id": "15-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6104703109725,
+                    -33.44974848114815
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Plaza Sucre"
+            },
+            "id": "31-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5932379735746,
+                    -33.444324148286654
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Regina Pacis"
+            },
+            "id": "36-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62349310811915,
+                    -33.4351670838616
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Salvador"
+            },
+            "id": "20-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6196011281596,
+                    -33.426934553480095
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Tajamar"
+            },
+            "id": "10-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60613040821976,
+                    -33.44669624437665
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Villaseca"
+            },
+            "id": "30-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53575389926205,
+                    -33.3581173611179
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Castaños de La Dehesa"
+            },
+            "id": "132-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55677407002585,
+                    -33.33817306210935
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "El Golf de Manquehue"
+            },
+            "id": "141-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.50290419368196,
+                    -33.3452074689301
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Huinganal"
+            },
+            "id": "137-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53234281274625,
+                    -33.3612355681215
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Jardín de La Dehesa"
+            },
+            "id": "207-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5205410115683,
+                    -33.35851373328735
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "La Dehesa Central"
+            },
+            "id": "135-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.50513251965755,
+                    -33.365759899572055
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "La Ermita"
+            },
+            "id": "105-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.536144831228,
+                    -33.351498853986854
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Las Pataguas"
+            },
+            "id": "131-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54328463296275,
+                    -33.350290424791
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Loma La Cruz"
+            },
+            "id": "209-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.51341557779551,
+                    -33.32904222574335
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Alpes Suizos"
+            },
+            "id": "138-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54280613106386,
+                    -33.3340875665717
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Trapenses"
+            },
+            "id": "211-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5436174655409,
+                    -33.359229170684
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Manquehue Oriente"
+            },
+            "id": "130-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.50242000746375,
+                    -33.356971190775596
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Originario de Lo Barnechea"
+            },
+            "id": "136-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.49858994131316,
+                    -33.3665549566103
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "San Enrique"
+            },
+            "id": "106-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54024057719025,
+                    -33.361350408406096
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "San Rafael de La Dehesa"
+            },
+            "id": "205-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54693723609844,
+                    -33.322844575403195
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Santuario  del Valle"
+            },
+            "id": "143-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53086993165395,
+                    -33.3349347925742
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Valle de La Dehesa"
+            },
+            "id": "139-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5472019154101,
+                    -33.3500265782628
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Valle del Monasterio"
+            },
+            "id": "210-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5639462262104,
+                    -33.4548451547243
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Blest Gana"
+            },
+            "id": "159-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56159550837955,
+                    -33.459426397662554
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Francisco Villagra"
+            },
+            "id": "160-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.51954584430314,
+                    -33.445734289071055
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "La Reina Alta"
+            },
+            "id": "154-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56994556030276,
+                    -33.4345112925238
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Las Arañas"
+            },
+            "id": "148-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5791798296831,
+                    -33.43459243946065
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Troncos Viejos"
+            },
+            "id": "147-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56624459309,
+                    -33.445988050218205
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lynch"
+            },
+            "id": "162-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5435038484244,
+                    -33.44244125584995
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Ossandon"
+            },
+            "id": "152-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5600711754426,
+                    -33.45055431722735
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Palmas de Mallorca"
+            },
+            "id": "158-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55112897609516,
+                    -33.456251154358
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Pepe Vila"
+            },
+            "id": "156-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56187496101259,
+                    -33.43653038837405
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Príncipe de Gales"
+            },
+            "id": "150-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53486195027065,
+                    -33.45541098873565
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Villa La Reina"
+            },
+            "id": "153-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54213113074785,
+                    -33.4613678363879
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Villa Peña Rey"
+            },
+            "id": "161-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58992900275605,
+                    -33.389026324308105
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Club de Polo"
+            },
+            "id": "177-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56022019967276,
+                    -33.3919662162563
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "El Dorado"
+            },
+            "id": "98-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58340685466081,
+                    -33.391784228087005
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Jardín del Este"
+            },
+            "id": "124-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5437574374792,
+                    -33.3810422197859
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "La Llavería"
+            },
+            "id": "103-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59332604101215,
+                    -33.4049493288581
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Las Nieves"
+            },
+            "id": "164-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5646627720907,
+                    -33.38387382611565
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lo Beltrán"
+            },
+            "id": "125-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5941423976819,
+                    -33.39895786952165
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lo Castillo"
+            },
+            "id": "163-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55722803390564,
+                    -33.3669172135537
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lo Curro"
+            },
+            "id": "129-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55749335142491,
+                    -33.3814931584168
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lo Gallo"
+            },
+            "id": "198-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57490412658325,
+                    -33.395266863871896
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lo Garces"
+            },
+            "id": "97-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54611704799375,
+                    -33.3854389191992
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lo Matta"
+            },
+            "id": "102-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.562360050344,
+                    -33.38870445092085
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Los Castaños"
+            },
+            "id": "100-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5526708919474,
+                    -33.38075155762315
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Padre Hurtado Norte"
+            },
+            "id": "127-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58177932521745,
+                    -33.3983023985356
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Pío XI"
+            },
+            "id": "96-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5749594471383,
+                    -33.37154221891885
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Santa María de Manquehue"
+            },
+            "id": "128-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57859340681125,
+                    -33.38245334682355
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Borde Río"
+            },
+            "id": "187-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5523376339273,
+                    -33.3859091853506
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Club Sirio"
+            },
+            "id": "184-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57637018066295,
+                    -33.38552199776805
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Colegio La Maisonnette"
+            },
+            "id": "188-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56764538716484,
+                    -33.3907581047338
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Estadio Banco de Chile"
+            },
+            "id": "182-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55717618182925,
+                    -33.38767449256255
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Estadio Croata"
+            },
+            "id": "183-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.576928550215,
+                    -33.39083737350375
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Estadio Manquehue"
+            },
+            "id": "178-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57255679157839,
+                    -33.38478007834085
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Sector Juan XXIII"
+            },
+            "id": "186-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5246945405548,
+                    -33.37512712179915
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Tabancura"
+            },
+            "id": "104-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6454709817138,
+                    -33.4360916454836
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Bellas Artes"
+            },
+            "id": "176-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6644832859777,
+                    -33.4407324371919
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Brasil"
+            },
+            "id": "173-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.65107899880414,
+                    -33.4471357697777
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Bulnes"
+            },
+            "id": "175-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.66618640488285,
+                    -33.446254635391
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Concha y Toro"
+            },
+            "id": "172-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.63688360667061,
+                    -33.45490205931155
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Copiapó"
+            },
+            "id": "168-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.63929918734866,
+                    -33.43849773065345
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Lastarria"
+            },
+            "id": "165-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.64760087570585,
+                    -33.444360912820656
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "París-Londres"
+            },
+            "id": "171-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6388671840581,
+                    -33.440345361106594
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "San Borja"
+            },
+            "id": "166-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.64350933349274,
+                    -33.44779755585115
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "San Isidro"
+            },
+            "id": "170-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.63698620116635,
+                    -33.44728337778305
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Santa Isabel"
+            },
+            "id": "167-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6738744541102,
+                    -33.4428071858975
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": "Yungay"
+            },
+            "id": "174-center"
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.66077596781975,
+                    -33.364863185017896
+                ]
+            },
+            "properties": {
+                "is_label": true,
+                "Nombre_de_Barrio": null
+            },
+            "id": "213-center"
+        }
+    ]
+}

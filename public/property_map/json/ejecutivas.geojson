@@ -1,0 +1,178 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+
+        {
+            "id": 8,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6137092,
+                    -33.4335304
+                ]
+            },
+            "properties": {
+                "email": "marina@lacasadejuana.cl",
+                "nombre": "Marina Sepúlveda",
+                "telefono": "+56942236528",
+                "direccion": "Federico Froebel 1667, departamento 1103, Providencia"
+            }
+        },
+        {
+            "id": 4,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5864247,
+                    -33.4316847
+                ]
+            },
+            "properties": {
+                "email": "areli@lacasadejuana.cl",
+                "nombre": "Areli Seara",
+                "telefono": "+56962376729",
+                "direccion": "Las Achiras 3072, Providencia"
+            }
+        },
+        {
+            "id": 6,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5914236,
+                    -33.4250557
+                ]
+            },
+            "properties": {
+                "email": "esperanza@lacasadejuana.cl",
+                "nombre": "Esperanza Rosales",
+                "telefono": "+56944078862",
+                "direccion": "La Niña 3020, depto 605, Las Condes"
+            }
+        },
+       
+        {
+            "id": 5,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55978850000001,
+                    -33.39442929999999
+                ]
+            },
+            "properties": {
+                "email": "daniela@lacasadejuana.cl",
+                "nombre": "Daniela Bueno",
+                "telefono": "+56931962326",
+                "direccion": "Avenida Presidente Kennedy Lateral 7301, depto 94d, Las Condes"
+            }
+        },
+        {
+            "id": 7,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5985779,
+                    -33.4294163
+                ]
+            },
+            "properties": {
+                "email": "georgina@lacasadejuana.cl",
+                "nombre": "Georgina Tierrablanca",
+                "telefono": "+56932621617",
+                "direccion": "Avenida Luis Thayer Ojeda 1230, depto 1202, Providencia"
+            }
+        },
+        {
+            "id": 393,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5993253,
+                    -33.4356049
+                ]
+            },
+            "properties": {
+                "email": "lucia@lacasadejuana.cl",
+                "nombre": "Lucía Cintas",
+                "telefono": "+56939339436",
+                "direccion": "Av. Holanda 1831, depto 84, Providencia"
+            }
+        },
+          
+        {
+            "id": 3835,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5948336,
+                    -33.4469165
+                ]
+            },
+            "properties": {
+                "email": "carolina@lacasadejuana.cl",
+                "nombre": "Carolina Cornejo",
+                "telefono": "+56939339437",
+                "direccion": "Jaime Guzmán Errázuriz 3295, depto 401, Providencia, Ñuñoa"
+            }
+        },
+        {
+            "id": 5906,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5957936,
+                    -33.405875
+                ]
+            },
+            "properties": {
+                "email": "daniela.hidalgo@lacasadejuana.cl",
+                "nombre": "Daniela Hidalgo",
+                "telefono": "+56957483419",
+                "direccion": "Las Nieves 3435, depto 55, Santiago, Vitacura"
+            }
+        },
+        {
+            "id": 6,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5914236,
+                    -33.4250557
+                ]
+            },
+            "properties": {
+                "email": "esperanza@lacasadejuana.cl",
+                "nombre": "Esperanza Rosales",
+                "telefono": "+56944078862",
+                "direccion": "La Niña 3020, depto 605, Las Condes"
+            }
+        },
+        {
+            "id": 9792,
+            "type":"Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.6064106,
+                    -33.4343009
+                ]
+            },
+            "properties": {
+                "email": "marvin@lacasadejuana.cl",
+                "nombre": "Marvin Rengifo",
+                "telefono": "+56957634028",
+                "direccion": "Las Violetas 2131, Providencia"
+            }
+        }
+    ]
+}

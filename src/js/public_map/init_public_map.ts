@@ -106,7 +106,7 @@ if (!globalThis.storeCamposBusqueda) {
         })
 
     const barrioLabelsJson = staticFetchWrapper<FeatureCollection<Polygon, GeoJsonProperties>>(
-        '/json/barrios_label.geojson', {}).then(res => {
+        '/property_maps/json/barrios_label.geojson', {}).then(res => {
             globalThis.barrioLabelsJson = res;
             console.timerInfo('received barrioLabelsJson result from sw');
             storePublicMaps.setBarrioLabels(res.features)
@@ -148,7 +148,7 @@ if (!globalThis.storeCamposBusqueda) {
                 e.set("libraries", [...r] + "");
                 for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
                 e.set("callback", c + ".maps." + q);
-                a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+                a.src = `https://maps.${c}apis.com/maps/property_maps/api/js?` + e;
                 d[q] = f;
                 a.onerror = () => h = n(Error(p + " could not load."));
                 a.nonce = m.querySelector("script[nonce]")?.nonce || "";

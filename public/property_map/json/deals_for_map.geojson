@@ -1,0 +1,2975 @@
+{
+    "type": "FeatureCollection",
+    "layer_options": {
+        "strokeColor": "#339933",
+        "scale": 0.8,
+        "clickable": true,
+        "fillOpacity": 0.85,
+        "url": "/json/deals_for_map.geojson",
+        "labelProperty": "Nombre",
+        "infoWindow": true,
+        "checked": true,
+        "text": "e803",
+        "type": "deals",
+        "className": "icon-home-2",
+        "icon": {
+            "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAYAAACMRWrdAAAAAXNSR0IArs4c6QAACg1JREFUaEPtmgtwlNUVgM/5H7tJyOvfkJAsAV88HMJDqFARIiqYCQIWxzo1BtGaZBOiTuuDjox1hKIjFWGsaEw2pAptiLbjVGpSMqEMj4BYsU1ASHlZJQkLJGT/3cRkN7v/f2/n/kuWbPPY3ewuYx3uzE52/z33nPPdc++5594Nwg+04Q+UC66D/b9F9nrErkfsezIC16fi9yQQAbtxDSNmEj1emd0BexeCYETAEhJMs3ge7qFUyATAaYg0lVJVD0ABke8GQAulylFE/IIQ3GuzlTaEwDBo17CCSZLpaQCxGJFLFcUxKs+nJnFcPPB8DFDKAyIApSpQ2gOqKtsV5VKHorRLlKoWAKVMlqEsXBENC5gkmUwAwmuCIKmiOClFEJK8o0gpaEB9bbDPqtoBLtcpi6radYjqS1ZraXmoEQwJLDEx7wZBiKmkNOrWqKhpBp6XfPwZNy4GpkyJh/T0GIiLE7TvuroUaG3tgaamTmhp6fGRV1UZenuPdVDq+IoQ9xOybG4eKeCIwRITCxZwnO4TUbw5Qae7xWs/LS0acnLG45IlY2HixLhh/Tpzpgtqas5DVVUzvXDB4ZV1uc443e5vHYQoD9psZQdGAjciMIOh8D5KoToq6jZREFK9dl98cQoWF08aiR9QUnIaNmxoon2dFeUiOJ2NbkRYarWW7Q5WadBgnozH1+t006MFIVmzN326BBs3/ginTEkI1r6PfFOTHVav/ic9dkzWnitKO7hcx5yqqs63283/CkZ5kGAm0WDQndDpJkwQhLFaUrj33jT44IN5QeoZ3sUnnjhE9+y5oOl3u89Db+/XzbLcOzGYjBmUQ5JU+I4gJD+i108zsD1p/vxUqKpaEJCO06cvwKRJaQEPek7OPnrwYBswO729TV2K0lEly+8WBaogIKeYMoMh/w4AcU9MzLxoAB6MxhioqcnC0aOjhrWlqgTWrPkItm2rh3XrHoKiooUB+Xb5shOWLKmjFgvLnCp0dx9yILoXWq1bPw9EQcBgkrTqrzrdjVmCMFYHgLB1ayZmZ48b1kZXlxPy8sph794mr1x+/t3w6qsPA89zfv2rrW2B/PwDbCfUpqTb/W2tLJfc77cjsB4BNIOhIAOA/zw6et4oJr506Q1QWpo5bN/WVivk5LwLJ09aBljIypoG5eV5EBOj92u9qKieVlef0+R6ej7rRlTusFrLT/jrGBBYYqLpFUEYk6fXT0hnlcPOndl4++0pQ+pubDwHubkl0NbWOaTMtGnjYMeOYkhNTRzWxy+/bIPly2sps+t2n21T1UulVqt5bVjAJKnoWFRUxlSOi4UZM0ZDTc3SIQekuroBVq16H5xO/0W80SjBjh1PQUbG2GH9XLKkmh49ehkI6QKH4+QZm61kcshgycnFqaqqfh0VNSeaKXvuuZnw/PMzBwXbsqUO1q//BLThDbDFxkZp03LRoqlD9ti0qYFu3uw5ADidR3p5nrupvb3k4nAm/E5FVmUgRm3V66dqmaKyMhvvvjvdR6fbrcLq1VVQWXkoQBxfMZZIWEJhiWWwtm9fK+Tm1mqj5XKd6CDE8ai/aiQAsKICjotfK4q3aLXTF1/kcOnpV2tAu70HnnzSDAcOnBoRVP9OQ2XM1tYumDOnijBZt/sbByG2Z/2dAPyCSVLhGkFI/oUgjE1mSdRiKfTJ0/fd9zo0No64CB8wGCtXZsKmTY8OeG40lhJmX1EsqqJceEWWy18PcSqa1nLcmF8KQmocK3EslmIfsKys30JDw7chR6tPQW7uPHjrrRUD9KWllRBPiXWxi5BLb/nLjAFErGCNIIxZx/NjeEQWsacG7Kw9Pb3A8sX8+b8Btn8F29i+ZjbnabXhUHtbWto7hNlXFEu7onT8TpbLQo1YUQFi/GZRHBvDHD5y5Oc+a6w/xKxZv4aWlo5guWDx4hmwffvQZSBbY7Nnv39ljbVcpPS7tSGvMU9W1P9BFG/WzigffvggLlgwftBIRwps//5m+sgjf7mSFb9uBnCZQs6Knn2M/EcUJ2r1zwsvzEX2Giwsg4Ft2PAzuOuuW73iFRX7oaJin093fxF7883DlL086f60UxD4W0Lex5gySVp1UhSNExGjYebMVNi1K3fQCnYwsG3biuD++2d4QTZurIE33qgOCmzx4krS0HARKHWC2916XJZLryocYuL7TR6sn8FgWosYVyQIKcksSVRX53KzZw8sgyIBduTIeVi2rJIwu6rafl5VOytsNvM6fws5QLCCDEr5z3W6G7UEsmzZrVhe/pMBfSMBVlCwk3766UltGrrd33QDkLlhq+4907FwP8clZvJ8vGZk27afYnb2JB+4e+55DY4fb/UZzJ07n4M775zofWY274WXXvqTj0xOzlx4++2VA4JQW3uGPv74nzV7hHS5VFXeLctlD/iLFvs+oIgxwaSkvDmUirsFwRgLwIHRGA91dU9yycnaEU1r585dhsOHz3qL4KSkWGB7VP/mcimwa9dR6OlxaY9ZncgKYIPhqh72vL29G7Kyfk8sFnb0oaAorU4ANfwn6CtRew9Rt5znk7XDWGbmTfjxxysCHpxARrpP5qGH/kjr67+hDEpVZSshjo9strKnA9URtFOSVPgVz8dmIMZRViksWjQJKytzgtYznIMrVlTRurrTmn5CulFRus7abCQjYrdUVzLkw4TgFo6LS+H5GMrOXrNmpcPmzQ9wGRlXL08DHdn+cidOXIRnn91JGhstWolGqRMp7XSoKsmM8L2ix434+ILHOI7fxHHRo3l+lPdU+fLLWfjMM8PfhQwFvGVLPV2/vs6ri0EpSqeb4/Da3AT3OWYw5GVTKrwHII7i+XjvzytGYwKsXDkbly7NwMmTh74XYXpOnWqD6uoTdPv2I9RisXuZCelBSh12Sslym618/0iiH9LakCTTeER8n1JuMs+PSgNgP1qyQWdqKYwfb4CpU9MwPV2ChARWkSHY7Q5obbXB8eMXaHMzu8q+Ks/uDwnplgHovwlxrbDZKjzXUyNoIYH12ZMk0xsA3GOI+hREfeAXHv0cprSXRakLAH4ly2bzCFh8uoQFjGlMSckf43bzhxH1N3CcXksq7PzkudjxRLDv8//+pdSFlPaeE0V1blvb1kuhQrH+YQPzZMzicZQqnyHqjYhiQJGjVEFKnRZE4U6rtaQlHFBhB/NkzLwJHCcc5DhdMqIwLByDIsTVTogyv7Oz4my4oCIC5olc4RRKST2iPhGAGwKOsOlnQ+Qyrdayq5f7YaIL61Ts71NiYsFtiNx+ACEW0ReOUoIAyneUkgU2W3ljmFgikzwGcy4pyfRjSnEPpVw0ANIrSQMRVQciXdjRYf5HJKAiNhX7OytJ+ZmU4t8Ree3fBihVFUS6SJa31kcK6pqAMSMJCYULOQ7q2HtCIMtuL9sTSahrBsYMSVKh9oOdLJf9LdJQTP9/ATsuPHNmci0xAAAAAElFTkSuQmCC"
+        },
+        "campos": {
+            "barrio": "Barrio",
+            "seudonimo": "Nombre",
+            "status": "Status",
+            "precio_uf": "precio_uf",
+            "dormitorios": "Dormitorios",
+            "id_propiedad": "id_propiedad",
+            "tipo_negocio": "Modalidad",
+            "banos_servicio": "Baños servicio",
+            "tipo_propiedad": "Tipo propiedad",
+            "banos_completos": "Baños completos",
+            "comuna_propiedad": "Comuna",
+            "fecha_publicacion": "Fecha Publicacion",
+            "dormitorios_servicio": "Dormitorios servicio"
+        }
+    },
+    "features": [
+        {
+            "id": "210189",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58045,
+                    -33.41551
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=67426",
+                "place": "Providencia",
+                "barrio": "San Pascual",
+                "seudonimo": "TRIPLEX PLAZA LAS LILAS II",
+                "status": "unavailable",
+                "precio_uf": "35,44",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/01/02-2-1.jpg",
+                "dormitorios": null,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210189",
+                "tipo_propiedad": "Casa",
+                "banos_completos": null,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2022-02-10",
+                "precio_publicacion": 28700.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210189",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58045,
+                    -33.41551
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=70281",
+                "place": "Las Condes",
+                "barrio": "San Pascual",
+                "seudonimo": "CASA EVARISTO LILLO",
+                "status": "available",
+                "precio_uf": "28.700",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/02/Evaristo-Lillo-15-1.jpg",
+                "dormitorios": null,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210189",
+                "tipo_propiedad": "Casa",
+                "banos_completos": null,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2022-02-10",
+                "precio_publicacion": 28700.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210122",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.51999,
+                    -33.4496
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=61321",
+                "place": "La Reina",
+                "barrio": "La Reina Alta",
+                "seudonimo": "CASA ÁLVARO CASANOVA II",
+                "status": "available",
+                "precio_uf": "25.300",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2021/09/Alvaro-Casanova-538-40-1.jpg",
+                "dormitorios": null,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "La Reina",
+                "banos_servicio": null,
+                "codigo_interno": "210122",
+                "tipo_propiedad": "Casa",
+                "banos_completos": null,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2021-09-30",
+                "precio_publicacion": 26800.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210233",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59892,
+                    -33.44686
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=73353",
+                "place": "Ñuñoa",
+                "barrio": "El Aguilucho",
+                "seudonimo": "PISO GENERAL JOSÉ ARTIGAS",
+                "status": "available",
+                "precio_uf": "4.200",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/03/gral-jose-artiga-01.jpg",
+                "dormitorios": 1.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210233",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 1.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2022-03-25",
+                "precio_publicacion": 4200.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210240",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61391,
+                    -33.44482
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=74146",
+                "place": "Providencia",
+                "barrio": "Dalmacia",
+                "seudonimo": "PISO LOS CAPITANES",
+                "status": "available",
+                "precio_uf": "7.550",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/Los-Capitanes-3.jpg",
+                "dormitorios": null,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210240",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": null,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2022-04-06",
+                "precio_publicacion": 7550.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210272",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54833,
+                    -33.39152
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=77758",
+                "place": "Las Condes",
+                "barrio": "Mardoñal",
+                "seudonimo": "CASA MARDOÑAL",
+                "status": "available",
+                "precio_uf": "13.400",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Las-Vizcachas-8743-10.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210272",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2022-06-01",
+                "precio_publicacion": 13400.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210464",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57489,
+                    -33.42547
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=96898",
+                "place": "Las Condes",
+                "barrio": "Los Descubridores",
+                "seudonimo": "CASA JOSÉ DE MORALEDA",
+                "status": "available",
+                "precio_uf": "15.950",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/04/Jose-de-Moraleda-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210464",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-04-05",
+                "precio_publicacion": 15950.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210282",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.10004,
+                    -34.02656
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=79682",
+                "place": "Linares",
+                "barrio": "El Olivar",
+                "seudonimo": "CASA INTEGRA",
+                "status": "available",
+                "precio_uf": "14.300",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/06/Linares-Casa-2-21-2.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "ALHUE",
+                "banos_servicio": null,
+                "codigo_interno": "210282",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Alhué",
+                "fecha_publicacion": "2022-06-29",
+                "precio_publicacion": 14300.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210283",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -71.10004,
+                    -34.02656
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=79579",
+                "place": "Linares",
+                "barrio": "El Olivar",
+                "seudonimo": "CASA LODGE",
+                "status": "available",
+                "precio_uf": "16.400",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/06/Linares-Casa-1-16-1.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "ALHUE",
+                "banos_servicio": 1.00,
+                "codigo_interno": "210283",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Alhué",
+                "fecha_publicacion": "2022-06-29",
+                "precio_publicacion": 16400.00,
+                "dormitorios_servicio": 1.00
+            }
+        },
+        {
+            "id": "210294",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55902,
+                    -33.38262
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=81095",
+                "place": "Vitacura",
+                "barrio": "Lo Gallo",
+                "seudonimo": "PISO LO BELTRÁN",
+                "status": "unavailable",
+                "precio_uf": "7.800",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/07/Lo-Beltran-01.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Vitacura",
+                "banos_servicio": null,
+                "codigo_interno": "210294",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Vitacura",
+                "fecha_publicacion": "2022-07-25",
+                "precio_publicacion": 7800.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210570",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.52813,
+                    -33.43789
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=108261",
+                "place": "La Reina",
+                "barrio": "La Reina Alta",
+                "seudonimo": "CASA ONOFRE JARPA",
+                "status": "available",
+                "precio_uf": "21.700",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/Onofre-Jarpa-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "La Reina",
+                "banos_servicio": null,
+                "codigo_interno": "210570",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2023-08-23",
+                "precio_publicacion": 21700.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210331",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5433,
+                    -33.39816
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=84780",
+                "place": "Las Condes",
+                "barrio": "Gran Bretaña",
+                "seudonimo": "CASA OXFORD II",
+                "status": "available",
+                "precio_uf": "19.950",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Oxford-1.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": 1.00,
+                "codigo_interno": "210331",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2022-09-09",
+                "precio_publicacion": 19950.00,
+                "dormitorios_servicio": 1.00
+            }
+        },
+        {
+            "id": "210397",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54827,
+                    -33.40312
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=90114",
+                "place": "Las Condes",
+                "barrio": "Montegrande",
+                "seudonimo": "CASA CHESTERTON",
+                "status": "available",
+                "precio_uf": "15.850",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/06/010-3.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": 0.00,
+                "codigo_interno": "210397",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2022-12-05",
+                "precio_publicacion": 15850.00,
+                "dormitorios_servicio": 0.00
+            }
+        },
+        {
+            "id": "210343",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58763,
+                    -33.43914
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=85597",
+                "place": "Providencia",
+                "barrio": "Dinamarca",
+                "seudonimo": "CASA ELIECER PARADA III",
+                "status": "available",
+                "precio_uf": "16.600",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/09/010-4.jpg",
+                "dormitorios": 5.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210343",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2022-09-29",
+                "precio_publicacion": 16600.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210405",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60565,
+                    -33.44074
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=90657",
+                "place": "Providencia",
+                "barrio": "Plaza Pedro de Valdivia",
+                "seudonimo": "CASA ALMIRANTE BYRD",
+                "status": "available",
+                "precio_uf": "15.400",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/04/Almirante-Byrd-41.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": 0.00,
+                "codigo_interno": "210405",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2022-12-20",
+                "precio_publicacion": 15400.00,
+                "dormitorios_servicio": 0.00
+            }
+        },
+        {
+            "id": "210360",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58526,
+                    -33.44635
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=87219",
+                "place": "Ñuñoa",
+                "barrio": "Parque Botánico",
+                "seudonimo": "CASA ECHEÑIQUE",
+                "status": "available",
+                "precio_uf": "15.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Av-Echenique-4336-19.jpg",
+                "dormitorios": 5.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": 0.00,
+                "codigo_interno": "210360",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2022-10-25",
+                "precio_publicacion": 15500.00,
+                "dormitorios_servicio": 1.00
+            }
+        },
+        {
+            "id": "210356",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57297,
+                    -33.41769
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=86855",
+                "place": "Las Condes",
+                "barrio": "San Pascual",
+                "seudonimo": "PISO MARTÍN DE ZAMORA V",
+                "status": "available",
+                "precio_uf": "9.000",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/10/Martin-de-Zamora-5031-dp-909-2.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "LAS CONDES",
+                "banos_servicio": 0.00,
+                "codigo_interno": "210356",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2022-10-19",
+                "precio_publicacion": 9000.00,
+                "dormitorios_servicio": 1.00
+            }
+        },
+        {
+            "id": "210373",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55815,
+                    -33.41864
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=87541",
+                "place": "Las Condes",
+                "barrio": "Los Descubridores",
+                "seudonimo": "PISO PONTEVEDRA",
+                "status": "available",
+                "precio_uf": "8.300",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/10/Pontevedra-12-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210373",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2022-10-28",
+                "precio_publicacion": 8300.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210380",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57743,
+                    -33.4504
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=89194",
+                "place": "Ñuñoa",
+                "barrio": "Los Guindos",
+                "seudonimo": "CASA PASCUAL BABURIZZA",
+                "status": "available",
+                "precio_uf": "17.800",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/05/Pascual-Baburizza-63.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": 0.00,
+                "codigo_interno": "210380",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2022-11-23",
+                "precio_publicacion": 17800.00,
+                "dormitorios_servicio": 0.00
+            }
+        },
+        {
+            "id": "210392",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60279,
+                    -33.4384
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=89835",
+                "place": "Providencia",
+                "barrio": "Plaza Pedro de Valdivia",
+                "seudonimo": "PISO SUECIA I",
+                "status": "available",
+                "precio_uf": "6.650",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/12/Suecia-9.jpg",
+                "dormitorios": 1.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": 0.00,
+                "codigo_interno": "210392",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 1.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2022-12-01",
+                "precio_publicacion": 6650.00,
+                "dormitorios_servicio": 0.00
+            }
+        },
+        {
+            "id": "210401",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60977,
+                    -33.43439
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=90443",
+                "place": "Providencia",
+                "barrio": "Los Estanques",
+                "seudonimo": "PISO BIARRITZ II",
+                "status": "available",
+                "precio_uf": "10.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/03/06.2.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": 1.00,
+                "codigo_interno": "210401",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 1.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2022-12-14",
+                "precio_publicacion": 10900.00,
+                "dormitorios_servicio": 1.00
+            }
+        },
+        {
+            "id": "210466",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60615,
+                    -33.44649
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=96566",
+                "place": "Ñuñoa",
+                "barrio": "Villaseca",
+                "seudonimo": "PISO PEDRO DE VALDIVIA V",
+                "status": "available",
+                "precio_uf": "5.700",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/06/Pedro-de-Valdivia-25.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210466",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-04-03",
+                "precio_publicacion": 5700.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210438",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57346,
+                    -33.42653
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=93584",
+                "place": "Las Condes",
+                "barrio": "Latadía",
+                "seudonimo": "CASA ISABEL LA CATÓLICA III",
+                "status": "available",
+                "precio_uf": "17.400",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/06/2023.02.21-Isabel-La-Catolica-4677-5.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210438",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-02-21",
+                "precio_publicacion": 17400.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210460",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58134,
+                    -33.42319
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=95639",
+                "place": "Las Condes",
+                "barrio": "Vaticano",
+                "seudonimo": "PISO CÉSAR CASCABEL",
+                "status": "available",
+                "precio_uf": "11.700",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/03/2023.03.20-Cesar-Cascabel-4369-2-2.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210460",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-03-20",
+                "precio_publicacion": 11700.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210462",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5881,
+                    -33.45118
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=96289",
+                "place": "Ñuñoa",
+                "barrio": "Montenegro",
+                "seudonimo": "TOWNHOUSE JULIO ZEGERS",
+                "status": "available",
+                "precio_uf": "10.400",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/portadas-web-novacion-04.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210462",
+                "tipo_propiedad": "Townhouse",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-03-28",
+                "precio_publicacion": 10400.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210485",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57912,
+                    -33.43944
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=98283",
+                "place": "Ñuñoa",
+                "barrio": "Los Adoquines",
+                "seudonimo": "PATIO BREMEN",
+                "status": "unavailable",
+                "precio_uf": "9.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/04/Portada-web-novacion-bremen-01.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210485",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-04-24",
+                "precio_publicacion": 9900.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210498",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59433,
+                    -33.45069
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=99425",
+                "place": "Ñuñoa",
+                "barrio": "Plaza Ñuñoa",
+                "seudonimo": "PISO JORGE WASHINGTON IV",
+                "status": "available",
+                "precio_uf": "6.550",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/05/034-2.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210498",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-05-08",
+                "precio_publicacion": 6550.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210452",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59121,
+                    -33.39781
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=95218",
+                "place": "Vitacura",
+                "barrio": "Lo Castillo",
+                "seudonimo": "CASA ESPOZ",
+                "status": "available",
+                "precio_uf": "62",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/03/2023.03.09-Espoz-4171-6.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Vitacura",
+                "banos_servicio": null,
+                "codigo_interno": "210452",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Vitacura",
+                "fecha_publicacion": "2023-03-09",
+                "precio_publicacion": 62.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210474",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57018,
+                    -33.44606
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=96745",
+                "place": "La Reina",
+                "barrio": "Lynch",
+                "seudonimo": "PISO GUILLERMO TELL",
+                "status": "available",
+                "precio_uf": "8.450",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/010.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "La Reina",
+                "banos_servicio": null,
+                "codigo_interno": "210474",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2023-04-05",
+                "precio_publicacion": 8450.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210456",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53613,
+                    -33.44285
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=95485",
+                "place": "La Reina",
+                "barrio": "Ossandon",
+                "seudonimo": "CASA ECHEÑIQUE II",
+                "status": "available",
+                "precio_uf": "14.250",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/05/07-4.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "La Reina",
+                "banos_servicio": null,
+                "codigo_interno": "210456",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2023-03-17",
+                "precio_publicacion": 14250.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210493",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57374,
+                    -33.4401
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=98919",
+                "place": "Ñuñoa",
+                "barrio": "Los Adoquines",
+                "seudonimo": "PISO AMAPOLAS VI",
+                "status": "available",
+                "precio_uf": "6.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/06/portada-web-novacion-03.jpg",
+                "dormitorios": 0.02,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210493",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 0.02,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-05-03",
+                "precio_publicacion": 6500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210463",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60097,
+                    -33.42125
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=96664",
+                "place": "Providencia",
+                "barrio": "Los Leones",
+                "seudonimo": "PISO HERNANDO DE AGUIRRE I",
+                "status": "available",
+                "precio_uf": "9.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/05/2023.04.03-Hernando-de-Aguirre-329-7.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": 1.00,
+                "codigo_interno": "210463",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-04-04",
+                "precio_publicacion": 9500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210506",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58178,
+                    -33.42767
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=100218",
+                "place": "Las Condes",
+                "barrio": "Vaticano",
+                "seudonimo": "CASA JUAN DE AUSTRIA II",
+                "status": "available",
+                "precio_uf": "13.650",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/05/Juan-de-Austria-11-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210506",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-05-19",
+                "precio_publicacion": 13650.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210515",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59129,
+                    -33.39814
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=101004",
+                "place": "Vitacura",
+                "barrio": "Lo Castillo",
+                "seudonimo": "PATIO ESPOZ",
+                "status": "available",
+                "precio_uf": "15.800",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/09/2023.06.05-Espoz-4141-9.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Vitacura",
+                "banos_servicio": null,
+                "codigo_interno": "210515",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Vitacura",
+                "fecha_publicacion": "2023-06-06",
+                "precio_publicacion": 15800.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210484",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60373,
+                    -33.43455
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=97548",
+                "place": "Providencia",
+                "barrio": "Lyon",
+                "seudonimo": "PATIO POCURO",
+                "status": "available",
+                "precio_uf": "10.300",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/01-4.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210484",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-04-14",
+                "precio_publicacion": 10300.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210505",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62759,
+                    -33.44584
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=104098",
+                "place": "Providencia",
+                "barrio": "Italia",
+                "seudonimo": "PISO SEMINARIO II",
+                "status": "available",
+                "precio_uf": "4.600",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Santa-Victoria-1-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210505",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-07-11",
+                "precio_publicacion": 4600.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210489",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.63111,
+                    -33.44183
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=98477",
+                "place": "Providencia",
+                "barrio": "Parque Bustamante",
+                "seudonimo": "PISO BUSTAMANTE IV",
+                "status": "available",
+                "precio_uf": "6.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/010-3.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210489",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 1.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-04-25",
+                "precio_publicacion": 6900.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210562",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54796,
+                    -33.44414
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=109074",
+                "place": "La Reina",
+                "barrio": "Ossandon",
+                "seudonimo": "CASA SIMÓN BOLÍVAR VII",
+                "status": "available",
+                "precio_uf": "14.000",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/09/Simon-Bolivar-16.jpg",
+                "dormitorios": 6.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "La Reina",
+                "banos_servicio": 1.00,
+                "codigo_interno": "210562",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 5.00,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2023-09-05",
+                "precio_publicacion": 14000.00,
+                "dormitorios_servicio": 1.00
+            }
+        },
+        {
+            "id": "210488",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.52822,
+                    -33.4336
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=98647",
+                "place": "La Reina",
+                "barrio": "La Reina Alta",
+                "seudonimo": "CASA VALENZUELA PUELMA III",
+                "status": "available",
+                "precio_uf": "14.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/04/Valenzuela-Puelma-21-1.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "La Reina",
+                "banos_servicio": null,
+                "codigo_interno": "210488",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2023-04-28",
+                "precio_publicacion": 14900.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210490",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61391,
+                    -33.44494
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=98418",
+                "place": "Providencia",
+                "barrio": "Dalmacia",
+                "seudonimo": "PISO LOS CAPITANES II",
+                "status": "available",
+                "precio_uf": "6.700",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/2023.04.24-Los-Capitanes-1355-5.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210490",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-04-25",
+                "precio_publicacion": 6700.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210519",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57591,
+                    -33.41957
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=101672",
+                "place": "Las Condes",
+                "barrio": "San Pascual",
+                "seudonimo": "PISO CRISTÓBAL COLÓN V",
+                "status": "available",
+                "precio_uf": "9.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/06/2023.06.08-Colon-4840-2.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210519",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-06-12",
+                "precio_publicacion": 9500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210516",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58856,
+                    -33.44557
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=101425",
+                "place": "Ñuñoa",
+                "barrio": "Parque Botánico",
+                "seudonimo": "CASA LUIS PEREIRA II",
+                "status": "available",
+                "precio_uf": "17.600",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Luis-Pereira-3.jpg",
+                "dormitorios": 5.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210516",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-06-09",
+                "precio_publicacion": 17600.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210511",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.52557,
+                    -33.43966
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=101249",
+                "place": "La Reina",
+                "barrio": "La Reina Alta",
+                "seudonimo": "CASA BENJAMÍN SUBERCASEUX III",
+                "status": "available",
+                "precio_uf": "14.300",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/06/Benjamin-Subercaseux-10.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "La Reina",
+                "banos_servicio": null,
+                "codigo_interno": "210511",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2023-06-06",
+                "precio_publicacion": 14300.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210504",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5666,
+                    -33.4212
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": null,
+                "place": null,
+                "barrio": "Los Descubridores",
+                "seudonimo": null,
+                "status": null,
+                "precio_uf": null,
+                "thumbnail": null,
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210504",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 8.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-06-28",
+                "precio_publicacion": 42.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210526",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.52842,
+                    -33.50097
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=103025",
+                "place": "Peñalolén",
+                "barrio": "Las Pircas",
+                "seudonimo": "CASA QUILÍN",
+                "status": "available",
+                "precio_uf": "16.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/Quilin-Sur-20.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "PENALOLEN",
+                "banos_servicio": null,
+                "codigo_interno": "210526",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Peñalolén",
+                "fecha_publicacion": "2023-06-28",
+                "precio_publicacion": 16900.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210509",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57496,
+                    -33.38208
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=100972",
+                "place": "Vitacura",
+                "barrio": "Sector Borde Río",
+                "seudonimo": "CASA CARLOS VAZ FERREIRA",
+                "status": "available",
+                "precio_uf": "20.100",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Carlos-Vaz-Ferreira-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Vitacura",
+                "banos_servicio": null,
+                "codigo_interno": "210509",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Vitacura",
+                "fecha_publicacion": "2023-06-05",
+                "precio_publicacion": 20100.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210521",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56285,
+                    -33.38493
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=102922",
+                "place": "Vitacura",
+                "barrio": "Lo Beltrán",
+                "seudonimo": "CASA EL AROMO III",
+                "status": "available",
+                "precio_uf": "24.000",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/06/2023.06.26-El-Aromo-7368-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Vitacura",
+                "banos_servicio": null,
+                "codigo_interno": "210521",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Vitacura",
+                "fecha_publicacion": "2023-06-27",
+                "precio_publicacion": 24000.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210522",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58852,
+                    -33.46195
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=102141",
+                "place": "Ñuñoa",
+                "barrio": "Parque Juan XXIII",
+                "seudonimo": "CASA LOS ALMENDROS",
+                "status": "unavailable",
+                "precio_uf": "13.800",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/06/2023.06.16-Los-Almendros-4090-9-2.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210522",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-06-16",
+                "precio_publicacion": 13800.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210536",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59057,
+                    -33.45323
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=103824",
+                "place": "Ñuñoa",
+                "barrio": "Plaza Ñuñoa",
+                "seudonimo": "PISO PEDRO TORRES II",
+                "status": "available",
+                "precio_uf": "4.950",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Pedro-Torres-5.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": 0.01,
+                "codigo_interno": "210536",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 1.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-07-05",
+                "precio_publicacion": 4950.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210561",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59698,
+                    -33.43784
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=106994",
+                "place": "Providencia",
+                "barrio": "Plaza de la Alcaldesa",
+                "seudonimo": "DÚPLEX LUIS THAYER OJEDA II",
+                "status": "available",
+                "precio_uf": "7.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/2023.08.04-Luis-Thayer-Ojeda-2185-1-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210561",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-08",
+                "precio_publicacion": 7900.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210528",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62531,
+                    -33.44313
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=102047",
+                "place": "Providencia",
+                "barrio": "Italia",
+                "seudonimo": "PISO LUIS MONTANER II",
+                "status": "available",
+                "precio_uf": "7.950",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/04-3.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210528",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 1.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-06-16",
+                "precio_publicacion": 7950.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210548",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54125,
+                    -33.422
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=105568",
+                "place": "Las Condes",
+                "barrio": "Fuenteovejuna",
+                "seudonimo": "CASA ROBERTO GUZMÁN",
+                "status": "available",
+                "precio_uf": "13.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Roberto-Guzman-1-1.jpg",
+                "dormitorios": 5.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210548",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-07-25",
+                "precio_publicacion": 13500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210535",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.48607,
+                    -33.36217
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=103184",
+                "place": "Lo Barnechea",
+                "barrio": "El Arrayán",
+                "seudonimo": "CASA LA PUNTILLA II",
+                "status": "available",
+                "precio_uf": "20.000",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/06/06-2.jpg",
+                "dormitorios": null,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "LO BARNECHEA",
+                "banos_servicio": null,
+                "codigo_interno": "210535",
+                "tipo_propiedad": "Casa",
+                "banos_completos": null,
+                "comuna_propiedad": "Lo Barnechea",
+                "fecha_publicacion": "2023-06-29",
+                "precio_publicacion": 20000.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210542",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55494,
+                    -33.4419
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=104766",
+                "place": "La Reina",
+                "barrio": "Palmas de Mallorca",
+                "seudonimo": "CASA LA CAÑADA",
+                "status": "available",
+                "precio_uf": "8.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/La-Canada-11.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "LA REINA",
+                "banos_servicio": null,
+                "codigo_interno": "210542",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2023-07-19",
+                "precio_publicacion": 8900.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210572",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60575,
+                    -33.4401
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=107803",
+                "place": "Providencia",
+                "barrio": "Plaza Pedro de Valdivia",
+                "seudonimo": "DÚPLEX BUSTOS",
+                "status": "available",
+                "precio_uf": "28",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/Bustos-1.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210572",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-17",
+                "precio_publicacion": 28.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210559",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56304,
+                    -33.44015
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=106952",
+                "place": "La Reina",
+                "barrio": "Príncipe de Gales",
+                "seudonimo": "CASA REINA VICTORIA III",
+                "status": "available",
+                "precio_uf": "11.000",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/Reina-Victoria-16-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "La Reina",
+                "banos_servicio": null,
+                "codigo_interno": "210559",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2023-08-08",
+                "precio_publicacion": 11000.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210550",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59354,
+                    -33.431
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=105898",
+                "place": "Providencia",
+                "barrio": "Las Lilas",
+                "seudonimo": "PISO JORGE MATTE IV",
+                "status": "available",
+                "precio_uf": "9.100",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/01-7.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210550",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-07-27",
+                "precio_publicacion": 9100.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210552",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54159,
+                    -33.3817
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=108786",
+                "place": "Vitacura",
+                "barrio": "La Llavería",
+                "seudonimo": "CASA ROMERAL",
+                "status": "available",
+                "precio_uf": "19.850",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/2023.08.30-Los-Husares-9858-1-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Vitacura",
+                "banos_servicio": null,
+                "codigo_interno": "210552",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Vitacura",
+                "fecha_publicacion": "2023-08-30",
+                "precio_publicacion": 19850.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210589",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60609,
+                    -33.43742
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=109606",
+                "place": "Providencia",
+                "barrio": "Plaza Pedro de Valdivia",
+                "seudonimo": "PISO ANDACOLLO IV",
+                "status": "available",
+                "precio_uf": "36",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/09/Andacollo-1.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210589",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-09-08",
+                "precio_publicacion": 36.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210565",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60525,
+                    -33.43707
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=108082",
+                "place": "Providencia",
+                "barrio": "Plaza Pedro de Valdivia",
+                "seudonimo": "PISO CALIFORNIA II",
+                "status": "available",
+                "precio_uf": "12.950",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/2023.08.21-California-2151-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210565",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-22",
+                "precio_publicacion": 12950.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210555",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.62235,
+                    -33.26485
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=106605",
+                "place": "Colina - Chicureo",
+                "barrio": "Chicureo",
+                "seudonimo": "CASA CANQUÉN",
+                "status": "available",
+                "precio_uf": "17.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/novacion-01.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "COLINA",
+                "banos_servicio": null,
+                "codigo_interno": "210555",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Colina",
+                "fecha_publicacion": "2023-08-03",
+                "precio_publicacion": 17900.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210558",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59191,
+                    -33.43967
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=106225",
+                "place": "Providencia",
+                "barrio": "Dinamarca",
+                "seudonimo": "CASA HERNANDO DE AGUIRRE VI",
+                "status": "available",
+                "precio_uf": "13.700",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/09/2023.07.31-Hernando-de-Aguirre-3570-2.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210558",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 1.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-07-31",
+                "precio_publicacion": 13700.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210579",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60393,
+                    -33.44154
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=108916",
+                "place": "Providencia",
+                "barrio": "Plaza Pedro de Valdivia",
+                "seudonimo": "PISO LUIS AMUNDSEN",
+                "status": "available",
+                "precio_uf": "27,8",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/2023.08.31-Luis-Amundsen-2170-1.jpg",
+                "dormitorios": 0.02,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210579",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-31",
+                "precio_publicacion": 27.80,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210557",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59973,
+                    -33.42838
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=106471",
+                "place": "Providencia",
+                "barrio": "Las Lilas",
+                "seudonimo": "PISO ROBERTO DEL RÍO VII",
+                "status": "available",
+                "precio_uf": "9.100",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/novacion-roberto-del-rio-01.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210557",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-03",
+                "precio_publicacion": 9100.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210573",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5524,
+                    -33.38056
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=108379",
+                "place": "Vitacura",
+                "barrio": "Padre Hurtado Norte",
+                "seudonimo": "CASA LA SIEMBRA",
+                "status": "available",
+                "precio_uf": "80,4",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/2023.08.22-La-Siembra-8926-1.jpg",
+                "dormitorios": 5.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Vitacura",
+                "banos_servicio": 1.00,
+                "codigo_interno": "210573",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 5.00,
+                "comuna_propiedad": "Vitacura",
+                "fecha_publicacion": "2023-08-23",
+                "precio_publicacion": 80.40,
+                "dormitorios_servicio": 1.00
+            }
+        },
+        {
+            "id": "210578",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59684,
+                    -33.42945
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=108248",
+                "place": "Providencia",
+                "barrio": "Las Lilas",
+                "seudonimo": "PISO MARCEL DUHAUT II",
+                "status": "available",
+                "precio_uf": "23,2",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/03-5.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210578",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-24",
+                "precio_publicacion": 23.20,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210563",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.53183,
+                    -33.38385
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=107222",
+                "place": "Las Condes",
+                "barrio": "Lo Fontecilla",
+                "seudonimo": "PISO LAS CONDES II",
+                "status": "available",
+                "precio_uf": "7.300",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/base-portadas-web-novacion-02.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": 0.00,
+                "codigo_interno": "210563",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-08-09",
+                "precio_publicacion": 7300.00,
+                "dormitorios_servicio": 0.00
+            }
+        },
+        {
+            "id": "210577",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58438,
+                    -33.42662
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=109488",
+                "place": "Las Condes",
+                "barrio": "Vaticano",
+                "seudonimo": "PISO ALCÁNTARA VII",
+                "status": "available",
+                "precio_uf": "8.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/09/2023.09.05-Alcantara-1180-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210577",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-09-07",
+                "precio_publicacion": 8900.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210568",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54488,
+                    -33.42498
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=107543",
+                "place": "Las Condes",
+                "barrio": "Sector Portal La Reina",
+                "seudonimo": "PISO IV CENTENARIO III",
+                "status": "available",
+                "precio_uf": "7.700",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/IV-Centenario-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210568",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-08-14",
+                "precio_publicacion": 7700.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210574",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61094,
+                    -33.43438
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=109257",
+                "place": "Providencia",
+                "barrio": "Los Estanques",
+                "seudonimo": "PISO MARCHANT PEREIRA II",
+                "status": "available",
+                "precio_uf": "15,8",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/09/Marchant-Pereira-1.jpg",
+                "dormitorios": 1.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210574",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 1.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-09-06",
+                "precio_publicacion": 15.80,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210569",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59948,
+                    -33.43511
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=107643",
+                "place": "Providencia",
+                "barrio": "Plaza de la Alcaldesa",
+                "seudonimo": "PISO HOLANDA II",
+                "status": "available",
+                "precio_uf": "10.800",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/010-4.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210569",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-14",
+                "precio_publicacion": 10800.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210575",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56215,
+                    -33.45548
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=108660",
+                "place": "La Reina",
+                "barrio": "Blest Gana",
+                "seudonimo": "CASA MILNA",
+                "status": "available",
+                "precio_uf": "12.300",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/Milna-9-1.jpg",
+                "dormitorios": 4.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "La Reina",
+                "banos_servicio": null,
+                "codigo_interno": "210575",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "La Reina",
+                "fecha_publicacion": "2023-08-29",
+                "precio_publicacion": 12300.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210581",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59092,
+                    -33.42998
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=109335",
+                "place": "Providencia",
+                "barrio": "Las Lilas",
+                "seudonimo": "CASA AMAPOLAS V",
+                "status": "available",
+                "precio_uf": "26.000",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/09/Amapolas-17.jpg",
+                "dormitorios": 5.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210581",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 3.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-09-06",
+                "precio_publicacion": 26000.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210576",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59005,
+                    -33.45496
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=108991",
+                "place": "Ñuñoa",
+                "barrio": "Plaza Ñuñoa",
+                "seudonimo": "PISO PEDRO TORRES III",
+                "status": "available",
+                "precio_uf": "18",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/09/01.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210576",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-09-01",
+                "precio_publicacion": 18.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210207",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59049,
+                    -33.44305
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=71770",
+                "place": "Providencia",
+                "barrio": "Regina Pacis",
+                "seudonimo": "CASA PUCARÁ",
+                "status": "sold",
+                "precio_uf": "12.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/08/Pucara-9-2.jpg",
+                "dormitorios": null,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210207",
+                "tipo_propiedad": "Casa",
+                "banos_completos": null,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2022-03-03",
+                "precio_publicacion": 12500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210207",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59049,
+                    -33.44305
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=92678",
+                "place": "Providencia",
+                "barrio": "Regina Pacis",
+                "seudonimo": "CASA PUCARÁ",
+                "status": "available",
+                "precio_uf": "12.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/04/Pucara-9.jpg",
+                "dormitorios": null,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210207",
+                "tipo_propiedad": "Casa",
+                "banos_completos": null,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2022-03-03",
+                "precio_publicacion": 12500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210375",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5739,
+                    -33.44734
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=88424",
+                "place": "Ñuñoa",
+                "barrio": "Pucará",
+                "seudonimo": "PISO HERIBERTO COVARRUBIAS",
+                "status": "sold",
+                "precio_uf": "8.350",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Heriberto-Covarrubias-679-dp-506-2-2.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210375",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2022-11-10",
+                "precio_publicacion": 8350.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210441",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.56666,
+                    -33.42006
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": null,
+                "place": null,
+                "barrio": "Los Descubridores",
+                "seudonimo": null,
+                "status": null,
+                "precio_uf": null,
+                "thumbnail": null,
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210441",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 6.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": null,
+                "precio_publicacion": 50.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210518",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59587,
+                    -33.4306
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=106132",
+                "place": "Providencia",
+                "barrio": "Las Lilas",
+                "seudonimo": "PATIO EL VERGEL",
+                "status": "sold",
+                "precio_uf": "7.300",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/El-Vergel-1-2.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210518",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-07-31",
+                "precio_publicacion": 7300.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210501",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59754,
+                    -33.44212
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=99980",
+                "place": "Providencia",
+                "barrio": "El Aguilucho",
+                "seudonimo": "TOWNHOUSE HOLANDA III",
+                "status": "sold",
+                "precio_uf": "7.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/07/2023.05.15-Holanda-2558-1BYN.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210501",
+                "tipo_propiedad": "Townhouse",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-05-16",
+                "precio_publicacion": 7500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210571",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.60538,
+                    -33.44293
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=107987",
+                "place": "Providencia",
+                "barrio": "Plaza Pedro de Valdivia",
+                "seudonimo": "PISO DIEGO DE ALMAGRO II",
+                "status": "sold",
+                "precio_uf": "7.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/01-2-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210571",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 0.02,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-21",
+                "precio_publicacion": 7900.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210556",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.55432,
+                    -33.42001
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=105790",
+                "place": "Las Condes",
+                "barrio": "Los Descubridores",
+                "seudonimo": "PISO MARTÍN ALONSO PINZÓN IV",
+                "status": "sold",
+                "precio_uf": "9.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/2023.07.25-Martin-Alonso-Pinzon-7444-11-2.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210556",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-07-26",
+                "precio_publicacion": 9500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210387",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61018,
+                    -33.41559
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=89295",
+                "place": "Providencia",
+                "barrio": "Pedro de Valdivia Norte",
+                "seudonimo": "CASA LOS ESPAÑOLES IV",
+                "status": "rented",
+                "precio_uf": "52",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/08/Los-Espanoles-14.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": 1.00,
+                "codigo_interno": "210387",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2022-11-24",
+                "precio_publicacion": 52.00,
+                "dormitorios_servicio": 1.00
+            }
+        },
+        {
+            "id": "210384",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59516,
+                    -33.45167
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=88876",
+                "place": "Ñuñoa",
+                "barrio": "Plaza Ñuñoa",
+                "seudonimo": "PISO ENRIQUE RICHARD",
+                "status": "rented",
+                "precio_uf": "31",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/12/Enrique-Richard-001.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": 0.00,
+                "codigo_interno": "210384",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2022-11-18",
+                "precio_publicacion": 31.00,
+                "dormitorios_servicio": 0.00
+            }
+        },
+        {
+            "id": "210400",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59277,
+                    -33.41729
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=89773",
+                "place": "Las Condes",
+                "barrio": "El Golf",
+                "seudonimo": "PISO HENDAYA IV",
+                "status": "rented",
+                "precio_uf": "25,22",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/08/Piso-Hendaya-1.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": 0.00,
+                "codigo_interno": "210400",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2022-12-01",
+                "precio_publicacion": 25.22,
+                "dormitorios_servicio": 0.00
+            }
+        },
+        {
+            "id": "210414",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.57575,
+                    -33.42541
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=91743",
+                "place": "Las Condes",
+                "barrio": "Los Descubridores",
+                "seudonimo": "PATIO ISABEL LA CATÓLICA",
+                "status": "rented",
+                "precio_uf": "52",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/08/009.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": 1.00,
+                "codigo_interno": "210414",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-01-12",
+                "precio_publicacion": 52.00,
+                "dormitorios_servicio": 1.00
+            }
+        },
+        {
+            "id": "210439",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58598,
+                    -33.42343
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=93844",
+                "place": "Las Condes",
+                "barrio": "Vaticano",
+                "seudonimo": "PISO ALCÁNTARA V",
+                "status": "prerented",
+                "precio_uf": "31",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/02/2023.02.14-Alcantara-900-12.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210439",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-02-17",
+                "precio_publicacion": 31.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210543",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.54337,
+                    -33.39833
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=104309",
+                "place": "Las Condes",
+                "barrio": "Gran Bretaña",
+                "seudonimo": "CASA OXFORD IV",
+                "status": "prerented",
+                "precio_uf": "84",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/2023.07.12-Oxford-579-4.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Las Condes",
+                "banos_servicio": null,
+                "codigo_interno": "210543",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Las Condes",
+                "fecha_publicacion": "2023-07-12",
+                "precio_publicacion": 84.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210551",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.5899,
+                    -33.47095
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=105275",
+                "place": "Ñuñoa",
+                "barrio": "Los Presidentes",
+                "seudonimo": "CASA JUAN MOYA MORALES",
+                "status": "prerented",
+                "precio_uf": "49,8",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Juan-Moya-Morales-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210551",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 1.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-07-21",
+                "precio_publicacion": 49.80,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210554",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.61279,
+                    -33.42494
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=104748",
+                "place": "Providencia",
+                "barrio": "Divina Providencia",
+                "seudonimo": "PISO FÉLIX CABRERA V",
+                "status": "prerented",
+                "precio_uf": "19,5",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/07/Piso-Felix-Cabrera-15.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210554",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-07-17",
+                "precio_publicacion": 19.50,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210567",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.59606,
+                    -33.42871
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=106802",
+                "place": "Providencia",
+                "barrio": "Las Lilas",
+                "seudonimo": "PISO EL BOSQUE II",
+                "status": "prerented",
+                "precio_uf": "34",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/Piso-El-Bosque-1-1.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Providencia",
+                "banos_servicio": null,
+                "codigo_interno": "210567",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-04",
+                "precio_publicacion": 34.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210566",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.58852,
+                    -33.46195
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=106900",
+                "place": "Ñuñoa",
+                "barrio": "Parque Juan XXIII",
+                "seudonimo": "CASA LOS ALMENDROS II",
+                "status": "prerented",
+                "precio_uf": "38,8",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/2023.06.16-Los-Almendros-4090-6.jpg",
+                "dormitorios": 3.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": "Ñuñoa",
+                "banos_servicio": null,
+                "codigo_interno": "210566",
+                "tipo_propiedad": "Casa",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Ñuñoa",
+                "fecha_publicacion": "2023-08-07",
+                "precio_publicacion": 38.80,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210157",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.23052,
+                    -39.28211
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=64085",
+                "place": "Villarica",
+                "barrio": "",
+                "seudonimo": "ESTUDIO GUTIERREZ IRRIBARREN - CASA TRES CUMBRES II",
+                "status": "available",
+                "precio_uf": "11.900",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2021/11/0-CVR-4211-16112021-2.jpg",
+                "dormitorios": null,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "VILLARRICA",
+                "banos_servicio": null,
+                "codigo_interno": "210157",
+                "tipo_propiedad": "Casa",
+                "banos_completos": null,
+                "comuna_propiedad": "Los Lagos",
+                "fecha_publicacion": "2022-01-01",
+                "precio_publicacion": 12500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210157",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.23052,
+                    -39.28211
+                ]
+            },
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=67018",
+                "place": "Villarica",
+                "barrio": "",
+                "seudonimo": "CASA TRES CUMBRES II",
+                "status": "available",
+                "precio_uf": "12.500",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2022/01/0-CVR-4211-16112021-2.jpg",
+                "dormitorios": null,
+                "tipo_negocio": "Venta",
+                "comuna_barrio": "VILLARRICA",
+                "banos_servicio": null,
+                "codigo_interno": "210157",
+                "tipo_propiedad": "Casa",
+                "banos_completos": null,
+                "comuna_propiedad": "Los Lagos",
+                "fecha_publicacion": "2022-01-01",
+                "precio_publicacion": 12500.00,
+                "dormitorios_servicio": null
+            }
+        },
+        {
+            "id": "210584",
+            "type": "Feature",
+            "geometry": null,
+            "properties": {
+                "link-publicacion-web": "https://lacasadejuana.cl/?p=108537",
+                "place": "Providencia",
+                "barrio": "Plaza Pedro de Valdivia",
+                "seudonimo": "PISO SUECIA VIII",
+                "status": "available",
+                "precio_uf": "33,3",
+                "thumbnail": "https://img.lacasadejuana.cl/images/w480/2023/08/Suecia-2.jpg",
+                "dormitorios": 2.00,
+                "tipo_negocio": "Arriendo",
+                "comuna_barrio": null,
+                "banos_servicio": null,
+                "codigo_interno": "210584",
+                "tipo_propiedad": "Departamento",
+                "banos_completos": 2.00,
+                "comuna_propiedad": "Providencia",
+                "fecha_publicacion": "2023-08-25",
+                "precio_publicacion": 33.30,
+                "dormitorios_servicio": null
+            }
+        }
+    ]
+}
