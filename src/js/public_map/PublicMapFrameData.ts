@@ -36,7 +36,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
         barriosButton: null,
         barriosVisible: false,
         mapOptions: {
-            zoom: 15,
+            zoom: 17,
             bounds: {},
             center: {
                 lat: -33.41,
@@ -325,7 +325,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     let gmap = this.gmap as google.maps.Map;
 
                     this.gmap.setCenter({ lat: Number(negocio.lat), lng: Number(negocio.lng) })
-                    this.gmap.setZoom(Math.max(this.gmap.getZoom(), 15))
+                    this.gmap.setZoom(Math.max(this.gmap.getZoom(), 17))
 
 
                 }
