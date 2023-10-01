@@ -270,13 +270,12 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
             globalThis.gmap.infowindow.close();
             let negocio = event.feature as google.maps.Data.Feature;
 
-            const codigo_interno = negocio.getProperty('codigo_interno')
-
+ 
 
 
             this.getMap().panTo(event.latLng)
 
-
+console.info('main_codigo_interno',main_codigo_interno)
             
 
             let html = (main_codigo_interno)? (new negocioFeatureToHtmlMini(

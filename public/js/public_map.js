@@ -54874,7 +54874,7 @@ var PublicMapStore = class extends BaseClass {
         let negocio = this.$store.negocios.get(this.codigo_interno);
         if (negocio) {
           let { lat, lng } = negocio;
-          customElementsMap.setCenter({ lat, lng });
+          customElementsMap.setCenter({ lat, lng }).setZoom(15);
         }
       }
     }

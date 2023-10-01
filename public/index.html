@@ -32,6 +32,7 @@
                             let qs = new URL(location.href)
                             if (qs.searchParams.get('codigo_interno')) {
                                 this.codigo_interno = qs.searchParams.get('codigo_interno')
+                                this.$store.public_maps.codigo_interno=this.codigo_interno;
                             }
                             if (qs.searchParams.get('extent')) {
                     

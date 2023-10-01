@@ -45,7 +45,8 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     url: URL;
     feature_collection: GeoJSON.FeatureCollection<GeoJSON.Geometry> = { type: 'FeatureCollection', features: [] }
     layerSlugs: string[] = []
-    codigo_interno: string = null
+    _codigo_interno: string = null
+ 
     constructor() {
         super()
 
@@ -66,11 +67,26 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
             extendMapDataProtoType(maps)
             this.ready = true;
             this.processEventListeners('ready', maps)
-
-
         })
+        Alpine.store('negocios').once('complete', () => {
+            this.marquee('setting center on codigo interno')
+            let {lat,lng}=this.mainFeature;
+                
+                
+                    this.customElementsMap.setCenter({ lat, lng })
+                    this.customElementsMap.setZoom(17)
+                
+            
+        });
     }
     _customElementsMap: google.maps.Map = null
+    setCenterByCodigoInterno() {
+        let {lat,lng}=this.mainFeature;
+                
+                
+        this.customElementsMap.setCenter({ lat, lng })
+        this.customElementsMap.setZoom(17)
+    }
     get customElementsMap() {
         return this._customElementsMap
     }
@@ -84,15 +100,25 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
             this.marquee('received customElementsMap')
             if (this.codigo_interno) {
                 this.marquee('setting center on codigo interno')
-                let negocio = this.$store.negocios.get(this.codigo_interno)
-                if (negocio) {
-                    let { lat, lng } = negocio
+            let {lat,lng}=this.mainFeature;
+                
+                
                     customElementsMap.setCenter({ lat, lng })
-                }
+                    customElementsMap.setZoom(17)
+                
             }
         }
-
     }
+    get codigo_interno() {
+        return this._codigo_interno
+    }
+    set codigo_interno(codigo_interno) {
+        this._codigo_interno = codigo_interno
+        this.marquee('got codigo_interno ' + codigo_interno)
+    }
+get mainFeature() {
+    return this.$store.negocios.get(this.codigo_interno)||this.customElementsMap?.getCenter().toJSON()
+}
     skipMapCreation: boolean = false
     get verifiers(): Record<Partial<TeventType>, boolean> {
         return {
@@ -129,7 +155,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
             return { position: { lng, lat }, id, name: properties.Nombre_de_Barrio }
         })
         if (this.no_labels) return
-        
+
         this.once('map_created', async gmap => {
             //@ts-ignore
             const { AdvancedMarkerElement } = await google.maps.importLibrary('marker')
@@ -220,6 +246,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
 
     }
     setCodigoInterno(codigo_interno) {
+        this.marquee('setting codigo_interno ' + codigo_interno)
         this.codigo_interno = codigo_interno
     }
     reloadSavedMaps(savedMaps: ISavedMap[]) {

@@ -80,12 +80,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     south: Number(south),
                 }
             } else if (codigo_interno) {
-                this.bounds = {
-                    "south": -33.47262469572745,
-                    "west": -70.61415217498778,
-                    "north": -33.4076631444587,
-                    "east": -70.5119278250122
-                }
+                this.bounds = null
             }
 
             else {
@@ -199,9 +194,9 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                 map: globalThis.gmap,
                 zIndex: 210,
                 icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 5,
-                    strokeWeight: 2,
+                    path: 0,//google.maps.SymbolPath.CIRCLE,
+                    scale: 0.5,
+                    strokeWeight: 1,
                     labelOrigin: new google.maps.Point(0, 2),
                     strokeColor: 'rgba(200,200,200,0)',
                 }

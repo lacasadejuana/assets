@@ -25582,7 +25582,7 @@ var PublicMapStore = class extends BaseClass {
     this.savedMaps = [];
     this.feature_collection = { type: "FeatureCollection", features: [] };
     this.layerSlugs = [];
-    this.codigo_interno = null;
+    this._codigo_interno = null;
     this._customElementsMap = null;
     this.skipMapCreation = false;
     this.barrioLabels = [];
@@ -25619,6 +25619,17 @@ var PublicMapStore = class extends BaseClass {
       this.ready = true;
       this.processEventListeners("ready", maps);
     });
+    module_default8.store("negocios").once("complete", () => {
+      this.marquee("setting center on codigo interno");
+      let { lat, lng } = this.mainFeature;
+      this.customElementsMap.setCenter({ lat, lng });
+      this.customElementsMap.setZoom(17);
+    });
+  }
+  setCenterByCodigoInterno() {
+    let { lat, lng } = this.mainFeature;
+    this.customElementsMap.setCenter({ lat, lng });
+    this.customElementsMap.setZoom(17);
   }
   get customElementsMap() {
     return this._customElementsMap;
@@ -25634,13 +25645,21 @@ var PublicMapStore = class extends BaseClass {
       this.marquee("received customElementsMap");
       if (this.codigo_interno) {
         this.marquee("setting center on codigo interno");
-        let negocio = this.$store.negocios.get(this.codigo_interno);
-        if (negocio) {
-          let { lat, lng } = negocio;
-          customElementsMap.setCenter({ lat, lng });
-        }
+        let { lat, lng } = this.mainFeature;
+        customElementsMap.setCenter({ lat, lng });
+        customElementsMap.setZoom(17);
       }
     }
+  }
+  get codigo_interno() {
+    return this._codigo_interno;
+  }
+  set codigo_interno(codigo_interno) {
+    this._codigo_interno = codigo_interno;
+    this.marquee("got codigo_interno " + codigo_interno);
+  }
+  get mainFeature() {
+    return this.$store.negocios.get(this.codigo_interno) || this.customElementsMap?.getCenter().toJSON();
   }
   get verifiers() {
     return {
@@ -25743,6 +25762,7 @@ var PublicMapStore = class extends BaseClass {
   init() {
   }
   setCodigoInterno(codigo_interno) {
+    this.marquee("setting codigo_interno " + codigo_interno);
     this.codigo_interno = codigo_interno;
   }
   reloadSavedMaps(savedMaps) {

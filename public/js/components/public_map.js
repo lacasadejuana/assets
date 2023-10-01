@@ -53008,8 +53008,8 @@ var PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria 
     google.maps.event.addListener(layer, "click", (event) => {
       globalThis.gmap.infowindow.close();
       let negocio = event.feature;
-      const codigo_interno = negocio.getProperty("codigo_interno");
       this.getMap().panTo(event.latLng);
+      console.info("main_codigo_interno", main_codigo_interno);
       let html = main_codigo_interno ? new negocioFeatureToHtmlMini(
         negocio,
         this.$store.columnas_actuales.featureProperties,
@@ -54447,12 +54447,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
           south: Number(south)
         };
       } else if (codigo_interno) {
-        this.bounds = {
-          "south": -33.47262469572745,
-          "west": -70.61415217498778,
-          "north": -33.4076631444587,
-          "east": -70.5119278250122
-        };
+        this.bounds = null;
       } else {
         this.bounds = { "south": -33.46, "west": -70.67, "north": -33.336, "east": -70.49 };
       }
@@ -54542,9 +54537,10 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
         map: globalThis.gmap,
         zIndex: 210,
         icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 5,
-          strokeWeight: 2,
+          path: 0,
+          //google.maps.SymbolPath.CIRCLE,
+          scale: 0.5,
+          strokeWeight: 1,
           labelOrigin: new google.maps.Point(0, 2),
           strokeColor: "rgba(200,200,200,0)"
         }
@@ -54819,7 +54815,7 @@ var PublicMapStore = class extends BaseClass {
     this.savedMaps = [];
     this.feature_collection = { type: "FeatureCollection", features: [] };
     this.layerSlugs = [];
-    this.codigo_interno = null;
+    this._codigo_interno = null;
     this._customElementsMap = null;
     this.skipMapCreation = false;
     this.barrioLabels = [];
@@ -54856,6 +54852,17 @@ var PublicMapStore = class extends BaseClass {
       this.ready = true;
       this.processEventListeners("ready", maps);
     });
+    module_default.store("negocios").once("complete", () => {
+      this.marquee("setting center on codigo interno");
+      let { lat, lng } = this.mainFeature;
+      this.customElementsMap.setCenter({ lat, lng });
+      this.customElementsMap.setZoom(17);
+    });
+  }
+  setCenterByCodigoInterno() {
+    let { lat, lng } = this.mainFeature;
+    this.customElementsMap.setCenter({ lat, lng });
+    this.customElementsMap.setZoom(17);
   }
   get customElementsMap() {
     return this._customElementsMap;
@@ -54871,13 +54878,21 @@ var PublicMapStore = class extends BaseClass {
       this.marquee("received customElementsMap");
       if (this.codigo_interno) {
         this.marquee("setting center on codigo interno");
-        let negocio = this.$store.negocios.get(this.codigo_interno);
-        if (negocio) {
-          let { lat, lng } = negocio;
-          customElementsMap.setCenter({ lat, lng });
-        }
+        let { lat, lng } = this.mainFeature;
+        customElementsMap.setCenter({ lat, lng });
+        customElementsMap.setZoom(17);
       }
     }
+  }
+  get codigo_interno() {
+    return this._codigo_interno;
+  }
+  set codigo_interno(codigo_interno) {
+    this._codigo_interno = codigo_interno;
+    this.marquee("got codigo_interno " + codigo_interno);
+  }
+  get mainFeature() {
+    return this.$store.negocios.get(this.codigo_interno) || this.customElementsMap?.getCenter().toJSON();
   }
   get verifiers() {
     return {
@@ -54980,6 +54995,7 @@ var PublicMapStore = class extends BaseClass {
   init() {
   }
   setCodigoInterno(codigo_interno) {
+    this.marquee("setting codigo_interno " + codigo_interno);
     this.codigo_interno = codigo_interno;
   }
   reloadSavedMaps(savedMaps) {
