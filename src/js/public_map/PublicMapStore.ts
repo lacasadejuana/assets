@@ -114,6 +114,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     }
     set codigo_interno(codigo_interno) {
         this._codigo_interno = codigo_interno
+        if(this._customElementsMap) this._customElementsMap.codigo_interno=codigo_interno
         this.marquee('got codigo_interno ' + codigo_interno)
     }
 get mainFeature() {

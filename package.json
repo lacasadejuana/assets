@@ -6,9 +6,10 @@
 		"dev": "wrangler pages dev public",
 		"build:esbuild": "node builders/esbuild.cjs --watch ",
 		"build:tailwind": " tailwind  -i src/css/_app.css -o public/css/app.css",
-		"build": "npm run build:esbuild && npm run build:tailwind",
-		"build:all": "npm run build:esbuild && npm run build:tailwind",
-		"watch:esbuild": "node builders/esbuild.cjs --watch ",
+		"build:outdir": "node builders/esbuild.cjs",
+		"build": "yarn build:outdir --outdir public_map && yarn build:outdir --outdir property_map",
+		"xbuild:all": "npm run build:esbuild && npm run build:tailwind",
+		"watch:esbuild": "yarn build --watch ",
 		"watch:tailwind": "tailwind -i src/css/_app.css -o public/css/app.css --watch",
 		"watch": "concurrently \"npm run watch:esbuild\" \"npm run watch:tailwind\""
 	},
