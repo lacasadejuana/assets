@@ -91,7 +91,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                 this.$store.public_maps.setCodigoInterno(this.codigo_interno)
             }
             this.$store.negocios.on('complete', () => this.appendFeatures());
-            // this.$store.public_maps.fetchPublicaciones()
+            
             this.$watch('comunas', (comunas) => {
                 Object.keys(globalThis.layers).forEach((key) => {
                     globalThis.layerComponents[key] &&
@@ -106,6 +106,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     this.$store.campos_busqueda as unknown as CamposBusquedaStore
                 )
             });
+            this.$store.public_maps.fetchPublicaciones();
             console.warn('deciding between createMap and store ready')
             this.$store.public_maps.once('ready', maps => {
                 console.info('mapFrameData, received store ready event')
