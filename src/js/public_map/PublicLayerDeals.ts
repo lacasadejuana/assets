@@ -264,7 +264,10 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
     addInfoWindowBehavior(layer: google.maps.Data): void {
         if (this.infowindow_added) return
         this.infowindow_added = true
-        const main_codigo_interno=this.$store.public_maps.codigo_interno
+        let qs=(new URL(location.href)).searchParams
+        const main_codigo_interno=this.$store.public_maps.codigo_interno??qs.get('codigo_interno')
+
+
 
         google.maps.event.addListener(layer, 'click', (event: google.maps.Data.MouseEvent) => {
             globalThis.gmap.infowindow.close();

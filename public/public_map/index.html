@@ -7,11 +7,11 @@
     <title>Mape Frame index.html</title>
 
 <body>
-    <script src="./js/components/init_public_map.js"></script>
+    <script src="./js/init_public_map.js"></script>
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper ml-0 collapsed no_transitions public-mapindex">
         <link rel="stylesheet" href="./css/app.css"/>
-        <link href="/css/fontawesome/css/all.min.css" rel="stylesheet">
+        
 
 
         <!-- ========== section start ========== -->
@@ -61,7 +61,7 @@
                         },
                         importComponent() {
                     
-                            return import('/js/components/public_map.js').then((module) => {
+                            return import('/js/public_map.js').then((module) => {
                                 console.log('PublicMapMoldules', module);
                                 //Alpine.store('public_maps',()=>new module.createPublicMapStore())
                                 //this.$store.public_maps.$store.negocios=this.$store.negocios;

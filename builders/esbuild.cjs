@@ -67,35 +67,43 @@ module.exports = {
     replaceTimestamp,
     runEsbuild,
 };
-const onRebuild = async (map_type) => {
-    await runEsbuild({
+const onRebuild = (outdir = `public_map`) => {
+    runEsbuild({
+        entryPoints: [
+
+            `src/js/public_map/index.ts`
+        ],
+        outfile: `public/${outdir}/js/public_map.js`,
+        quiet: true,
+        format: 'esm',
+        saas: [[
+            'src/css/map_view.scss',
+            `public/css/map_view.css`
+        ]]
+
+    });
+    runEsbuild({
         entryPoints: [
             `src/js/public_map/init_public_map.ts`
         ],
-        outfile: `public/${map_type}/js/init_public_map.js`,
+        outfile: `public/${outdir}/js/init_public_map.js`,
         quiet: true,
-        saas: [['src/css/_app.scss', 'src/css/${map_type}.css']]
+        saas: [[
+            'src/css/_app.scss',
+            'src/css/_app.css'
+        ]]
         ,
         format: 'umd',
 
     });
-    await runEsbuild({
-        entryPoints: [
-            'src/js/public_map/index.ts'
-        ],
-        outfile: `public/${map_type}/js/${map_type}.js`,
-        quiet: true,
-        format: 'esm',
-    });
-
 };
 if (require.main === module) {
     let { _, ...options } = argv;
-    let map_type = process.env.MAP_TYPE || 'public_map';
     if (options.watch) {
-        return watchTs('src/js', () => onRebuild(map_type));
+
+        return watchTs('src/js', () => onRebuild(options.outdir));
     }
 
-    onRebuild(map_type);
+    onRebuild(options.outdir);
 
 }

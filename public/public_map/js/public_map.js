@@ -53004,7 +53004,8 @@ var PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria 
     if (this.infowindow_added)
       return;
     this.infowindow_added = true;
-    const main_codigo_interno = this.$store.public_maps.codigo_interno;
+    let qs = new URL(location.href).searchParams;
+    const main_codigo_interno = this.$store.public_maps.codigo_interno ?? qs.get("codigo_interno");
     google.maps.event.addListener(layer, "click", (event) => {
       globalThis.gmap.infowindow.close();
       let negocio = event.feature;
@@ -54889,6 +54890,8 @@ var PublicMapStore = class extends BaseClass {
   }
   set codigo_interno(codigo_interno) {
     this._codigo_interno = codigo_interno;
+    if (this._customElementsMap)
+      this._customElementsMap.codigo_interno = codigo_interno;
     this.marquee("got codigo_interno " + codigo_interno);
   }
   get mainFeature() {

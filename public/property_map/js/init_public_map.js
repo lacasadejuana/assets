@@ -25656,6 +25656,8 @@ var PublicMapStore = class extends BaseClass {
   }
   set codigo_interno(codigo_interno) {
     this._codigo_interno = codigo_interno;
+    if (this._customElementsMap)
+      this._customElementsMap.codigo_interno = codigo_interno;
     this.marquee("got codigo_interno " + codigo_interno);
   }
   get mainFeature() {
@@ -25985,7 +25987,7 @@ if (!globalThis.storeCamposBusqueda) {
     return globalThis.camposBusquedaJson;
   });
   const barrioLabelsJson = staticFetchWrapper(
-    "/property_maps/json/barrios_label.geojson",
+    "/json/barrios_label.geojson",
     {}
   ).then((res2) => {
     globalThis.barrioLabelsJson = res2;
@@ -26021,7 +26023,7 @@ if (!globalThis.storeCamposBusqueda) {
       for (k in g)
         e.set(k.replace(/[A-Z]/g, (t) => "_" + t[0].toLowerCase()), g[k]);
       e.set("callback", c + ".maps." + q);
-      a.src = `https://maps.${c}apis.com/maps/property_maps/api/js?` + e;
+      a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
       d[q] = f;
       a.onerror = () => h = n(Error(p + " could not load."));
       a.nonce = m.querySelector("script[nonce]")?.nonce || "";
