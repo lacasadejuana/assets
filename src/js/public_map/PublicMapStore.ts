@@ -70,12 +70,15 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         })
         Alpine.store('negocios').once('complete', () => {
             this.marquee('setting center on codigo interno')
+            if(this.mainFeature) {
+
+            
             let {lat,lng}=this.mainFeature;
                 
                 
                     this.customElementsMap.setCenter({ lat, lng })
                     this.customElementsMap.setZoom(17)
-                
+                }    
             
         });
     }
@@ -92,13 +95,14 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     }
     set customElementsMap(customElementsMap) {
         if (customElementsMap) {
+            this.gmap = customElementsMap
             if (!this._customElementsMap) this._customElementsMap = customElementsMap
             if (!this.ready) this.processEventListeners('ready', google.maps)
 
             globalThis.gmap = customElementsMap
             this.processEventListeners('map_created', customElementsMap)
             this.marquee('received customElementsMap')
-            if (this.codigo_interno) {
+            /*if (this.codigo_interno&&this.codigo_interno.length===6) {
                 this.marquee('setting center on codigo interno')
             let {lat,lng}=this.mainFeature;
                 
@@ -106,7 +110,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
                     customElementsMap.setCenter({ lat, lng })
                     customElementsMap.setZoom(17)
                 
-            }
+            }*/
         }
     }
     get codigo_interno() {
@@ -114,11 +118,11 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     }
     set codigo_interno(codigo_interno) {
         this._codigo_interno = codigo_interno
-        if(this._customElementsMap) this._customElementsMap.codigo_interno=codigo_interno
+        if(this._customElementsMap&&codigo_interno) this._customElementsMap.codigo_interno=codigo_interno
         this.marquee('got codigo_interno ' + codigo_interno)
     }
 get mainFeature() {
-    return this.$store.negocios.get(this.codigo_interno)||this.customElementsMap?.getCenter().toJSON()
+    return this.codigo_interno&& this.$store.negocios.get(this.codigo_interno)||this.customElementsMap?.getCenter().toJSON()
 }
     skipMapCreation: boolean = false
     get verifiers(): Record<Partial<TeventType>, boolean> {
@@ -149,7 +153,7 @@ get mainFeature() {
     no_labels: boolean = false
     setBarrioLabels(features: Feature[]) {
         this.barrioMarkers = new Map()
-
+if(!features || !features.length) return;
         this.barrioLabels = features.map((feature): { position: { lng: any; lat: any; }; id: string | number; name: any; } => {
             let { geometry, id, properties } = feature
             let [lng, lat] = geometry.coordinates
@@ -319,7 +323,10 @@ get mainFeature() {
             //ifDefined(globalThis.mapFrameData, (mapFrameData) => mapFrameData.reload())
             //ifDefined(globalThis.bsTable, (bsTable) => bsTable.reload && bsTable.reload())
             setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1000);
-             console.info('fetched negocios', this.$store.negocios.properties.length);
+             console.info('fetched negocios', this.$store.negocios.properties.length,'codigo_interno is '+this. codigo_interno);
+             if(!this.codigo_interno) {
+                this._customElementsMap.setZoom(13.1)
+             }
             return result;
         })
 

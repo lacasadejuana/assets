@@ -131,7 +131,9 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                         this.appendFeatures()
                         this.onMapCreated((gmap) => {
                             console.warn('map created')
+                            if(this.codigo_interno) {
                             this.panToCodigoInterno()
+                            }
                         })
                         if (this.bounds) {
                             this.gmap.fitBounds(this.bounds)
@@ -147,7 +149,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     this.$store.public_maps.layer_object = PublicLayersObject
                     this.$store.public_maps.createLayers(this);
                     //alert('createDomManager created')
-                    this.createDomManager(this.codigo_interno ?? codigo_interno);
+                    this.createDomManager(!!this.codigo_interno );
 
                     setTimeout(() => {
                         if (globalThis.layerComponents.colegios) globalThis.layerComponents.colegios.layer_options.checked = true
@@ -175,6 +177,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                     tiltControl: true,
 
                     ...mapStatusObj,
+                    zoom:13,
                     mapId: '3b1abace91810cf',
                 };
                 if (this.$store.public_maps.skipMapCreation || this.$store.public_maps.full_map) {

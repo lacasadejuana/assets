@@ -81,6 +81,15 @@
                                 this.PublicLayerBarrios = PublicLayerBarrios
                                 this.componentsReady = true;
                                 globalThis.DynamicLoader = this
+                                setTimeout(()=>{
+                                    globalThis.gmap.setOptions({maxZoom:13})
+                                    globalThis.gmap.setZoom(17);
+                                    setTimeout(()=>{
+                                        globalThis.gmap.setZoom(17);
+                                    },4000)
+                                
+                                },4000)
+                                
                             });
                         },
                     }">
@@ -267,10 +276,15 @@
         function maploaded() {
             console.timerInfo('maploaded');
             
-        }
+       
         Alpine.start()
+    }
         //[...document.querySelectorAll('iframe')].forEach(i=>i.())
     </script>
+    <script
+    async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8&callback=maploaded"
+></script>
 
 </body>
 

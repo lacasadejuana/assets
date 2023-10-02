@@ -368,6 +368,9 @@ export const PublicLayerBarriosDataLayer = ({ index, slug_name, name, layer_opti
 
     },
 
+    fitToBounds() {
+        this.getMap().fitBounds(this.getLayer().getBounds())
+    },
     get infowindow(): google.maps.InfoWindow {
         return globalThis.gmap.infowindow
     },

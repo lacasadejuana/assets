@@ -25621,9 +25621,11 @@ var PublicMapStore = class extends BaseClass {
     });
     module_default8.store("negocios").once("complete", () => {
       this.marquee("setting center on codigo interno");
-      let { lat, lng } = this.mainFeature;
-      this.customElementsMap.setCenter({ lat, lng });
-      this.customElementsMap.setZoom(17);
+      if (this.mainFeature) {
+        let { lat, lng } = this.mainFeature;
+        this.customElementsMap.setCenter({ lat, lng });
+        this.customElementsMap.setZoom(17);
+      }
     });
   }
   setCenterByCodigoInterno() {
@@ -25643,12 +25645,6 @@ var PublicMapStore = class extends BaseClass {
       globalThis.gmap = customElementsMap;
       this.processEventListeners("map_created", customElementsMap);
       this.marquee("received customElementsMap");
-      if (this.codigo_interno) {
-        this.marquee("setting center on codigo interno");
-        let { lat, lng } = this.mainFeature;
-        customElementsMap.setCenter({ lat, lng });
-        customElementsMap.setZoom(17);
-      }
     }
   }
   get codigo_interno() {
@@ -25656,12 +25652,12 @@ var PublicMapStore = class extends BaseClass {
   }
   set codigo_interno(codigo_interno) {
     this._codigo_interno = codigo_interno;
-    if (this._customElementsMap)
+    if (this._customElementsMap && codigo_interno)
       this._customElementsMap.codigo_interno = codigo_interno;
     this.marquee("got codigo_interno " + codigo_interno);
   }
   get mainFeature() {
-    return this.$store.negocios.get(this.codigo_interno) || this.customElementsMap?.getCenter().toJSON();
+    return this.codigo_interno && this.$store.negocios.get(this.codigo_interno) || this.customElementsMap?.getCenter().toJSON();
   }
   get verifiers() {
     return {
@@ -25686,6 +25682,8 @@ var PublicMapStore = class extends BaseClass {
   }
   setBarrioLabels(features) {
     this.barrioMarkers = /* @__PURE__ */ new Map();
+    if (!features || !features.length)
+      return;
     this.barrioLabels = features.map((feature) => {
       let { geometry, id, properties } = feature;
       let [lng, lat] = geometry.coordinates;
@@ -25817,7 +25815,10 @@ var PublicMapStore = class extends BaseClass {
   fetchPublicaciones() {
     return this.$store.negocios.fetchAll().then((result) => {
       setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
-      console.info("fetched negocios", this.$store.negocios.properties.length);
+      console.info("fetched negocios", this.$store.negocios.properties.length, "codigo_interno is " + this.codigo_interno);
+      if (!this.codigo_interno) {
+        this._customElementsMap.setZoom(13.1);
+      }
       return result;
     });
   }
@@ -25987,7 +25988,7 @@ if (!globalThis.storeCamposBusqueda) {
     return globalThis.camposBusquedaJson;
   });
   const barrioLabelsJson = staticFetchWrapper(
-    "https://assets.juana.house/json/barrios_label.geojson",
+    "https://assets.juana.house/api/json/barrios_label.geojson",
     {}
   ).then((res2) => {
     globalThis.barrioLabelsJson = res2;
@@ -25996,7 +25997,7 @@ if (!globalThis.storeCamposBusqueda) {
     return globalThis.barrioLabelsJson;
   });
   globalThis.columnasVisiblesPromise = staticFetchWrapper(
-    "https://assets.juana.house/maps/api/columnas_actuales",
+    "https://assets.juana.house/api/columnas_actuales",
     {}
   ).then((res2) => {
     globalThis.camposBusquedaJson = res2;
