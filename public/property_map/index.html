@@ -37,7 +37,7 @@
             });
         }
     </script>
-    <script src="/js/components/init_public_map.js"></script>
+    <script src="./js/init_public_map.js"></script>
 
 
     <!-- ========== All CSS files linkup ========= -->
@@ -51,7 +51,7 @@
 
 
 <body>
-         <gmp-map  style="height:600px" id="custom_element_map"  center="-33.398,-70.58" zoom="14" map-id="3b1abace91810cf">
+         <gmp-map  style="height:600px" id="custom_element_map"  center="-33.398,-70.58" zoom="14" map-id="8f541b0e0f5f6c31">
 
             <gmp-advanced-marker position="-33.398,-70.58" title=""></gmp-advanced-marker>
             <article class="outer_container" id="barebone_container">
@@ -88,7 +88,7 @@
                     PublicMapComponents: {},
                     importComponent() {
                 
-                        return import('/js/components/public_map.js').then((module) => {
+                        return import('./property_map.js').then((module) => {
                             console.log('PublicMapMoldules', module);
  
                 
