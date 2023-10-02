@@ -147,7 +147,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                             this.fitBounds();
                         }
 
-                        this.$store.negocios.next_page_url='https://maps.lacasadejuana.cl/api/negocios'
+                        this.$store.negocios.next_page_url='https://maps.lacasadejuana.cl/api/publicaciones'
                         this.$store.negocios.complete =false;
                         this.$store.public_maps.fetchPublicaciones()
                     });

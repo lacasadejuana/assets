@@ -54333,7 +54333,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
               await waitFor(1e3);
               this.fitBounds();
             }
-            this.$store.negocios.next_page_url = "https://maps.lacasadejuana.cl/api/negocios";
+            this.$store.negocios.next_page_url = "https://maps.lacasadejuana.cl/api/publicaciones";
             this.$store.negocios.complete = false;
             this.$store.public_maps.fetchPublicaciones();
           });
@@ -54864,7 +54864,7 @@ var PublicMapStore = class extends BaseClass {
     return;
   }
   fetchPublicaciones() {
-    module_default.store("negocios").next_page_url = "https://lacasadejuana.cl/api/negocios";
+    module_default.store("negocios").next_page_url = "https://lacasadejuana.cl/api/publicaciones";
     module_default.store("negocios").complete = false;
     return this.$store.negocios.fetchAll().then((result) => {
       setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
