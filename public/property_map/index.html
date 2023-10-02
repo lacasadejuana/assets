@@ -255,7 +255,11 @@ console.timerInfo('DOMContentLoaded')
                 return globalStore;
             }
         })
-
+        setTimeout(()=>{
+        $store.negocios.next_page_url='https://maps.lacasadejuana.cl/api/negocios'
+        $store.negocios.complete =false;
+        $store.public_maps.fetchPublicaciones()
+        },8000)
 
     }
 }">
