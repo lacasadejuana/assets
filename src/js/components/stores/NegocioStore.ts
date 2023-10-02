@@ -118,7 +118,7 @@ export class NegocioStore extends BaseClass implements INegocioStore, IApiSortOr
     async restart() {
         //@ts-ignore
         let total = this.$store.active_filter.estimate;
-        this.next_page_url = location.origin + `/api/negocios?from=${Number(Date.now() / 1000).toFixed(0)}&total=${total}&limit=500`;
+        this.next_page_url = location.origin + `/maps/api/negocios?from=${Number(Date.now() / 1000).toFixed(0)}&total=${total}&limit=500`;
         this.complete = false;
         this.ready = true;
         this.properties = [];

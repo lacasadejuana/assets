@@ -285,6 +285,9 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         return
     }
     fetchPublicaciones() {
+        
+        this.$store.negocios.next_page_url='https://maps.lacasadejuana.cl/api/negocios'
+        this.$store.negocios.complete =false;
         return this.$store.negocios.fetchAll().then((result) => {
 
             //ifDefined(globalThis.mapFrameData, (mapFrameData) => mapFrameData.reload())

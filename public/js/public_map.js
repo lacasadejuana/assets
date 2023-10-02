@@ -54473,6 +54473,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
           this.$store.campos_busqueda
         );
       });
+      this.$store.public_maps.fetchPublicaciones();
       console.warn("deciding between createMap and store ready");
       this.$store.public_maps.once("ready", (maps) => {
         console.info("mapFrameData, received store ready event");
