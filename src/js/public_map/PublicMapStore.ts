@@ -318,6 +318,8 @@ if(!features || !features.length) return;
         return
     }
     fetchPublicaciones() {
+        Alpine.store('negocios').next_page_url='https://lacasadejuana.cl/api/negocios'
+        Alpine.store('negocios').complete=false
         return this.$store.negocios.fetchAll().then((result) => {
 
             //ifDefined(globalThis.mapFrameData, (mapFrameData) => mapFrameData.reload())

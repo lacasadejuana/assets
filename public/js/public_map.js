@@ -54504,6 +54504,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
               await waitFor(1e3);
               this.fitBounds();
             }
+            this.gmap.setZoom(13);
           });
           this.$store.public_maps.layer_object = PublicLayersObject;
           this.$store.public_maps.createLayers(this);
@@ -55055,6 +55056,8 @@ var PublicMapStore = class extends BaseClass {
     return;
   }
   fetchPublicaciones() {
+    module_default.store("negocios").next_page_url = "https://lacasadejuana.cl/api/negocios";
+    module_default.store("negocios").complete = false;
     return this.$store.negocios.fetchAll().then((result) => {
       setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
       console.info("fetched negocios", this.$store.negocios.properties.length, "codigo_interno is " + this.codigo_interno);

@@ -144,7 +144,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
                             await waitFor(1000);
                             this.fitBounds();
                         }
-
+                        this.gmap.setZoom(13)
 
                     });
                     this.$store.public_maps.layer_object = PublicLayersObject
