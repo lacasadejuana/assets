@@ -120,7 +120,7 @@ export const PublicMapFrameData = ({ codigo_interno = null, extent = null }: { c
 
                 this.$store.public_maps.once('map_created', gmap => {
 
-
+                    this.$store.public_maps.fetchPublicaciones()
                     console.log('map_created', this.gmap, gmap)
 
                     this.gmap = this.$store.public_maps.customElementsMap
