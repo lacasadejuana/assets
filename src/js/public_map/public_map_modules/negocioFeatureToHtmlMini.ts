@@ -13,7 +13,7 @@ export class negocioFeatureToHtmlMini extends negocioFeatureToHtml {
         campos: Record<string, string>,
         variant: 'public' | 'property_map' = 'public',
     ) {
-        super(feature,campos,variant)
+        super(feature,campos)
         this.feature = feature;
         campos = {
             'ubicacion': 'Ubicación',

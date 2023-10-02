@@ -9557,7 +9557,7 @@ var require_tom_select_complete = __commonJS({
   }
 });
 
-// src/js/public_map/init_public_map.ts
+// src/js/property_map/init_public_map.ts
 var init_public_map_exports = {};
 __export(init_public_map_exports, {
   Alpine: () => module_default8
@@ -25064,7 +25064,7 @@ async function waitFor(delay3 = 500, cb = () => {
   });
 }
 
-// src/js/public_map/public_map_modules/exampleLayers.ts
+// src/js/property_map/public_map_modules/exampleLayers.ts
 var exampleLayers = [
   {
     type: "deals",
@@ -25329,7 +25329,7 @@ var PublicLayersObject = exampleLayers.reduce((acc, layer) => {
   return acc;
 }, {});
 
-// src/js/public_map/public_map_modules/sharingLevels.ts
+// src/js/property_map/public_map_modules/sharingLevels.ts
 var sharingLevels = {
   private: {
     id: "private",
@@ -25366,7 +25366,7 @@ var LoaderStatus;
   LoaderStatus2[LoaderStatus2["FAILURE"] = 3] = "FAILURE";
 })(LoaderStatus || (LoaderStatus = {}));
 
-// src/js/public_map/public_map_modules/extendMapDataProtoType.ts
+// src/js/property_map/public_map_modules/extendMapDataProtoType.ts
 function extendMapDataProtoType() {
   let maps = google.maps;
   console.info({ googleMaps: maps });
@@ -25514,10 +25514,10 @@ function extendMapDataProtoType() {
   return maps;
 }
 
-// src/js/public_map/public_map_modules/iconSelector.ts
+// src/js/property_map/public_map_modules/iconSelector.ts
 var import_tom_select = __toESM(require_tom_select_complete());
 
-// src/js/public_map/public_map_modules/iconOptions.ts
+// src/js/property_map/public_map_modules/iconOptions.ts
 var iconOptions = [
   //{ fontFamily: 'FontAwesome5Free', className: 'fas fa-house-user', text: '0f9' ,
   //{ fontFamily: 'LineIcons', className: 'lni lni-apartment', text: 'e800' },
@@ -25560,7 +25560,7 @@ var iconOptions = [
   return icon;
 });
 
-// src/js/public_map/PublicMapStore.ts
+// src/js/property_map/PublicMapStore.ts
 var PublicMapStore = class extends BaseClass {
   constructor() {
     super();
@@ -25582,7 +25582,7 @@ var PublicMapStore = class extends BaseClass {
     this.savedMaps = [];
     this.feature_collection = { type: "FeatureCollection", features: [] };
     this.layerSlugs = [];
-    this._codigo_interno = null;
+    this.codigo_interno = null;
     this._customElementsMap = null;
     this.skipMapCreation = false;
     this.barrioLabels = [];
@@ -25619,26 +25619,12 @@ var PublicMapStore = class extends BaseClass {
       this.ready = true;
       this.processEventListeners("ready", maps);
     });
-    module_default8.store("negocios").once("complete", () => {
-      this.marquee("setting center on codigo interno");
-      if (this.mainFeature) {
-        let { lat, lng } = this.mainFeature;
-        this.customElementsMap.setCenter({ lat, lng });
-        this.customElementsMap.setZoom(17);
-      }
-    });
-  }
-  setCenterByCodigoInterno() {
-    let { lat, lng } = this.mainFeature;
-    this.customElementsMap.setCenter({ lat, lng });
-    this.customElementsMap.setZoom(17);
   }
   get customElementsMap() {
     return this._customElementsMap;
   }
   set customElementsMap(customElementsMap) {
     if (customElementsMap) {
-      this.gmap = customElementsMap;
       if (!this._customElementsMap)
         this._customElementsMap = customElementsMap;
       if (!this.ready)
@@ -25646,19 +25632,15 @@ var PublicMapStore = class extends BaseClass {
       globalThis.gmap = customElementsMap;
       this.processEventListeners("map_created", customElementsMap);
       this.marquee("received customElementsMap");
+      if (this.codigo_interno) {
+        this.marquee("setting center on codigo interno");
+        let negocio = this.$store.negocios.get(this.codigo_interno);
+        if (negocio) {
+          let { lat, lng } = negocio;
+          customElementsMap.setCenter({ lat, lng });
+        }
+      }
     }
-  }
-  get codigo_interno() {
-    return this._codigo_interno;
-  }
-  set codigo_interno(codigo_interno) {
-    this._codigo_interno = codigo_interno;
-    if (this._customElementsMap && codigo_interno)
-      this._customElementsMap.codigo_interno = codigo_interno;
-    this.marquee("got codigo_interno " + codigo_interno);
-  }
-  get mainFeature() {
-    return this.codigo_interno && this.$store.negocios.get(this.codigo_interno) || this.customElementsMap?.getCenter().toJSON();
   }
   get verifiers() {
     return {
@@ -25683,8 +25665,6 @@ var PublicMapStore = class extends BaseClass {
   }
   setBarrioLabels(features) {
     this.barrioMarkers = /* @__PURE__ */ new Map();
-    if (!features || !features.length)
-      return;
     this.barrioLabels = features.map((feature) => {
       let { geometry, id, properties } = feature;
       let [lng, lat] = geometry.coordinates;
@@ -25763,7 +25743,6 @@ var PublicMapStore = class extends BaseClass {
   init() {
   }
   setCodigoInterno(codigo_interno) {
-    this.marquee("setting codigo_interno " + codigo_interno);
     this.codigo_interno = codigo_interno;
   }
   reloadSavedMaps(savedMaps) {
@@ -25816,10 +25795,6 @@ var PublicMapStore = class extends BaseClass {
   fetchPublicaciones() {
     return this.$store.negocios.fetchAll().then((result) => {
       setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
-      console.info("fetched negocios", this.$store.negocios.properties.length, "codigo_interno is " + this.codigo_interno);
-      if (!this.codigo_interno && this.customElementsMap) {
-        this.customElementsMap.setZoom(13.1);
-      }
       return result;
     });
   }
@@ -25915,29 +25890,7 @@ var PublicMapStore = class extends BaseClass {
   }
 };
 
-// src/js/public_map/init_public_map.ts
-if (!console.timerInfo) {
-  Object.defineProperty(console, "timerInfo", {
-    get: function() {
-      return Function.prototype.bind.call(
-        console.debug,
-        console,
-        "%c" + Number(performance.now() / 1e3).toFixed(2) + " Timer:",
-        "color:#03C;font-weight:bold;"
-      );
-    }
-  });
-}
-if (!console.marquee) {
-  Object.defineProperty(console, "marquee", {
-    get: function() {
-      return (obj, ...args) => {
-        let colors = Object.values(obj), payload = [""].concat(Object.keys(obj));
-        console.log(payload.join("%c "), ...colors, ...args);
-      };
-    }
-  });
-}
+// src/js/property_map/init_public_map.ts
 module_default8.plugin(module_default5);
 module_default8.plugin(module_default);
 module_default8.plugin(module_default3);
@@ -25946,28 +25899,6 @@ module_default8.plugin(module_default7);
 module_default8.plugin(module_default4);
 module_default8.plugin(module_default6);
 globalThis.Alpine = module_default8;
-if (!console.timerInfo) {
-  Object.defineProperty(console, "timerInfo", {
-    get: function() {
-      return Function.prototype.bind.call(
-        console.debug,
-        console,
-        "%c" + Number(performance.now() / 1e3).toFixed(2) + " Timer:",
-        "color:#03C;font-weight:bold;"
-      );
-    }
-  });
-}
-if (!console.marquee) {
-  Object.defineProperty(console, "marquee", {
-    get: function() {
-      return (obj, ...args) => {
-        let colors = Object.values(obj), payload = [""].concat(Object.keys(obj));
-        console.log(payload.join("%c "), ...colors, ...args);
-      };
-    }
-  });
-}
 if (!globalThis.storeCamposBusqueda) {
   const createAlpineStore = (name, factoryFn) => {
     if (module_default8.store(name))
@@ -25981,7 +25912,7 @@ if (!globalThis.storeCamposBusqueda) {
   const storeActiveFilter = globalThis.storeActiveFilter = createAlpineStore("active_filter", () => new ActiveFilterStore());
   const storePublicMaps = globalThis.storePublicMaps = createAlpineStore("public_maps", () => new PublicMapStore());
   const camposBusquedaPromise = staticFetchWrapper(
-    "https://assets.juana.house/api/campos_formulario",
+    "/api/campos_formulario",
     {}
   ).then((res2) => {
     globalThis.camposBusquedaJson = res2;
@@ -25989,7 +25920,7 @@ if (!globalThis.storeCamposBusqueda) {
     return globalThis.camposBusquedaJson;
   });
   const barrioLabelsJson = staticFetchWrapper(
-    "https://assets.juana.house/api/json/barrios_label.geojson",
+    "/json/barrios_label.geojson",
     {}
   ).then((res2) => {
     globalThis.barrioLabelsJson = res2;
@@ -25998,7 +25929,7 @@ if (!globalThis.storeCamposBusqueda) {
     return globalThis.barrioLabelsJson;
   });
   globalThis.columnasVisiblesPromise = staticFetchWrapper(
-    "https://assets.juana.house/api/columnas_actuales",
+    "/api/columnas_actuales",
     {}
   ).then((res2) => {
     globalThis.camposBusquedaJson = res2;
@@ -26016,78 +25947,6 @@ if (!globalThis.storeCamposBusqueda) {
       storeActiveFilter.ready = true;
     });
   });
-  ((g) => {
-    var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window;
-    b = b[c] || (b[c] = {});
-    var d = b.maps || (b.maps = {}), r = /* @__PURE__ */ new Set(), e = new URLSearchParams(), u = () => h || (h = new Promise(async (f, n) => {
-      await (a = m.createElement("script"));
-      e.set("libraries", [...r] + "");
-      for (k in g)
-        e.set(k.replace(/[A-Z]/g, (t) => "_" + t[0].toLowerCase()), g[k]);
-      e.set("callback", c + ".maps." + q);
-      a.src = `https://maps.${c}apis.com/maps/property_maps/api/js?` + e;
-      d[q] = f;
-      a.onerror = () => h = n(Error(p + " could not load."));
-      a.nonce = m.querySelector("script[nonce]")?.nonce || "";
-      m.head.append(a);
-    }));
-    d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n));
-  })({
-    key: "AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8",
-    v: "beta"
-    // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-    // Add other bootstrap parameters as needed, using camel case.
-  });
-  console.timerInfo("start: negocio common footer");
-  globalThis.googleMapsOptions = {
-    "apiKey": "AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8",
-    "version": "beta",
-    "region": "CL",
-    "language": "es",
-    "mapId": "8f541b0e0f5f6c31",
-    "libraries": ["places", "localContext"]
-  };
-  const {
-    campos_busqueda = [],
-    default_columns = []
-  } = globalThis;
-  const contactosArray = "";
-  globalThis.backendPaginator = {
-    "has_take": true,
-    "count": 129,
-    "next_page_url": null,
-    "first_page_url": "https://assets.juana.house/api/negocios",
-    "last_page_url": "https://assets.juana.house/api/negocios",
-    "current_page": 1,
-    "from": 1695628584,
-    "cursor": 1695628584,
-    "last_page": 1,
-    "max_id": null,
-    "min_id": null,
-    "path": "https://negocioslocal.juana.house/api/maps/publicaciones?",
-    "per_page": 350,
-    "prev_page_url": null,
-    "query": {
-      "limit": 350,
-      "take": 1,
-      "api_base_path": "/api/maps/publicaciones",
-      "total": 129
-    },
-    "request_id": "dcdcbe64-d493-4c3d-8321-af0c2759be62",
-    "current_filter_id": null,
-    "to": 130,
-    "total": 129,
-    "links": [{
-      "url": null,
-      "label": "&laquo; Anterior",
-      "active": false
-    }, {
-      "url": null,
-      "label": "&laquo; Siguiente",
-      "active": false
-    }],
-    "data": []
-  };
 }
 /*! Bundled license information:
 

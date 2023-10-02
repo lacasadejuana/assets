@@ -20367,7 +20367,7 @@ async function waitFor(delay = 500, cb = () => {
   });
 }
 
-// src/js/public_map/public_map_modules/exampleLayers.ts
+// src/js/property_map/public_map_modules/exampleLayers.ts
 var exampleLayers = [
   {
     type: "deals",
@@ -20632,7 +20632,7 @@ var PublicLayersObject = exampleLayers.reduce((acc, layer) => {
   return acc;
 }, {});
 
-// src/js/public_map/public_map_modules/Wrapper.ts
+// src/js/property_map/public_map_modules/Wrapper.ts
 var Wrapper = class {
   constructor(className) {
     this.wrapper = document.createElement("div");
@@ -20675,7 +20675,7 @@ var Wrapper = class {
   }
 };
 
-// src/js/public_map/public_map_modules/genericFeatureToHtml.ts
+// src/js/property_map/public_map_modules/genericFeatureToHtml.ts
 var genericFeatureToHtml = class {
   constructor(feature, campos) {
     this.feature = feature;
@@ -20727,7 +20727,7 @@ var genericFeatureToHtml = class {
   }
 };
 
-// src/js/public_map/public_map_modules/saveLayer.ts
+// src/js/property_map/public_map_modules/saveLayer.ts
 var saveLayer = ({ slug_name, layer_options }) => ({
   layer_options,
   _checked: false,
@@ -20889,7 +20889,7 @@ var saveLayer = ({ slug_name, layer_options }) => ({
   }
 });
 
-// src/js/public_map/PublicLayerBarriosDataLayer.ts
+// src/js/property_map/PublicLayerBarriosDataLayer.ts
 var PublicLayerBarriosDataLayer = ({ index, slug_name, name, layer_options }, comunas2) => ({
   mapTypes: [],
   lastType: null,
@@ -21086,6 +21086,25 @@ var PublicLayerBarriosDataLayer = ({ index, slug_name, name, layer_options }, co
       });
       const layer = this.getLayer();
       let visibilityZoom = this.layer_options.labelVisibility.zoom;
+      if (visibilityZoom && document.querySelector(".gm-style")) {
+        let previousZoom = globalThis.gmap.getZoom();
+        const zoomChangedHandler = (e) => {
+          let currentZoom = globalThis.gmap.getZoom();
+          if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
+            console.zinfo("went above visibility zoom", currentZoom);
+            document.querySelector(".gm-style").classList.remove("hide-labels");
+            document.querySelector(".gm-style").classList.add("show-labels");
+          }
+          if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
+            console.zinfo("went below visibility zoom", currentZoom);
+            document.querySelector(".gm-style").classList.remove("show-labels");
+            document.querySelector(".gm-style").classList.add("hide-labels");
+          }
+          console.timerInfo(`zoom changed from ${previousZoom} to ${currentZoom}`);
+          previousZoom = currentZoom;
+        };
+        this.gmap.addListener("idle", () => zoomChangedHandler(null));
+      }
       if (this.layer_options.labelVisibility.highlighted) {
         this.mouseOverListener = (event) => {
           const { feature } = event;
@@ -21118,25 +21137,6 @@ var PublicLayerBarriosDataLayer = ({ index, slug_name, name, layer_options }, co
         this.getInfoWindow().open({ map: globalThis.gmap });
       };
     }
-  },
-  if(visibilityZoom) {
-    let previousZoom = globalThis.gmap.getZoom();
-    const zoomChangedHandler = (e) => {
-      let currentZoom = globalThis.gmap.getZoom();
-      if (currentZoom >= visibilityZoom && previousZoom <= visibilityZoom) {
-        console.zinfo("went above visibility zoom", currentZoom);
-        document.querySelector(".gm-style").classList.remove("hide-labels");
-        document.querySelector(".gm-style").classList.add("show-labels");
-      }
-      if (currentZoom < visibilityZoom && previousZoom >= visibilityZoom) {
-        console.zinfo("went below visibility zoom", currentZoom);
-        document.querySelector(".gm-style").classList.remove("show-labels");
-        document.querySelector(".gm-style").classList.add("hide-labels");
-      }
-      console.timerInfo(`zoom changed from ${previousZoom} to ${currentZoom}`);
-      previousZoom = currentZoom;
-    };
-    this.gmap.addListener("idle", () => zoomChangedHandler(null));
   },
   get infowindow() {
     return globalThis.gmap.infowindow;
@@ -52114,7 +52114,7 @@ var GeoJsonLayer = class extends CompositeLayer {
 _defineProperty(GeoJsonLayer, "layerName", "GeoJsonLayer");
 _defineProperty(GeoJsonLayer, "defaultProps", defaultProps11);
 
-// src/js/public_map/PublicLayerBarriosWebGL.ts
+// src/js/property_map/PublicLayerBarriosWebGL.ts
 var PublicLayerBarriosWebGL = ({ index, slug_name, name, layer_options }, comunas2) => ({
   mapTypes: [],
   lastType: null,
@@ -52424,7 +52424,7 @@ var PublicLayerBarriosWebGL = ({ index, slug_name, name, layer_options }, comuna
   mapDialogOpen: false
 });
 
-// src/js/public_map/public_map_modules/b64toBlob.ts
+// src/js/property_map/public_map_modules/b64toBlob.ts
 var b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
   const byteCharacters = atob(b64Data);
   const byteArrays = [];
@@ -52441,7 +52441,7 @@ var b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
   return blob;
 };
 
-// src/js/public_map/public_map_modules/iconOptions.ts
+// src/js/property_map/public_map_modules/iconOptions.ts
 var iconOptions = [
   //{ fontFamily: 'FontAwesome5Free', className: 'fas fa-house-user', text: '0f9' ,
   //{ fontFamily: 'LineIcons', className: 'lni lni-apartment', text: 'e800' },
@@ -52484,7 +52484,7 @@ var iconOptions = [
   return icon;
 });
 
-// src/js/public_map/public_map_modules/marker_factory/markerFactory.ts
+// src/js/property_map/public_map_modules/marker_factory/markerFactory.ts
 var computeColorAlpha = (color, opacity) => {
   let colorHexAlpha = color, colorRgb = color, colorRgba = color;
   if (/#[a-fA-F0-9]{3}/.test(color)) {
@@ -52497,185 +52497,9 @@ var computeColorAlpha = (color, opacity) => {
   return { colorRgba, colorRgb, colorHexAlpha };
 };
 
-// src/js/public_map/public_map_modules/negocioFeatureToHtml.ts
+// src/js/property_map/public_map_modules/negocioFeatureToHtml.ts
 var negocioFeatureToHtml = class {
-  constructor(feature, campos) {
-    this.feature = feature;
-    campos = {
-      "ubicacion": "Ubicaci\xF3n",
-      "tipo": "Tipo",
-      "dormitorios_total": "Dormitorios",
-      "banos_total": "Ba\xF1os",
-      "servicios": "Servicios",
-      ...campos,
-      tipo_negocio: "Modalidad",
-      tipo_propiedad: "Tipo Propiedad",
-      "titulo-resumen-web": "Resumen",
-      nombre: "Nombre",
-      comuna: "Ubicaci\xF3n",
-      "banos-completos": "Ba\xF1os",
-      dormitorios_completos: "Dormitorios",
-      "precio": "Precio"
-    };
-    this.campos = campos;
-    this.normalizeProperties();
-    this.id = feature.getId();
-    this.coordinates = feature.getCenter().toJSON();
-    this.container = new Wrapper("flex flex-col");
-    console.log({ feature, campos, id: this.id });
-    this.container.addClass("flex").addClass("flex-col").addStyle("lineHeight", "1.5em").addStyle("fontSize", "13px").addStyle("fontFamily", "Inter, sans-serif").addStyle("fontWeight", "400").addStyle("maxWidth", "350px");
-    this.appendProperties();
-  }
-  get content() {
-    this.container.div.classList.add("flex");
-    this.container.div.classList.add("flex-col");
-    return this.container.div;
-  }
-  getProperty(slug_name) {
-    return this.feature.getProperty(slug_name);
-  }
-  get innerHTML() {
-    return this.content.innerHTML;
-  }
-  get linkWeb() {
-    const postId = this.getProperty("codigo-wordpress") || this.getProperty("codigo_wordpress");
-    return this.getProperty("link-publicacion-web") || postId && `"https://lacasadejuana.cl/?p=${postId}"` || null;
-  }
-  get ubicacion() {
-    let barrio = this.getProperty("barrio").replace("Barrio ", ""), comuna = this.getProperty("comuna");
-    return barrio ? `Barrio ${barrio}, ${comuna}` : comuna;
-  }
-  get precio() {
-    return this.getProperty("precio-publicacion") + " (UF)";
-  }
-  get tipo() {
-    return `<span class="font-semibold">${this.getProperty("tipo_propiedad")}</span>
-        <span style="margin-left:0.25em;margin-right:0.25em;">en</span>
-        <span class="font-semibold">${this.getProperty("tipo_negocio")}</span>`;
-  }
-  get banos_total() {
-    let banos = Number(this.getProperty("banos") || this.getProperty("banos-completos")).toFixed(0), banos_servicios = this.getProperty("banos-servicio"), texto_servicio = Number(banos_servicios) > 0 ? ` + ${Number(banos_servicios).toFixed(0)} servicio` : "";
-    return `${Number(banos).toFixed(0)} ba\xF1os ${texto_servicio}`;
-  }
-  get dormitorios_total() {
-    let dormitorios = Number(this.getProperty("dormitorios") || this.getProperty("dormitorios-completos")).toFixed(0), dormitorios_servicio = this.getProperty("dormitorios-servicio"), texto_servicio = Number(dormitorios_servicio) > 0 ? ` + ${Number(dormitorios_servicio).toFixed(0)} servicio` : "";
-    return `${dormitorios} dormitorios ${texto_servicio}`;
-  }
-  get hiddenSlugs() {
-    return [
-      "lat",
-      "lng",
-      "searchstring",
-      "id_etapa_negocio",
-      "precio-publicacion",
-      "codigo_interno",
-      "codigo-wordpress",
-      "codigo_wordpress",
-      "link-publicacion",
-      "thumbnail",
-      "barrio",
-      "img-portada-wordpress",
-      "id_tipo_negocio",
-      "id_tipo_propiedad",
-      "dormitorios",
-      "banos-completos",
-      "banos-servicio",
-      "banos",
-      "tipo_negocio",
-      "tipo_propiedad",
-      "comuna",
-      "titulo-resumen-web",
-      "dormitorios-servicio",
-      "servicios",
-      "fecha-publicacion"
-    ];
-  }
-  normalizeProperties() {
-    this.feature.setProperty("ubicacion", this.ubicacion);
-    this.feature.setProperty("tipo", this.tipo);
-    this.feature.setProperty("precio", this.precio);
-    this.feature.setProperty("servicios", `${this.dormitorios_total}, ${this.banos_total}`);
-    this.feature.setProperty("fecha-publicacion", this.getProperty("fecha-publicacion").split("-").reverse().join("-"));
-  }
-  appendProperties() {
-    this.feature.forEachProperty((value, slug_name) => {
-      if (slug_name === "nombre")
-        console.log({ value, slug_name });
-      if (this.shouldSkip(slug_name, value))
-        return;
-      let wrapper = new Wrapper(
-        "flex w-full justify-between align-items-center " + slug_name
-      );
-      if (slug_name.includes("thumbnail") || slug_name.includes("img-portada-wordpress")) {
-        this.printImagenPortada(wrapper, value);
-      } else if (slug_name.includes("seudonimo") || slug_name.includes("nombre")) {
-        this.printLinkWeb(wrapper, value);
-      } else if (slug_name.includes("titulo-resumen-web")) {
-        this.printTituloResumen(wrapper, value);
-      } else if (slug_name.includes("tipo")) {
-        this.printTipo(wrapper, value);
-      } else if (slug_name.includes("servicios")) {
-        this.printServicios(wrapper, value);
-      } else if (slug_name.includes("ubicacion")) {
-        this.printUbicacion(wrapper, value);
-      } else {
-        this.printOtherCampos(wrapper, slug_name, value);
-      }
-    });
-  }
-  printUbicacion(wrapper, value) {
-    value = `<span class="nowrap font-bold text-bold">${value}</span>.&nbsp;&nbsp;&nbsp;  ${this.getProperty("titulo-resumen-web")} `;
-    wrapper.setInnerHTML(value);
-    wrapper.addClass("justify").addStyle("textAlign", "justify").addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.15em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("display", "block").addStyle("marginTop", "0em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
-  }
-  printServicios(wrapper, value) {
-    wrapper.setInnerHTML(value);
-    wrapper.addStyle("fontWeight", "500").addStyle("order", "4").addStyle("fontSize", "1em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0em").addStyle("marginBottom", "0.5em").prependTo(this.container.div);
-  }
-  shouldSkip(slug_name, value) {
-    return !value || slug_name.includes("etapa") || this.hiddenSlugs.includes(slug_name) || slug_name.includes("codigo-wordpress") || slug_name.includes("codigo_wordpress") || slug_name.includes("link-publicacion") || !this.campos[slug_name] && slug_name !== "thumbnail";
-  }
-  printImagenPortada(wrapper, value) {
-    const link = `<img src="${value}" style="width:100%;height:200px;object-fit:cover;"/>`;
-    wrapper.setInnerHTML(link).addStyle("fontWeight", "600").addStyle("fontSize", "1.1em").addStyle("marginBottom", "0.3em").addStyle("order", "1").appendTo(this.container.div);
-  }
-  printLinkWeb(wrapper, value) {
-    if (this.linkWeb) {
-      wrapper.setInnerHTML(
-        ` <a href=${this.linkWeb} target="_blank"><i class="fas fa-link"></i> ${value}</a>`
-      );
-    } else {
-      wrapper.setInnerHTML(`  ${value}`);
-    }
-    wrapper.addStyle("fontWeight", "600").addStyle("order", "2").addStyle("fontSize", "1.5em").addStyle("marginTop", "0.7em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
-  }
-  printTipo(wrapper, value) {
-    wrapper.div.setAttribute("rel", "tipo");
-    new Wrapper("py-1 pl-1 flex border border-1/2 min-w-[150px]").addStyle("fontFamily", "Inter, sans-serif").setTextContent(this.campos.tipo).addStyle("minWidth", "130px").addStyle("maxWidth", "140px").appendTo(wrapper.div);
-    new Wrapper(
-      "py-1 flex border border-1/2 pl-2 max-w-[350px] min-w-[200px] flex-grow overflow-hidden whitespace-nowrap"
-    ).addStyle("maxWidth", "350px").addStyle("minWidth", "200px").addStyle("overflow", "hidden").addStyle("fontFamily", "Inter, sans-serif").setInnerHTML(value).appendTo(wrapper.div);
-    wrapper.addStyle("order", "4").addStyle("fontWeight", "500").appendTo(this.container.div);
-  }
-  printTituloResumen(wrapper, value) {
-    let words = value.split("|"), wordsQuantity = words.length, firstRow = words.slice(0, wordsQuantity / 2).join(" "), secondRow = words.slice(wordsQuantity / 2).join(" ");
-    wrapper.setInnerHTML(value);
-    wrapper.addStyle("fontWeight", "500").addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.1em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0.2em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
-  }
-  printOtherCampos(wrapper, slug_name, value) {
-    wrapper.div.setAttribute("rel", slug_name);
-    new Wrapper("py-1 pl-1 flex border border-1/2 min-w-[165px]").addStyle("fontFamily", "Inter, sans-serif").addStyle("fontWeight", "400").addStyle("minWidth", "130px").addStyle("maxWidth", "140px").setTextContent(this.campos[slug_name]).appendTo(wrapper.div);
-    new Wrapper(
-      "py-1 flex border border-1/2 pl-2 max-w-[350px] min-w-[200px] flex-grow overflow-hidden whitespace-nowrap"
-    ).addStyle("maxWidth", "350px").addStyle("minWidth", "200px").addStyle("overflow", "hidden").addStyle("fontFamily", "Inter, sans-serif").setTextContent(value).appendTo(wrapper.div);
-    wrapper.addStyle("order", "5").addStyle("fontWeight", "500").appendTo(this.container.div);
-  }
-};
-
-// src/js/public_map/public_map_modules/negocioFeatureToHtmlMini.ts
-var negocioFeatureToHtmlMini = class extends negocioFeatureToHtml {
   constructor(feature, campos, variant = "public") {
-    super(feature, campos, variant);
     this.variant = "public";
     this.feature = feature;
     campos = {
@@ -52703,6 +52527,25 @@ var negocioFeatureToHtmlMini = class extends negocioFeatureToHtml {
     console.log({ feature, campos, id: this.id });
     this.container.addClass(window.top.location.pathname).addClass("flex").addClass("flex-col").addStyle("lineHeight", "1.5em").addStyle("fontSize", "13px").addStyle("fontFamily", "Inter, sans-serif").addStyle("fontWeight", "400").addStyle("maxWidth", "350px");
     this.appendProperties();
+  }
+  get ubicacion() {
+    let barrio = this.getProperty("barrio").replace("Barrio ", ""), comuna = this.getProperty("comuna");
+    return barrio ? `Barrio ${barrio}, ${comuna}` : comuna;
+  }
+  get precio() {
+    return this.getProperty("precio-publicacion") + " (UF)";
+  }
+  get tipo() {
+    return `<span class="font-semibold">${this.getProperty("tipo_propiedad")}</span>
+        <span style="margin-left:0.25em;margin-right:0.25em;">en</span>
+        <span class="font-semibold">${this.getProperty("tipo_negocio")}</span>`;
+  }
+  normalizeProperties() {
+    this.feature.setProperty("ubicacion", this.ubicacion);
+    this.feature.setProperty("tipo", this.tipo);
+    this.feature.setProperty("precio", this.precio);
+    this.feature.setProperty("servicios", `${this.dormitorios_total}, ${this.banos_total}`);
+    this.feature.setProperty("fecha-publicacion", this.getProperty("fecha-publicacion").split("-").reverse().join("-"));
   }
   get content() {
     this.container.div.classList.add("flex");
@@ -52779,8 +52622,7 @@ var negocioFeatureToHtmlMini = class extends negocioFeatureToHtml {
     return !value || slug_name.includes("etapa") || this.hiddenSlugs.includes(slug_name) || slug_name.includes("codigo-wordpress") || slug_name.includes("codigo_wordpress") || slug_name.includes("link-publicacion") || !this.campos[slug_name] && slug_name !== "thumbnail";
   }
   printImagenPortada(wrapper, value) {
-    const height = this.variant == "property_map" ? "120px" : "200px";
-    const link = `<img src="${value}" style="width:100%;height:${height};object-fit:cover;"/>`;
+    const link = `<img src="${value}" style="width:100%;height:120px;object-fit:cover;"/>`;
     wrapper.setInnerHTML(link).addStyle("fontWeight", "600").addStyle("fontSize", "1.1em").addStyle("marginBottom", "0.3em").addStyle("order", "1").appendTo(this.container.div);
   }
   printLinkWeb(wrapper, value) {
@@ -52816,7 +52658,7 @@ var negocioFeatureToHtmlMini = class extends negocioFeatureToHtml {
   }
 };
 
-// src/js/public_map/PublicLayerDeals.ts
+// src/js/property_map/PublicLayerDeals.ts
 var PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria }, comunas2) => ({
   //   features,
   layer_options,
@@ -53004,22 +52846,12 @@ var PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria 
     if (this.infowindow_added)
       return;
     this.infowindow_added = true;
-    const main_codigo_interno = this.$store.public_maps.codigo_interno;
     google.maps.event.addListener(layer, "click", (event) => {
       globalThis.gmap.infowindow.close();
       let negocio = event.feature;
       this.getMap().panTo(event.latLng);
-      console.info("main_codigo_interno", main_codigo_interno);
-      let html = main_codigo_interno ? new negocioFeatureToHtmlMini(
-        negocio,
-        this.$store.columnas_actuales.featureProperties,
-        main_codigo_interno ? "property_map" : "public"
-      ) : new negocioFeatureToHtml(
-        negocio,
-        this.$store.columnas_actuales.featureProperties,
-        main_codigo_interno ? "property_map" : "public"
-      );
-      this.getInfoWindow().setContent(html.content);
+      let html = new negocioFeatureToHtml(negocio, this.$store.columnas_actuales.featureProperties).content;
+      this.getInfoWindow().setContent(html);
       this.getInfoWindow().setPosition(event.latLng);
       this.getInfoWindow().open({ map: globalThis.gmap });
     });
@@ -53065,6 +52897,8 @@ var PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria 
         this.marker.setVisible(false);
         this.marker.setMap(null);
       };
+    }
+    if (!this.clickListener) {
       this.clickListener = (event) => {
         globalThis.gmap.infowindow.close();
         let negocio = event.feature, { domEvent } = event || {}, { shiftKey } = domEvent || {};
@@ -53113,7 +52947,7 @@ var PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria 
   tomselect: null
 });
 
-// src/js/public_map/PublicLayerGeoJson.ts
+// src/js/property_map/PublicLayerGeoJson.ts
 var PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, comunas2) => ({
   mapTypes: [],
   lastType: null,
@@ -53366,7 +53200,7 @@ var PublicLayerGeoJson = ({ index, slug_name, name, layer_options }, comunas2) =
   mapDialogOpen: false
 });
 
-// src/js/public_map/public_map_modules/extendMapDataProtoType.ts
+// src/js/property_map/public_map_modules/extendMapDataProtoType.ts
 function extendMapDataProtoType2() {
   let maps = google.maps;
   console.info({ googleMaps: maps });
@@ -53514,7 +53348,7 @@ function extendMapDataProtoType2() {
   return maps;
 }
 
-// src/js/public_map/public_map_modules/map_styles/BentleyMap.ts
+// src/js/property_map/public_map_modules/map_styles/BentleyMap.ts
 var BentleyMap = {
   name: "Bentley Map",
   alt: "A subtle style reminiscent of old paper printed road maps.",
@@ -53625,7 +53459,7 @@ var BentleyMap = {
   ]
 };
 
-// src/js/public_map/public_map_modules/map_styles/FlatDesign.ts
+// src/js/property_map/public_map_modules/map_styles/FlatDesign.ts
 var FlatDesign = {
   name: "Flat Map",
   alt: "Flat Design Map Without Labels",
@@ -53813,7 +53647,7 @@ var FlatDesign = {
   ]
 };
 
-// src/js/public_map/public_map_modules/map_styles/Grass.ts
+// src/js/property_map/public_map_modules/map_styles/Grass.ts
 var Grass = {
   name: "Grass Map",
   alt: "Grass is greener, Water is bluer",
@@ -53881,7 +53715,7 @@ var Grass = {
   ]
 };
 
-// src/js/public_map/public_map_modules/map_styles/LightBlueMap.ts
+// src/js/property_map/public_map_modules/map_styles/LightBlueMap.ts
 var LightBlueMap = {
   name: "Light Blue",
   alt: "Light blue and white style.",
@@ -54034,7 +53868,7 @@ var LightBlueMap = {
   ]
 };
 
-// src/js/public_map/public_map_modules/map_styles/PaperMap.ts
+// src/js/property_map/public_map_modules/map_styles/PaperMap.ts
 var PaperMap = {
   name: "Paper Map",
   styles: [
@@ -54158,7 +53992,7 @@ var PaperMap = {
   ]
 };
 
-// src/js/public_map/public_map_modules/map_styles/ShiftWorker.ts
+// src/js/property_map/public_map_modules/map_styles/ShiftWorker.ts
 var ShiftWorker = {
   name: "Shift Worker",
   alt: "Display streets with a minimum of distractions. Best used around zoom level 16 to show a local address.",
@@ -54280,7 +54114,7 @@ var ShiftWorker = {
   ]
 };
 
-// src/js/public_map/public_map_modules/MapTypeListener.ts
+// src/js/property_map/public_map_modules/MapTypeListener.ts
 var MapTypeListener = class extends BaseClass {
   constructor(gmap) {
     super();
@@ -54293,16 +54127,12 @@ var MapTypeListener = class extends BaseClass {
       if (Alpine.store("public_maps").full_map) {
         let mapSearch = document.querySelector("#searchCampo");
         this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
+      } else {
+        console.log("inject styles to gmap");
+        let styleTag2 = document.createElement("style");
+        styleTag2.textContent = `@import url('/css/app.css')`;
+        this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
       }
-      console.log("inject styles to gmap");
-      let styleTag2 = document.createElement("style");
-      styleTag2.textContent = `@import url('/css/app.css')`;
-      this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
-      const mapName = document.createElement("div");
-      mapName.id = "map_name";
-      mapName.setAttribute("x-text", "'Viendo mapa: '+window.top.location.pathname");
-      mapName.className = "flex map_name py-1 px-3 bg-gradient  text-black h8 min-w[200px] justify-center items-center";
-      this.gmap.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(mapName);
       return this;
     });
   }
@@ -54360,7 +54190,7 @@ var MapTypeListener = class extends BaseClass {
   }
 };
 
-// src/js/public_map/public_map_modules/populateMapFields.ts
+// src/js/property_map/public_map_modules/populateMapFields.ts
 var populateMapFields = (columnas_actuales, campos_busqueda) => {
   return columnas_actuales.columnDefs.concat([
     campos_busqueda.find("nombre"),
@@ -54389,7 +54219,7 @@ var populateMapFields = (columnas_actuales, campos_busqueda) => {
   }, {});
 };
 
-// src/js/public_map/PublicMapFrameData.ts
+// src/js/property_map/PublicMapFrameData.ts
 var comunas = [
   "Lo Barnechea",
   "Las Condes",
@@ -54407,7 +54237,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
     barriosButton: null,
     barriosVisible: false,
     mapOptions: {
-      zoom: 17,
+      zoom: 15,
       bounds: {},
       center: {
         lat: -33.41,
@@ -54447,7 +54277,12 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
           south: Number(south)
         };
       } else if (codigo_interno) {
-        this.bounds = null;
+        this.bounds = {
+          "south": -33.47262469572745,
+          "west": -70.61415217498778,
+          "north": -33.4076631444587,
+          "east": -70.5119278250122
+        };
       } else {
         this.bounds = { "south": -33.46, "west": -70.67, "north": -33.336, "east": -70.49 };
       }
@@ -54537,10 +54372,9 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
         map: globalThis.gmap,
         zIndex: 210,
         icon: {
-          path: 0,
-          //google.maps.SymbolPath.CIRCLE,
-          scale: 0.5,
-          strokeWeight: 1,
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 5,
+          strokeWeight: 2,
           labelOrigin: new google.maps.Point(0, 2),
           strokeColor: "rgba(200,200,200,0)"
         }
@@ -54559,7 +54393,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
     },
     createDomManager(codigo_interno2) {
       if (codigo_interno2) {
-        this.gmap.setZoom(17);
+        this.gmap.setZoom(15);
       } else {
         this.gmap.controls[google.maps.ControlPosition.LEFT_TOP].push(document.querySelector("#map_controls"));
         setTimeout(() => {
@@ -54634,7 +54468,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
         if (negocio) {
           let gmap = this.gmap;
           this.gmap.setCenter({ lat: Number(negocio.lat), lng: Number(negocio.lng) });
-          this.gmap.setZoom(Math.max(this.gmap.getZoom(), 17));
+          this.gmap.setZoom(Math.max(this.gmap.getZoom(), 15));
         }
       }
     },
@@ -54753,7 +54587,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
   };
 };
 
-// src/js/public_map/public_map_modules/sharingLevels.ts
+// src/js/property_map/public_map_modules/sharingLevels.ts
 var sharingLevels = {
   private: {
     id: "private",
@@ -54790,10 +54624,10 @@ var LoaderStatus;
   LoaderStatus2[LoaderStatus2["FAILURE"] = 3] = "FAILURE";
 })(LoaderStatus || (LoaderStatus = {}));
 
-// src/js/public_map/public_map_modules/iconSelector.ts
+// src/js/property_map/public_map_modules/iconSelector.ts
 var import_tom_select = __toESM(require_tom_select_complete());
 
-// src/js/public_map/PublicMapStore.ts
+// src/js/property_map/PublicMapStore.ts
 var PublicMapStore = class extends BaseClass {
   constructor() {
     super();
@@ -54815,7 +54649,7 @@ var PublicMapStore = class extends BaseClass {
     this.savedMaps = [];
     this.feature_collection = { type: "FeatureCollection", features: [] };
     this.layerSlugs = [];
-    this._codigo_interno = null;
+    this.codigo_interno = null;
     this._customElementsMap = null;
     this.skipMapCreation = false;
     this.barrioLabels = [];
@@ -54852,17 +54686,6 @@ var PublicMapStore = class extends BaseClass {
       this.ready = true;
       this.processEventListeners("ready", maps);
     });
-    module_default.store("negocios").once("complete", () => {
-      this.marquee("setting center on codigo interno");
-      let { lat, lng } = this.mainFeature;
-      this.customElementsMap.setCenter({ lat, lng });
-      this.customElementsMap.setZoom(17);
-    });
-  }
-  setCenterByCodigoInterno() {
-    let { lat, lng } = this.mainFeature;
-    this.customElementsMap.setCenter({ lat, lng });
-    this.customElementsMap.setZoom(17);
   }
   get customElementsMap() {
     return this._customElementsMap;
@@ -54878,21 +54701,13 @@ var PublicMapStore = class extends BaseClass {
       this.marquee("received customElementsMap");
       if (this.codigo_interno) {
         this.marquee("setting center on codigo interno");
-        let { lat, lng } = this.mainFeature;
-        customElementsMap.setCenter({ lat, lng });
-        customElementsMap.setZoom(17);
+        let negocio = this.$store.negocios.get(this.codigo_interno);
+        if (negocio) {
+          let { lat, lng } = negocio;
+          customElementsMap.setCenter({ lat, lng });
+        }
       }
     }
-  }
-  get codigo_interno() {
-    return this._codigo_interno;
-  }
-  set codigo_interno(codigo_interno) {
-    this._codigo_interno = codigo_interno;
-    this.marquee("got codigo_interno " + codigo_interno);
-  }
-  get mainFeature() {
-    return this.$store.negocios.get(this.codigo_interno) || this.customElementsMap?.getCenter().toJSON();
   }
   get verifiers() {
     return {
@@ -54995,7 +54810,6 @@ var PublicMapStore = class extends BaseClass {
   init() {
   }
   setCodigoInterno(codigo_interno) {
-    this.marquee("setting codigo_interno " + codigo_interno);
     this.codigo_interno = codigo_interno;
   }
   reloadSavedMaps(savedMaps) {
@@ -55048,7 +54862,6 @@ var PublicMapStore = class extends BaseClass {
   fetchPublicaciones() {
     return this.$store.negocios.fetchAll().then((result) => {
       setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
-      console.info("fetched negocios", this.$store.negocios.properties.length);
       return result;
     });
   }
@@ -55147,7 +54960,7 @@ var createPublicMapStore = ($store2) => {
   return new PublicMapStore($store2);
 };
 
-// src/js/public_map/index.ts
+// src/js/property_map/index.ts
 var PublicMapComponents = {
   PublicLayerDeals,
   PublicLayerGeoJson,
@@ -55156,14 +54969,14 @@ var PublicMapComponents = {
   PublicLayerBarriosWebGL,
   PublicLayerBarrios: PublicLayerBarriosDataLayer
 };
-var public_map_default = PublicMapComponents;
+var property_map_default = PublicMapComponents;
 export {
   PublicLayerDeals,
   PublicLayerGeoJson,
   PublicMapComponents,
   PublicMapFrameData,
   createPublicMapStore,
-  public_map_default as default
+  property_map_default as default
 };
 /*! Bundled license information:
 

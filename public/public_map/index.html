@@ -2,37 +2,83 @@
 <html lang="en">
 
 <head>
-     <meta name="csrf" content="" /></head>
+    <meta name="csrf" content="" />
 
-    <title>Mape Frame index.html</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Negocios: Maps negocioslocal</title>
+    <script>
+        if (!console.timerInfo) {
+            Object.defineProperty(console, 'timerInfo', {
+                get: function() {
+                    return Function.prototype.bind.call(
+                        console.debug,
+                        console,
+                        '%c' +
+                        Number(performance.now() / 1000).toFixed(2) +
+                        ' Timer:',
+                        'color:#03C;font-weight:bold;'
+                    );
+                },
+            });
+        }
+        if (!console.marquee) {
+
+            Object.defineProperty(console, 'marquee', {
+                get: function() {
+                    return (obj, ...args) => {
+                        let colors = Object.values(obj),
+                            payload = [''].concat(Object.keys(obj));
+                        console.log(payload.join('%c '), ...colors, ...args);
+                    };
+                },
+            });
+        }
+    </script>
+    <script src="/js/components/init_public_map.js"></script>
+
+
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="/css/app.css" />
+    <link href="/css/fontawesome/css/all.min.css" rel="stylesheet">
+
+
+
+
+    <link href="/css/fontello/fontello.css" rel="stylesheet">
+    <link href="/css/fontello/animation.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css">
+
+
+</head>
+
 
 <body>
-    <script src="./js/init_public_map.js"></script>
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper ml-0 collapsed no_transitions public-mapindex">
-        <link rel="stylesheet" href="./css/app.css"/>
-        
 
 
         <!-- ========== section start ========== -->
         <section class="section max-w-136rem mx-auto" id="outer_section">
             <div class="container-fluid pl-2 px-0" x-data='{}'>
 
-        
+                <div class="  -ml-4 w-[60%] max-w-[55vw]   md:max-w-[500px] md:w-[45%]   pl-0" id="search_contextual">
+                </div>
 
 
                 <article class="outer_container" id="barebone_container">
                     <div class="w-full" x-data="{
                         codigo_interno: null,
                         extent: null,
-                        mapDialogOpen:false,
                         init() {
                     
                             this.importComponent();
                             let qs = new URL(location.href)
                             if (qs.searchParams.get('codigo_interno')) {
                                 this.codigo_interno = qs.searchParams.get('codigo_interno')
-                                this.$store.public_maps.codigo_interno=this.codigo_interno;
                             }
                             if (qs.searchParams.get('extent')) {
                     
@@ -51,7 +97,6 @@
                         full_map: false,
                     
                         componentsReady: false,
-                        mapDialogOpen: false,
                         get componentMap() {
                             return {
                                 barrios: this.PublicLayerBarrios,
@@ -61,7 +106,7 @@
                         },
                         importComponent() {
                     
-                            return import('/js/public_map.js').then((module) => {
+                            return import('/js/components/public_map.js').then((module) => {
                                 console.log('PublicMapMoldules', module);
                                 //Alpine.store('public_maps',()=>new module.createPublicMapStore())
                                 //this.$store.public_maps.$store.negocios=this.$store.negocios;
@@ -70,7 +115,7 @@
                     
                     
                                 const { PublicLayerBarrios, PublicLayerDeals, PublicLayerGeoJson, PublicMapFrameData } = module.PublicMapComponents
-                                globalThis.PublicMapComponents=module.PublicMapComponents
+                    globalThis.PublicMapComponents=module.PublicMapComponents
                                 Alpine.data('PublicLayerDeals', PublicLayerDeals);
                                 Alpine.data('PublicLayerGeoJson', PublicLayerGeoJson);
                                 Alpine.data('PublicMapFrameData', PublicMapFrameData);
@@ -81,15 +126,6 @@
                                 this.PublicLayerBarrios = PublicLayerBarrios
                                 this.componentsReady = true;
                                 globalThis.DynamicLoader = this
-                                setTimeout(()=>{
-                                    globalThis.gmap.setOptions({maxZoom:13})
-                                    globalThis.gmap.setZoom(17);
-                                    setTimeout(()=>{
-                                        globalThis.gmap.setZoom(17);
-                                    },4000)
-                                
-                                },4000)
-                                
                             });
                         },
                     }">
@@ -98,8 +134,7 @@
 
                             <div class="map_outer_container" style="text-align: center" x-data="PublicMapFrameData({ extent, codigo_interno })">
 
-                                <div class="  -ml-4 w-[60%] max-w-[55vw]   md:max-w-[500px] md:w-[45%]   pl-0" id="search_contextual">
-                                
+
                                 <template x-teleport="#search_contextual">
                                     <div class="flex-nowrap input-group justify-content-end w-full" id="searchCampo"
                                         x-init="setTimeout(() => document.querySelector('#search_contextual').append(document.querySelector('#searchCampo')), 1000)">
@@ -114,7 +149,6 @@
 
                                     </div>
                                 </template>
-                            </div>
                                 <div class="w-full flex flex-col items-center justify-center border gmap   "
                                     :class="{
                                         'controls_closed': !mapDialogOpen,
@@ -196,9 +230,7 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            left:${mapDialogOpen ? '0' : 'unset'};
                             font-size: 1.9em;"
-                            
                                         x-on:click="()=>{
                             $el.parentElement.classList.toggle('-left-[220px]')
                             console.log({mapDialogOpen})
@@ -237,7 +269,130 @@
     </main>
     <!-- ======== main-wrapper end =========== -->
 
- 
+
+
+    <!-- ======== after_footer start =========== -->
+
+    <!-- ======== after_footer end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+
+    <script>
+        (g => {
+            var h, a, k, p = "The Google Maps JavaScript API",
+                c = "google",
+                l = "importLibrary",
+                q = "__ib__",
+                m = document,
+                b = window;
+            b = b[c] || (b[c] = {});
+            var d = b.maps || (b.maps = {}),
+                r = new Set,
+                e = new URLSearchParams,
+                u = () => h || (h = new Promise(async (f, n) => {
+                    await (a = m.createElement("script"));
+                    e.set("libraries", [...r] + "");
+                    for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+                    e.set("callback", c + ".maps." + q);
+                    a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+                    d[q] = f;
+                    a.onerror = () => h = n(Error(p + " could not load."));
+                    a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+                    m.head.append(a);
+                }));
+            d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() =>
+                d[l](f, ...n));
+        })({
+            key: "AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8",
+            v: "beta",
+            // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+            // Add other bootstrap parameters as needed, using camel case.
+        });
+    </script>
+    <script>
+        console.timerInfo('start: negocio common footer');
+
+
+        globalThis.googleMapsOptions = {
+            "apiKey": "AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8",
+            "version": "beta",
+            "region": "CL",
+            "language": "es",
+            "mapId": "8f541b0e0f5f6c31",
+            "libraries": ["places", "localContext"]
+        };
+        const {
+            campos_busqueda = [],
+                default_columns = []
+        } = globalThis;
+
+        const contactosArray = "";
+        globalThis.backendPaginator = {
+            "has_take": true,
+            "count": 129,
+            "next_page_url": null,
+            "first_page_url": "https:\/\/assets.juana.house\/api\/negocios",
+            "last_page_url": "https:\/\/assets.juana.house\/api\/negocios",
+            "current_page": 1,
+            "from": 1695628584,
+            "cursor": 1695628584,
+            "last_page": 1,
+            "max_id": null,
+            "min_id": null,
+            "path": "https:\/\/negocioslocal.juana.house\/api\/maps\/publicaciones?",
+            "per_page": 350,
+            "prev_page_url": null,
+            "query": {
+                "limit": 350,
+                "take": 1,
+                "api_base_path": "\/api\/maps\/publicaciones",
+                "total": 129
+            },
+            "request_id": "dcdcbe64-d493-4c3d-8321-af0c2759be62",
+            "current_filter_id": null,
+            "to": 130,
+            "total": 129,
+            "links": [{
+                "url": null,
+                "label": "&laquo; Anterior",
+                "active": false
+            }, {
+                "url": null,
+                "label": "&laquo; Siguiente",
+                "active": false
+            }],
+            "data": [
+
+            ]
+        };
+
+
+
+        let {
+            data,
+            ...options
+        } = globalThis.backendPaginator;
+        console.log({
+            options,
+            initialDataLength: (data || []).length
+        });
+        const {
+            per_page,
+            last_page,
+            total,
+            request_id,
+            next_page_url
+        } = backendPaginator;
+
+
+        /*Alpine.store('negocios').reload(Object.values(backendPaginator.data)).then(()=>{
+                Alpine.store('negocios').fetchAll();
+        })*/
+        console.info(performance.now(), 'COMPUTED NEGOCIOS STORE');
+    </script>
+
+
+
 
 
 
@@ -272,19 +427,11 @@
     }">
     </span>
     <script>
-             
         function maploaded() {
             console.timerInfo('maploaded');
-            
-       
+        }
         Alpine.start()
-    }
-        //[...document.querySelectorAll('iframe')].forEach(i=>i.())
     </script>
-    <script
-    async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAnmNtArAHn42aA9BEyiuGDN2Y1J4lhV8&callback=maploaded"
-></script>
 
 </body>
 
