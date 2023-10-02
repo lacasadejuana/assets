@@ -54310,6 +54310,7 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
         console.info({ googleMaps: maps });
         extendMapDataProtoType2(maps);
         this.$store.public_maps.once("map_created", (gmap) => {
+          this.$store.public_maps.fetchPublicaciones();
           console.log("map_created", this.gmap, gmap);
           this.gmap = this.$store.public_maps.customElementsMap;
           globalThis.gmap = Alpine.raw(this.gmap);
@@ -54332,6 +54333,9 @@ var PublicMapFrameData = ({ codigo_interno = null, extent = null }) => {
               await waitFor(1e3);
               this.fitBounds();
             }
+            this.$store.negocios.next_page_url = "https://maps.lacasadejuana.cl/api/negocios";
+            this.$store.negocios.complete = false;
+            this.$store.public_maps.fetchPublicaciones();
           });
           this.$store.public_maps.layer_object = PublicLayersObject;
           this.$store.public_maps.createLayers(this);
