@@ -52622,7 +52622,7 @@ var negocioFeatureToHtml = class {
     return !value || slug_name.includes("etapa") || this.hiddenSlugs.includes(slug_name) || slug_name.includes("codigo-wordpress") || slug_name.includes("codigo_wordpress") || slug_name.includes("link-publicacion") || !this.campos[slug_name] && slug_name !== "thumbnail";
   }
   printImagenPortada(wrapper, value) {
-    const link = `<img src="${value}" style="width:100%;height:120x;object-fit:cover;"/>`;
+    const link = `<img src="${value}" style="width:100%;height:120px;object-fit:cover;"/>`;
     wrapper.setInnerHTML(link).addStyle("fontWeight", "600").addStyle("fontSize", "1.1em").addStyle("marginBottom", "0.3em").addStyle("order", "1").appendTo(this.container.div);
   }
   printLinkWeb(wrapper, value) {
