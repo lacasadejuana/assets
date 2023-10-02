@@ -324,8 +324,8 @@ if(!features || !features.length) return;
             //ifDefined(globalThis.bsTable, (bsTable) => bsTable.reload && bsTable.reload())
             setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1000);
              console.info('fetched negocios', this.$store.negocios.properties.length,'codigo_interno is '+this. codigo_interno);
-             if(!this.codigo_interno) {
-                this._customElementsMap.setZoom(13.1)
+             if(!this.codigo_interno && this.customElementsMap) {
+                this.customElementsMap.setZoom(13.1)
              }
             return result;
         })

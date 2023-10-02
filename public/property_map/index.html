@@ -2,6 +2,12 @@
 <html lang="en">
 	<head>
 		<script src="./js/init_public_map.js"></script>
+		<style>
+			gmp-map {
+				display: block !important;
+				min-height: 300px !important;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -11,6 +17,7 @@
 			center="-33.398,-70.58"
 			:bounds="bounds"
 			zoom="15"
+			height="600px"
 			style="diplay: block !important; min-height: 300px"
 			map-id="8f541b0e0f5f6c31"
 			x-data="{
@@ -125,13 +132,19 @@
 				);
 				for (const advancedMarker of advancedMarkers) {
 					customElements.whenDefined(advancedMarker.localName).then(async () => {
+						console.log({ advancedMarker });
 						Alpine.store('public_maps').customElementsMap = advancedMarker.map;
+						advancedMarker.map.resize();
 						advancedMarker.map.setOptions({ streetViewControl: false, mapTypeControl: false });
 						console.timerInfo('got reference to custom element map');
 						//Alpine.initTree(advancedMap)
 						let styleTag2 = document.createElement('style');
 						styleTag2.textContent = `
-							@import url('./css/app.css')
+							@import url('./css/app.css');
+						gmp-map {
+							display: block;
+							min-height: 300px;
+						}
 							
 							
 						`;

@@ -55057,8 +55057,8 @@ var PublicMapStore = class extends BaseClass {
     return this.$store.negocios.fetchAll().then((result) => {
       setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
       console.info("fetched negocios", this.$store.negocios.properties.length, "codigo_interno is " + this.codigo_interno);
-      if (!this.codigo_interno) {
-        this._customElementsMap.setZoom(13.1);
+      if (!this.codigo_interno && this.customElementsMap) {
+        this.customElementsMap.setZoom(13.1);
       }
       return result;
     });
