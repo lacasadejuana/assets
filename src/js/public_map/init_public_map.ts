@@ -99,21 +99,21 @@ if (!globalThis.storeCamposBusqueda) {
     const storePublicMaps = globalThis.storePublicMaps = createAlpineStore<PublicMapStore>('public_maps', () => new PublicMapStore());
 
     const camposBusquedaPromise = staticFetchWrapper<Record<string, NegocioColumn>>(
-        '/maps/api/campos_formulario', {}).then(res => {
+        'https://assets.juana.house/api/campos_formulario', {}).then(res => {
             globalThis.camposBusquedaJson = res;
             console.timerInfo('received camposBusquedaPromise result from sw');
             return globalThis.camposBusquedaJson;
         })
 
     const barrioLabelsJson = staticFetchWrapper<FeatureCollection<Polygon, GeoJsonProperties>>(
-        '/maps/property_maps/json/barrios_label.geojson', {}).then(res => {
+        'https://assets.juana.house/json/barrios_label.geojson', {}).then(res => {
             globalThis.barrioLabelsJson = res;
             console.timerInfo('received barrioLabelsJson result from sw');
             storePublicMaps.setBarrioLabels(res.features)
             return globalThis.barrioLabelsJson;
         })
     globalThis.columnasVisiblesPromise = staticFetchWrapper<Record<string, NegocioColumn>>(
-        '/maps/api/columnas_actuales', {}).then(res => {
+        'https://assets.juana.house/maps/api/columnas_actuales', {}).then(res => {
             globalThis.camposBusquedaJson = res;
             console.timerInfo('received camposBusquedaPromise result from sw');
             return globalThis.camposBusquedaJson;

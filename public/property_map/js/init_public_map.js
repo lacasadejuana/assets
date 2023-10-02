@@ -25979,7 +25979,7 @@ if (!globalThis.storeCamposBusqueda) {
   const storeActiveFilter = globalThis.storeActiveFilter = createAlpineStore("active_filter", () => new ActiveFilterStore());
   const storePublicMaps = globalThis.storePublicMaps = createAlpineStore("public_maps", () => new PublicMapStore());
   const camposBusquedaPromise = staticFetchWrapper(
-    "/api/campos_formulario",
+    "https://assets.juana.house/api/campos_formulario",
     {}
   ).then((res2) => {
     globalThis.camposBusquedaJson = res2;
@@ -25987,7 +25987,7 @@ if (!globalThis.storeCamposBusqueda) {
     return globalThis.camposBusquedaJson;
   });
   const barrioLabelsJson = staticFetchWrapper(
-    "/json/barrios_label.geojson",
+    "https://assets.juana.house/json/barrios_label.geojson",
     {}
   ).then((res2) => {
     globalThis.barrioLabelsJson = res2;
@@ -25996,7 +25996,7 @@ if (!globalThis.storeCamposBusqueda) {
     return globalThis.barrioLabelsJson;
   });
   globalThis.columnasVisiblesPromise = staticFetchWrapper(
-    "/api/columnas_actuales",
+    "https://assets.juana.house/maps/api/columnas_actuales",
     {}
   ).then((res2) => {
     globalThis.camposBusquedaJson = res2;
@@ -26023,7 +26023,7 @@ if (!globalThis.storeCamposBusqueda) {
       for (k in g)
         e.set(k.replace(/[A-Z]/g, (t) => "_" + t[0].toLowerCase()), g[k]);
       e.set("callback", c + ".maps." + q);
-      a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+      a.src = `https://maps.${c}apis.com/maps/property_maps/api/js?` + e;
       d[q] = f;
       a.onerror = () => h = n(Error(p + " could not load."));
       a.nonce = m.querySelector("script[nonce]")?.nonce || "";
