@@ -1,0 +1,3401 @@
+{
+	"type": "FeatureCollection",
+	"crs": {
+		"type": "name",
+		"properties": {
+			"name": "EPSG:4326"
+		}
+	},
+	"layer_options": {
+		"strokeColor": "#993333",
+		"scale": 0.5,
+		"infoWindow": true,
+		"clickable": true,
+		"fillOpacity": 0.85,
+		"className": "icon-subway",
+		 
+		"strokeWeight": 1,
+		"labelClassName":"markerLabel bg-white border radius-4 p-1 ",
+		"labelVisibility":{
+            
+            "highlighted": false,
+            "always":false
+        },
+		"icon": {
+			"strokeWeight": 0.14,
+			"rotation": 0,
+			 "url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAYAAACMRWrdAAAAAXNSR0IArs4c6QAACYlJREFUaEPtWXtQlNcV/527qxDApUHkzQasCEpAJ7VVYkKCNbSagM6Ij8Ro0urEqeMzvmMzxrSaRKv4aJrKjLXGR7TqjI9qjZoYrU200YwvdIP4QiCKCIKIAvvd07kf7hZcdtnl1TTj/Wd37557zvndc+6555xL+IEO+oHiwiNg/2+WfWSxRxb7nuzAI1f8nhjCbTXazGJ/GzrUoLQatmWL5rZ2zSBsFWBnu3c3W4WIY+YYwRxOzCYwGx/oWQ2i2xpzPhmNV4xSWp48dy6vGRgaXNqiwE7Gx6dAyhQNMAlAgshXCeCGRDNXgqgSzD4gKiNNO5STmHi4pSzaIsD+3a1bMjEPNgBSAzo0ZfcF820QtdOItv/s/PnDTeFRd02zgB2Li+sI5jEgCiEpfUkIsJSAUPaS8Dab4R0bC6+wMBhMJl2uVl6OqsJCVFosqCkoqEev1gOoYKCQgb/2tlhuNRVgk4Edi4vrSpo2XhI9Vle4V0gIOg0bho6pqfCOiXGp1/0LF3Br3z7c3LIFVd99Z6eVQI0gqiGij3pbLDlNAdckYIfj47sbrdaJYNa32DbM06Yh/I03mqIHCrKykLdkSf21RNKqaSuTc3PPecrUY2D/7NzZDCFmqvNgE+aXkIAuCxbALy7OU/n16CssFuTOnYuKM2f+O89cAykXPXvpkkeR0yNg6i4KPnlyPoBONskdU1IQv2qVAyCpaeB795wCJS8viHb2valHlz1uHG4dPGifE0Ql1rCwt1O++MLq7s55BOzzmJhXwNxLEPkqAT/q0wc9Pv7YLququBjZy5Yhf/duVOQ1vsHeISEI798f8VOnwi8qqp7Op0aPxu2jR2vnpLzPRF+n5Oaub3Fg+2NiOhuY3wRzOykEHgsNxU+2bYNXYKAuqywnB58NGoT7RUXuyrbTGXx88PwnnyD4mWfqbdKJIUNwr6BAj7JC02o0g2HpCxcuXHJHgNsW2x8dPQFE3WwZRGJWFoL697fLODBwIIqOHUOH2FgYnbiYM4VKz56FT2go0k+dgjDomZc+ig4cwOk6wUgKkf2LixdXtBiwfbGxYVp19WwBeCmmwS++iB4rV9bjvyk4GNJqRdrx4+gQHe2ObDvNxo4d9e8KmF9ERH2XnDgRN3bv1udYiGphNL6X+u23hY0JcMtie6Kj0wRRX8n8uGLYZ+tWPP7UU/V425RrDrCG1pZ+8w2OZmTYZN2RwOGXLl/e2SLAdkVFzTMQhSlm/gkJeHrHDge+rQVMCfpy0CCUnjkDdWlqQFHa5ctvNxvYni5dTDWatlAFDWXe2EmT0HXq1DYFlpOZCcuKFXpLTRJZq4neGnbpUpkrcI264nazuTuEGE1ArRuuXYug5OQ2BVZ0+DCOvvaaLlMyVxDz6sF5eS6zkUaBbYuMTCYhXmJmfxV2f3nkCHzCw50C6/nuu/B5cAU05i62/78cP17/6ux8VhYUYO/TT9cm15pWDWDLkGvXXFYAjQLbGhExkA2GfsSslyNDrl5tUF/bGXMXTEN0rgLPtieeqI2MujfSroyrV/c0yxU3m81pkLI/A96K0fBr1zwGplInX7MZlYWF0FykWa6AbY6M1OUScB9CHBiel7erWcA2REQMFERptkx+hIfAvIOC8MKePfrdprKSg0OHQl3Inlpskw0Y8x0i+nx4fn7zLLYhMjKZmTMY8FLhNv2rrxwuUaWkM1dMmDULCTNn2nFc2bwZtjP1MDhnFqvIz8f2pCQ93DNQRkR/H9ncM7bebO4uNe3XpEp+IqSsX4/w555z2PBNnTpBqur5odF17Fj0+uAD+2xOVhaOz5nToMXST5xwSIYVYcGhQzg4ciSUfJayRBiN615tblRc1bmzf/uqqoUE6F2mHpMno+eMGQ6K/aNvX5RaLA7z6nz1XrYMof364ZbKIiZNQtUtx4q/ncmEIRYLhJeetdUbJxcvxqnly2uDB3NNOx+ft17NzS1v1hlTi/8SGvo7CBGkvgcmJiJtj6N731C7+vLLkFVVruQ5/S/pww8RPWJEg//vGjgQxadP24AVjiksVDWhy9FouFers8LC0ok5WQAdlLOl7dyJ4F69HBiXnjuHM++9h8L9+yFrahqTDSEEOiUlIWHOHAQlJTVIf+P4cexOT4eSS8ylEOJfYwsLXUZExcgtYKsDA8M0o3EOE7VXi36cloafN1A12zRToI5OmIArW7c6BRfUty9SNm6Ewc/P5QZ8Nm4cLu6qxUHMVQar9f0xxcUtk90rpn8OCZkOZnvbKXXNGkQPGOCglAogJ6ZPx4W1axu1WHhqKp5ZswYGb/2KdBiX9+7Fvtdft7mgFUKc/831639slLG7FlOMPgoJiWLmN+WDmswUGoohn34KnyD96NmHag2cfbjb5EKTqIwM9M7MdKCoLCrCtgEDUK4qaACqHQcpl44vKmrZCloxXxEUNJKE6Akp9e5nxLPPYrALd3NnZ53RbM/IQP6RIyoMqjB/F5p2fGJx8UZ3ebp1xuoyywwJeUdIGWqbi0pNRfq6de7Kc4tu56hRuLJvn06rgoZgvhl68+a8YXo55t7wGNjSwMBeEELFZXuPPjgxEf2XLUNQfLx7Up1QFWVn48CUKbjxILQrMnVvGazWRVNKSxtve9Xh6zEw3SUDAvpUG43DBOBbN9dInjsXP500qUngvl6xAkcWLNAtZB8qEhmNK6dfv976nWCb0AXBwU+2l/IVyexFgD1mq6CSMGoU4gYNQkDXri5BluTkwLJjB85s2GAPEuoxQ6+7mO8ZiP40rbi47Xr3Nm3nmUwB3u3b/0oAwZBSL0TtikkJ/6godIqPh39kJLz8/fVlVWVlKLt2DTezs1Gmmqp1XmfUegbuQojr8t691W/dudP2ry11TbEwICCDgD6yiW9jNl6q1hJSbpt9+/b/9n2sLrh5AQEmI/NsIqptEno4mPmWlej9+SUlLpNbd9k2KXg4Y65ckwyGWaqt764CD+hus6Z9ML+8vMTDdU7JWxSYkvKOn18QG43qmcm9J1tVEVuti96pqPC86e9iF1ocmJI1LzAwTFqtM0DkoxefD4KKyubr/SaqFEbj4vluJLWeWrJVgCkl5gYEREJKlTg3nOESqabMHxaUlDTcHfIUyUP0rQZMyfmtv390DfM0Yq73wkdENQaiJb8vK7vcTP3b7ow9LGmGyaRKnanEbNDvKWaV72UuLi+/0FqgFN9WtZhN8Zl+ft0k0WT1WzAvX1RRcb41QbUZMCVoqq9vgvrMvHu3zst568H7D0EVlmQ9tPTMAAAAAElFTkSuQmCC",
+			"url3":"data:image/png;base64,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",
+			"url2": "data:image/png;base64,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"
+		},
+		"rotation": 0,
+		"text": "f239",
+		"labelProperty": "Nombre",
+		"url": "/json/capa_metro.geojson",
+		"checked": false,
+		"campos": {
+			"Nombre": "Nombre",
+			"Estación": "Estación",
+			"Línea": "Línea"
+		}
+	},
+	"features": [{
+			"type": "Feature",
+			"id": 3,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6553369999976,
+					-33.4445980057636
+				]
+			},
+			"properties": {
+				"OBJECTID": 3,
+				"GlobalID": "34c10eb1-e7e5-4c02-9b01-b3b702fbd741",
+				"CreationDate": "Mon, 06 Apr 2020 20:28:10 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 20:35:43 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Moneda",
+				"Nombre": "Moneda",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 4,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6504030765162,
+					-33.4437631954817
+				]
+			},
+			"properties": {
+				"OBJECTID": 4,
+				"GlobalID": "2be587d2-7692-445f-9d84-0c57a01ab092",
+				"CreationDate": "Mon, 06 Apr 2020 20:44:23 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:26:21 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Universidad de Chile",
+				"Nombre": "Universidad de Chile",
+				"Línea": "1 / 3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 5,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.645178133356,
+					-33.4425087268552
+				]
+			},
+			"properties": {
+				"OBJECTID": 5,
+				"GlobalID": "9718b4ea-654a-4de5-8df5-037d1b52815f",
+				"CreationDate": "Mon, 06 Apr 2020 20:45:37 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 20:45:49 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Santa Lucía",
+				"Nombre": "Santa Lucía",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 6,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6406854332554,
+					-33.4404339458905
+				]
+			},
+			"properties": {
+				"OBJECTID": 6,
+				"GlobalID": "ebedf17a-f020-4c0d-9f59-afdd9bd7c817",
+				"CreationDate": "Mon, 06 Apr 2020 20:47:08 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 20:47:33 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Universidad Católica",
+				"Nombre": "Universidad Católica",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 7,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6334568799592,
+					-33.4371280704759
+				]
+			},
+			"properties": {
+				"OBJECTID": 7,
+				"GlobalID": "3d3224c1-c249-490e-9d49-2c50f2245411",
+				"CreationDate": "Mon, 06 Apr 2020 20:50:47 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:20:22 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Baquedano",
+				"Nombre": "Baquedano",
+				"Línea": "1 / 5",
+				"Obs": "Proyectado que combine con línea 7"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 8,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6262229622451,
+					-33.4327386939339
+				]
+			},
+			"properties": {
+				"OBJECTID": 8,
+				"GlobalID": "8f12fac3-50b3-4e20-8de9-1b411175c4a4",
+				"CreationDate": "Mon, 06 Apr 2020 20:52:35 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 20:52:46 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Salvador",
+				"Nombre": "Salvador",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 9,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.619537364418,
+					-33.4284528592361
+				]
+			},
+			"properties": {
+				"OBJECTID": 9,
+				"GlobalID": "79c08903-7936-406d-a65f-ec82956b6258",
+				"CreationDate": "Mon, 06 Apr 2020 20:53:52 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 20:54:03 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Manuel Montt",
+				"Nombre": "Manuel Montt",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 10,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6139476408302,
+					-33.424956247184
+				]
+			},
+			"properties": {
+				"OBJECTID": 10,
+				"GlobalID": "0e05abca-95c7-4aef-b443-7e0caab7c198",
+				"CreationDate": "Mon, 06 Apr 2020 20:55:45 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:20:27 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Pedro de Valdivia",
+				"Nombre": "Pedro de Valdivia",
+				"Línea": "1",
+				"Obs": "Proyectado que combine con línea 7"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 11,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6088246216111,
+					-33.4221176646842
+				]
+			},
+			"properties": {
+				"OBJECTID": 11,
+				"GlobalID": "105fa52d-b7b2-40fe-b231-42b296e68b98",
+				"CreationDate": "Mon, 06 Apr 2020 20:58:42 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:39:46 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Los Leones",
+				"Nombre": "Los Leones",
+				"Línea": "1 / 6",
+				"Obs": "Proyectado que combine con línea 8"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 12,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6014968265814,
+					-33.418280505807
+				]
+			},
+			"properties": {
+				"OBJECTID": 12,
+				"GlobalID": "8bb5c7bd-3b29-4f33-b176-ad609be1545d",
+				"CreationDate": "Mon, 06 Apr 2020 20:59:57 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:28:29 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Tobalaba",
+				"Nombre": "Tobalaba",
+				"Línea": "1 / 4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 13,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5961055864607,
+					-33.4166506693987
+				]
+			},
+			"properties": {
+				"OBJECTID": 13,
+				"GlobalID": "06201ef9-f9df-40df-80e5-698da45bfd65",
+				"CreationDate": "Mon, 06 Apr 2020 21:01:16 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:01:26 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "El Golf",
+				"Nombre": "El Golf",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 14,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5894107927586,
+					-33.4152625977883
+				]
+			},
+			"properties": {
+				"OBJECTID": 14,
+				"GlobalID": "fac30671-eed6-494b-9140-a4373640db5b",
+				"CreationDate": "Mon, 06 Apr 2020 21:02:27 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:02:37 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Alcántara",
+				"Nombre": "Alcántara",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 15,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5828393806712,
+					-33.4136640491238
+				]
+			},
+			"properties": {
+				"OBJECTID": 15,
+				"GlobalID": "354121cb-27f4-4789-a275-6dbb776c59e6",
+				"CreationDate": "Mon, 06 Apr 2020 21:03:31 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:03:41 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Escuela Militar",
+				"Nombre": "Escuela Militar",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 16,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.568382,
+					-33.4091374647483
+				]
+			},
+			"properties": {
+				"OBJECTID": 16,
+				"GlobalID": "a0f53268-ab16-41f3-be4c-29157ed7db0e",
+				"CreationDate": "Mon, 06 Apr 2020 21:04:53 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:05:03 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Manquehue",
+				"Nombre": "Manquehue",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 17,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5561556355832,
+					-33.4082550057556
+				]
+			},
+			"properties": {
+				"OBJECTID": 17,
+				"GlobalID": "42a48ea0-a3c2-4ae1-b82f-9027d77f2505",
+				"CreationDate": "Mon, 06 Apr 2020 21:06:35 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:06:48 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Hernando de Magallanes",
+				"Nombre": "Hernando de Magallanes",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 18,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.545163,
+					-33.4079007667231
+				]
+			},
+			"properties": {
+				"OBJECTID": 18,
+				"GlobalID": "249253a2-f757-43d7-81c6-b83299f62676",
+				"CreationDate": "Mon, 06 Apr 2020 21:07:46 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:07:57 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Los Dominicos",
+				"Nombre": "Los Dominicos",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 19,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.661261364418,
+					-33.4465782916584
+				]
+			},
+			"properties": {
+				"OBJECTID": 19,
+				"GlobalID": "67f053dd-c86a-49fd-85ab-70dc431b7b22",
+				"CreationDate": "Mon, 06 Apr 2020 21:09:23 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:26:05 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Los Héroes",
+				"Nombre": "Los Héroes",
+				"Línea": "1 / 2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 20,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.667043364418,
+					-33.4477057677583
+				]
+			},
+			"properties": {
+				"OBJECTID": 20,
+				"GlobalID": "8ed734f1-48d9-4c0e-8740-e369139bd27c",
+				"CreationDate": "Mon, 06 Apr 2020 21:11:21 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:11:34 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "República",
+				"Nombre": "República",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 21,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6733733776941,
+					-33.4493484488402
+				]
+			},
+			"properties": {
+				"OBJECTID": 21,
+				"GlobalID": "e92f9c75-5cdc-4cf0-911f-d3acf7b684d8",
+				"CreationDate": "Mon, 06 Apr 2020 21:12:33 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:12:50 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Unión Latino Americana",
+				"Nombre": "Unión Latino Americana",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 22,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6786144141099,
+					-33.451398399575
+				]
+			},
+			"properties": {
+				"OBJECTID": 22,
+				"GlobalID": "3b3fcd19-cbc6-48bc-8c85-511c488de99d",
+				"CreationDate": "Mon, 06 Apr 2020 21:13:54 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:14:06 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Estación Central",
+				"Nombre": "Estación Central",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 23,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6862050656231,
+					-33.4527724660646
+				]
+			},
+			"properties": {
+				"OBJECTID": 23,
+				"GlobalID": "c48163c3-4b05-421f-8d79-ea139adf67ae",
+				"CreationDate": "Mon, 06 Apr 2020 21:15:01 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:16:50 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Universidad de Santiago",
+				"Nombre": "Universidad de Santiago",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 24,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6922990445057,
+					-33.4541241323786
+				]
+			},
+			"properties": {
+				"OBJECTID": 24,
+				"GlobalID": "f1a742d8-fb35-479f-b64f-3b62a1ab2472",
+				"CreationDate": "Mon, 06 Apr 2020 21:17:52 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:18:07 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "San Alberto Hurtado",
+				"Nombre": "San Alberto Hurtado",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 25,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6997502211501,
+					-33.4559412399836
+				]
+			},
+			"properties": {
+				"OBJECTID": 25,
+				"GlobalID": "fef35b37-6fe4-4f55-bac4-d2f636be8f9e",
+				"CreationDate": "Mon, 06 Apr 2020 21:18:53 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:19:01 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Ecuador",
+				"Nombre": "Ecuador",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 26,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7063430909096,
+					-33.457462926415
+				]
+			},
+			"properties": {
+				"OBJECTID": 26,
+				"GlobalID": "cc71c754-244e-4710-ac38-0109131ecf4e",
+				"CreationDate": "Mon, 06 Apr 2020 21:19:51 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:20:07 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Las Rejas",
+				"Nombre": "Las Rejas",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 27,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7159346703482,
+					-33.4574226468242
+				]
+			},
+			"properties": {
+				"OBJECTID": 27,
+				"GlobalID": "156deabf-03ea-42c5-929a-b89405e33a88",
+				"CreationDate": "Mon, 06 Apr 2020 21:21:03 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:21:12 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Pajaritos",
+				"Nombre": "Pajaritos",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 28,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.722691,
+					-33.4515503626262
+				]
+			},
+			"properties": {
+				"OBJECTID": 28,
+				"GlobalID": "b6785bb5-e6a6-485a-bb41-8483f027d8bd",
+				"CreationDate": "Mon, 06 Apr 2020 21:22:25 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:22:34 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Neptuno",
+				"Nombre": "Neptuno",
+				"Línea": "1",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 29,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7227450000001,
+					-33.444484481943
+				]
+			},
+			"properties": {
+				"OBJECTID": 29,
+				"GlobalID": "e261d58f-4f40-4a02-83b1-1b5d7ae41925",
+				"CreationDate": "Mon, 06 Apr 2020 21:23:25 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Mon, 06 Apr 2020 21:23:41 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "San Pablo",
+				"Nombre": "San Pablo",
+				"Línea": "1 / 5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 30,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.652399364418,
+					-33.4326790057613
+				]
+			},
+			"properties": {
+				"OBJECTID": 30,
+				"GlobalID": "847a4a88-b0a0-4b6a-b74e-a1e93741624f",
+				"CreationDate": "Wed, 08 Apr 2020 14:01:15 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:20:16 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Puente Cal y Canto",
+				"Nombre": "Puente Cal y Canto",
+				"Línea": "2/3",
+				"Obs": "Proyectado que combine con línea 7"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 31,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6468632850105,
+					-33.42939298121
+				]
+			},
+			"properties": {
+				"OBJECTID": 31,
+				"GlobalID": "6e6b99a2-f9a7-4cdb-bd83-e77af92ca97c",
+				"CreationDate": "Wed, 08 Apr 2020 14:03:53 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:04:07 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Patronato",
+				"Nombre": "Patronato",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 32,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6450627288361,
+					-33.4225570057591
+				]
+			},
+			"properties": {
+				"OBJECTID": 32,
+				"GlobalID": "add7c46e-894b-42e6-9f27-9b83f963f4a6",
+				"CreationDate": "Wed, 08 Apr 2020 14:06:17 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:06:28 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Cerro Blanco",
+				"Nombre": "Cerro Blanco",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 33,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.643733364418,
+					-33.4139129612691
+				]
+			},
+			"properties": {
+				"OBJECTID": 33,
+				"GlobalID": "fd9322e0-8f38-4673-8730-be763be29c39",
+				"CreationDate": "Wed, 08 Apr 2020 14:07:36 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:07:45 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Cementerios",
+				"Nombre": "Cementerios",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 34,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.643584,
+					-33.4056034839396
+				]
+			},
+			"properties": {
+				"OBJECTID": 34,
+				"GlobalID": "f54b2a36-3e5b-410e-8519-1b59830e5947",
+				"CreationDate": "Wed, 08 Apr 2020 14:09:42 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:10:10 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Einstein",
+				"Nombre": "Einstein",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 35,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.643094364418,
+					-33.396747963035
+				]
+			},
+			"properties": {
+				"OBJECTID": 35,
+				"GlobalID": "7531530a-8556-4242-87c2-9f56c178813a",
+				"CreationDate": "Wed, 08 Apr 2020 14:11:10 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:11:19 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Dorsal",
+				"Nombre": "Dorsal",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 36,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6424877288361,
+					-33.3911490057522
+				]
+			},
+			"properties": {
+				"OBJECTID": 36,
+				"GlobalID": "c3bc6725-a695-44aa-b50f-7a42bfae4970",
+				"CreationDate": "Wed, 08 Apr 2020 14:12:41 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:12:50 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Zapadores",
+				"Nombre": "Zapadores",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 37,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.646679364418,
+					-33.3808399646708
+				]
+			},
+			"properties": {
+				"OBJECTID": 37,
+				"GlobalID": "c7ab9f27-985b-4071-8018-ef36ce5e3d07",
+				"CreationDate": "Wed, 08 Apr 2020 14:13:48 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:14:02 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Vespucio Norte",
+				"Nombre": "Vespucio Norte",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 38,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.659908364418,
+					-33.438098482271
+				]
+			},
+			"properties": {
+				"OBJECTID": 38,
+				"GlobalID": "f1fdabd4-a067-4881-9bb3-929f8a4e0588",
+				"CreationDate": "Wed, 08 Apr 2020 14:15:34 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:17:29 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Santa Ana",
+				"Nombre": "Santa Ana",
+				"Línea": "2 / 5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 39,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.658555364418,
+					-33.45295195725
+				]
+			},
+			"properties": {
+				"OBJECTID": 39,
+				"GlobalID": "db35e112-053e-4f01-8288-31fb60c1640c",
+				"CreationDate": "Wed, 08 Apr 2020 14:19:19 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:19:45 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Toesca",
+				"Nombre": "Toesca",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 40,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6563056822089,
+					-33.4605840057674
+				]
+			},
+			"properties": {
+				"OBJECTID": 40,
+				"GlobalID": "66d9a296-9878-41c4-beb1-97071a11985d",
+				"CreationDate": "Wed, 08 Apr 2020 14:21:10 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:21:41 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Parque O´Higgins",
+				"Nombre": "Parque O´Higgins",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 41,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.656343364418,
+					-33.4702210057695
+				]
+			},
+			"properties": {
+				"OBJECTID": 41,
+				"GlobalID": "15954c3e-6330-4709-955d-f3e3007ba967",
+				"CreationDate": "Wed, 08 Apr 2020 14:22:51 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:23:01 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Rondizzoni",
+				"Nombre": "Rondizzoni",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 42,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.649377364418,
+					-33.4759840057708
+				]
+			},
+			"properties": {
+				"OBJECTID": 42,
+				"GlobalID": "f223efba-f2cf-4081-bac8-472bfe7b7992",
+				"CreationDate": "Wed, 08 Apr 2020 14:23:53 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:24:38 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Franklin",
+				"Nombre": "Franklin",
+				"Línea": "2 / 6",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 43,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.649242,
+					-33.4826850057723
+				]
+			},
+			"properties": {
+				"OBJECTID": 43,
+				"GlobalID": "659aabb0-f37b-45fd-ad65-d5dc7c292ca2",
+				"CreationDate": "Wed, 08 Apr 2020 14:25:47 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:25:57 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "El Llano",
+				"Nombre": "El Llano",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 44,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.651171,
+					-33.4887094796692
+				]
+			},
+			"properties": {
+				"OBJECTID": 44,
+				"GlobalID": "f0a76dbf-e041-452c-ab73-cfac348ffe8c",
+				"CreationDate": "Wed, 08 Apr 2020 14:27:03 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:27:17 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "San Miguel",
+				"Nombre": "San Miguel",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 45,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.653012364418,
+					-33.4967795322969
+				]
+			},
+			"properties": {
+				"OBJECTID": 45,
+				"GlobalID": "68a71062-5d6f-4bc7-95be-9593adf43d42",
+				"CreationDate": "Wed, 08 Apr 2020 14:28:10 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:28:19 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Lo Vial",
+				"Nombre": "Lo Vial",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 46,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.654663682209,
+					-33.502467242369
+				]
+			},
+			"properties": {
+				"OBJECTID": 46,
+				"GlobalID": "14ed8b3d-2b93-4645-bfd0-1cc74f58cce6",
+				"CreationDate": "Wed, 08 Apr 2020 14:30:02 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:30:13 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Departamental",
+				"Nombre": "Departamental",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 47,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.656743364418,
+					-33.5097334785874
+				]
+			},
+			"properties": {
+				"OBJECTID": 47,
+				"GlobalID": "f95be2f0-c5f3-4a47-b098-c0e7b31afb76",
+				"CreationDate": "Wed, 08 Apr 2020 14:31:14 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:31:24 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Ciudad del Niño",
+				"Nombre": "Ciudad del Niño",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 48,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6589167288361,
+					-33.517368950609
+				]
+			},
+			"properties": {
+				"OBJECTID": 48,
+				"GlobalID": "9d743363-e716-4442-ae6a-bd933abc1af4",
+				"CreationDate": "Wed, 08 Apr 2020 14:35:06 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:35:49 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Lo Ovalle",
+				"Nombre": "Lo Ovalle",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 49,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.661012364418,
+					-33.5263640057818
+				]
+			},
+			"properties": {
+				"OBJECTID": 49,
+				"GlobalID": "2e427458-2c29-4148-91a1-2247bd5f4e2f",
+				"CreationDate": "Wed, 08 Apr 2020 14:37:44 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 14:38:21 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "El Parrón",
+				"Nombre": "El Parrón",
+				"Línea": "2",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 50,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.66444,
+					-33.5372534771704
+				]
+			},
+			"properties": {
+				"OBJECTID": 50,
+				"GlobalID": "7d071f43-a2cd-481c-a6d2-c8447da86f01",
+				"CreationDate": "Wed, 08 Apr 2020 14:39:27 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:40:39 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "La Cisterna",
+				"Nombre": "La Cisterna",
+				"Línea": "2 / 4A",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 51,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.650741364418,
+					-33.4378374822844
+				]
+			},
+			"properties": {
+				"OBJECTID": 51,
+				"GlobalID": "8cf8d81d-6276-49c5-ac41-de7ffed97bf1",
+				"CreationDate": "Wed, 08 Apr 2020 15:00:32 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:00:46 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Plaza de Armas",
+				"Nombre": "Plaza de Armas",
+				"Línea": "3 / 5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 52,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.650645,
+					-33.4514920057654
+				]
+			},
+			"properties": {
+				"OBJECTID": 52,
+				"GlobalID": "479d2ea6-f5dd-4731-9247-d66a8a6b74cd",
+				"CreationDate": "Wed, 08 Apr 2020 15:02:44 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:03:05 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Parque Almagro",
+				"Nombre": "Parque Almagro",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 53,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.643128364418,
+					-33.4579350057668
+				]
+			},
+			"properties": {
+				"OBJECTID": 53,
+				"GlobalID": "a05ad917-e956-4016-821d-b0bcc2f5ce23",
+				"CreationDate": "Wed, 08 Apr 2020 15:06:03 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:06:11 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Matta",
+				"Nombre": "Matta",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 54,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.628934364418,
+					-33.4531169087011
+				]
+			},
+			"properties": {
+				"OBJECTID": 54,
+				"GlobalID": "5b8e8a64-442f-4b55-86ac-77159ce8c569",
+				"CreationDate": "Wed, 08 Apr 2020 15:07:10 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:07:25 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Irarrázabal",
+				"Nombre": "Irarrázabal",
+				"Línea": "3 / 5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 55,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.613835,
+					-33.4531234814989
+				]
+			},
+			"properties": {
+				"OBJECTID": 55,
+				"GlobalID": "8fc85dd6-e7f7-47e4-bd6b-f5893d870417",
+				"CreationDate": "Wed, 08 Apr 2020 15:08:27 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:08:44 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Monseñor Eyzaguirre",
+				"Nombre": "Monseñor Eyzaguirre",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 56,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6046403874957,
+					-33.4543811533619
+				]
+			},
+			"properties": {
+				"OBJECTID": 56,
+				"GlobalID": "9d6045ca-d4f1-4501-8031-2a050624c9d7",
+				"CreationDate": "Wed, 08 Apr 2020 15:09:46 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:09:57 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Ñuñoa",
+				"Nombre": "Ñuñoa",
+				"Línea": "3 / 6",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 57,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.597494982679,
+					-33.4551151598277
+				]
+			},
+			"properties": {
+				"OBJECTID": 57,
+				"GlobalID": "2dfbfc1b-1b31-4949-a565-511b420a9fee",
+				"CreationDate": "Wed, 08 Apr 2020 15:10:46 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:40:30 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Chile España",
+				"Nombre": "Chile España",
+				"Línea": "3",
+				"Obs": "Proyectado que combine con línea 8"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 58,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5810106822087,
+					-33.4545505787891
+				]
+			},
+			"properties": {
+				"OBJECTID": 58,
+				"GlobalID": "fbeee1da-7fd3-4245-9473-b1de67b87b55",
+				"CreationDate": "Wed, 08 Apr 2020 15:12:27 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:12:36 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Villa Frei",
+				"Nombre": "Villa Frei",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 59,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.570874,
+					-33.4532699572172
+				]
+			},
+			"properties": {
+				"OBJECTID": 59,
+				"GlobalID": "7cf6398e-1286-4030-ba83-54645e263639",
+				"CreationDate": "Wed, 08 Apr 2020 15:13:29 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:13:41 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Plaza Egaña",
+				"Nombre": "Plaza Egaña",
+				"Línea": "3 / 4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 60,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.55792,
+					-33.4519930057655
+				]
+			},
+			"properties": {
+				"OBJECTID": 60,
+				"GlobalID": "649c0ad9-de43-4cb9-93aa-9dc488608c4a",
+				"CreationDate": "Wed, 08 Apr 2020 15:14:45 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:14:59 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Fernando Castillo Velasco",
+				"Nombre": "Fernando Castillo Velasco",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 61,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.656380364418,
+					-33.4176214833226
+				]
+			},
+			"properties": {
+				"OBJECTID": 61,
+				"GlobalID": "0b04a32a-4a6a-4816-9415-4cce4c3b8365",
+				"CreationDate": "Wed, 08 Apr 2020 15:16:23 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:16:32 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Hospitales",
+				"Nombre": "Hospitales",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 62,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.661054364418,
+					-33.4065334838919
+				]
+			},
+			"properties": {
+				"OBJECTID": 62,
+				"GlobalID": "aa6d9b78-3e59-4acd-997d-e1e86b800005",
+				"CreationDate": "Wed, 08 Apr 2020 15:17:23 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:17:34 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Plaza Chacabuco",
+				"Nombre": "Plaza Chacabuco",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 63,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.669086,
+					-33.3980714843262
+				]
+			},
+			"properties": {
+				"OBJECTID": 63,
+				"GlobalID": "25a014dd-b9ca-46c4-8f22-e99da180e2d6",
+				"CreationDate": "Wed, 08 Apr 2020 15:22:51 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:23:01 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Conchalí",
+				"Nombre": "Conchalí",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 64,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.679226,
+					-33.385854484953
+				]
+			},
+			"properties": {
+				"OBJECTID": 64,
+				"GlobalID": "0e34fcc1-be52-477c-900a-c8912db41b07",
+				"CreationDate": "Wed, 08 Apr 2020 15:23:37 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:23:45 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Vivaceta",
+				"Nombre": "Vivaceta",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 65,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6854,
+					-33.3728820057482
+				]
+			},
+			"properties": {
+				"OBJECTID": 65,
+				"GlobalID": "13fa58f9-885c-4e0c-90b9-1b00579b140b",
+				"CreationDate": "Wed, 08 Apr 2020 15:25:02 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:25:14 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Cardenal Caro",
+				"Nombre": "Cardenal Caro",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 66,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.690303364418,
+					-33.3655610057466
+				]
+			},
+			"properties": {
+				"OBJECTID": 66,
+				"GlobalID": "3b3d4d2d-5432-4db6-8b53-499d79eb9a61",
+				"CreationDate": "Wed, 08 Apr 2020 15:26:04 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:26:15 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Los Libertadores",
+				"Nombre": "Los Libertadores",
+				"Línea": "3",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 67,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.643231364418,
+					-33.5411897701939
+				]
+			},
+			"properties": {
+				"OBJECTID": 67,
+				"GlobalID": "d62cf1fb-1b0a-4f5e-872e-d52dc803510c",
+				"CreationDate": "Wed, 08 Apr 2020 15:39:48 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:40:17 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "San Ramón",
+				"Nombre": "San Ramón",
+				"Línea": "4A",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 68,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.634163,
+					-33.5423652413462
+				]
+			},
+			"properties": {
+				"OBJECTID": 68,
+				"GlobalID": "99222ac0-8cef-42df-804a-95c49195820c",
+				"CreationDate": "Wed, 08 Apr 2020 15:41:42 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:41:57 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Santa Rosa",
+				"Nombre": "Santa Rosa",
+				"Línea": "4A",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 69,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.615988364418,
+					-33.5411002413786
+				]
+			},
+			"properties": {
+				"OBJECTID": 69,
+				"GlobalID": "d3036f6d-5917-4150-b621-20cfb89e9ea2",
+				"CreationDate": "Wed, 08 Apr 2020 15:42:51 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:43:57 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "La Granja",
+				"Nombre": "La Granja",
+				"Línea": "4A",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 70,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.605499,
+					-33.5310667699298
+				]
+			},
+			"properties": {
+				"OBJECTID": 70,
+				"GlobalID": "7a80a232-8afe-4e8f-ba28-69507a68a177",
+				"CreationDate": "Wed, 08 Apr 2020 15:44:43 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:44:53 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Santa Julia",
+				"Nombre": "Santa Julia",
+				"Línea": "4A",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 71,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.596085364418,
+					-33.5196127696312
+				]
+			},
+			"properties": {
+				"OBJECTID": 71,
+				"GlobalID": "a9c4b2c6-d2b8-4092-93a2-f4dd75d0a50a",
+				"CreationDate": "Wed, 08 Apr 2020 15:46:17 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 15:47:16 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Vicuña Mackenna",
+				"Nombre": "Vicuña Mackenna",
+				"Línea": "4 / 4A",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 72,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.591260364418,
+					-33.426166767198
+				]
+			},
+			"properties": {
+				"OBJECTID": 72,
+				"GlobalID": "ddf720e1-650b-4f03-8d21-dc2566d0c24e",
+				"CreationDate": "Wed, 08 Apr 2020 16:03:41 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:03:56 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Cristóbal Colón",
+				"Nombre": "Cristóbal Colón",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 73,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.584978,
+					-33.4313167210486
+				]
+			},
+			"properties": {
+				"OBJECTID": 73,
+				"GlobalID": "5ad59f2f-4551-49c2-9a02-f438b03816ec",
+				"CreationDate": "Wed, 08 Apr 2020 16:05:00 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:05:19 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Francisco Bilbao",
+				"Nombre": "Francisco Bilbao",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 74,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.573182364418,
+					-33.4390592439921
+				]
+			},
+			"properties": {
+				"OBJECTID": 74,
+				"GlobalID": "0f2d0088-58d8-496d-87bb-21eae1fb73e8",
+				"CreationDate": "Wed, 08 Apr 2020 16:06:39 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:06:50 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Príncipe de Gales",
+				"Nombre": "Príncipe de Gales",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 75,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.572066,
+					-33.4463187677222
+				]
+			},
+			"properties": {
+				"OBJECTID": 75,
+				"GlobalID": "385fe403-829e-4cda-8607-9a0f8f90fe51",
+				"CreationDate": "Wed, 08 Apr 2020 16:07:45 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:07:58 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Simón Bolívar",
+				"Nombre": "Simón Bolívar",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 76,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.573941635582,
+					-33.4623343423677
+				]
+			},
+			"properties": {
+				"OBJECTID": 76,
+				"GlobalID": "9974b1e7-3498-4424-a396-97cad32ad289",
+				"CreationDate": "Wed, 08 Apr 2020 16:09:50 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:10:01 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Los Orientales",
+				"Nombre": "Los Orientales",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 77,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.576206,
+					-33.4686897683045
+				]
+			},
+			"properties": {
+				"OBJECTID": 77,
+				"GlobalID": "764aded4-d099-447e-b004-83b045e5a2e5",
+				"CreationDate": "Wed, 08 Apr 2020 16:11:31 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:11:43 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Grecia",
+				"Nombre": "Grecia",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 78,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.578673364418,
+					-33.479924768597
+				]
+			},
+			"properties": {
+				"OBJECTID": 78,
+				"GlobalID": "e2e04106-825d-4c8c-9ed8-a61eaf5b3f67",
+				"CreationDate": "Wed, 08 Apr 2020 16:12:34 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:12:45 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Los Presidentes",
+				"Nombre": "Los Presidentes",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 79,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.580452364418,
+					-33.488328294901
+				]
+			},
+			"properties": {
+				"OBJECTID": 79,
+				"GlobalID": "d648d93c-2f60-4052-a549-3af7b75e7e5a",
+				"CreationDate": "Wed, 08 Apr 2020 16:13:26 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:13:36 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Quilín",
+				"Nombre": "Quilín",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 80,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.586575364418,
+					-33.4991422424541
+				]
+			},
+			"properties": {
+				"OBJECTID": 80,
+				"GlobalID": "6fba258d-9397-477e-89cd-6103a6e9f690",
+				"CreationDate": "Wed, 08 Apr 2020 16:14:33 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:14:44 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Las Torres",
+				"Nombre": "Las Torres",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 81,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.590077364418,
+					-33.5093122421935
+				]
+			},
+			"properties": {
+				"OBJECTID": 81,
+				"GlobalID": "1129376e-57bd-4459-b91c-9b9403768cb1",
+				"CreationDate": "Wed, 08 Apr 2020 16:15:45 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:39:03 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Macul",
+				"Nombre": "Macul",
+				"Línea": "4",
+				"Obs": "Proyectado que combine con línea 8"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 82,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.596756,
+					-33.5262627698046
+				]
+			},
+			"properties": {
+				"OBJECTID": 82,
+				"GlobalID": "18d43f6e-cc60-4773-b247-b4b21b48c259",
+				"CreationDate": "Wed, 08 Apr 2020 16:17:31 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:18:10 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Vicente Valdés",
+				"Nombre": "Vicente Valdés",
+				"Línea": "4 / 5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 83,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.592630364418,
+					-33.5361962415044
+				]
+			},
+			"properties": {
+				"OBJECTID": 83,
+				"GlobalID": "8519dfcc-9616-43eb-bf21-cd946cb9efe0",
+				"CreationDate": "Wed, 08 Apr 2020 16:19:05 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:19:16 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Rojas Magallanes",
+				"Nombre": "Rojas Magallanes",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 84,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.588199364418,
+					-33.5461022412503
+				]
+			},
+			"properties": {
+				"OBJECTID": 84,
+				"GlobalID": "97829fff-422e-4533-b4e7-8a35523a65a2",
+				"CreationDate": "Wed, 08 Apr 2020 16:20:50 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:21:01 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Trinidad",
+				"Nombre": "Trinidad",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 85,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.585913364418,
+					-33.5532487705085
+				]
+			},
+			"properties": {
+				"OBJECTID": 85,
+				"GlobalID": "ff949ba5-1c6e-40d1-9694-e52f49dee3cd",
+				"CreationDate": "Wed, 08 Apr 2020 16:22:06 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:22:20 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "San José de la Estrella",
+				"Nombre": "San José de la Estrella",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 86,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.585853364418,
+					-33.5607987707055
+				]
+			},
+			"properties": {
+				"OBJECTID": 86,
+				"GlobalID": "927714c7-5d66-4f65-899f-a90364170e4d",
+				"CreationDate": "Wed, 08 Apr 2020 16:23:25 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:23:36 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Los Quillayes",
+				"Nombre": "Los Quillayes",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 87,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.583932364418,
+					-33.5691967103911
+				]
+			},
+			"properties": {
+				"OBJECTID": 87,
+				"GlobalID": "e157d8ab-15ee-4df4-9234-52edbfa6df06",
+				"CreationDate": "Wed, 08 Apr 2020 16:24:42 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:24:52 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Elisa Correa",
+				"Nombre": "Elisa Correa",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 88,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.582301364418,
+					-33.576867709797
+				]
+			},
+			"properties": {
+				"OBJECTID": 88,
+				"GlobalID": "55fa302b-3be4-4e26-bed7-4f5a3e44929c",
+				"CreationDate": "Wed, 08 Apr 2020 16:29:33 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:31:33 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Hospital Sotero del Río",
+				"Nombre": "Hospital Sotero del Río",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 89,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.579764364418,
+					-33.5894747088204
+				]
+			},
+			"properties": {
+				"OBJECTID": 89,
+				"GlobalID": "ab1133d0-426a-4e53-82be-54d15dbc66d0",
+				"CreationDate": "Wed, 08 Apr 2020 16:33:32 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:34:28 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Protectora de la Infancia",
+				"Nombre": "Protectora de la Infancia",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 90,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.577479364418,
+					-33.6013232398329
+				]
+			},
+			"properties": {
+				"OBJECTID": 90,
+				"GlobalID": "29ea3c3e-3bf2-413d-9689-7d72af68131a",
+				"CreationDate": "Wed, 08 Apr 2020 16:36:04 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:36:14 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Las Mercedes",
+				"Nombre": "Las Mercedes",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 91,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.575502364418,
+					-33.6094812396233
+				]
+			},
+			"properties": {
+				"OBJECTID": 91,
+				"GlobalID": "7b6925e4-d2ef-4a8b-95c7-563b05506171",
+				"CreationDate": "Wed, 08 Apr 2020 16:37:17 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 16:37:36 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Plaza de Puente Alto",
+				"Nombre": "Plaza de Puente Alto",
+				"Línea": "4",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 92,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.695572364418,
+					-33.4834042428572
+				]
+			},
+			"properties": {
+				"OBJECTID": 92,
+				"GlobalID": "ff423520-3c64-4983-90b3-c0afc4c68ae6",
+				"CreationDate": "Wed, 08 Apr 2020 17:01:34 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:01:44 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Cerrillos",
+				"Nombre": "Cerrillos",
+				"Línea": "6",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 93,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.681089,
+					-33.4776637174705
+				]
+			},
+			"properties": {
+				"OBJECTID": 93,
+				"GlobalID": "948c147a-49ea-4980-b869-c77469e12769",
+				"CreationDate": "Wed, 08 Apr 2020 17:02:50 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:03:00 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Lo Valledor",
+				"Nombre": "Lo Valledor",
+				"Línea": "6",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 94,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.664732364418,
+					-33.4786247685632
+				]
+			},
+			"properties": {
+				"OBJECTID": 94,
+				"GlobalID": "68ca7db0-5a3d-49a6-860c-aaf24da86477",
+				"CreationDate": "Wed, 08 Apr 2020 17:11:16 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:11:30 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Pedro Aguirre Cerda",
+				"Nombre": "Pedro Aguirre Cerda",
+				"Línea": "6",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 95,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.641958364418,
+					-33.4763322430383
+				]
+			},
+			"properties": {
+				"OBJECTID": 95,
+				"GlobalID": "82541a7f-d98d-4206-84c0-15936da595bb",
+				"CreationDate": "Wed, 08 Apr 2020 17:13:21 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:13:31 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Bío Bío",
+				"Nombre": "Bío Bío",
+				"Línea": "6",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 96,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.624727364418,
+					-33.4674837182568
+				]
+			},
+			"properties": {
+				"OBJECTID": 96,
+				"GlobalID": "f355d7e3-8fc8-4434-b6d4-6c2a17b6f012",
+				"CreationDate": "Wed, 08 Apr 2020 17:15:22 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:15:50 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Ñuble",
+				"Nombre": "Ñuble",
+				"Línea": "5 / 6",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 97,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.606111364418,
+					-33.4622502433988
+				]
+			},
+			"properties": {
+				"OBJECTID": 97,
+				"GlobalID": "78989f3c-fa4e-41f4-b7a4-0edf50585eb4",
+				"CreationDate": "Wed, 08 Apr 2020 17:16:56 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:17:09 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Estadio Nacional",
+				"Nombre": "Estadio Nacional",
+				"Línea": "6",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 98,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.607021,
+					-33.4385512440051
+				]
+			},
+			"properties": {
+				"OBJECTID": 98,
+				"GlobalID": "abaf16b5-0a56-43ed-8e08-4a1f988f43eb",
+				"CreationDate": "Wed, 08 Apr 2020 17:20:07 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:20:25 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Inés de Suárez",
+				"Nombre": "Inés de Suárez",
+				"Línea": "6",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 99,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.756449,
+					-33.5097631877978
+				]
+			},
+			"properties": {
+				"OBJECTID": 99,
+				"GlobalID": "1944187a-b0bb-41fd-b4e3-c4ee4832cb57",
+				"CreationDate": "Wed, 08 Apr 2020 17:49:51 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:50:07 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Plaza de Maipú",
+				"Nombre": "Plaza de Maipú",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 100,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.757059364418,
+					-33.4968707690385
+				]
+			},
+			"properties": {
+				"OBJECTID": 100,
+				"GlobalID": "1456d1de-572c-4f17-a3c5-bda5137e3b09",
+				"CreationDate": "Wed, 08 Apr 2020 17:51:25 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:51:38 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Santiago Bueras",
+				"Nombre": "Santiago Bueras",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 101,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.75306,
+					-33.4901012426857
+				]
+			},
+			"properties": {
+				"OBJECTID": 101,
+				"GlobalID": "a43b5ac4-d685-43b1-9834-3fbab9f2410a",
+				"CreationDate": "Wed, 08 Apr 2020 17:52:35 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:52:56 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Del Sol",
+				"Nombre": "Del Sol",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 102,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.745152364418,
+					-33.4819837686507
+				]
+			},
+			"properties": {
+				"OBJECTID": 102,
+				"GlobalID": "2e2c7006-5ba6-492f-a546-0d2c1844a824",
+				"CreationDate": "Wed, 08 Apr 2020 17:55:08 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:55:21 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Monte Tabor",
+				"Nombre": "Monte Tabor",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 103,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.740124364418,
+					-33.4750832430703
+				]
+			},
+			"properties": {
+				"OBJECTID": 103,
+				"GlobalID": "b8cf6110-9fd2-43bf-9293-3d3b3472c1e0",
+				"CreationDate": "Wed, 08 Apr 2020 17:57:28 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 17:57:40 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Las Parcelas",
+				"Nombre": "Las Parcelas",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 104,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.737767364418,
+					-33.462430718647
+				]
+			},
+			"properties": {
+				"OBJECTID": 104,
+				"GlobalID": "f231fe8b-728e-4432-aade-c81fea4b4aec",
+				"CreationDate": "Wed, 08 Apr 2020 18:00:00 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:00:09 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Laguna Sur",
+				"Nombre": "Laguna Sur",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 106,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.740931,
+					-33.4449042438426
+				]
+			},
+			"properties": {
+				"OBJECTID": 106,
+				"GlobalID": "e17fb87c-92fd-443a-9626-5d5cfa3c393f",
+				"CreationDate": "Wed, 08 Apr 2020 18:03:04 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:03:13 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Pudahuel",
+				"Nombre": "Pudahuel",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 107,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.716825364418,
+					-33.443089243889
+				]
+			},
+			"properties": {
+				"OBJECTID": 107,
+				"GlobalID": "8d18db88-683d-4ec9-95bf-454bf25d717e",
+				"CreationDate": "Wed, 08 Apr 2020 18:04:51 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:05:00 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Lo Prado",
+				"Nombre": "Lo Prado",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 108,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7068582757173,
+					-33.4410256677018
+				]
+			},
+			"properties": {
+				"OBJECTID": 108,
+				"GlobalID": "476c158d-4e19-4ffd-9a22-02599a8b4e06",
+				"CreationDate": "Wed, 08 Apr 2020 18:06:24 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:06:38 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Blanqueado",
+				"Nombre": "Blanqueado",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 109,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.690961,
+					-33.4382552440127
+				]
+			},
+			"properties": {
+				"OBJECTID": 109,
+				"GlobalID": "ad5d61f5-b42b-41b8-9bb9-021c3a8a1d5c",
+				"CreationDate": "Wed, 08 Apr 2020 18:07:45 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:07:57 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Gruta de Lourdes",
+				"Nombre": "Gruta de Lourdes",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 110,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6801302399964,
+					-33.4404710833504
+				]
+			},
+			"properties": {
+				"OBJECTID": 110,
+				"GlobalID": "edb61e39-95ef-46d6-82ec-3faf594bf19c",
+				"CreationDate": "Wed, 08 Apr 2020 18:08:46 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:08:58 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Quinta Normal",
+				"Nombre": "Quinta Normal",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 111,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.668735364418,
+					-33.4389327675301
+				]
+			},
+			"properties": {
+				"OBJECTID": 111,
+				"GlobalID": "499bd6f2-f853-4d02-bb44-9e9606b78e05",
+				"CreationDate": "Wed, 08 Apr 2020 18:10:08 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:10:17 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Cumming",
+				"Nombre": "Cumming",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 112,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.644230364418,
+					-33.4364247674648
+				]
+			},
+			"properties": {
+				"OBJECTID": 112,
+				"GlobalID": "6d43f704-825b-4173-8d08-ff326e8bafae",
+				"CreationDate": "Wed, 08 Apr 2020 18:11:53 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:12:03 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Bellas Artes",
+				"Nombre": "Bellas Artes",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 113,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.631784364418,
+					-33.4429292438931
+				]
+			},
+			"properties": {
+				"OBJECTID": 113,
+				"GlobalID": "e44abb48-5669-44be-a35e-026438a61cb6",
+				"CreationDate": "Wed, 08 Apr 2020 18:13:48 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:14:02 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Parque Bustamante",
+				"Nombre": "Parque Bustamante",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 114,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6304593531645,
+					-33.4469756877535
+				]
+			},
+			"properties": {
+				"OBJECTID": 114,
+				"GlobalID": "24e11fbb-6662-4a2a-be12-4ae01cd0da7f",
+				"CreationDate": "Wed, 08 Apr 2020 18:15:18 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:15:28 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Santa Isabel",
+				"Nombre": "Santa Isabel",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 115,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.622310364418,
+					-33.4774622430094
+				]
+			},
+			"properties": {
+				"OBJECTID": 115,
+				"GlobalID": "4c393477-1ccb-407f-ae49-701d031e9c2b",
+				"CreationDate": "Wed, 08 Apr 2020 18:18:09 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:18:24 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Rodrigo de Araya",
+				"Nombre": "Rodrigo de Araya",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 116,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.619182,
+					-33.4864092427803
+				]
+			},
+			"properties": {
+				"OBJECTID": 116,
+				"GlobalID": "4f3aa4fa-5597-4ab2-9ad5-63344d0d34b4",
+				"CreationDate": "Wed, 08 Apr 2020 18:19:23 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:19:35 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Carlos Valdovinos",
+				"Nombre": "Carlos Valdovinos",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 117,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.617532364418,
+					-33.4917332426439
+				]
+			},
+			"properties": {
+				"OBJECTID": 117,
+				"GlobalID": "1098b53c-3472-466a-a662-da25368a1d2c",
+				"CreationDate": "Wed, 08 Apr 2020 18:21:18 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:21:56 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Camino Agrícola",
+				"Nombre": "Camino Agrícola",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 118,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.615861364418,
+					-33.4992172424522
+				]
+			},
+			"properties": {
+				"OBJECTID": 118,
+				"GlobalID": "ec6d8947-f7ce-47ed-b72b-1fc38df53930",
+				"CreationDate": "Wed, 08 Apr 2020 18:23:41 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:23:56 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "San Joaquín",
+				"Nombre": "San Joaquín",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 119,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.612659364418,
+					-33.5078251880478
+				]
+			},
+			"properties": {
+				"OBJECTID": 119,
+				"GlobalID": "cb3900fe-7012-4dfb-b135-e6e3d01c4821",
+				"CreationDate": "Wed, 08 Apr 2020 18:32:37 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:32:53 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Pedrero",
+				"Nombre": "Pedrero",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 120,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.606012364418,
+					-33.5132382420929
+				]
+			},
+			"properties": {
+				"OBJECTID": 120,
+				"GlobalID": "0a6dd6fc-c9b5-466e-8cd9-232d7de03ad9",
+				"CreationDate": "Wed, 08 Apr 2020 18:35:46 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:35:56 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Mirador",
+				"Nombre": "Mirador",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 121,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.599896364418,
+					-33.5198022419247
+				]
+			},
+			"properties": {
+				"OBJECTID": 121,
+				"GlobalID": "c195e6f0-3b26-4a7b-bb5e-cc2a3a6edc05",
+				"CreationDate": "Wed, 08 Apr 2020 18:37:03 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:37:21 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Bellavista de La Florida",
+				"Nombre": "Bellavista de La Florida",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 122,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7390307288361,
+					-33.452668243644
+				]
+			},
+			"properties": {
+				"OBJECTID": 122,
+				"GlobalID": "e3cc7a65-db14-40e8-bf98-72711266ad2a",
+				"CreationDate": "Wed, 08 Apr 2020 18:46:35 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 18:46:44 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Barrancas",
+				"Nombre": "Barrancas",
+				"Línea": "5",
+				"Obs": null
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 123,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7469110370485,
+					-33.3984413350881
+				]
+			},
+			"properties": {
+				"OBJECTID": 123,
+				"GlobalID": "47865bc4-6122-49a5-8cbd-289fabe38cbb",
+				"CreationDate": "Wed, 08 Apr 2020 20:38:18 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 20:44:22 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Brasil",
+				"Nombre": "Brasil",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 124,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7454224110452,
+					-33.4057007666657
+				]
+			},
+			"properties": {
+				"OBJECTID": 124,
+				"GlobalID": "4ab12091-ff0d-4ef7-9419-a85f27946d83",
+				"CreationDate": "Wed, 08 Apr 2020 20:38:53 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 20:43:35 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "José MIguel Infante",
+				"Nombre": "José MIguel Infante",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 125,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7475423411043,
+					-33.4171173639509
+				]
+			},
+			"properties": {
+				"OBJECTID": 125,
+				"GlobalID": "9cafe4ed-5ed3-417d-9ccb-7c2fe6fcb5e3",
+				"CreationDate": "Wed, 08 Apr 2020 20:58:07 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:21:14 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Salvador Gutiérrez",
+				"Nombre": "Salvador Gutiérrez",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 126,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.548117,
+					-33.390021724233
+				]
+			},
+			"properties": {
+				"OBJECTID": 126,
+				"GlobalID": "0a750c4a-62c2-4786-8201-a3448412cd0e",
+				"CreationDate": "Wed, 08 Apr 2020 21:03:46 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:23:15 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Padre Hurtado",
+				"Nombre": "Padre Hurtado",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 127,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.533802,
+					-33.3843262039529
+				]
+			},
+			"properties": {
+				"OBJECTID": 127,
+				"GlobalID": "ef0febad-8045-4c4d-a0eb-6fba74b330b2",
+				"CreationDate": "Wed, 08 Apr 2020 21:06:40 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:23:25 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Estoril",
+				"Nombre": "Estoril",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 128,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.561351364418,
+					-33.3949182025908
+				]
+			},
+			"properties": {
+				"OBJECTID": 128,
+				"GlobalID": "120e0db4-bdab-49c0-aaa7-d3f31568a4a9",
+				"CreationDate": "Wed, 08 Apr 2020 21:08:50 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:23:09 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Gerónimo de Alderete",
+				"Nombre": "Gerónimo de Alderete",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 129,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5755443644181,
+					-33.4024087232781
+				]
+			},
+			"properties": {
+				"OBJECTID": 129,
+				"GlobalID": "5459531a-68a5-4ff2-8cb9-c7289926d1d0",
+				"CreationDate": "Wed, 08 Apr 2020 21:10:47 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:23:03 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Parque Araucano",
+				"Nombre": "Parque Araucano",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 130,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5864985060364,
+					-33.4037119130001
+				]
+			},
+			"properties": {
+				"OBJECTID": 130,
+				"GlobalID": "2b714d00-7c45-4cb0-ae2f-4a0713e1b418",
+				"CreationDate": "Wed, 08 Apr 2020 21:12:09 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:22:50 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Américo Vespucio",
+				"Nombre": "Américo Vespucio",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 131,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5986477288361,
+					-33.4063047229777
+				]
+			},
+			"properties": {
+				"OBJECTID": 131,
+				"GlobalID": "c9775656-05d0-41c4-88a9-73ef391b15fe",
+				"CreationDate": "Wed, 08 Apr 2020 21:13:25 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:22:43 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Vitacura",
+				"Nombre": "Vitacura",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 132,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.604494364418,
+					-33.413487244646
+				]
+			},
+			"properties": {
+				"OBJECTID": 132,
+				"GlobalID": "34c49b16-4352-4139-b434-a0517f1ec63f",
+				"CreationDate": "Wed, 08 Apr 2020 21:24:27 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:22:38 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Isidora Goyenechea",
+				"Nombre": "Isidora Goyenechea",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 133,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.680748,
+					-33.4329842441475
+				]
+			},
+			"properties": {
+				"OBJECTID": 133,
+				"GlobalID": "6af63a69-3c50-4845-8a96-292565a61110",
+				"CreationDate": "Wed, 08 Apr 2020 21:32:29 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:21:44 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Matucama",
+				"Nombre": "Matucama",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 135,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6933586822087,
+					-33.4310957210657
+				]
+			},
+			"properties": {
+				"OBJECTID": 135,
+				"GlobalID": "169d7115-572b-4ecd-a3e1-4d5a66889d8c",
+				"CreationDate": "Wed, 08 Apr 2020 21:48:57 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:21:37 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Walker Martínez",
+				"Nombre": "Walker Martínez",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 136,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.703917192625,
+					-33.4284601702175
+				]
+			},
+			"properties": {
+				"OBJECTID": 136,
+				"GlobalID": "91cb3b4e-25c7-404c-b34f-0f812cc41502",
+				"CreationDate": "Wed, 08 Apr 2020 21:57:02 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 21:58:50 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Radal",
+				"Nombre": "Radal",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 137,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7189687288361,
+					-33.4256061986423
+				]
+			},
+			"properties": {
+				"OBJECTID": 137,
+				"GlobalID": "67fd35bb-bf4b-4d90-a455-ddb4e3116918",
+				"CreationDate": "Wed, 08 Apr 2020 21:59:28 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:21:27 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Neptuno",
+				"Nombre": "Neptuno",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 138,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.7402546822095,
+					-33.4228387217023
+				]
+			},
+			"properties": {
+				"OBJECTID": 138,
+				"GlobalID": "2660950c-aa7e-4af9-b371-892ab97b5a3f",
+				"CreationDate": "Wed, 08 Apr 2020 22:00:10 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:21:19 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Huelén",
+				"Nombre": "Huelén",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 139,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6692516705523,
+					-33.4321396845669
+				]
+			},
+			"properties": {
+				"OBJECTID": 139,
+				"GlobalID": "d9c079ed-1400-424a-8c95-18ab5a58415b",
+				"CreationDate": "Wed, 08 Apr 2020 22:07:27 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Wed, 08 Apr 2020 22:21:51 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Cumming",
+				"Nombre": "Cumming",
+				"Línea": "7",
+				"Obs": "Proyectada para 2028 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 140,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6030274418196,
+					-33.4299016178062
+				]
+			},
+			"properties": {
+				"OBJECTID": 140,
+				"GlobalID": "9952fa7d-dfa0-48d5-9527-c068cccb88a4",
+				"CreationDate": "Tue, 07 Jul 2020 16:45:07 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:45:39 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Eliodoro Yañez",
+				"Nombre": "Eliodoro Yañez",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 141,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.599127006996,
+					-33.4447832555006
+				]
+			},
+			"properties": {
+				"OBJECTID": 141,
+				"GlobalID": "78307aa4-69cc-401a-b335-ad0889608047",
+				"CreationDate": "Tue, 07 Jul 2020 16:46:26 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:47:43 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Diagonal Oriente",
+				"Nombre": "Diagonal Oriente",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 142,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5982837875367,
+					-33.4647411394598
+				]
+			},
+			"properties": {
+				"OBJECTID": 142,
+				"GlobalID": "2c3e4d08-8f21-45e9-b241-fb244c7ad1c2",
+				"CreationDate": "Tue, 07 Jul 2020 16:48:29 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:48:58 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Grecia",
+				"Nombre": "Grecia",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 143,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5987804991187,
+					-33.4736827768702
+				]
+			},
+			"properties": {
+				"OBJECTID": 143,
+				"GlobalID": "bf4ba01b-ad7c-45ed-8209-3eacda00ecd0",
+				"CreationDate": "Tue, 07 Jul 2020 16:51:02 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:51:26 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Rodrigo de Araya",
+				"Nombre": "Rodrigo de Araya",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 144,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5993718423876,
+					-33.4851537583593
+				]
+			},
+			"properties": {
+				"OBJECTID": 144,
+				"GlobalID": "21df82b7-b5be-4072-82ab-65d0adbe4f8b",
+				"CreationDate": "Tue, 07 Jul 2020 16:52:27 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:52:53 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Quilín",
+				"Nombre": "Quilín",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 145,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.6051096742065,
+					-33.496754842644
+				]
+			},
+			"properties": {
+				"OBJECTID": 145,
+				"GlobalID": "933156e7-bbd2-4995-86ae-78438d82a4d0",
+				"CreationDate": "Tue, 07 Jul 2020 16:54:27 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:56:18 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Las Torres",
+				"Nombre": "Las Torres",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 146,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5790018898337,
+					-33.5224043862384
+				]
+			},
+			"properties": {
+				"OBJECTID": 146,
+				"GlobalID": "a81609ca-64c2-4713-be17-7701536ee335",
+				"CreationDate": "Tue, 07 Jul 2020 16:57:57 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 16:58:26 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Walker Martínez",
+				"Nombre": "Walker Martínez",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 147,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5761107618811,
+					-33.5360355507174
+				]
+			},
+			"properties": {
+				"OBJECTID": 147,
+				"GlobalID": "ff022abf-6122-4677-9291-237de1929f4c",
+				"CreationDate": "Tue, 07 Jul 2020 16:59:21 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 17:00:13 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Rojas Magallanes",
+				"Nombre": "Rojas Magallanes",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 148,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5679813635386,
+					-33.5475800365247
+				]
+			},
+			"properties": {
+				"OBJECTID": 148,
+				"GlobalID": "8980a224-1653-4d08-bc2a-12106f92c592",
+				"CreationDate": "Tue, 07 Jul 2020 17:00:44 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 17:01:05 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Trinidad",
+				"Nombre": "Trinidad",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 149,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5589553949234,
+					-33.5591521469645
+				]
+			},
+			"properties": {
+				"OBJECTID": 149,
+				"GlobalID": "ac99a5cc-ebdc-4762-8d9b-cafcd39ccfab",
+				"CreationDate": "Tue, 07 Jul 2020 17:02:00 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 17:02:22 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Portales",
+				"Nombre": "Portales",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		},
+		{
+			"type": "Feature",
+			"id": 150,
+			"geometry": {
+				"type": "Point",
+				"coordinates": [
+					-70.5550355140839,
+					-33.5705909065971
+				]
+			},
+			"properties": {
+				"OBJECTID": 150,
+				"GlobalID": "48da7c43-e828-4e55-bd3c-b762c25aa32e",
+				"CreationDate": "Tue, 07 Jul 2020 17:02:48 GMT",
+				"Creator": "Lacasadejuana",
+				"EditDate": "Tue, 07 Jul 2020 17:03:17 GMT",
+				"Editor": "Lacasadejuana",
+				"Estación": "Mall Plaza Tobalaba",
+				"Nombre": "Mall Plaza Tobalaba",
+				"Línea": "8",
+				"Obs": "Proyectada para 2026 - Ubicación referencial"
+			}
+		}
+	]
+}

@@ -44,7 +44,7 @@
 		},
 		"types": [
 			"@cloudflare/workers-types",
-		//	"@lacasadejuana/types",
+			"@lacasadejuana/types",
 			"dropzone",
 			"bootstrap-table",
 			"google.maps",

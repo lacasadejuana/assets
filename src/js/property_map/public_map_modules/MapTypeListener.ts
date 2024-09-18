@@ -18,20 +18,13 @@ export class MapTypeListener extends BaseClass implements IBaseClass<'changed' |
             this.addClickListener()
 
 
-            //@ts-ignore
-            if (Alpine.store('public_maps').full_map) {
-                let mapSearch = document.querySelector('#searchCampo');
-                //  mapSearch.appendChild(styleTag2[0])
-
-                //@ts-ignore
-                this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(mapSearch);
-            } else {
+        
                 console.log('inject styles to gmap')
                 let styleTag2 = document.createElement('style')
                 styleTag2.textContent = `@import url('/css/app.css')`
 
                 this.gmap.controls[google.maps.ControlPosition.TOP_RIGHT].push(styleTag2);
-            }
+           
 
             return this
         })

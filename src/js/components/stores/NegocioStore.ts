@@ -2,8 +2,9 @@ import { staticFetchWrapper } from '@/components/decorators';
 import { DummyNegocio } from '@/components/entities/DummyNegocio';
 import { Negocio } from '@/components/entities/Negocio';
 import { BaseClass } from '@/components/stores';
-import { IApiSortOrder, INegocioRow, INegocioStore, bindConsole } from '@lacasadejuana/types';
+import { IApiSortOrder, INegocioRow, INegocioStore } from '@lacasadejuana/types';
 import Alpine from 'alpinejs';
+import { bindConsole } from '../../components';
 
 type TBakendPaginatorPayload = {
     total: number;

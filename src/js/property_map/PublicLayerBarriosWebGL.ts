@@ -73,34 +73,10 @@ export const PublicLayerBarriosWebGL = ({ index, slug_name, name, layer_options 
         if (qs.searchParams.get('codigo_interno')) {
             this.codigo_interno = qs.searchParams.get('codigo_interno')
         }
-        /*let { layer_options, ...featureCollection } = await staticFetchWrapper<GeoJSON.FeatureCollection & { layer_options: ILayerOptions }>(this.layer_options.url, {})
-        let features: TBarrioFeature[] = featureCollection.features as TBarrioFeature[];
-        let hslGap = Math.round(360 / features.length)
-        let sortedFeatures = features.sort((a, b) => {
-            let akey = (comunasIndex[a.properties.Comuna] ?? "7") + '_' + a.properties.Nombre_de_Barrio,
-                bkey = (comunasIndex[b.properties.Comuna] ?? "7") + '_' + b.properties.Nombre_de_Barrio
-            return akey.localeCompare(bkey)
-        })
-        featureCollection.features = sortedFeatures.map((feature, index) => {
-            let colorRange = (hslGap * index) % 360,
-                saturation = colorRange < 180 ? 45 : 40,
-                light = colorRange > 130 ? 60 : 50;
 
-            feature.properties['fillColor'] = `hsl(${colorRange},${saturation}%,${light}%)`
-            let { r, g, b, a } = hslToRGB(colorRange, saturation, light, 1, 0)
-            feature.properties.rgbaColor = [r, g, b, a]
-            feature.properties['strokeColor'] = `hsl(${colorRange},45%,40%)`
-            feature.properties['comunaIndex'] = comunasIndex[feature.properties.Comuna] ?? "7"
-            return feature
-        });
-        globalThis.barriosFC = featureCollection
-        this.featureCollection = Alpine.raw(featureCollection)
-        */
 
         this.layer_options = { ...this.layer_options, ...layer_options }
 
-        // this.original_icon = JSON.parse(JSON.stringify(this.layer_options.icon ?? {}))
-        // this.iconPreview = this.updateIcon()
 
         globalThis.exampleLayerObject = PublicLayersObject
         let example_layer = PublicLayersObject[slug_name] || { layer_options },
@@ -115,16 +91,14 @@ export const PublicLayerBarriosWebGL = ({ index, slug_name, name, layer_options 
 
 
         this.addLayerToMap();
-        //this.declareEventHandlers();
 
-        //this.watch()
 
         this.layer_options.checked = false;
         this.layer_options = { ...layer_options, name, slug_name }
 
 
         setTimeout(() => {
-            google.maps.event.addListenerOnce(globalThis.gmap, 'odle', () => {
+            google.maps.event.addListenerOnce(globalThis.gmap, 'idle', () => {
                 this.checked = checked
             })
         }, 2000)
@@ -241,61 +215,7 @@ export const PublicLayerBarriosWebGL = ({ index, slug_name, name, layer_options 
         const layer = this.getLayer()
         const highlightLabelClassname = "uppercase max-w-[125px] text-gray-500 markerLabel_break_words markerLabel bg-gray-200   p-1 bg-opacity-50";
         return this;
-        requestAnimationPromise().then(() => {
-            let icon = this.iconPreview;
-            let { labelVisibility } = this.layer_options
 
-            let laberIcon = {
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 5,
-                strokeWeight: 2,
-                labelOrigin: new google.maps.Point(0, 2),
-                strokeColor: 'rgba(200,200,200,0)',
-            };
-            this.getLayer().setStyle((feature) => {
-                let featureName = feature.getProperty(this.layer_options.labelProperty),
-                    comuna = feature.getProperty('Comuna'),
-                    comunaOffset = Object.keys(comunas).indexOf(comuna);
-                if (!comuna || comunaOffset === -1) {
-                    comunaOffset = 0
-                }
-                comunaOffset -= 1
-                let
-                    highlighted = feature.getProperty('highlighted'),
-                    matches = feature.getProperty('matches'),
-                    transparencia = feature.getProperty('Transparencia') ?? 0,
-
-                    fillOpacity = this.layer_options.fillOpacity *
-                        //(1 - transparencia / 10) *
-                        ((matches ? 2.5 : 0.9) *
-                            highlighted
-                            ? 1.6
-                            : 0.8),
-                    fillColor = `hsl(${(matches ? 20 : transparencia * 7) + comunaOffset * 50},${matches ? 65 : 55}%,${matches ? 60 : 70}%)`;
-
-
-                /**
-             * Label Visibility is computed from layer options
-             * - labelVisibility.always means label is always shown
-             * - labelVisibility.highlighted means label is shown when feature is highlighted
-             * - labelVisibility.zoom means label is visible when map zoom is greater than or equal to labelVisibility.zoom
-             */
-
-                let styleObj = {
-
-                    // label,
-                    fillColor: feature.getProperty('fillColor') || fillColor,
-                    strokeColor: feature.getProperty('strokeColor') || `hsl(${comunaOffset * 60},45%,40%)`,
-                    strokeWeight: this.layer_options.strokeWeight || 1 || (feature.getProperty('strokeWeight') || 1) * this.layer_options.strokeWeight,
-                    strokeOpacity: matches ? 1 : 0.7,
-                    // visible: feature.getProperty('comuna') && comunas[feature.getProperty('comuna')] === true,
-                    fillOpacity
-                };
-
-                return styleObj;
-            });
-        });
-        return this
     },
 
     fontSize: 33,
@@ -306,11 +226,6 @@ export const PublicLayerBarriosWebGL = ({ index, slug_name, name, layer_options 
     mouseover_added: false,
     infowindow_added: false,
     addLayerToMap(): Promise<AlpineDataComponent<IGeoJsonLayerData>> {
-
-
-
-
-
         // Add overlay to map
 
         const layer = globalThis.layers[this.slug_name] || new DeckOverlay({
@@ -318,7 +233,6 @@ export const PublicLayerBarriosWebGL = ({ index, slug_name, name, layer_options 
 
             ],
         });
-
 
         globalThis.layers[this.slug_name] = layer
         // layer.setMap(globalThis.gmap);
