@@ -37,7 +37,7 @@
             });
         }
     </script>
-    <script src="/js/components/init_public_map.js"></script>
+    <script src="https://assets.juana.house/js/components/init_public_map.js"></script>
 
 
     <!-- ========== All CSS files linkup ========= -->
@@ -107,7 +107,7 @@
                         },
                         importComponent() {
                     
-                            return import('/js/components/public_map.js').then((module) => {
+                            return import('https://assets.juana.house/js/components/public_map.js').then((module) => {
                                 console.log('PublicMapMoldules', module);
                                 //Alpine.store('public_maps',()=>new module.createPublicMapStore())
                                 //this.$store.public_maps.$store.negocios=this.$store.negocios;
