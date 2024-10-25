@@ -11,11 +11,12 @@ import {
 } from '@/components/alpine_definitions/definitions.filters';
 
 import { NegocioColumn } from '@/components/entities/NegocioColumn';
+import { VInputType } from '@lacasadejuana/types/src/VInputType';
 import {
 
     IFilterStore,
     TIncludeColumns, TProbeResult,
-    VInputType
+
 } from "@lacasadejuana/types";
 import Alpine from 'alpinejs';
 import { v4 as uuidv4 } from 'uuid';

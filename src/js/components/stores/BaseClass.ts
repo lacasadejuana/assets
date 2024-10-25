@@ -3,7 +3,8 @@ import type { ICamposBusqueda, IMapStore, INegocioStore, IRolesNegocioStore, IUs
 import { IFilterStore, iCurrentColumns } from "@lacasadejuana/types";
 import { tap } from '../plugins';
 
-import { LogLevel, LogLevels, fakeConsole } from '@lacasadejuana/types';
+
+import { LogLevel, LogLevels, fakeConsole } from '@lacasadejuana/types/src/logLevel';
 
 import { IBaseClass, TEventStore, TeventType, XTipoBusquedaStore } from '@lacasadejuana/types';
 import { staticFetchWrapper } from '../decorators';

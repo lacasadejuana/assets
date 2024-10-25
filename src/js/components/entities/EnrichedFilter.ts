@@ -1,6 +1,11 @@
 import { NegocioColumn } from '@/components/entities/NegocioColumn';
 import { TContactOption } from '@/components/decorators'
-import { ICamposBusqueda, IEnrichedFiltro, IFiltro, INegocioStore, TRenderValue, VInputType, VRenderType, VSearchType, XTipoBusquedaStore, iCurrentColumns, search_types } from '@lacasadejuana/types';
+import { ICamposBusqueda, IEnrichedFiltro, IFiltro, INegocioStore, TRenderValue, XTipoBusquedaStore, iCurrentColumns } from '@lacasadejuana/types';
+import { VInputType } from '@lacasadejuana/types/src/VInputType';
+import { VRenderType } from '@lacasadejuana/types/src/VRenderType';
+import { VSearchType } from '@lacasadejuana/types/src/VSearchType';
+import { search_types } from '@lacasadejuana/types/src/definitions.search_types';
+
 import { isArray } from 'lodash';
 import { TOption } from "@/components/alpine_definitions/definitions.filters";
 import { ActiveFilterStore } from '../stores/activeFilterStore';

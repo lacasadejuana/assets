@@ -69,11 +69,11 @@
 		"./src/js/**/*.ts",
 		"./src/js/**/.d.ts",
 		"./src/js/*.d.ts",
-		"./src/js/*.ts"
+		"./src/js/*.ts",
+		"types/**/*.d.ts"
 	],
 	"exclude": [
 		"node_modules",
-"types",
 		"vendor",
 		"public"
 	]

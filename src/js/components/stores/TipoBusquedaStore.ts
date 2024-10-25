@@ -1,11 +1,17 @@
-import { CampoFiltro, VInputType, VSearchType, VTypeSearch } from '@lacasadejuana/types';
+import { CampoFiltro } from '@lacasadejuana/types';
+
+import { VSearchType } from '@lacasadejuana/types/src/VSearchType';
+import { VInputType } from '@lacasadejuana/types/src/VInputType';
+import { VTypeSearch } from '@lacasadejuana/types/src/VTypeSearch';
 import { DttColumn } from '../DttColumn';
 import { INegocioRow } from '../alpine.store';
 import { TSimpleCampo } from '../alpine_definitions/TSimpleCampo';
 import { NegocioColumn } from '../entities/NegocioColumn';
 import { BaseClass } from './BaseClass';
 
-import { LogLevel, XTipoBusquedaStore } from '@lacasadejuana/types';
+import { XTipoBusquedaStore } from '@lacasadejuana/types';
+import { LogLevel, LogLevels, fakeConsole } from '@lacasadejuana/types/src/logLevel';
+
 import { bindConsole } from '..';
 
 export class TipoBusquedaStore extends BaseClass implements XTipoBusquedaStore {

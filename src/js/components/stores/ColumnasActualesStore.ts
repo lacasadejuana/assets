@@ -1,6 +1,7 @@
 
 //ColumnaVisible
-import { ICamposBusqueda, IFilterStore, VInputType, iCurrentColumns } from "@lacasadejuana/types";
+import { ICamposBusqueda, IFilterStore, iCurrentColumns } from "@lacasadejuana/types";
+import { VInputType } from '@lacasadejuana/types/src/VInputType';
 import { v4 as uuidv4 } from 'uuid';
 import { defaultSlugs } from "../alpine_definitions/OptionGroups";
 import { decorateCampo } from '../decorators/decorateCampo';
