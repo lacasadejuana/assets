@@ -122,7 +122,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         this.marquee('got codigo_interno ' + codigo_interno)
     }
     get mainFeature() {
-        return this.codigo_interno && this.$store.negocios.get(this.codigo_interno) || this.customElementsMap?.getCenter().toJSON()
+        return this.codigo_interno && this.$store.negocios.get(this.codigo_interno)
     }
     skipMapCreation: boolean = false
     get verifiers(): Record<Partial<TeventType>, boolean> {
