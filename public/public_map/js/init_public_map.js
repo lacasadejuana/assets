@@ -22928,7 +22928,7 @@ var PublicMapStore = class extends BaseClass {
   fetchPublicaciones() {
     module_default8.store("negocios").next_page_url = "https://lacasadejuana.cl/api/publicaciones";
     module_default8.store("negocios").complete = false;
-    return this.$store.negocios.fetchAll().then((result) => {
+    return this.$store.negocios.restart().then((result) => {
       setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
       console.info("fetched negocios", this.$store.negocios.properties.length, "codigo_interno is " + this.codigo_interno);
       if (!this.codigo_interno && this.customElementsMap) {

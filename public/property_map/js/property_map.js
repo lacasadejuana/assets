@@ -51967,7 +51967,7 @@ var PublicMapStore = class extends BaseClass {
   fetchPublicaciones() {
     module_default.store("negocios").next_page_url = "https://maps.lacasadejuana.cl/api/publicaciones";
     module_default.store("negocios").complete = false;
-    return this.$store.negocios.fetchAll().then((result) => {
+    return this.$store.negocios.restart().then((result) => {
       setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
       return result;
     });

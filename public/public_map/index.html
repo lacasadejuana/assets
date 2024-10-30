@@ -106,7 +106,7 @@
                         },
                         importComponent() {
                     
-                            return import('/js/components/public_map.js').then((module) => {
+                            return import('./public_map.js').then((module) => {
                                 console.log('PublicMapMoldules', module);
                                 //Alpine.store('public_maps',()=>new module.createPublicMapStore())
                                 //this.$store.public_maps.$store.negocios=this.$store.negocios;

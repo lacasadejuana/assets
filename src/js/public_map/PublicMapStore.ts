@@ -46,7 +46,7 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     feature_collection: GeoJSON.FeatureCollection<GeoJSON.Geometry> = { type: 'FeatureCollection', features: [] }
     layerSlugs: string[] = []
     _codigo_interno: string = null
- 
+
     constructor() {
         super()
 
@@ -70,23 +70,23 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         })
         Alpine.store('negocios').once('complete', () => {
             this.marquee('setting center on codigo interno')
-            if(this.mainFeature) {
+            if (this.mainFeature) {
 
-            
-            let {lat,lng}=this.mainFeature;
-                
-                
-                    this.customElementsMap.setCenter({ lat, lng })
-                    this.customElementsMap.setZoom(17)
-                }    
-            
+
+                let { lat, lng } = this.mainFeature;
+
+
+                this.customElementsMap.setCenter({ lat, lng })
+                this.customElementsMap.setZoom(17)
+            }
+
         });
     }
     _customElementsMap: google.maps.Map = null
     setCenterByCodigoInterno() {
-        let {lat,lng}=this.mainFeature;
-                
-                
+        let { lat, lng } = this.mainFeature;
+
+
         this.customElementsMap.setCenter({ lat, lng })
         this.customElementsMap.setZoom(17)
     }
@@ -118,12 +118,12 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
     }
     set codigo_interno(codigo_interno) {
         this._codigo_interno = codigo_interno
-        if(this._customElementsMap&&codigo_interno) this._customElementsMap.codigo_interno=codigo_interno
+        if (this._customElementsMap && codigo_interno) this._customElementsMap.codigo_interno = codigo_interno
         this.marquee('got codigo_interno ' + codigo_interno)
     }
-get mainFeature() {
-    return this.codigo_interno&& this.$store.negocios.get(this.codigo_interno)||this.customElementsMap?.getCenter().toJSON()
-}
+    get mainFeature() {
+        return this.codigo_interno && this.$store.negocios.get(this.codigo_interno) || this.customElementsMap?.getCenter().toJSON()
+    }
     skipMapCreation: boolean = false
     get verifiers(): Record<Partial<TeventType>, boolean> {
         return {
@@ -153,7 +153,7 @@ get mainFeature() {
     no_labels: boolean = false
     setBarrioLabels(features: Feature[]) {
         this.barrioMarkers = new Map()
-if(!features || !features.length) return;
+        if (!features || !features.length) return;
         this.barrioLabels = features.map((feature): { position: { lng: any; lat: any; }; id: string | number; name: any; } => {
             let { geometry, id, properties } = feature
             let [lng, lat] = geometry.coordinates
@@ -318,17 +318,17 @@ if(!features || !features.length) return;
         return
     }
     fetchPublicaciones() {
-        Alpine.store('negocios').next_page_url='https://lacasadejuana.cl/api/publicaciones'
-        Alpine.store('negocios').complete=false
-        return this.$store.negocios.fetchAll().then((result) => {
+        Alpine.store('negocios').next_page_url = 'https://lacasadejuana.cl/api/publicaciones'
+        Alpine.store('negocios').complete = false
+        return this.$store.negocios.restart().then((result) => {
 
             //ifDefined(globalThis.mapFrameData, (mapFrameData) => mapFrameData.reload())
             //ifDefined(globalThis.bsTable, (bsTable) => bsTable.reload && bsTable.reload())
             setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1000);
-             console.info('fetched negocios', this.$store.negocios.properties.length,'codigo_interno is '+this. codigo_interno);
-             if(!this.codigo_interno && this.customElementsMap) {
+            console.info('fetched negocios', this.$store.negocios.properties.length, 'codigo_interno is ' + this.codigo_interno);
+            if (!this.codigo_interno && this.customElementsMap) {
                 this.customElementsMap.setZoom(13.1)
-             }
+            }
             return result;
         })
 

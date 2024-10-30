@@ -285,10 +285,10 @@ export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'la
         return
     }
     fetchPublicaciones() {
-        
-        Alpine.store('negocios').next_page_url='https://maps.lacasadejuana.cl/api/publicaciones'
-        Alpine.store('negocios').complete=false
-        return this.$store.negocios.fetchAll().then((result) => {
+
+        Alpine.store('negocios').next_page_url = 'https://maps.lacasadejuana.cl/api/publicaciones'
+        Alpine.store('negocios').complete = false
+        return this.$store.negocios.restart().then((result) => {
 
             //ifDefined(globalThis.mapFrameData, (mapFrameData) => mapFrameData.reload())
             //ifDefined(globalThis.bsTable, (bsTable) => bsTable.reload && bsTable.reload())
