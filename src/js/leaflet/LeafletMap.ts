@@ -30,7 +30,7 @@ export const LeafletMap = () => ({
         }).addTo(this.map);
 
 
-        globalThis.layerControl = L.control.layers(null, null).addTo(this.map);
+        globalThis.layerControl = L.control.layers(null, null, { collapsed: false }).addTo(this.map);
         globalThis.layers = globalThis.layers || {}
 
         this.barrioslayer = await barriosLayer(this.map)

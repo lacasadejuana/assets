@@ -4,14 +4,14 @@ import * as L from 'leaflet/dist/leaflet-src.esm'
 const barrioInfo = L.control();
 
 barrioInfo.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this._div = L.DomUtil.create('div', 'transparent'); // create a div with a class "info"
     this.update();
     return this._div;
 };
 
 // method that we will use to update the control based on feature properties passed
 barrioInfo.update = function (props) {
-    this._div.innerHTML = props ? ('<b>Barrio ' + props.Nombre_de_Barrio + '</b>') : '';
+    this._div.innerHTML = props ? ('<div class="info"><b>Barrio ' + props.Nombre_de_Barrio + '</b></div>') : '';
 };
 export { barrioInfo }
 

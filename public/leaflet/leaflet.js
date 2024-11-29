@@ -12603,12 +12603,12 @@ Map2.TouchZoom = TouchZoom;
 // src/js/leaflet/barrioInfo.ts
 var barrioInfo = control();
 barrioInfo.onAdd = function(map) {
-  this._div = DomUtil.create("div", "info");
+  this._div = DomUtil.create("div", "transparent");
   this.update();
   return this._div;
 };
 barrioInfo.update = function(props) {
-  this._div.innerHTML = props ? "<b>Barrio " + props.Nombre_de_Barrio + "</b>" : "";
+  this._div.innerHTML = props ? '<div class="info"><b>Barrio ' + props.Nombre_de_Barrio + "</b></div>" : "";
 };
 async function barriosLayer(map) {
   var geojson;
@@ -12659,12 +12659,12 @@ async function barriosLayer(map) {
 // src/js/leaflet/metroInfo.ts
 var metroInfo = control();
 metroInfo.onAdd = function(map) {
-  this._div = DomUtil.create("div", "info");
+  this._div = DomUtil.create("div", "transparent");
   this.update();
   return this._div;
 };
 metroInfo.update = function(props) {
-  this._div.innerHTML = props ? "<b>Metro " + props.Nombre + "</b><br><b>Linea: </b>" + props.L\u00EDnea : "";
+  this._div.innerHTML = props ? '<div class="info"><b>Metro ' + props.Nombre + "</b><br><b>Linea: </b>" + props.L\u00EDnea + "</div>" : "";
 };
 var metroIcon = icon({
   iconUrl: "metro.png",
@@ -12705,12 +12705,12 @@ async function metroLayer(map) {
 // src/js/leaflet/colegioInfo.ts
 var colegioInfo = control();
 colegioInfo.onAdd = function(map) {
-  this._div = DomUtil.create("div", "info");
+  this._div = DomUtil.create("div", "transparent");
   this.update();
   return this._div;
 };
 colegioInfo.update = function(props) {
-  this._div.innerHTML = props ? "<b>Colegio " + props.Nombre + "</b>" : "";
+  this._div.innerHTML = props ? '<div class="info"><b>Colegio ' + props.Nombre + "</b></div>" : "";
 };
 var colegioIcon = icon({
   iconUrl: "colegios.png",
@@ -13175,7 +13175,7 @@ var LeafletMap = () => ({
       subdomains: "abcd",
       maxZoom: 20
     }).addTo(this.map);
-    globalThis.layerControl = control.layers(null, null).addTo(this.map);
+    globalThis.layerControl = control.layers(null, null, { collapsed: false }).addTo(this.map);
     globalThis.layers = globalThis.layers || {};
     this.barrioslayer = await barriosLayer(this.map);
     this.metrolayer = await metroLayer(this.map);

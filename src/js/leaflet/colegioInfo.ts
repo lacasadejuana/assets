@@ -2,14 +2,14 @@ import * as L from 'leaflet/dist/leaflet-src.esm'
 const colegioInfo = L.control();
 
 colegioInfo.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this._div = L.DomUtil.create('div', 'transparent'); // create a div with a class "info"
     this.update();
     return this._div;
 };
 
 // method that we will use to update the control based on feature properties passed
 colegioInfo.update = function (props) {
-    this._div.innerHTML = props ? ('<b>Colegio ' + props.Nombre + '</b>') : '';
+    this._div.innerHTML = props ? ('<div class="info"><b>Colegio ' + props.Nombre + '</b></div>') : '';
 };
 export const colegioIcon = L.icon({
     iconUrl: 'colegios.png',

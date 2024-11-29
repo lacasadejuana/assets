@@ -2,14 +2,14 @@ import * as L from 'leaflet/dist/leaflet-src.esm'
 const metroInfo = L.control();
 
 metroInfo.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this._div = L.DomUtil.create('div', 'transparent'); // create a div with a class "info"
     this.update();
     return this._div;
 };
 
 // method that we will use to update the control based on feature properties passed
 metroInfo.update = function (props) {
-    this._div.innerHTML = props ? ('<b>Metro ' + props.Nombre + '</b><br><b>Linea: </b>' + props.Línea) : '';
+    this._div.innerHTML = props ? ('<div class="info"><b>Metro ' + props.Nombre + '</b><br><b>Linea: </b>' + props.Línea + '</div>') : '';
 };
 export const metroIcon = L.icon({
     iconUrl: 'metro.png',
