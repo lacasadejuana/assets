@@ -22,7 +22,7 @@ import { PublicLayersObject, exampleLayers } from './public_map_modules/exampleL
 import { sharingLevels } from './public_map_modules/sharingLevels';
 import { extendMapDataProtoType } from './public_map_modules';
 import { Feature } from 'geojson';
-import { globalAgent } from 'http';
+
 
 export class PublicMapStore extends BaseClass implements IMapStore<'ready' | 'layers_added' | 'map_created'> {
     map_name: string = null

@@ -1,4 +1,5 @@
-import { AlpineDataComponent, IMapLayerData } from '@/components/alpine_definitions';
+import { IMapLayerData } from '@/components/alpine_definitions';
+import { AlpineDataComponent } from '@/components/alpine.store';
 import { Negocio } from "@/components/entities/Negocio";
 import { b64toBlob } from './public_map_modules/b64toBlob';
 import { iconOptions } from "./public_map_modules/iconOptions";
@@ -402,5 +403,5 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
 
     tomselect: null,
 
-} as AlpineDataComponent<IMapLayerData>)
+} as unknown as AlpineDataComponent<IMapLayerData>)
 

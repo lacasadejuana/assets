@@ -56,7 +56,8 @@
 			"alpinejs",
 			"select2",
 			"playwright",
-			"echarts"
+			"echarts",
+			"leaflet"
 		]
 	},
 	"include": [

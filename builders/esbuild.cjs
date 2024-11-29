@@ -96,6 +96,15 @@ const onRebuild = (outdir = `public_map`) => {
         format: 'umd',
 
     });
+    runEsbuild({
+        entryPoints: [
+            `src/js/leaflet/init_public_map.ts`
+        ],
+        outfile: `public/leaflet/init_public_map.js`,
+        quiet: true,
+        format: 'umd',
+
+    });
 
     runEsbuild({
         entryPoints: [
@@ -120,16 +129,7 @@ const onRebuild = (outdir = `public_map`) => {
     });
 
 
-    runEsbuild({
-        entryPoints: [
-            'src/js/single_map/index.ts'
-        ],
-        outfile: 'public/single_map/js/single_map.js',
-        quiet: true,
-        format: 'esm',
-        saas: [['src/css/map_view.scss', 'public/property_map/css/map_view.css']]
 
-    });
     runEsbuild({
         entryPoints: [
             'src/js/single_map/init_public_map.ts'
@@ -140,6 +140,14 @@ const onRebuild = (outdir = `public_map`) => {
         ,
         format: 'umd',
 
+    });
+    runEsbuild({
+        entryPoints: [
+            'src/js/leaflet/index.ts'
+        ],
+        outfile: 'public/leaflet/leaflet.js',
+
+        format: 'esm',
     });
 };
 if (require.main === module) {

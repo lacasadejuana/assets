@@ -7,7 +7,8 @@
 		"build:tailwind": " tailwind  -i src/css/_app.css -o public/css/app.css",
 		"build:public": "esbuild src/js/public_map/index.ts --bundle --format=esm --outfile=public/js/public_map.js --tsconfig=tsconfig.json",
 		"build:property": "esbuild src/js/property_map/index.ts --bundle --format=esm --outfile=public/js/property_map.js --tsconfig=tsconfig.json",
-		"build": "yarn build:public && yarn build:property && yarn build:tailwind",
+		"build:leaflet": "esbuild src/js/leaflet/index.ts --bundle --format=esm --outfile=public/leaflet/leaflet.js --tsconfig=tsconfig.json",
+		"build": "yarn build:public && yarn build:property && yarn build:tailwind && yarn build:leaflet",
 		"watch:esbuild": "node builders/esbuild.cjs --watch ",
 		"watch:tailwind": "tailwind -i src/css/_app.css -o public/property_map/app.css --watch",
 		"watch": "concurrently \"npm run watch:esbuild\" \"npm run watch:tailwind\""
@@ -56,6 +57,8 @@
 		"wrangler": "2"
 	},
 	"dependencies": {
-		"concurrently": "^8.2.1"
+		"@types/leaflet": "^1.9.14",
+		"concurrently": "^8.2.1",
+		"leaflet": "^1.9.4"
 	}
 }

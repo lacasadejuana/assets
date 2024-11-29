@@ -20702,7 +20702,7 @@ var NegocioStore = class extends BaseClass {
   }
   async restart() {
     let total = this.$store.active_filter.estimate;
-    this.next_page_url = location.origin + `/maps/api/negocios?from=${Number(Date.now() / 1e3).toFixed(0)}&total=${total}&limit=500`;
+    this.next_page_url = location.origin + `/maps/api/negocios?from=${Number(Date.now() / 1e3).toFixed(0)}&total=${total}&limit=5000`;
     this.complete = false;
     this.ready = true;
     this.properties = [];
