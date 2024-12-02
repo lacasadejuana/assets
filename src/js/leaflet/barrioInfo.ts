@@ -26,7 +26,7 @@ export async function barriosLayer(map: L.Map) {
             opacity: 1,
             color: 'white',
             dashArray: '3',
-            fillOpacity: 0.4
+            fillOpacity: 0.2
         };
     }
     function resetHighlight(e) {
@@ -41,7 +41,7 @@ export async function barriosLayer(map: L.Map) {
             weight: 5,
             color: '#666',
             dashArray: '',
-            fillOpacity: 0.6
+            fillOpacity: 0.3
         });
 
         layer.bringToFront();

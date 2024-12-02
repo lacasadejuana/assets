@@ -12619,7 +12619,7 @@ async function barriosLayer(map) {
       opacity: 1,
       color: "white",
       dashArray: "3",
-      fillOpacity: 0.4
+      fillOpacity: 0.2
     };
   }
   function resetHighlight(e) {
@@ -12632,7 +12632,7 @@ async function barriosLayer(map) {
       weight: 5,
       color: "#666",
       dashArray: "",
-      fillOpacity: 0.6
+      fillOpacity: 0.3
     });
     layer.bringToFront();
     barrioInfo.update(layer.feature.properties);
@@ -12879,285 +12879,6 @@ var PublicLayersObject = exampleLayers.reduce((acc, layer) => {
   return acc;
 }, {});
 
-// src/js/leaflet/Wrapper.ts
-var Wrapper = class {
-  constructor(className) {
-    this.wrapper = document.createElement("div");
-    this.wrapper.className = className;
-  }
-  addClass(className) {
-    this.wrapper.classList.add(className);
-    return this;
-  }
-  addStyle(property, value) {
-    this.wrapper.style[property] = value;
-    return this;
-  }
-  setInnerHTML(html) {
-    this.wrapper.innerHTML = html;
-    return this;
-  }
-  appendChild(child) {
-    this.wrapper.appendChild(child);
-    return this;
-  }
-  appendTo(parent) {
-    parent.appendChild(this.wrapper);
-    return this;
-  }
-  setTextContent(text) {
-    this.wrapper.textContent = text;
-    return this;
-  }
-  prependTo(parent) {
-    parent.prepend(this.wrapper);
-    return this;
-  }
-  append(child) {
-    this.wrapper.appendChild(child);
-    return this;
-  }
-  get div() {
-    return this.wrapper;
-  }
-};
-
-// src/js/leaflet/negocioFeatureToHtml.ts
-var negocioFeatureToHtml = class {
-  constructor(feature, campos) {
-    this.feature = feature;
-    campos = {
-      "ubicacion": "Ubicaci\xF3n",
-      "tipo": "Tipo",
-      "dormitorios_total": "Dormitorios",
-      "banos_total": "Ba\xF1os",
-      "servicios": "Servicios",
-      ...campos,
-      tipo_negocio: "Modalidad",
-      tipo_propiedad: "Tipo Propiedad",
-      "titulo-resumen-web": "Resumen",
-      nombre: "Nombre",
-      comuna: "Ubicaci\xF3n",
-      "banos-completos": "Ba\xF1os",
-      dormitorios_completos: "Dormitorios",
-      "precio": "Precio"
-    };
-    this.campos = campos;
-    this.normalizeProperties();
-    this.id = feature.id;
-    this.container = new Wrapper("flex flex-col");
-    this.container.addClass("flex").addClass("flex-col").addStyle("lineHeight", "1.5em").addStyle("fontSize", "13px").addStyle("fontFamily", "Inter, sans-serif").addStyle("fontWeight", "400").addStyle("maxWidth", "350px");
-    this.appendProperties();
-  }
-  get content() {
-    this.container.div.classList.add("flex");
-    this.container.div.classList.add("flex-col");
-    return this.container.div;
-  }
-  getProperty(slug_name) {
-    return this.feature.properties[slug_name];
-  }
-  get innerHTML() {
-    return this.content.innerHTML;
-  }
-  get linkWeb() {
-    const postId = this.getProperty("codigo-wordpress") || this.getProperty("codigo_wordpress");
-    return this.getProperty("link-publicacion-web") || postId && `"https://lacasadejuana.cl/?p=${postId}"` || null;
-  }
-  get ubicacion() {
-    let barrio = this.getProperty("barrio").replace("Barrio ", ""), comuna = this.getProperty("comuna");
-    return barrio ? `Barrio ${barrio}, ${comuna}` : comuna;
-  }
-  get precio() {
-    return this.getProperty("precio-publicacion") + " (UF)";
-  }
-  get tipo() {
-    return `<span class="font-semibold">${this.getProperty("tipo_propiedad")}</span>
-        <span style="margin-left:0.25em;margin-right:0.25em;">en</span>
-        <span class="font-semibold">${this.getProperty("tipo_negocio")}</span>`;
-  }
-  get banos_total() {
-    let banos = Number(this.getProperty("banos") || this.getProperty("banos-completos")).toFixed(0), banos_servicios = this.getProperty("banos-servicio"), texto_servicio = Number(banos_servicios) > 0 ? ` + ${Number(banos_servicios).toFixed(0)} servicio` : "";
-    return `${Number(banos).toFixed(0)} ba\xF1os ${texto_servicio}`;
-  }
-  get dormitorios_total() {
-    let dormitorios = Number(this.getProperty("dormitorios") || this.getProperty("dormitorios-completos")).toFixed(0), dormitorios_servicio = this.getProperty("dormitorios-servicio"), texto_servicio = Number(dormitorios_servicio) > 0 ? ` + ${Number(dormitorios_servicio).toFixed(0)} servicio` : "";
-    return `${dormitorios} dormitorios ${texto_servicio}`;
-  }
-  get hiddenSlugs() {
-    return [
-      "lat",
-      "lng",
-      "searchstring",
-      "id_etapa_negocio",
-      "precio-publicacion",
-      "codigo_interno",
-      "codigo-wordpress",
-      "codigo_wordpress",
-      "link-publicacion",
-      "thumbnail",
-      "barrio",
-      "img-portada-wordpress",
-      "id_tipo_negocio",
-      "id_tipo_propiedad",
-      "dormitorios",
-      "banos-completos",
-      "banos-servicio",
-      "banos",
-      "tipo_negocio",
-      "tipo_propiedad",
-      "comuna",
-      "titulo-resumen-web",
-      "dormitorios-servicio",
-      "servicios",
-      "fecha-publicacion"
-    ];
-  }
-  normalizeProperties() {
-    this.feature.properties.ubicacion = this.ubicacion;
-    this.feature.properties.tipo = this.tipo;
-    this.feature.properties.precio = this.precio;
-    this.feature.properties.servicios = `${this.dormitorios_total}, ${this.banos_total}`;
-    this.feature.properties["fecha-publicacion"] = this.getProperty("fecha-publicacion").split("-").reverse().join("-");
-  }
-  appendProperties() {
-    Object.entries(this.feature.properties).forEach(([slug_name, value]) => {
-      if (slug_name === "nombre")
-        console.log([value, slug_name]);
-      let wrapper = new Wrapper(
-        "flex w-full justify-between align-items-center " + slug_name
-      );
-      if (slug_name.includes("link-img-portada-wordpress")) {
-        this.printImagenPortada(wrapper, value);
-      } else if (slug_name.includes("seudonimo") || slug_name.includes("nombre") || slug_name.includes("seudonimo-propiedad")) {
-        this.printLinkWeb(wrapper, value);
-      } else if (this.shouldSkip(slug_name, value)) {
-        return;
-      } else if (slug_name.includes("titulo-resumen-web")) {
-        this.printTituloResumen(wrapper, value);
-      } else if (slug_name.includes("tipo")) {
-        this.printTipo(wrapper, value);
-      } else if (slug_name.includes("servicios")) {
-        this.printServicios(wrapper, value);
-      } else if (slug_name.includes("ubicacion")) {
-        this.printUbicacion(wrapper, value);
-      } else {
-        this.printOtherCampos(wrapper, slug_name, value);
-      }
-    });
-  }
-  printUbicacion(wrapper, value) {
-    value = `<span class="nowrap font-bold text-bold">${value}</span>.&nbsp;&nbsp;&nbsp;  ${this.getProperty("titulo-resumen-web")} `;
-    wrapper.setInnerHTML(value);
-    wrapper.addClass("justify").addStyle("textAlign", "justify").addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.15em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("display", "block").addStyle("marginTop", "0em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
-  }
-  printServicios(wrapper, value) {
-    wrapper.setInnerHTML(value);
-    wrapper.addStyle("fontWeight", "500").addStyle("order", "4").addStyle("fontSize", "1em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0em").addStyle("marginBottom", "0.5em").prependTo(this.container.div);
-  }
-  shouldSkip(slug_name, value) {
-    return !value || slug_name.includes("etapa") || this.hiddenSlugs.includes(slug_name) || slug_name.includes("codigo-wordpress") || slug_name.includes("codigo_wordpress") || slug_name.includes("link-publicacion") || !this.campos[slug_name] && slug_name !== "thumbnail";
-  }
-  printImagenPortada(wrapper, value) {
-    const link = `<img src="${value}" style="width:100%;height:200px;object-fit:cover;"/>`;
-    wrapper.setInnerHTML(link).addStyle("fontWeight", "600").addStyle("fontSize", "1.1em").addStyle("marginBottom", "0.3em").addStyle("order", "1").appendTo(this.container.div);
-  }
-  printLinkWeb(wrapper, value) {
-    if (this.linkWeb) {
-      wrapper.setInnerHTML(
-        ` <a href=${this.linkWeb} target="_blank"><i class="fas fa-link"></i> ${value}</a>`
-      );
-    } else {
-      wrapper.setInnerHTML(`  ${value}`);
-    }
-    wrapper.addStyle("fontWeight", "600").addStyle("order", "2").addStyle("fontSize", "1.5em").addStyle("marginTop", "0.7em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
-  }
-  printTipo(wrapper, value) {
-    wrapper.div.setAttribute("rel", "tipo");
-    new Wrapper("py-1 pl-1 flex border border-1/2 min-w-[150px]").addStyle("fontFamily", "Inter, sans-serif").setTextContent(this.campos.tipo).addStyle("minWidth", "130px").addStyle("maxWidth", "140px").appendTo(wrapper.div);
-    new Wrapper(
-      "py-1 flex border border-1/2 pl-2 max-w-[350px] min-w-[200px] flex-grow overflow-hidden whitespace-nowrap"
-    ).addStyle("maxWidth", "350px").addStyle("minWidth", "200px").addStyle("overflow", "hidden").addStyle("fontFamily", "Inter, sans-serif").setInnerHTML(value).appendTo(wrapper.div);
-    wrapper.addStyle("order", "4").addStyle("fontWeight", "500").appendTo(this.container.div);
-  }
-  printTituloResumen(wrapper, value) {
-    let words = value.split("|"), wordsQuantity = words.length, firstRow = words.slice(0, wordsQuantity / 2).join(" "), secondRow = words.slice(wordsQuantity / 2).join(" ");
-    wrapper.setInnerHTML(value);
-    wrapper.addStyle("fontWeight", "500").addStyle("fontWeight", "500").addStyle("order", "3").addStyle("fontSize", "1.1em").addStyle("maxWidth", "350px").addStyle("white-space", "normal").addStyle("marginTop", "0.2em").addStyle("marginBottom", "0.3em").prependTo(this.container.div);
-  }
-  printOtherCampos(wrapper, slug_name, value) {
-    wrapper.div.setAttribute("rel", slug_name);
-    new Wrapper("py-1 pl-1 flex border border-1/2 min-w-[165px]").addStyle("fontFamily", "Inter, sans-serif").addStyle("fontWeight", "400").addStyle("minWidth", "130px").addStyle("maxWidth", "140px").setTextContent(this.campos[slug_name]).appendTo(wrapper.div);
-    new Wrapper(
-      "py-1 flex border border-1/2 pl-2 max-w-[350px] min-w-[200px] flex-grow overflow-hidden whitespace-nowrap"
-    ).addStyle("maxWidth", "350px").addStyle("minWidth", "200px").addStyle("overflow", "hidden").addStyle("fontFamily", "Inter, sans-serif").setTextContent(value).appendTo(wrapper.div);
-    wrapper.addStyle("order", "5").addStyle("fontWeight", "500").appendTo(this.container.div);
-  }
-};
-
-// src/js/leaflet/PublicLayerDeals.ts
-async function PublicLayerDeals({ index, slug_name, name, path, layer_options, criteria }, map) {
-  const dealInfo = control();
-  dealInfo.onAdd = function(map2) {
-    this._div = DomUtil.create("div", "transparent");
-    this.update();
-    return this._div;
-  };
-  dealInfo.update = function(props) {
-    this._div.innerHTML = props ? '<div class="info"><b>' + props["seudonimo-propiedad"] + "</b></div>" : "";
-  };
-  const FeatureCollection = {
-    type: "FeatureCollection",
-    features: []
-  };
-  var deallayer;
-  const icon2 = icon({
-    iconUrl: `${slug_name}.png`,
-    iconSize: [28, 32],
-    // size of the icon
-    iconAnchor: [14, 32],
-    // point of the icon which will correspond to marker's location
-    popupAnchor: [-3, -32]
-    // point from which the popup should open relative to the iconAnchor 
-  });
-  function appendFeatures(dealsWithCoords) {
-    let features = dealsWithCoords.filter((negocio) => negocio.match(criteria)).map((n) => n.toFeature());
-    for (let feature of features) {
-      FeatureCollection.features.push(feature);
-    }
-  }
-  function resetHighlight(e) {
-    dealInfo.update();
-  }
-  function highlightFeature(e) {
-    var layer = e.target;
-    dealInfo.update(layer.feature.properties);
-  }
-  dealInfo.addTo(map);
-  function addLayerToMap({ slug_name: slug_name2 }) {
-    appendFeatures(globalThis.$store.negocios.deals_with_coordinates);
-    deallayer = geoJson(FeatureCollection, {
-      onEachFeature: (feature, layer) => {
-        layer.bindPopup(new negocioFeatureToHtml(feature, {}).content, {
-          maxWidth: 400
-        });
-        layer.on({
-          mouseover: highlightFeature,
-          mouseout: resetHighlight
-        });
-        if (layer instanceof Marker) {
-          layer.setIcon(icon2);
-        }
-      }
-    });
-    deallayer.addTo(map);
-    return deallayer;
-  }
-  globalThis.layers = globalThis.layers || {};
-  console.log("addLayerToMap", { slug_name });
-  return addLayerToMap({ slug_name });
-}
-
 // src/js/leaflet/LeafletMap.ts
 var LeafletMap = () => ({
   map: null,
@@ -13165,17 +12886,23 @@ var LeafletMap = () => ({
   async init() {
     this.map = createMap("map", {
       zoomControl: false
-    }).setView([-33.395, -70.5777], 12);
+    }).setView([-33.4, -70.5777], 13);
     control.zoom({
       position: "bottomright"
     }).addTo(this.map);
     globalThis.map = this.map;
-    tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    globalThis.leafletMap = this;
+    const cartoCDN = tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: "abcd",
       maxZoom: 20
-    }).addTo(this.map);
-    globalThis.layerControl = control.layers(null, null, { collapsed: false }).addTo(this.map);
+    });
+    cartoCDN.addTo(this.map);
+    globalThis.layerControl = control.layers(
+      null,
+      null,
+      { collapsed: false }
+    ).addTo(this.map);
     globalThis.layers = globalThis.layers || {};
     this.barrioslayer = await barriosLayer(this.map);
     this.metrolayer = await metroLayer(this.map);
@@ -13193,11 +12920,6 @@ var LeafletMap = () => ({
     return this.$store.negocios.restart().then(async (result) => {
       setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
       console.info("fetched negocios", this.$store.negocios.properties.length);
-      for (let { type, slug_name, name, criteria, layer_options } of exampleLayers) {
-        this[slug_name] = await PublicLayerDeals({ slug_name, name, criteria, layer_options }, this.map);
-        globalThis.layerControl.addOverlay(this[slug_name], name);
-      }
-      ;
     });
   }
 });

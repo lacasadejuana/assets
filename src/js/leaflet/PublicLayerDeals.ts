@@ -1,4 +1,4 @@
-import { FeatureCollection } from 'geojson';
+
 import { IMapLayerData } from '@/components/alpine_definitions';
 import { AlpineDataComponent } from '@/components/alpine.store';
 import { Negocio } from "@/components/entities/Negocio";
@@ -7,87 +7,128 @@ import { negocioFeatureToHtml } from "./negocioFeatureToHtml";
 import * as L from 'leaflet/dist/leaflet-src.esm'
 
 
-export async function PublicLayerDeals({ index, slug_name, name, path, layer_options, criteria }, map: L.Map) {
-
-    const dealInfo = L.control();
-
-    dealInfo.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'transparent'); // create a div with a class "info"
-        this.update();
-        return this._div;
-    };
-
-    // method that we will use to update the control based on feature properties passed
-    dealInfo.update = function (props) {
-        this._div.innerHTML = props ? ('<div class="info"><b>' + props['seudonimo-propiedad'] + '</b></div>') : '';
-    };
-
-    const FeatureCollection = {
-        type: "FeatureCollection",
-        features: []
-    }
-    var deallayer;
-    const icon = L.icon({
-        iconUrl: `${slug_name}.png`,
-        iconSize: [28, 32], // size of the icon
-        iconAnchor: [14, 32], // point of the icon which will correspond to marker's location
-        popupAnchor: [-3, -32] // point from which the popup should open relative to the iconAnchor 
-    })
-    function appendFeatures(dealsWithCoords: Negocio[]) {
-
-        let features = (dealsWithCoords)
-            .filter((negocio) => negocio.match(criteria))
-            .map((n) => n.toFeature());
-        for (let feature of features) {
-            FeatureCollection.features.push(feature)
-        }
+export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria }, map: L.Map) => ({
 
 
-    }
-    function resetHighlight(e) {
+    //   features,
+    layer_options,
+    path,
+    name,
+    slug_name,
+    filters_open: false,
+    _map: null,
+    index,
+    criteria,
+    get searchValue() {
+        return this.$store.negocios.searchValue
+    },
 
-        dealInfo.update();
+    iconPreview: '',
 
-    }
-    function highlightFeature(e) {
+    async init() {
+
+
+
+
+        console.log('PublicLayerDeals', { slug_name, map })
+
+        globalThis.layerComponents = globalThis.layerComponents || {}
+        globalThis.layerComponents[this.slug_name] = this
+
+        this.dealInfo = L.control();
+        this.dealInfo.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'transparent'); // create a div with a class "info"
+            this.update();
+            return this._div;
+        };
+        // method that we will use to update the control based on feature properties passed
+        this.dealInfo.update = function (props) {
+            this._div.innerHTML = props ? ('<div class="info"><b>' + props['seudonimo-propiedad'] + '</b></div>') : '';
+        };
+        this.dealInfo.addTo(this.map);
+
+        await this.$store.negocios.once('complete')
+        this.geojson = this.addLayerToMap()
+
+
+
+    },
+    clearOverlay() {
+        this.geojson.clearLayers()
+        globalThis.layerControl.removeLayer(this.geojson)
+    },
+
+    resetHighlight(e) {
+        this.dealInfo.update();
+    },
+    highlightFeature(e) {
         var layer = e.target;
+        this.dealInfo.update(layer.feature.properties);
+    },
+    get icon() {
+        return L.icon({
+            iconUrl: `${this.slug_name}.png`,
+            iconSize: [28, 32], // size of the icon
+            iconAnchor: [14, 32], // point of the icon which will correspond to marker's location
+            popupAnchor: [-3, -32] // point from which the popup should open relative to the iconAnchor 
+        })
+    },
+
+    get dealsWithCoords() {
+        return globalThis.$store.negocios.deals_with_coordinates;
+    },
 
 
-        dealInfo.update(layer.feature.properties);
+    geojson: null,
 
-    }
-    dealInfo.addTo(map);
-    function addLayerToMap({ slug_name }) {
+    addLayerToMap() {
 
-        appendFeatures(globalThis.$store.negocios.deals_with_coordinates)
-        deallayer = L.geoJson(FeatureCollection, {
+
+
+        this.FeatureCollection = {
+            type: "FeatureCollection",
+            features: []
+        }
+        this.appendFeatures(globalThis.$store.negocios.deals_with_coordinates)
+        this.geojson = L.geoJson(this.FeatureCollection, {
             onEachFeature: (feature, layer) => {
                 layer.bindPopup((new negocioFeatureToHtml(feature, {})).content, {
                     maxWidth: 400
                 })
                 layer.on({
-                    mouseover: highlightFeature,
-                    mouseout: resetHighlight,
+                    mouseover: (e) => this.highlightFeature(e),
+                    mouseout: (e) => this.resetHighlight(e),
                 });
                 if (layer instanceof L.Marker) {
-                    layer.setIcon(icon)
+                    layer.setIcon(this.icon)
                 }
 
             }
         })
-        deallayer.addTo(map);
-        return deallayer
-    }
+        this.geojson.addTo(map);
+        globalThis.layerControl.addOverlay(this.geojson, this.name);
 
-    globalThis.layers = globalThis.layers || {};
-
-
-
-    console.log('addLayerToMap', { slug_name })
-    return addLayerToMap({ slug_name })
+        return this.geojson;
+    },
 
 
 
 
+    mapDialogOpen: false,
 
-} 
+    appendFeatures(dealsWithCoords: Negocio[]) {
+
+        this.features = (dealsWithCoords || this.dealsWithCoords)
+            .filter((negocio) => negocio.match(this.criteria))
+            .map((n) => n.toFeature());
+        for (let feature of this.features) {
+            this.FeatureCollection.features.push(feature)
+        }
+
+
+    },
+
+
+
+} as unknown as AlpineDataComponent<IMapLayerData>)
+

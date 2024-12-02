@@ -18,19 +18,24 @@ export const LeafletMap = () => ({
     async init() {
         this.map = L.map('map', {
             zoomControl: false
-        }).setView([-33.395, -70.5777], 12);
+        }).setView([-33.4, -70.5777], 13);
         L.control.zoom({
             position: 'bottomright'
         }).addTo(this.map);
         globalThis.map = this.map
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        globalThis.leafletMap = this
+        const cartoCDN = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 20
-        }).addTo(this.map);
+        });
+
+        cartoCDN.addTo(this.map);
 
 
-        globalThis.layerControl = L.control.layers(null, null, { collapsed: false }).addTo(this.map);
+        globalThis.layerControl = L.control.layers(
+            null
+            , null, { collapsed: false }).addTo(this.map);
         globalThis.layers = globalThis.layers || {}
 
         this.barrioslayer = await barriosLayer(this.map)
@@ -57,10 +62,10 @@ export const LeafletMap = () => ({
             setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1000);
             console.info('fetched negocios', this.$store.negocios.properties.length);
 
-            for (let { type, slug_name, name, criteria, layer_options } of exampleLayers) {
+            /*for (let { type, slug_name, name, criteria, layer_options } of exampleLayers) {
                 this[slug_name] = await PublicLayerDeals({ slug_name, name, criteria, layer_options }, this.map)
                 globalThis.layerControl.addOverlay(this[slug_name], name);
-            };
+            };*/
 
         })
     },

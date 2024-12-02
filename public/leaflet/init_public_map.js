@@ -27498,7 +27498,7 @@ async function barriosLayer(map) {
       opacity: 1,
       color: "white",
       dashArray: "3",
-      fillOpacity: 0.4
+      fillOpacity: 0.2
     };
   }
   function resetHighlight(e) {
@@ -27511,7 +27511,7 @@ async function barriosLayer(map) {
       weight: 5,
       color: "#666",
       dashArray: "",
-      fillOpacity: 0.6
+      fillOpacity: 0.3
     });
     layer.bringToFront();
     barrioInfo.update(layer.feature.properties);
@@ -27758,6 +27758,51 @@ var PublicLayersObject = exampleLayers.reduce((acc, layer) => {
   return acc;
 }, {});
 
+// src/js/leaflet/LeafletMap.ts
+var LeafletMap = () => ({
+  map: null,
+  exampleLayers,
+  async init() {
+    this.map = createMap("map", {
+      zoomControl: false
+    }).setView([-33.4, -70.5777], 13);
+    control.zoom({
+      position: "bottomright"
+    }).addTo(this.map);
+    globalThis.map = this.map;
+    globalThis.leafletMap = this;
+    const cartoCDN = tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: "abcd",
+      maxZoom: 20
+    });
+    cartoCDN.addTo(this.map);
+    globalThis.layerControl = control.layers(
+      null,
+      null,
+      { collapsed: false }
+    ).addTo(this.map);
+    globalThis.layers = globalThis.layers || {};
+    this.barrioslayer = await barriosLayer(this.map);
+    this.metrolayer = await metroLayer(this.map);
+    this.colegioLayer = await colegioLayer(this.map);
+    globalThis.layerControl.addOverlay(this.barrioslayer, "Barrios");
+    globalThis.layerControl.addOverlay(this.metrolayer, "Metro");
+    globalThis.layerControl.addOverlay(this.colegioLayer, "Colegios");
+    this.$store.columnas_actuales.on("ready", () => {
+      this.fetchPublicaciones();
+    });
+  },
+  fetchPublicaciones() {
+    module_default8.store("negocios").next_page_url = "https://lacasadejuana.cl/api/publicaciones";
+    module_default8.store("negocios").complete = false;
+    return this.$store.negocios.restart().then(async (result) => {
+      setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
+      console.info("fetched negocios", this.$store.negocios.properties.length);
+    });
+  }
+});
+
 // src/js/leaflet/Wrapper.ts
 var Wrapper = class {
   constructor(className) {
@@ -27975,109 +28020,93 @@ var negocioFeatureToHtml = class {
 };
 
 // src/js/leaflet/PublicLayerDeals.ts
-async function PublicLayerDeals({ index, slug_name, name, path, layer_options, criteria }, map) {
-  const dealInfo = control();
-  dealInfo.onAdd = function(map2) {
-    this._div = DomUtil.create("div", "transparent");
-    this.update();
-    return this._div;
-  };
-  dealInfo.update = function(props) {
-    this._div.innerHTML = props ? '<div class="info"><b>' + props["seudonimo-propiedad"] + "</b></div>" : "";
-  };
-  const FeatureCollection = {
-    type: "FeatureCollection",
-    features: []
-  };
-  var deallayer;
-  const icon2 = icon({
-    iconUrl: `${slug_name}.png`,
-    iconSize: [28, 32],
-    // size of the icon
-    iconAnchor: [14, 32],
-    // point of the icon which will correspond to marker's location
-    popupAnchor: [-3, -32]
-    // point from which the popup should open relative to the iconAnchor 
-  });
-  function appendFeatures(dealsWithCoords) {
-    let features = dealsWithCoords.filter((negocio) => negocio.match(criteria)).map((n) => n.toFeature());
-    for (let feature of features) {
-      FeatureCollection.features.push(feature);
-    }
-  }
-  function resetHighlight(e) {
-    dealInfo.update();
-  }
-  function highlightFeature(e) {
+var PublicLayerDeals = ({ index, slug_name, name, path, layer_options, criteria }, map) => ({
+  //   features,
+  layer_options,
+  path,
+  name,
+  slug_name,
+  filters_open: false,
+  _map: null,
+  index,
+  criteria,
+  get searchValue() {
+    return this.$store.negocios.searchValue;
+  },
+  iconPreview: "",
+  async init() {
+    console.log("PublicLayerDeals", { slug_name, map });
+    globalThis.layerComponents = globalThis.layerComponents || {};
+    globalThis.layerComponents[this.slug_name] = this;
+    this.dealInfo = control();
+    this.dealInfo.onAdd = function(map2) {
+      this._div = DomUtil.create("div", "transparent");
+      this.update();
+      return this._div;
+    };
+    this.dealInfo.update = function(props) {
+      this._div.innerHTML = props ? '<div class="info"><b>' + props["seudonimo-propiedad"] + "</b></div>" : "";
+    };
+    this.dealInfo.addTo(this.map);
+    await this.$store.negocios.once("complete");
+    this.geojson = this.addLayerToMap();
+  },
+  clearOverlay() {
+    this.geojson.clearLayers();
+    globalThis.layerControl.removeLayer(this.geojson);
+  },
+  resetHighlight(e) {
+    this.dealInfo.update();
+  },
+  highlightFeature(e) {
     var layer = e.target;
-    dealInfo.update(layer.feature.properties);
-  }
-  dealInfo.addTo(map);
-  function addLayerToMap({ slug_name: slug_name2 }) {
-    appendFeatures(globalThis.$store.negocios.deals_with_coordinates);
-    deallayer = geoJson(FeatureCollection, {
+    this.dealInfo.update(layer.feature.properties);
+  },
+  get icon() {
+    return icon({
+      iconUrl: `${this.slug_name}.png`,
+      iconSize: [28, 32],
+      // size of the icon
+      iconAnchor: [14, 32],
+      // point of the icon which will correspond to marker's location
+      popupAnchor: [-3, -32]
+      // point from which the popup should open relative to the iconAnchor 
+    });
+  },
+  get dealsWithCoords() {
+    return globalThis.$store.negocios.deals_with_coordinates;
+  },
+  geojson: null,
+  addLayerToMap() {
+    this.FeatureCollection = {
+      type: "FeatureCollection",
+      features: []
+    };
+    this.appendFeatures(globalThis.$store.negocios.deals_with_coordinates);
+    this.geojson = geoJson(this.FeatureCollection, {
       onEachFeature: (feature, layer) => {
         layer.bindPopup(new negocioFeatureToHtml(feature, {}).content, {
           maxWidth: 400
         });
         layer.on({
-          mouseover: highlightFeature,
-          mouseout: resetHighlight
+          mouseover: (e) => this.highlightFeature(e),
+          mouseout: (e) => this.resetHighlight(e)
         });
         if (layer instanceof Marker) {
-          layer.setIcon(icon2);
+          layer.setIcon(this.icon);
         }
       }
     });
-    deallayer.addTo(map);
-    return deallayer;
-  }
-  globalThis.layers = globalThis.layers || {};
-  console.log("addLayerToMap", { slug_name });
-  return addLayerToMap({ slug_name });
-}
-
-// src/js/leaflet/LeafletMap.ts
-var LeafletMap = () => ({
-  map: null,
-  exampleLayers,
-  async init() {
-    this.map = createMap("map", {
-      zoomControl: false
-    }).setView([-33.395, -70.5777], 12);
-    control.zoom({
-      position: "bottomright"
-    }).addTo(this.map);
-    globalThis.map = this.map;
-    tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: "abcd",
-      maxZoom: 20
-    }).addTo(this.map);
-    globalThis.layerControl = control.layers(null, null, { collapsed: false }).addTo(this.map);
-    globalThis.layers = globalThis.layers || {};
-    this.barrioslayer = await barriosLayer(this.map);
-    this.metrolayer = await metroLayer(this.map);
-    this.colegioLayer = await colegioLayer(this.map);
-    globalThis.layerControl.addOverlay(this.barrioslayer, "Barrios");
-    globalThis.layerControl.addOverlay(this.metrolayer, "Metro");
-    globalThis.layerControl.addOverlay(this.colegioLayer, "Colegios");
-    this.$store.columnas_actuales.on("ready", () => {
-      this.fetchPublicaciones();
-    });
+    this.geojson.addTo(map);
+    globalThis.layerControl.addOverlay(this.geojson, this.name);
+    return this.geojson;
   },
-  fetchPublicaciones() {
-    module_default8.store("negocios").next_page_url = "https://lacasadejuana.cl/api/publicaciones";
-    module_default8.store("negocios").complete = false;
-    return this.$store.negocios.restart().then(async (result) => {
-      setTimeout(() => this.$store.negocios.total = this.$store.negocios.properties.length, 1e3);
-      console.info("fetched negocios", this.$store.negocios.properties.length);
-      for (let { type, slug_name, name, criteria, layer_options } of exampleLayers) {
-        this[slug_name] = await PublicLayerDeals({ slug_name, name, criteria, layer_options }, this.map);
-        globalThis.layerControl.addOverlay(this[slug_name], name);
-      }
-      ;
-    });
+  mapDialogOpen: false,
+  appendFeatures(dealsWithCoords) {
+    this.features = (dealsWithCoords || this.dealsWithCoords).filter((negocio) => negocio.match(this.criteria)).map((n) => n.toFeature());
+    for (let feature of this.features) {
+      this.FeatureCollection.features.push(feature);
+    }
   }
 });
 
