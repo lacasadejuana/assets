@@ -106,7 +106,7 @@ export const PublicLayerDeals = ({ index, slug_name, name, path, layer_options, 
             }
         })
         this.geojson.addTo(map);
-        globalThis.layerControl.addOverlay(this.geojson, this.name);
+        globalThis.layerControl.addOverlay(this.geojson, `<img style="display:inline;height:28px;width:24px;" src="${this.slug_name}.png"> ${this.name}`);
 
         return this.geojson;
     },

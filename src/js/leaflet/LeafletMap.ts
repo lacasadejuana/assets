@@ -45,8 +45,8 @@ export const LeafletMap = () => ({
         this.colegioLayer = await colegioLayer(this.map);
 
         globalThis.layerControl.addOverlay(this.barrioslayer, "Barrios");
-        globalThis.layerControl.addOverlay(this.metrolayer, "Metro");
-        globalThis.layerControl.addOverlay(this.colegioLayer, "Colegios");
+        globalThis.layerControl.addOverlay(this.metrolayer, `<img style="display:inline;height:28px;width:24px;" src="metro.png"> Metro`);
+        globalThis.layerControl.addOverlay(this.colegioLayer, `<img style="display:inline;height:28px;width:24px;" src="colegios.png"> Colegios`);
 
 
         this.$store.columnas_actuales.on('ready', () => {
