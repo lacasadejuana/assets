@@ -12886,7 +12886,7 @@ var LeafletMap = () => ({
   async init() {
     this.map = createMap("map", {
       zoomControl: false
-    }).setView([-33.4, -70.5777], 13);
+    }).setView([-33.43, -70.5777], 13);
     control.zoom({
       position: "bottomright"
     }).addTo(this.map);
@@ -12901,7 +12901,7 @@ var LeafletMap = () => ({
     globalThis.layerControl = control.layers(
       null,
       null,
-      { collapsed: false }
+      { collapsed: false, position: "topright" }
     ).addTo(this.map);
     globalThis.layers = globalThis.layers || {};
     this.barrioslayer = await barriosLayer(this.map);
@@ -12965,3 +12965,4 @@ leaflet/dist/leaflet-src.esm.js:
    * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade
    *)
 */
+//# sourceMappingURL=leaflet.js.map

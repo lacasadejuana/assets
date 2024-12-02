@@ -18,7 +18,7 @@ export const LeafletMap = () => ({
     async init() {
         this.map = L.map('map', {
             zoomControl: false
-        }).setView([-33.4, -70.5777], 13);
+        }).setView([-33.43, -70.5777], 13);
         L.control.zoom({
             position: 'bottomright'
         }).addTo(this.map);
@@ -35,7 +35,7 @@ export const LeafletMap = () => ({
 
         globalThis.layerControl = L.control.layers(
             null
-            , null, { collapsed: false }).addTo(this.map);
+            , null, { collapsed: false, position: 'topright' }).addTo(this.map);
         globalThis.layers = globalThis.layers || {}
 
         this.barrioslayer = await barriosLayer(this.map)
