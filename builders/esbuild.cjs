@@ -105,7 +105,15 @@ const onRebuild = (outdir = `public_map`) => {
         format: 'umd',
 
     });
+    runEsbuild({
+        entryPoints: [
+            `src/js/leaflet_property/init_public_map.ts`
+        ],
+        outfile: `public/leaflet_property/init_public_map.js`,
+        quiet: true,
+        format: 'umd',
 
+    });
     runEsbuild({
         entryPoints: [
             'src/js/property_map/index.ts'

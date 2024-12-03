@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mapa de propiedades La Casa de Juana</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+ <script src="https://cdn.tailwindcss.com"></script>
+
+ <script src="./init_public_map.js"></script>
+ 
+ <style>
+    #map { 
+        height: 100vh; 
+        width:100%;
+    }
+    .info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+.leaflet-popup-content-wrapper {
+    width:280px;
+}
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+    width: 280px;
+}
+
+.leaflet-popup-tip-container {
+}
+.leaflet-control-container .leaflet-top.leaflet-right {
+    margin-top:300px;
+}
+ </style>
+</head>
+<body>
+    <div id="map" x-data="LeafletMap">
+        <template x-for="{slug_name,name,criteria,layer_options} in exampleLayers" :key="slug_name">
+            <div  x-data="PublicLayerDeals({slug_name,name,criteria,layer_options},map)"></div>
+    </div>
+<script>
+   
+</script>
+
+</body>
+</html>
