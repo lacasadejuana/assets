@@ -98,6 +98,16 @@ const onRebuild = (outdir = `public_map`) => {
     });
     runEsbuild({
         entryPoints: [
+            `src/js/advanced_markers/index.ts`
+        ],
+        outfile: `public/advanced_markers/index.js`,
+        quiet: true,
+
+        format: 'esm',
+
+    });
+    runEsbuild({
+        entryPoints: [
             `src/js/leaflet/init_public_map.ts`
         ],
         outfile: `public/leaflet/init_public_map.js`,

@@ -1,5 +1,5 @@
 import { echarts } from './echarts-extension-gmap-esm.js';
-import { sampleData as data } from './sample_data.js';
+import { sampleData as data } from './sample_data';
 var convertData = function (features) {
     return features.map(({ id, geometry, properties }) => {
         let [lng, lat] = geometry.coordinates,

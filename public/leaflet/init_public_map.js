@@ -27527,7 +27527,7 @@ async function barriosLayer(map) {
     });
   }
   barrioInfo.addTo(map);
-  return fetch("../json/barrios_old.json").then((res2) => res2.json()).then((data2) => {
+  return fetch("../json/barrios_2025.json").then((res2) => res2.json()).then((data2) => {
     globalThis.barrios = data2;
     geojson = geoJson(data2, { style: style2, onEachFeature });
     geojson.addTo(map);
